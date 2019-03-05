@@ -1,15 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
-/**
- *
- * @author Usuario Alumno
- */
 public class ColegioM {
+    
+    private String CODCOL;
+    private String NOMCOL;
+    private String CODREFCOL;
+
+    public String getCODCOL() {
+        return CODCOL;
+    }
+
+    public void setCODCOL(String CODCOL) {
+        this.CODCOL = CODCOL;
+    }
+
+    public String getNOMCOL() {
+        return NOMCOL;
+    }
+
+    public void setNOMCOL(String NOMCOL) {
+        this.NOMCOL = NOMCOL;
+    }
+
+    public String getCODREFCOL() {
+        return CODREFCOL;
+    }
+
+    public void setCODREFCOL(String CODREFCOL) {
+        this.CODREFCOL = CODREFCOL;
+    }
+    
     
     
 }
