@@ -11,14 +11,70 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <p:dataTable var="colegio" value="#{colegioC.lstColegio}">
-            <p:column headerText="COLEGIO">
-                <h:outputText value="#{colegio.NOMCOL}" />
-            </p:column>
 
-            <p:column headerText="CODIGO">
-                <h:outputText value="#{colegio.CODREFCOL}" />
-            </p:column>
-        </p:dataTable>
+        <h:form id="Colegio">
+            <p:growl id="msg" showDetail="true" life="1000" autoUpdate="true"/>  
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Nombre de Colegio: "/>
+                <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true"/>               
+                <p:outputLabel value="Codigo Modular"/>
+                <p:inputText value="#{colegioC.colegio.CODREFCOL}" required="true"/>             
+
+                <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}" update=":ColgForm:coleg Colegio"/>
+            </p:panelGrid>
+        </h:form>
+
+        <h:form id="ColgForm">
+            <p:dataTable value="#{colegioC.lstColegio}"
+                         var="colegio"
+                         id="coleg"
+                         selection="#{colegioC.selectedColegio}"
+                         rowKey="#{colegio.CODCOL}"
+                         selectionMode="single"
+                         rows="12" paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="6,12,16" reflow="true">
+
+                <p:column headerText="COLEGIO">
+                    <p:outputLabel value="#{colegio.NOMCOL}"/>     
+                </p:column>
+                <p:column headerText="CODIGO DE COLEGIO">
+                    <p:outputLabel value="#{colegio.CODREFCOL}"/>     
+                </p:column>
+
+            </p:dataTable>
+
+            <p:contextMenu for="coleg">  
+                <p:menuitem icon="fa fa-times" value="ELIMINAR" actionListener="#{colegioC.eliminarColegio()}" update="coleg :Colegio">
+                    <p:confirm header="Confirmacion" message="Estas seguro?" icon="ui-icon-alert" />
+                </p:menuitem>
+                <p:menuitem icon="fa fa-edit" value="MODIFICAR" oncomplete="PF('dlgModEmpresa').show()" update=":formDialog">
+                    <p:confirm header="Confirmacion" message="Deseas modificar?" icon="ui-icon-alert" />
+                </p:menuitem>
+            </p:contextMenu>           
+        </h:form>
+
+
+        <h:form>           
+            <p:growl id="message" showDetail="true" />
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
+        
+        <p:dialog id="dlg" header="ACTUALIZAR DATOS" widgetVar="dlgModEmpresa" height="250" width="500" resizable="false" modal="true">
+                    <h:form id="formDialog">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Denominacion:" />
+                            <p:inputText value="#{colegioC.selectedColegio.NOMCOL}" />
+                            <p:outputLabel value="Tipo:" />
+                            <p:inputText value="#{colegioC.selectedColegio.CODREFCOL}"/>
+                            <p:commandButton value="MODIFICAR:" actionListener="#{colegioC.modificarColegio()}" update=":ColgForm:coleg" icon="fa fa-pencil"/> 
+                            <p:commandButton value="CANCELAR" oncomplete="PF('dlgModEmpresa').hide()" />
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog> 
+
     </h:body>
 </html>
