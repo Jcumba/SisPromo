@@ -23,10 +23,11 @@ public class ImplColegioD extends Dao implements ColegioI {
     public void guardarColegio(ColegioM colegio) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO COLEGIO(NOMCOL,CODREFCOL) VALUES (?,?)";
+            String sql = "INSERT INTO COLEGIO(NOMCOL,CODREFCOL,UBICOL) VALUES (?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, colegio.getNOMCOL());
             ps.setString(2, colegio.getCODREFCOL());
+            ps.setString(3, colegio.getUBICOL());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -39,10 +40,11 @@ public class ImplColegioD extends Dao implements ColegioI {
     public void modificarColegio(ColegioM colegio) throws Exception {
         try {
             this.conectar();
-            String sql = "UPDATE COLEGIO set NOMCOL=?, CODREFCOL=?  where CODCOL=?";
+            String sql = "UPDATE COLEGIO set NOMCOL=?, CODREFCOL=?,UBICOL=?  where CODCOL=?";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, colegio.getNOMCOL());
             ps.setString(2, colegio.getCODREFCOL());
+            ps.setString(3, colegio.getUBICOL());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -72,6 +74,7 @@ public class ImplColegioD extends Dao implements ColegioI {
                 colegio = new ColegioM();
                 colegio.setCODCOL(rs.getString("CODCOL"));
                 colegio.setNOMCOL(rs.getString("NOMCOL"));
+                colegio.setUBICOL(rs.getString("UBICOL"));
                 colegio.setCODREFCOL(rs.getString("CODREFCOL"));
                 listarColegio.add(colegio);
             }

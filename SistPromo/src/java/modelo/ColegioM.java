@@ -6,6 +6,7 @@ public class ColegioM {
     private String CODCOL;
     private String NOMCOL;
     private String CODREFCOL;
+    private String UBICOL;
 
     public String getCODCOL() {
         return CODCOL;
@@ -29,6 +30,14 @@ public class ColegioM {
 
     public void setCODREFCOL(String CODREFCOL) {
         this.CODREFCOL = CODREFCOL;
+    }
+
+    public String getUBICOL() {
+        return UBICOL;
+    }
+
+    public void setUBICOL(String UBICOL) {
+        this.UBICOL = UBICOL;
     }
     
     
