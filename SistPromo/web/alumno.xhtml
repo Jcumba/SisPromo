@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Alumno</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl id="msg" life="1500" autoUpdate="true"/>
+            <p:panelGrid columns="2"> 
+                <p:outputLabel value="NOMBRE"/>
+                <p:inputText value="#{alumnoC.alumno.NOMALUM}"/>
+                <p:outputLabel value="APELLIDO"/>
+                <p:inputText value="#{alumnoC.alumno.APEALUM}"/>
+                <p:outputLabel value="DNI"/>
+                <p:inputText value="#{alumnoC.alumno.DNIALUM}"/>
+                <p:outputLabel value="CELULAR"/>
+                <p:inputText value="#{alumnoC.alumno.CELALUM}"/>
+                <p:outputLabel  value="DISTRITO"/>
+                <p:autoComplete dropdown="true" maxResults="16" 
+                                emptyMessage="No se encontro ningún registro"
+                                value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                completeMethod="#{alumnoC.completeTextUbi}"
+                                style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE DISTRITO"/>
+                <p:outputLabel  value="COLEGIO"/>
+                <p:autoComplete 
+                    emptyMessage="No se encontro ningún registro"
+                    value="#"
+                    completeMethod="#{alumnoC.completeTextColegio(cole)}"
+                    style="width: 90%" required="true" requiredMessage="INGRESE COLEGIO"/>
+                <p:commandButton  value="GUARDAR" actionListener="#{alumnoC.guardarAlumno()}"   update="form"/>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
