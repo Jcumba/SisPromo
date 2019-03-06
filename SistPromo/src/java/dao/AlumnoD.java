@@ -16,15 +16,14 @@ public class AlumnoD extends Dao implements AlumnoI {
     public void guardarAlumno(AlumnoM alumno) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO ALUMNO (NOMPER,APEPER,DNIPER,CELPER,ESTPER,COLEGIO_CODCOL,CARRERA_CODCAR,"
-                    + "UBIGEO_CODUBI,AULA_CODAUL)VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,CELPER,ESTPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI,AULA_CODAUL)VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, alumno.getNOMPER());
             ps.setString(2, alumno.getAPEPER());
             ps.setString(3, alumno.getDNIPER());
             ps.setString(4, alumno.getCELPER());
             ps.setString(5, "A"); //ESTADO DE PERSONA
-            ps.setString(6, "1"); //COLEGIO
+            ps.setString(6, alumno.getCODCOL()); //COLEGIO
             ps.setString(7, "1"); //CARRERA
             ps.setString(8, alumno.getUBIGEO_CODUBI()); //UBIGEO
             ps.setString(9, "1"); //AULA
@@ -82,7 +81,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
-   /*  public String obtenerCodigoColegio(String Colegio) throws Exception{
+ public String obtenerCodigoColegio(String Colegio) throws Exception{
         this.conectar();
         ResultSet rs;
         try {
@@ -97,9 +96,9 @@ public class AlumnoD extends Dao implements AlumnoI {
         } catch (SQLException e) {
             throw e;
         }
-    } */
+    } 
     
- /*   public List<String> queryAutocompleteColegio(String a) throws SQLException, Exception {
+ public List<String> queryAutocompleteColegio(String a) throws SQLException, Exception {
         this.conectar();
         ResultSet rs;
         List<String> lista;
@@ -119,5 +118,5 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
- */
+ 
 }

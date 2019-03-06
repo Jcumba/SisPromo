@@ -12,25 +12,24 @@
             <p:growl id="msg" life="1500" autoUpdate="true"/>
             <p:panelGrid columns="2"> 
                 <p:outputLabel value="NOMBRE"/>
-                <p:inputText value="#{alumnoC.alumno.NOMALUM}"/>
+                <p:inputText value="#{alumnoC.alumno.NOMPER}"/>
                 <p:outputLabel value="APELLIDO"/>
-                <p:inputText value="#{alumnoC.alumno.APEALUM}"/>
+                <p:inputText value="#{alumnoC.alumno.APEPER}"/>
                 <p:outputLabel value="DNI"/>
-                <p:inputText value="#{alumnoC.alumno.DNIALUM}"/>
+                <p:inputText value="#{alumnoC.alumno.DNIPER}"/>
                 <p:outputLabel value="CELULAR"/>
-                <p:inputText value="#{alumnoC.alumno.CELALUM}"/>
+                <p:inputText value="#{alumnoC.alumno.CELPER}"/>
                 <p:outputLabel  value="DISTRITO"/>
-                <p:autoComplete dropdown="true" maxResults="16" 
-                                emptyMessage="No se encontro ningún registro"
-                                value="#{alumnoC.alumno.UBIGEO_CODUBI}"
-                                completeMethod="#{alumnoC.completeTextUbi}"
+                <p:autoComplete  maxResults="16" 
+                                 emptyMessage="No se encontro ningún registro"
+                                 value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                 completeMethod="#{alumnoC.completeTextUbi}"
                                 style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE DISTRITO"/>
                 <p:outputLabel  value="COLEGIO"/>
-                <p:autoComplete 
-                    emptyMessage="No se encontro ningún registro"
-                    value="#"
-                    completeMethod="#{alumnoC.completeTextColegio(cole)}"
-                    style="width: 90%" required="true" requiredMessage="INGRESE COLEGIO"/>
+                <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                 value="#{alumnoC.alumno.CODCOL}"
+                                 completeMethod="#{alumnoC.completeTextCol(query)}"
+                                 style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE COLEGIO"/>
                 <p:commandButton  value="GUARDAR" actionListener="#{alumnoC.guardarAlumno()}"   update="form"/>
             </p:panelGrid>
         </h:form>
