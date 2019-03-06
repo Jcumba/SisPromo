@@ -55,7 +55,17 @@ public class ImplColegioD extends Dao implements ColegioI {
 
     @Override
     public void eliminarColegio(ColegioM colegio) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.conectar();
+            String sql = "DELETE FROM COLEGIO WHERE CODCOL LIKE ?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, colegio.getCODCOL());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
     }
 
     @Override
