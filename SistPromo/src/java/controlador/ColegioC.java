@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import dao.ImplColegioD;
@@ -77,11 +73,10 @@ public class ColegioC implements Serializable {
         Date fecha = null;
         fecha = formatoDelTexto.parse(strFecha);
         SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("Fecha de Salida: " + formatoDeFecha.format(fecha));
         cal.setTime(fecha);
         cal.add(Calendar.DATE, 3);
         System.out.println(formatoDeFecha.format(cal.getTime()));
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente" + formatoDeFecha.format(cal.getTime()));
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente  " + "Fecha de Examen  "+formatoDeFecha.format(cal.getTime()));
         
         PrimeFaces.current().dialog().showMessageDynamic(message);
     }
