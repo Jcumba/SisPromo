@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.ColegioM;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -45,6 +46,12 @@ public class ColegioC implements Serializable {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    public void showMessage() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente");
+        
+        PrimeFaces.current().dialog().showMessageDynamic(message);
     }
 
     public void modificarColegio() {
