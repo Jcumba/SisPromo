@@ -28,6 +28,7 @@ public class AlumnoC implements Serializable {
         try {
             dao = new AlumnoD();
             alumno.setUBIGEO_CODUBI(dao.leerUbi(alumno.getUBIGEO_CODUBI()));
+            alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
             dao.guardarAlumno(alumno);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregado Correctamente",null));
             limpiar();
@@ -41,6 +42,12 @@ public class AlumnoC implements Serializable {
         return dao.queryAutoCompleteUbi(query);
     }
    
+    
+      public List<String> completeTextCol (String query) throws SQLException, Exception{
+        AlumnoD dao = new AlumnoD();
+        return dao.queryAutocompleteColegio(query);
+    }
+   
 
  
     
@@ -51,5 +58,6 @@ public class AlumnoC implements Serializable {
     public void setAlumno(AlumnoM alumno) {
         this.alumno = alumno;
     }
+    
     
 }

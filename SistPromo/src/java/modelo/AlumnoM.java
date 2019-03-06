@@ -14,6 +14,12 @@ public class AlumnoM {
      private String CARRERA_CODCAR;
      private String UBIGEO_CODUBI;
      private String AULA_CODAUL;
+     
+     
+     private String CODCOL;
+     private String NOMCOL;
+     
+     
 
     public String getCODPER() {
         return CODPER;
@@ -101,6 +107,22 @@ public class AlumnoM {
 
     public void setAULA_CODAUL(String AULA_CODAUL) {
         this.AULA_CODAUL = AULA_CODAUL;
+    }
+
+    public String getCODCOL() {
+        return CODCOL;
+    }
+
+    public void setCODCOL(String CODCOL) {
+        this.CODCOL = CODCOL;
+    }
+
+    public String getNOMCOL() {
+        return NOMCOL;
+    }
+
+    public void setNOMCOL(String NOMCOL) {
+        this.NOMCOL = NOMCOL;
     }
 
  
