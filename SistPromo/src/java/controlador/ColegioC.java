@@ -74,10 +74,10 @@ public class ColegioC implements Serializable {
         fecha = formatoDelTexto.parse(strFecha);
         SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
         cal.setTime(fecha);
-        cal.add(Calendar.DATE, 3);
+        cal.add(Calendar.DATE, 5);
         System.out.println(formatoDeFecha.format(cal.getTime()));
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente  " + "Fecha de Examen  "+formatoDeFecha.format(cal.getTime()));
         
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente  " + "Fecha de Examen  "+formatoDeFecha.format(cal.getTime())+"  Aula: 1");
         PrimeFaces.current().dialog().showMessageDynamic(message);
     }
 
