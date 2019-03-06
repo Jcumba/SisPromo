@@ -9,6 +9,10 @@ import dao.ImplColegioD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -27,6 +31,10 @@ public class ColegioC implements Serializable {
     ColegioM colegio = new ColegioM();
     private ColegioM selectedColegio;
     private List<ColegioM> lstColegio;
+    
+    Calendar Cal = Calendar.getInstance();
+    
+    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
 
     @PostConstruct
     public void init() {
@@ -36,6 +44,19 @@ public class ColegioC implements Serializable {
         } catch (Exception e) {
         }
 
+    }
+    
+    public void fechaDev() throws ParseException {
+        String fechaHoy = Cal.get(Calendar.DATE) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.YEAR);
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+        String strFecha = fechaHoy;
+        Date fecha = null;
+        fecha = formatoDelTexto.parse(strFecha);
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
+        cal.setTime(fecha);
+        cal.add(Calendar.DATE, 3);
+        System.out.println(formatoDeFecha.format(cal.getTime()));
     }
 
     private void listarColegio() throws Exception {
@@ -48,8 +69,19 @@ public class ColegioC implements Serializable {
         }
     }
 
-    public void showMessage() {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente");
+    public void showMessage() throws ParseException {
+        String fechaHoy = Cal.get(Calendar.DATE) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.YEAR);
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+        String strFecha = fechaHoy;
+        Date fecha = null;
+        fecha = formatoDelTexto.parse(strFecha);
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Fecha de Salida: " + formatoDeFecha.format(fecha));
+        cal.setTime(fecha);
+        cal.add(Calendar.DATE, 3);
+        System.out.println(formatoDeFecha.format(cal.getTime()));
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente" + formatoDeFecha.format(cal.getTime()));
         
         PrimeFaces.current().dialog().showMessageDynamic(message);
     }
