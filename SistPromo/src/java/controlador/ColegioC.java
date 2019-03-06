@@ -1,6 +1,7 @@
 
 package controlador;
 
+
 import dao.ImplColegioD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+
 import modelo.ColegioM;
 import org.primefaces.PrimeFaces;
 
@@ -42,6 +44,8 @@ public class ColegioC implements Serializable {
 
     }
     
+
+    
     public void fechaDev() throws ParseException {
         String fechaHoy = Cal.get(Calendar.DATE) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.YEAR);
         Calendar cal = Calendar.getInstance();
@@ -65,7 +69,7 @@ public class ColegioC implements Serializable {
         }
     }
 
-    public void showMessage() throws ParseException {
+    public  void showMessage() throws ParseException {
         String fechaHoy = Cal.get(Calendar.DATE) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.YEAR);
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
