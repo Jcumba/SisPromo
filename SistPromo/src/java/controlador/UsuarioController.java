@@ -40,10 +40,10 @@ public class UsuarioController implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", usuario);
                 switch (usuario.getNIVEL()) {
                     case "1":
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Vistas/Template/GenDoc.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
                         break;
                     case "2":
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Vistas/Template/GenDoc.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
                         break;
                     default:
                         break;
@@ -65,7 +65,7 @@ public class UsuarioController implements Serializable {
 
     public void finishSession() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear(); //Cierra la Session
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/PDFView"); // Mandamos al Login
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/SistPromo"); // Mandamos al Login
     }
 
     public void securityLogin() throws IOException {
@@ -73,10 +73,10 @@ public class UsuarioController implements Serializable {
         if (us != null) {
             switch (us.getNIVEL()) {
                 case "1":
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Vistas/Template/GenDoc.xhtml");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
                     break;
                 case "2":
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Vistas/Template/GenDoc.xhtml");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
                     break;
             }
         }
@@ -84,7 +84,7 @@ public class UsuarioController implements Serializable {
 
     public void securitySession() throws IOException {
         if (SessionUtils.obtenerObjetoSesion() == null) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/PDFView");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/SistPromo");
         }
     }
 
