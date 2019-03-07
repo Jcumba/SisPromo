@@ -5,38 +5,58 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Alumno</title>
+        <title>Registro de Admision</title>
+        <link href="../resources/css/Estilo.css" rel="stylesheet" type="text/css"/>
+        <script src="../resources/js/Estilojs.js" type="text/javascript"></script>
     </h:head>
     <h:body>
-        <h:form id="form">
-            <p:growl id="msg" life="1500" autoUpdate="true"/>
-            <p:panelGrid columns="2"> 
-                <p:outputLabel value="NOMBRE"/>
-                <p:inputText value="#{alumnoC.alumno.NOMPER}"/>
-                <p:outputLabel value="APELLIDO"/>
-                <p:inputText value="#{alumnoC.alumno.APEPER}"/>
-                <p:outputLabel value="DNI"/>
-                <p:inputText value="#{alumnoC.alumno.DNIPER}" maxlength="8">
-                    <p:keyFilter regEx="/[\d]/"/>
-                </p:inputText>
-                <p:outputLabel value="CELULAR"/>
-                <p:inputText value="#{alumnoC.alumno.CELPER}" maxlength="9">
-                    <p:keyFilter regEx="/[\d]/"/>
-                </p:inputText>
-                <p:outputLabel  value="DISTRITO"/>
-                <p:autoComplete  maxResults="16" 
-                                 emptyMessage="No se encontro ningún registro"
-                                 value="#{alumnoC.alumno.UBIGEO_CODUBI}"
-                                 completeMethod="#{alumnoC.completeTextUbi}"
-                                 style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE DISTRITO"/>
-                <p:outputLabel  value="COLEGIO"/>
-                <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
-                                 value="#{alumnoC.alumno.CODCOL}"
-                                 completeMethod="#{alumnoC.completeTextCol(query)}"
-                                 style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE COLEGIO"/>
-                <p:commandButton  value="GUARDAR" actionListener="#{alumnoC.guardarAlumno()}"   update="form"/>
-            </p:panelGrid>
-        </h:form>
+
+        <section class="form_wrap">
+
+            <section class="cantact_info">
+                <section class="info_title">
+                    <span class="fa fa-user-circle"></span>
+                    <h2>REGISTRO<br/>DE ADMISION</h2>
+                </section>
+                <section class="info_items">
+                    <p><span class="fa fa-envelope"></span> informes@vallegrande.edu.pe</p>
+                    <p><span class="fa fa-mobile"></span> Teléfono: (01) 581 2261</p>
+                </section>
+            </section>
+            
+            <h:form id="form"  class="form_contact">
+                <p:growl id="msg" life="1500" autoUpdate="true"/>
+                <div class="user_info">
+                <p:panelGrid columns="2"> 
+                    <p:outputLabel value="NOMBRE:"/>
+                    <p:inputText  value="#{alumnoC.alumno.NOMPER}"/>
+                    <p:outputLabel value="APELLIDO:"/>
+                    <p:inputText value="#{alumnoC.alumno.APEPER}"/>
+                    <p:outputLabel value="DNI"/>
+                    <p:inputText value="#{alumnoC.alumno.DNIPER}" maxlength="8">
+                        <p:keyFilter regEx="/[\d]/"/>
+                    </p:inputText>
+                    <p:outputLabel value="CELULAR:"/>
+                    <p:inputText value="#{alumnoC.alumno.CELPER}" maxlength="9">
+                        <p:keyFilter regEx="/[\d]/"/>
+                    </p:inputText>
+                    <p:outputLabel  value="DISTRITO:"/>
+                    <p:autoComplete  maxResults="16" 
+                                     emptyMessage="No se encontro ningún registro"
+                                     value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                     completeMethod="#{alumnoC.completeTextUbi}"
+                                     style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE DISTRITO"/>
+                    <p:outputLabel  value="COLEGIO:"/>
+                    <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                     value="#{alumnoC.alumno.CODCOL}"
+                                     completeMethod="#{alumnoC.completeTextCol(query)}"
+                                     style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE COLEGIO"/>
+                    <p:commandButton   value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}" action="#{alumnoC.showMessages()}"  update="form"/>
+                </p:panelGrid>
+                    </div>
+            </h:form>
+            
+            </section>
     </h:body>
 </html>
 
