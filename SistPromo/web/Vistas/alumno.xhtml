@@ -16,15 +16,19 @@
                 <p:outputLabel value="APELLIDO"/>
                 <p:inputText value="#{alumnoC.alumno.APEPER}"/>
                 <p:outputLabel value="DNI"/>
-                <p:inputText value="#{alumnoC.alumno.DNIPER}"/>
+                <p:inputText value="#{alumnoC.alumno.DNIPER}" maxlength="8">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:inputText>
                 <p:outputLabel value="CELULAR"/>
-                <p:inputText value="#{alumnoC.alumno.CELPER}"/>
+                <p:inputText value="#{alumnoC.alumno.CELPER}" maxlength="9">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:inputText>
                 <p:outputLabel  value="DISTRITO"/>
                 <p:autoComplete  maxResults="16" 
                                  emptyMessage="No se encontro ningún registro"
                                  value="#{alumnoC.alumno.UBIGEO_CODUBI}"
                                  completeMethod="#{alumnoC.completeTextUbi}"
-                                style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE DISTRITO"/>
+                                 style="width: 90%" maxlength="15" required="true" requiredMessage="INGRESE DISTRITO"/>
                 <p:outputLabel  value="COLEGIO"/>
                 <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
                                  value="#{alumnoC.alumno.CODCOL}"

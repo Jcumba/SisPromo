@@ -11,14 +11,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-<!--        <h:form>
-            
-            <p:messages id="messages" showDetail="true" closable="true">
-                <p:autoUpdate />
-            </p:messages>
-            
-        </h:form>-->
-        
+        <!--        <h:form>
+                    
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                    </p:messages>
+                    
+                </h:form>-->
+
         <h:form id="Colegio">
             <p:growl id="msg" showDetail="true" life="1000"  autoUpdate="true"/>  
             <p:panelGrid columns="2">
@@ -26,7 +26,9 @@
                 <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true"/>
 
                 <p:outputLabel value="Codigo Referencia Modular"/>
-                <p:inputText value="#{colegioC.colegio.CODREFCOL}" required="true"/>       
+                <p:inputText value="#{colegioC.colegio.CODREFCOL}"  maxlength="15" required="true">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:inputText>       
 
                 <p:outputLabel  value="Ubicacion de Colegio: "/>
                 <p:autoComplete dropdown="true" maxResults="16" 
