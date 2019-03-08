@@ -20,6 +20,9 @@ public class AlumnoM {
      private String NOMCOL;
      
      
+     private String CODCAR;
+     private String NOMCAR;
+     
 
     public String getCODPER() {
         return CODPER;
@@ -123,6 +126,22 @@ public class AlumnoM {
 
     public void setNOMCOL(String NOMCOL) {
         this.NOMCOL = NOMCOL;
+    }
+
+    public String getCODCAR() {
+        return CODCAR;
+    }
+
+    public void setCODCAR(String CODCAR) {
+        this.CODCAR = CODCAR;
+    }
+
+    public String getNOMCAR() {
+        return NOMCAR;
+    }
+
+    public void setNOMCAR(String NOMCAR) {
+        this.NOMCAR = NOMCAR;
     }
 
  

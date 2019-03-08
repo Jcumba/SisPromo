@@ -24,7 +24,7 @@ public class AlumnoD extends Dao implements AlumnoI {
             ps.setString(4, alumno.getCELPER());
             ps.setString(5, "A"); //ESTADO DE PERSONA
             ps.setString(6, alumno.getCODCOL()); //COLEGIO
-            ps.setString(7, "1"); //CARRERA
+            ps.setString(7, alumno.getCARRERA_CODCAR()); //CARRERA
             ps.setString(8, alumno.getUBIGEO_CODUBI()); //UBIGEO
             ps.setString(9, "1"); //AULA
             ps.executeUpdate();

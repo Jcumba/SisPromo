@@ -9,6 +9,24 @@ import java.util.List;
 import modelo.CarreraM;
 
 public class CarreraD extends Dao implements CarreraI {
+    
+     @Override
+    public void guardarCarrera(CarreraM carrera) throws Exception {
+         try {
+             this.conectar();
+             String sql="Insert into CARRERA (NOMCAR) VALUES (?)";
+             PreparedStatement ps=this.getCn().prepareStatement(sql);
+             ps.setString(1, carrera.getNOMCAR());
+             ps.executeUpdate();
+         } catch (SQLException e) {
+             throw e;
+         }finally{
+             this.cerrar();
+         }
+    }
+
+    
+    
 
     @Override
     public List<CarreraM> listarCarrera() throws Exception {
@@ -35,4 +53,5 @@ public class CarreraD extends Dao implements CarreraI {
 
     }
 
+   
 }

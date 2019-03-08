@@ -5,6 +5,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import modelo.CarreraM;
 
 @Named(value = "carreraC")
@@ -14,14 +16,29 @@ public class CarreraC implements Serializable {
     private List<CarreraM> lstCarrera;
     CarreraM carrera = new CarreraM();
 
- @PostConstruct
- public void iniciar(){
-     try {
-         listar();
-     } catch (Exception e) {
-     }
- }
+    @PostConstruct
+    public void iniciar() {
+        try {
+            listar();
+        } catch (Exception e) {
+        }
+    }
 
+    public void limpiar() {
+        carrera = new CarreraM();
+    }
+
+    public void guardarCarrera() throws Exception {
+        CarreraD dao;
+        try {
+            dao = new CarreraD();
+            dao.guardarCarrera(carrera);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO CORRECTAMENTE", null));
+            limpiar();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR AL AGREGAR", null));
+        }
+    }
 
     public void listar() throws Exception {
         CarreraD dao;
