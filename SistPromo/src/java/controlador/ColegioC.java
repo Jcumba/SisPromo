@@ -2,6 +2,7 @@
 package controlador;
 
 
+import dao.AlumnoD;
 import dao.ImplColegioD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -31,7 +32,6 @@ public class ColegioC implements Serializable {
     private List<ColegioM> lstColegio;
     
     Calendar Cal = Calendar.getInstance();
-    
     String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
 
     @PostConstruct
@@ -44,20 +44,12 @@ public class ColegioC implements Serializable {
 
     }
     
-
-    
-    public void fechaDev() throws ParseException {
-        String fechaHoy = Cal.get(Calendar.DATE) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.YEAR);
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
-        String strFecha = fechaHoy;
-        Date fecha = null;
-        fecha = formatoDelTexto.parse(strFecha);
-        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
-        cal.setTime(fecha);
-        cal.add(Calendar.DATE, 3);
-        System.out.println(formatoDeFecha.format(cal.getTime()));
+    public void limpiar(){
+        colegio = new ColegioM();
     }
+            
+    
+ 
 
     private void listarColegio() throws Exception {
         ImplColegioD dao;
@@ -69,21 +61,6 @@ public class ColegioC implements Serializable {
         }
     }
 
-    public  void showMessage() throws ParseException {
-        String fechaHoy = Cal.get(Calendar.DATE) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.YEAR);
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
-        String strFecha = fechaHoy;
-        Date fecha = null;
-        fecha = formatoDelTexto.parse(strFecha);
-        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
-        cal.setTime(fecha);
-        cal.add(Calendar.DATE, 5);
-        System.out.println(formatoDeFecha.format(cal.getTime()));
-        
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente  " + "Fecha de Examen  "+formatoDeFecha.format(cal.getTime())+"  Aula: 1");
-        PrimeFaces.current().dialog().showMessageDynamic(message);
-    }
 
     public void modificarColegio() {
         ImplColegioD dao;
@@ -92,20 +69,21 @@ public class ColegioC implements Serializable {
             dao.modificarColegio(selectedColegio);
             listarColegio();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MODIFICADO", "Correctamente"));
-            limpiarColegio();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo modificar"));
         }
     }
 
     public void guardarColegio() {
+        AlumnoD dao1;
         ImplColegioD dao;
         try {
             dao = new ImplColegioD();
+            dao1 = new AlumnoD();
+            colegio.setUBIGEO_CODUBI(dao1.leerUbi(colegio.getUBIGEO_CODUBI()));
             dao.guardarColegio(colegio);
-            listarColegio();
+            limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO", "Correctamente"));
-            limpiarColegio();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo agregar"));
         }
@@ -145,11 +123,6 @@ public class ColegioC implements Serializable {
 
     public void setLstColegio(List<ColegioM> lstColegio) {
         this.lstColegio = lstColegio;
-    }
-
-    private void limpiarColegio() {
-        colegio = new ColegioM();
-
     }
 
 }

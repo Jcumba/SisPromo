@@ -1,7 +1,6 @@
 package controlador;
 
 import dao.AlumnoD;
-import dao.CarreraD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;

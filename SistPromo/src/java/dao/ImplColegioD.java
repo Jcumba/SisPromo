@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 
 import Interfaces.ColegioI;
@@ -13,21 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.ColegioM;
 
-/**
- *
- * @author Usuario Alumno
- */
+
 public class ImplColegioD extends Dao implements ColegioI {
 
     @Override
     public void guardarColegio(ColegioM colegio) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO COLEGIO(NOMCOL,CODREFCOL,UBICOL) VALUES (?,?,?)";
+            String sql = "INSERT INTO COLEGIO(NOMCOL,CODREFCOL,UBIGEO_CODUBI) VALUES (?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, colegio.getNOMCOL());
             ps.setString(2, colegio.getCODREFCOL());
-            ps.setString(3, colegio.getUBICOL());
+            ps.setString(3, colegio.getUBIGEO_CODUBI());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -40,11 +33,11 @@ public class ImplColegioD extends Dao implements ColegioI {
     public void modificarColegio(ColegioM colegio) throws Exception {
         try {
             this.conectar();
-            String sql = "UPDATE COLEGIO set NOMCOL=?, CODREFCOL=?,UBICOL=?  where CODCOL=?";
+            String sql = "UPDATE COLEGIO set NOMCOL=?, CODREFCOL=?,UBIGEO_CODUBI=?  where CODCOL=?";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, colegio.getNOMCOL());
             ps.setString(2, colegio.getCODREFCOL());
-            ps.setString(3, colegio.getUBICOL());
+            ps.setString(3, colegio.getUBIGEO_CODUBI());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -84,7 +77,7 @@ public class ImplColegioD extends Dao implements ColegioI {
                 colegio = new ColegioM();
                 colegio.setCODCOL(rs.getString("CODCOL"));
                 colegio.setNOMCOL(rs.getString("NOMCOL"));
-                colegio.setUBICOL(rs.getString("UBICOL"));
+                colegio.setUBIGEO_CODUBI(rs.getString("UBIGEO_CODUBI"));
                 colegio.setCODREFCOL(rs.getString("CODREFCOL"));
                 listarColegio.add(colegio);
             }
