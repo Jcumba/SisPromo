@@ -1,4 +1,3 @@
-
 package dao;
 
 import Interfaces.ColegioI;
@@ -8,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.ColegioM;
-
 
 public class ImplColegioD extends Dao implements ColegioI {
 
@@ -68,7 +66,7 @@ public class ImplColegioD extends Dao implements ColegioI {
         try {
             this.conectar();
             String sql;
-            sql = "SELECT * FROM COLEGIO";
+            sql = "select * FROM VW_COLEGIO";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarColegio = new ArrayList();
@@ -77,8 +75,9 @@ public class ImplColegioD extends Dao implements ColegioI {
                 colegio = new ColegioM();
                 colegio.setCODCOL(rs.getString("CODCOL"));
                 colegio.setNOMCOL(rs.getString("NOMCOL"));
-                colegio.setUBIGEO_CODUBI(rs.getString("UBIGEO_CODUBI"));
-                colegio.setCODREFCOL(rs.getString("CODREFCOL"));
+                colegio.setDEPUBICA(rs.getString("DEPUBI"));
+                colegio.setPROUBICA(rs.getString("PROUBI"));
+                colegio.setDISUBICA(rs.getString("DISUBI"));
                 listarColegio.add(colegio);
             }
         } catch (SQLException e) {

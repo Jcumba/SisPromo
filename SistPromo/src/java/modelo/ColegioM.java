@@ -7,6 +7,38 @@ public class ColegioM {
     private String NOMCOL;
     private String CODREFCOL;
     private String UBIGEO_CODUBI;
+    
+//    Vista
+    private String DEPUBICA;
+    private String PROUBICA;
+    private String DISUBICA;
+
+    public String getDEPUBICA() {
+        return DEPUBICA;
+    }
+
+    public void setDEPUBICA(String DEPUBICA) {
+        this.DEPUBICA = DEPUBICA;
+    }
+
+    public String getPROUBICA() {
+        return PROUBICA;
+    }
+
+    public void setPROUBICA(String PROUBICA) {
+        this.PROUBICA = PROUBICA;
+    }
+
+    public String getDISUBICA() {
+        return DISUBICA;
+    }
+
+    public void setDISUBICA(String DISUBICA) {
+        this.DISUBICA = DISUBICA;
+    }
+    
+    
+    
 
     public String getCODCOL() {
         return CODCOL;
