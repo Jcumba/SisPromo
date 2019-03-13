@@ -36,7 +36,6 @@ public class ColegioC implements Serializable {
 
     @PostConstruct
     public void init() {
-
         try {
             listarColegio();
         } catch (Exception e) {
@@ -84,6 +83,7 @@ public class ColegioC implements Serializable {
             dao.guardarColegio(colegio);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO", "Correctamente"));
+            listarColegio();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo agregar"));
         }

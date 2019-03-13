@@ -29,50 +29,14 @@
                                         completeMethod="#{alumnoC.completeTextUbi}"
                                         style="width: 90%" maxlength="15"/>
 
-                        <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio" />
-                    </p:panelGrid>
-                </h:form>
-                <h:form id="ColgForm">
-                    <p:dataTable value="#{colegioC.lstColegio}"
-                                 var="colegio"
-                                 id="coleg"
-                                 selection="#{colegioC.selectedColegio}"
-                                 rowKey="#{colegio.CODCOL}"
-                                 selectionMode="single"
-                                 rows="12" paginator="true"
-                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="6,12,16" reflow="true">
-                        <f:facet name="header">
-                            Listado de Colegios
-
-                            <p:commandButton id="toggler" type="button" value="Filtrar" style="float:right" icon="pi pi-align-justify" />
-                            <p:columnToggler datasource="coleg" trigger="toggler" />
-                        </f:facet>
-
-                        <p:column headerText="COLEGIO" filterBy="#{colegio.NOMCOL}">
-                            <p:outputLabel value="#{colegio.NOMCOL}"/>     
-                        </p:column>
-                        <p:column headerText="DEPARTAMENTO">
-                            <p:outputLabel value="#{colegio.DEPUBICA}"/>     
-                        </p:column>
-                        <p:column headerText="PROVINCIA">
-                            <p:outputLabel value="#{colegio.PROUBICA}"/>     
-                        </p:column>
-                        <p:column headerText="DISTRITO">
-                            <p:outputLabel value="#{colegio.DISUBICA}"/>     
-                        </p:column>
-
-                    </p:dataTable>
-
-                    <p:contextMenu for="coleg">  
-                        <p:menuitem icon="fa fa-times" value="ELIMINAR" actionListener="#{colegioC.eliminarColegio()}" update="coleg :Colegio">
-                            <p:confirm header="Confirmacion" message="Estas seguro?" icon="ui-icon-alert" />
-                        </p:menuitem>
-                        <p:menuitem icon="fa fa-edit" value="MODIFICAR" oncomplete="PF('dlgModEmpresa').show()" update=":formDialog">
-                            <p:confirm header="Confirmacion" message="Deseas modificar?" icon="ui-icon-alert" />
-                        </p:menuitem>
-                    </p:contextMenu>           
-                </h:form>
+                <p:outputLabel  value="Ubicacion de Colegio: "/>
+                <p:autoComplete maxResults="10" emptyMessage="No se encontro ningun Registro"
+                                value="#{colegioC.colegio.UBIGEO_CODUBI}"
+                                completeMethod="#{alumnoC.completeTextUbi}"
+                                style="width: 90%" maxlength="15"/>
+                <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio" />
+            </p:panelGrid>
+        </h:form>
 
 
                 <h:form>           

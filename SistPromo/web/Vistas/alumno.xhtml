@@ -58,7 +58,11 @@
                                          value="#{alumnoC.alumno.CODCOL}"
                                          completeMethod="#{alumnoC.completeTextCol}"
                                          style="width: 90%" maxlength="15"/>
-                        <p:commandButton   value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}" action="#{alumnoC.showMessages()}"  update="form"/>
+                        <p:commandButton   value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}"  update="form"/>
+                            <h:commandLink actionListener="#{cronogramaC.descargarPdfCronograma()}">
+                                <p:graphicImage url="../../resources/img/pdf.png" width="60"/>
+                                <span style="color: black">Reporte de Examen</span>
+                            </h:commandLink>
                     </p:panelGrid>
                 </div>
             </h:form>
