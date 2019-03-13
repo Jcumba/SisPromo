@@ -22,6 +22,8 @@ public class AlumnoC implements Serializable {
 
     AlumnoM alumno = new AlumnoM();
     CarreraM carrera = new CarreraM();
+    
+  
 //    Calendar Cal = Calendar.getInstance();
 
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
@@ -78,4 +80,7 @@ public class AlumnoC implements Serializable {
         this.alumno = alumno;
     }
 
+
+
+    
 }
