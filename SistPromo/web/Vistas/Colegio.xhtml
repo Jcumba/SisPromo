@@ -11,89 +11,93 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
+                
+                <h:form id="Colegio">
+                    <p:growl id="msg" showDetail="true" life="1000"  autoUpdate="true"/>  
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Nombre de Colegio: "/>
+                        <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true"/>
 
-        <h:form id="Colegio">
-            <p:growl id="msg" showDetail="true" life="1000"  autoUpdate="true"/>  
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Nombre de Colegio: "/>
-                <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true"/>
+                        <p:outputLabel value="Codigo Referencia Modular"/>
+                        <p:inputText value="#{colegioC.colegio.CODREFCOL}"  maxlength="15">
+                            <p:keyFilter regEx="/[\d]/"/>
+                        </p:inputText>       
 
-                <p:outputLabel value="Codigo Referencia Modular"/>
-                <p:inputText value="#{colegioC.colegio.CODREFCOL}"  maxlength="15">
-                    <p:keyFilter regEx="/[\d]/"/>
-                </p:inputText>       
+                        <p:outputLabel  value="Ubicacion de Colegio: "/>
+                        <p:autoComplete maxResults="10" emptyMessage="No se encontro ningun Registro"
+                                        value="#{colegioC.colegio.UBIGEO_CODUBI}"
+                                        completeMethod="#{alumnoC.completeTextUbi}"
+                                        style="width: 90%" maxlength="15"/>
 
-                <p:outputLabel  value="Ubicacion de Colegio: "/>
-                <p:autoComplete maxResults="10" emptyMessage="No se encontro ningun Registro"
-                                value="#{colegioC.colegio.UBIGEO_CODUBI}"
-                                completeMethod="#{alumnoC.completeTextUbi}"
-                                style="width: 90%" maxlength="15"/>
+                        <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio" />
+                    </p:panelGrid>
+                </h:form>
+                <h:form id="ColgForm">
+                    <p:dataTable value="#{colegioC.lstColegio}"
+                                 var="colegio"
+                                 id="coleg"
+                                 selection="#{colegioC.selectedColegio}"
+                                 rowKey="#{colegio.CODCOL}"
+                                 selectionMode="single"
+                                 rows="12" paginator="true"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="6,12,16" reflow="true">
+                        <f:facet name="header">
+                            Listado de Colegios
 
-                <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio" />
-            </p:panelGrid>
-        </h:form>
+                            <p:commandButton id="toggler" type="button" value="Filtrar" style="float:right" icon="pi pi-align-justify" />
+                            <p:columnToggler datasource="coleg" trigger="toggler" />
+                        </f:facet>
 
+                        <p:column headerText="COLEGIO" filterBy="#{colegio.NOMCOL}">
+                            <p:outputLabel value="#{colegio.NOMCOL}"/>     
+                        </p:column>
+                        <p:column headerText="DEPARTAMENTO">
+                            <p:outputLabel value="#{colegio.DEPUBICA}"/>     
+                        </p:column>
+                        <p:column headerText="PROVINCIA">
+                            <p:outputLabel value="#{colegio.PROUBICA}"/>     
+                        </p:column>
+                        <p:column headerText="DISTRITO">
+                            <p:outputLabel value="#{colegio.DISUBICA}"/>     
+                        </p:column>
 
-        <br/>
-        <h:form id="ColgForm">
-            <p:dataTable value="#{colegioC.lstColegio}"
-                         var="colegio"
-                         id="coleg"
-                         selection="#{colegioC.selectedColegio}"
-                         rowKey="#{colegio.CODCOL}"
-                         selectionMode="single"
-                         rows="12" paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="6,12,16" reflow="true">
+                    </p:dataTable>
 
-                <p:column headerText="COLEGIO">
-                    <p:outputLabel value="#{colegio.NOMCOL}"/>     
-                </p:column>
-                <p:column headerText="DEPARTAMENTO">
-                    <p:outputLabel value="#{colegio.DEPUBICA}"/>     
-                </p:column>
-                <p:column headerText="PROVINCIA">
-                    <p:outputLabel value="#{colegio.PROUBICA}"/>     
-                </p:column>
-                   <p:column headerText="DISTRITO">
-                       <p:outputLabel value="#{colegio.DISUBICA}"/>     
-                </p:column>
-
-            </p:dataTable>
-
-            <p:contextMenu for="coleg">  
-                <p:menuitem icon="fa fa-times" value="ELIMINAR" actionListener="#{colegioC.eliminarColegio()}" update="coleg :Colegio">
-                    <p:confirm header="Confirmacion" message="Estas seguro?" icon="ui-icon-alert" />
-                </p:menuitem>
-                <p:menuitem icon="fa fa-edit" value="MODIFICAR" oncomplete="PF('dlgModEmpresa').show()" update=":formDialog">
-                    <p:confirm header="Confirmacion" message="Deseas modificar?" icon="ui-icon-alert" />
-                </p:menuitem>
-            </p:contextMenu>           
-        </h:form>
+                    <p:contextMenu for="coleg">  
+                        <p:menuitem icon="fa fa-times" value="ELIMINAR" actionListener="#{colegioC.eliminarColegio()}" update="coleg :Colegio">
+                            <p:confirm header="Confirmacion" message="Estas seguro?" icon="ui-icon-alert" />
+                        </p:menuitem>
+                        <p:menuitem icon="fa fa-edit" value="MODIFICAR" oncomplete="PF('dlgModEmpresa').show()" update=":formDialog">
+                            <p:confirm header="Confirmacion" message="Deseas modificar?" icon="ui-icon-alert" />
+                        </p:menuitem>
+                    </p:contextMenu>           
+                </h:form>
 
 
-        <h:form>           
-            <p:growl id="message" showDetail="true" />
-            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-            </p:confirmDialog>
-        </h:form>
+                <h:form>           
+                    <p:growl id="message" showDetail="true" />
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </h:form>
 
-        <p:dialog id="dlg" header="ACTUALIZAR DATOS" widgetVar="dlgModEmpresa" height="250" width="500" resizable="false" modal="true">
-            <h:form id="formDialog">
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Nombre de Colegio: " />
-                    <p:inputText value="#{colegioC.selectedColegio.NOMCOL}" />
-                    <p:outputLabel value="Codigo Modular: " />
-                    <p:inputText value="#{colegioC.selectedColegio.CODREFCOL}"/>
-                    <p:outputLabel value="Ubigeo del Colegio: " />
-                    <p:inputText value="#{colegioC.selectedColegio.UBIGEO_CODUBI}"/>
-                    <p:commandButton value="MODIFICAR:" actionListener="#{colegioC.modificarColegio()}" update=":ColgForm:coleg" icon="fa fa-pencil"/> 
-                    <p:commandButton value="CANCELAR" oncomplete="PF('dlgModEmpresa').hide()" />
-                </p:panelGrid>
-            </h:form>
-        </p:dialog> 
+                <p:dialog id="dlg" header="ACTUALIZAR DATOS" widgetVar="dlgModEmpresa" height="250" width="500" resizable="false" modal="true">
+                    <h:form id="formDialog">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Nombre de Colegio: " />
+                            <p:inputText value="#{colegioC.selectedColegio.NOMCOL}" />
+                            <p:outputLabel value="Codigo Modular: " />
+                            <p:inputText value="#{colegioC.selectedColegio.CODREFCOL}"/>
+                            <p:outputLabel value="Ubigeo del Colegio: " />
+                            <p:inputText value="#{colegioC.selectedColegio.UBIGEO_CODUBI}"/>
+                            <p:commandButton value="MODIFICAR:" actionListener="#{colegioC.modificarColegio()}" update=":ColgForm:coleg" icon="fa fa-pencil"/> 
+                            <p:commandButton value="CANCELAR" oncomplete="PF('dlgModEmpresa').hide()" />
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog> 
+                
 
-    </h:body>
-</html>
+                </h:body>
+                </html>
