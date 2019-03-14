@@ -35,7 +35,23 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
-  public List<String> queryAutoCompleteUbi(String a) throws SQLException, ClassNotFoundException, Exception {
+    public void countCantAlumnos(AlumnoM al) throws SQLException, ClassNotFoundException {
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "SELECT COUNT(CODPER) AS ESTUDIANTE \n"
+                    + "    FROM PERSONA\n"
+                    + "    WHERE PERSONA.TIPPER ='A'";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            rs.next();
+            al.setCantidadEst(rs.getString("ESTUDIANTE"));
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public List<String> queryAutoCompleteUbi(String a) throws SQLException, ClassNotFoundException, Exception {
         this.conectar();
         ResultSet rs;
         List<String> lista;
@@ -60,9 +76,9 @@ public class AlumnoD extends Dao implements AlumnoI {
         } finally {
             this.cerrar();
         }
-    } 
+    }
 
-  public String leerUbi(String a) throws Exception {
+    public String leerUbi(String a) throws Exception {
         this.conectar();
         ResultSet rs;
         try {
@@ -81,7 +97,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
- public String obtenerCodigoColegio(String Colegio) throws Exception{
+    public String obtenerCodigoColegio(String Colegio) throws Exception {
         this.conectar();
         ResultSet rs;
         try {
@@ -96,9 +112,9 @@ public class AlumnoD extends Dao implements AlumnoI {
         } catch (SQLException e) {
             throw e;
         }
-    } 
-    
- public List<String> queryAutocompleteColegio(String a) throws SQLException, Exception {
+    }
+
+    public List<String> queryAutocompleteColegio(String a) throws SQLException, Exception {
         this.conectar();
         ResultSet rs;
         List<String> lista;
@@ -114,9 +130,9 @@ public class AlumnoD extends Dao implements AlumnoI {
             return lista;
         } catch (SQLException e) {
             throw e;
-        }finally{
+        } finally {
             this.cerrar();
         }
     }
- 
+
 }

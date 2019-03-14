@@ -15,7 +15,11 @@ public class AlumnoM {
      private String UBIGEO_CODUBI;
      private String AULA_CODAUL;
      
+
      
+     private String cantidadEst;
+     
+    
      private String CODCOL;
      private String NOMCOL;
      
@@ -142,6 +146,14 @@ public class AlumnoM {
 
     public void setNOMCAR(String NOMCAR) {
         this.NOMCAR = NOMCAR;
+    }
+
+    public String getCantidadEst() {
+        return cantidadEst;
+    }
+
+    public void setCantidadEst(String cantidadEst) {
+        this.cantidadEst = cantidadEst;
     }
 
  

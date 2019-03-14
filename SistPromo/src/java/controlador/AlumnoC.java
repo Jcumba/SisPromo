@@ -80,7 +80,15 @@ public class AlumnoC implements Serializable {
         this.alumno = alumno;
     }
 
-
-
+//cantidad de alumnos
+ public void cantidadAlumnos() throws SQLException, ClassNotFoundException{
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            dao.countCantAlumnos(alumno);
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
     
 }
