@@ -3,8 +3,11 @@ package dao;
 
 import Interfaces.AulaI;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 //import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 //import java.util.ArrayList;
 //import java.util.List;
 import modelo.AulaM;
@@ -28,21 +31,31 @@ public class ImplAulaD  extends Dao implements AulaI{
         }
     }
 
-//    public List<AulaM> listarAula() throws Exception {
-//        List<AulaM> listarAula;
-//        ResultSet rs;
-//        try {
-//            this.conectar();
-//            String sql="SELECT * FROM CRONOGRAMA_EXAMEN WHERE ROWNUM < 2 ORDER BY CODEXA DESC";
-//            PreparedStatement ps=this.getCn().prepareStatement(sql);
-//            rs = ps.executeQuery();
-//            listarAula = new ArrayList();
-//            while(rs.next()) {
-//                AulaM aula = new AulaM();
-//                aula.setCODAUL(rs.getString("CODAUL"));
-//            }
-//        } catch (Exception e) {
-//        }
-//    }
+    @Override
+    public List<AulaM> listarAula() throws Exception {
+        List<AulaM> listarAula;
+        ResultSet rs;
+        try {  
+            this.conectar();
+            String sql="SELECT * FROM AULA";
+            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listarAula = new ArrayList();
+            while(rs.next()) {
+                AulaM aula = new AulaM();
+                aula.setCODAUL(rs.getString("CODAUL"));
+                aula.setNUMAUL(rs.getString("NUMAUL"));
+                aula.setFORAUL(rs.getString("FORAUL"));
+                listarAula.add(aula);
+            }
+            
+        } catch (SQLException e) {
+            throw e;
+            
+        }finally{
+            this.cerrar();
+        }
+        return listarAula;
+    }
     
 }
