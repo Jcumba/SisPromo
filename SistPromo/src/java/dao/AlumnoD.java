@@ -147,5 +147,49 @@ public class AlumnoD extends Dao implements AlumnoI {
         return listarAlumno;
     }
 
+    @Override
+    public List<AlumnoM> topColegios() throws Exception {
+        List<AlumnoM> listaTop;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "SELECT * FROM MV_CANT_POSTULANTE";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listaTop = new ArrayList();
+            AlumnoM emp;
+            while (rs.next()) {
+                emp = new AlumnoM();
+                emp.setNomCol(rs.getString("COLEGIOS"));
+                emp.setCantCol(rs.getString("SISTEMAS"));
+                listaTop.add(emp);
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+        return listaTop;
+    }
+
+    @Override
+    public void cantidadAlumnos(AlumnoM alumno) throws Exception {
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "SELECT COUNT(CODPER) AS ALUMNOS,PERSONA.TIPPER AS TIPO_ALUMNO\n"
+                    + "    FROM PERSONA\n"
+                    + "    WHERE PERSONA.TIPPER ='A'\n"
+                    + "    group by PERSONA.TIPPER";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            rs.next();
+            alumno.setALUMNOS(rs.getString("ALUMNOS"));
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
 
 }

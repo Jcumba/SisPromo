@@ -22,7 +22,7 @@
                             <div class="card c-dark palette-Light-Blue bg">
                                 <div class="card-header">
                                     <h2 class="pull-left" style="font-size: 2em">Estudiantes</h2>
-                                    <h2 class="pull-right" style="font-size: 3em"></h2>
+                                    <h2 class="pull-right" style="font-size: 3em">#{alumnoC.alumno.cantidadEst}</h2>
                                 </div>
                                 <div class="card-body card-padding">
                                     <span style="color: #fff">Registrados</span>
@@ -44,20 +44,21 @@
                         <div class="col-md-4">
                             <div class="card  palette-Light-Blue ">
                                 <div class="table-responsive">
-                                    <p:dataTable value="#{alumnosController.lstTopColegios}" var="al"
+                                    <p:dataTable value="#{alumnoC.lstTopAlumno}" var="topcolegio"
                                                  scrollable="true" scrollHeight="300"
                                                  class="table table-striped">
                                         <f:facet name="header">Ranking de Colegios</f:facet> 
                                         <p:column headerText="I.E." style="width: 65%" >
-                                            <p:outputLabel value="#{al.nomCol}" id="colTooltipe" title="#{al.distCol}"/>
+                                            <p:outputLabel value="#{topcolegio.nomCol}" id="colTooltipe" title=""/>
                                         </p:column>
-                                        <p:column headerText="CC0" style="width: 30%" >
-                                            <center><p:outputLabel value="#{al.cantCc}" style="color: #01579b;font-weight: bold" 
-                                                                   title="Análisis de Sistemas: #{al.getaDs()} / Producción Agraria: #{al.getpA()}" /></center>
+                                        <p:column headerText="Sistemas" style="width: 30%" >
+                                            <center><p:outputLabel value="#{topcolegio.cantCol}" style="color: #01579b;font-weight: bold" />
+<!--                                cantidad de sistemas o de agraria en toltip title="Análisis de Sistemas: #{al.getaDs()} / Producción Agraria: #{al.getpA()}" />-->
+                                            </center>
                                         </p:column>
-                                        <p:column headerText="EVALUADOS" style="width: 30%" >
+<!--                                        <p:column headerText="EVALUADOS" style="width: 30%" > cantidad de cuantos fueron evaluados
                                             <center><p:outputLabel value="#{al.cantCol}" style="color: #01579b"/></center>
-                                        </p:column>
+                                        </p:column>-->
                                     </p:dataTable>
                                 </div>
                             </div>

@@ -24,6 +24,7 @@ public class AlumnoC implements Serializable {
     AlumnoM alumno = new AlumnoM();
     CarreraM carrera = new CarreraM();
     private List<AlumnoM> lstAlumno;
+    private List<AlumnoM> lstTopAlumno;
 
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
@@ -34,6 +35,7 @@ public class AlumnoC implements Serializable {
     public void init() {
         try {
             listarAlumno();
+            listarTopColegios();
         } catch (Exception e) {
         }
 
@@ -50,6 +52,16 @@ public class AlumnoC implements Serializable {
     }
 
 
+     public void listarTopColegios() throws Exception {
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            lstTopAlumno = dao.topColegios();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+     
     public void limpiar() {
         alumno = new AlumnoM();
     }
@@ -92,6 +104,18 @@ public class AlumnoC implements Serializable {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutocompleteColegio(query);
     }
+    
+    
+    
+    public void cantidadAlumnos() throws SQLException, Exception{
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            dao.cantidadAlumnos(alumno);
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 
     public AlumnoM getAlumno() {
         return alumno;
@@ -107,6 +131,14 @@ public class AlumnoC implements Serializable {
 
     public void setLstAlumno(List<AlumnoM> lstAlumno) {
         this.lstAlumno = lstAlumno;
+    }
+
+    public List<AlumnoM> getLstTopAlumno() {
+        return lstTopAlumno;
+    }
+
+    public void setLstTopAlumno(List<AlumnoM> lstTopAlumno) {
+        this.lstTopAlumno = lstTopAlumno;
     }
 
 

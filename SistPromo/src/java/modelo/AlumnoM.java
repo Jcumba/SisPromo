@@ -1,32 +1,64 @@
-
 package modelo;
 
-
 public class AlumnoM {
-     private String CODPER;
-     private String NOMPER;
-     private String APEPER;
-     private String DNIPER;
-     private String CELPER;
-     private String FECNACPER;
-     private String ESTPER;
-     private String COLEGIO_CODCOL;
-     private String CARRERA_CODCAR;
-     private String UBIGEO_CODUBI;
-     private String AULA_CODAUL;
-     
 
-     
+    private String CODPER;
+    private String NOMPER;
+    private String APEPER;
+    private String DNIPER;
+    private String CELPER;
+    private String FECNACPER;
+    private String ESTPER;
+    private String COLEGIO_CODCOL;
+    private String CARRERA_CODCAR;
+    private String UBIGEO_CODUBI;
+    private String AULA_CODAUL;
 
-     
+    /*VARIABLES COMPLEMENTARIAS*/
+    private String nomCol, cantCol; //Variables para listar el top de colegios
+    private String cantidadEst; //cantidad de alumnos en total registrados
+    private String ALUMNOS; //REGISTRO DE TIPO  "ALUMNO"
+
+    public String getALUMNOS() {
+        return ALUMNOS;
+    }
+
+    public void setALUMNOS(String ALUMNOS) {
+        this.ALUMNOS = ALUMNOS;
+    }
     
-     private String CODCOL;
-     private String NOMCOL;
-     
-     
-     private String CODCAR;
-     private String NOMCAR;
-     
+    
+    
+
+    public String getCantidadEst() {
+        return cantidadEst;
+    }
+
+    public void setCantidadEst(String cantidadEst) {
+        this.cantidadEst = cantidadEst;
+    }
+
+    public String getNomCol() {
+        return nomCol;
+    }
+
+    public void setNomCol(String nomCol) {
+        this.nomCol = nomCol;
+    }
+
+    public String getCantCol() {
+        return cantCol;
+    }
+
+    public void setCantCol(String cantCol) {
+        this.cantCol = cantCol;
+    }
+
+    private String CODCOL;
+    private String NOMCOL;
+
+    private String CODCAR;
+    private String NOMCAR;
 
     public String getCODPER() {
         return CODPER;
@@ -147,9 +179,5 @@ public class AlumnoM {
     public void setNOMCAR(String NOMCAR) {
         this.NOMCAR = NOMCAR;
     }
-
-
- 
-     
 
 }
