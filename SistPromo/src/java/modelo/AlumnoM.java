@@ -17,7 +17,7 @@ public class AlumnoM {
      
 
      
-     private String cantidadEst;
+
      
     
      private String CODCOL;
@@ -148,13 +148,6 @@ public class AlumnoM {
         this.NOMCAR = NOMCAR;
     }
 
-    public String getCantidadEst() {
-        return cantidadEst;
-    }
-
-    public void setCantidadEst(String cantidadEst) {
-        this.cantidadEst = cantidadEst;
-    }
 
  
      

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 //import java.util.Calendar;
 //import java.util.Date;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.AlumnoM;
@@ -22,11 +23,32 @@ public class AlumnoC implements Serializable {
 
     AlumnoM alumno = new AlumnoM();
     CarreraM carrera = new CarreraM();
-    
-  
-//    Calendar Cal = Calendar.getInstance();
+    private List<AlumnoM> lstAlumno;
 
+//    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
+ 
+    
+    
+    @PostConstruct
+    public void init() {
+        try {
+            listarAlumno();
+        } catch (Exception e) {
+        }
+
+    }
+    
+     private void listarAlumno() throws Exception {
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            lstAlumno = dao.listarAlumno();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 
     public void limpiar() {
         alumno = new AlumnoM();
@@ -66,7 +88,6 @@ public class AlumnoC implements Serializable {
 //        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente  " + "Fecha de Examen  " + formatoDeFecha.format(cal.getTime()) + "  Aula: 1");
 //        PrimeFaces.current().dialog().showMessageDynamic(message);
 //    }
-
     public List<String> completeTextCol(String query) throws SQLException, Exception {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutocompleteColegio(query);
@@ -80,15 +101,16 @@ public class AlumnoC implements Serializable {
         this.alumno = alumno;
     }
 
-//cantidad de alumnos
- public void cantidadAlumnos() throws SQLException, ClassNotFoundException{
-        AlumnoD dao;
-        try {
-            dao = new AlumnoD();
-            dao.countCantAlumnos(alumno);
-        } catch (SQLException e) {
-            throw e;
-        }
+    public List<AlumnoM> getLstAlumno() {
+        return lstAlumno;
     }
-    
+
+    public void setLstAlumno(List<AlumnoM> lstAlumno) {
+        this.lstAlumno = lstAlumno;
+    }
+
+
+
+ 
+
 }

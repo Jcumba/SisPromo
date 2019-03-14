@@ -35,22 +35,6 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
-    public void countCantAlumnos(AlumnoM al) throws SQLException, ClassNotFoundException {
-        ResultSet rs;
-        try {
-            this.conectar();
-            String sql = "SELECT COUNT(CODPER) AS ESTUDIANTE \n"
-                    + "    FROM PERSONA\n"
-                    + "    WHERE PERSONA.TIPPER ='A'";
-            PreparedStatement ps = this.getCn().prepareStatement(sql);
-            rs = ps.executeQuery();
-            rs.next();
-            al.setCantidadEst(rs.getString("ESTUDIANTE"));
-        } catch (SQLException e) {
-            throw e;
-        }
-    }
-
     public List<String> queryAutoCompleteUbi(String a) throws SQLException, ClassNotFoundException, Exception {
         this.conectar();
         ResultSet rs;
@@ -134,5 +118,34 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
+
+    @Override
+    public List<AlumnoM> listarAlumno() throws Exception {
+        List<AlumnoM> listarAlumno;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql;
+            sql = "select * FROM MV_ALUMNOS";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listarAlumno = new ArrayList();
+            AlumnoM alumno;
+            while (rs.next()) {
+                alumno = new AlumnoM();
+                alumno.setNOMPER(rs.getString("NOMPER"));
+                alumno.setAPEPER(rs.getString("APEPER"));
+                alumno.setDNIPER(rs.getString("DNIPER"));
+                alumno.setCELPER(rs.getString("CELPER"));
+                listarAlumno.add(alumno);
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+        return listarAlumno;
+    }
+
 
 }
