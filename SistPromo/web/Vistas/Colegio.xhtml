@@ -22,13 +22,6 @@
                 <p:inputText value="#{colegioC.colegio.CODREFCOL}"  maxlength="15">
                     <p:keyFilter regEx="/[\d]/"/>
                 </p:inputText>       
-
-                <p:outputLabel  value="Ubicacion de Colegio: "/>
-                <p:autoComplete maxResults="10" emptyMessage="No se encontro ningun Registro"
-                                value="#{colegioC.colegio.UBIGEO_CODUBI}"
-                                completeMethod="#{alumnoC.completeTextUbi}"
-                                style="width: 90%" maxlength="15"/>
-
                 <p:outputLabel  value="Ubicacion de Colegio: "/>
                 <p:autoComplete maxResults="10" emptyMessage="No se encontro ningun Registro"
                                 value="#{colegioC.colegio.UBIGEO_CODUBI}"

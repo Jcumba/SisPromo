@@ -14,6 +14,12 @@ public class AlumnoM {
     private String UBIGEO_CODUBI;
     private String AULA_CODAUL;
 
+    private String CODCOL;
+    private String NOMCOL;
+
+    private String CODCAR;
+    private String NOMCAR;
+
     /*VARIABLES COMPLEMENTARIAS*/
     private String nomCol, cantCol; //Variables para listar el top de colegios
     private String cantidadEst; //cantidad de alumnos en total registrados
@@ -26,9 +32,6 @@ public class AlumnoM {
     public void setALUMNOS(String ALUMNOS) {
         this.ALUMNOS = ALUMNOS;
     }
-    
-    
-    
 
     public String getCantidadEst() {
         return cantidadEst;
@@ -53,12 +56,6 @@ public class AlumnoM {
     public void setCantCol(String cantCol) {
         this.cantCol = cantCol;
     }
-
-    private String CODCOL;
-    private String NOMCOL;
-
-    private String CODCAR;
-    private String NOMCAR;
 
     public String getCODPER() {
         return CODPER;
