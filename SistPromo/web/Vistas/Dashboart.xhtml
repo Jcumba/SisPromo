@@ -52,27 +52,32 @@
                                             <p:outputLabel value="#{topcolegio.nomCol}" id="colTooltipe" title=""/>
                                         </p:column>
                                         <p:column headerText="Sistemas" style="width: 30%" >
-                                            <center><p:outputLabel value="#{topcolegio.cantCol}" style="color: #01579b;font-weight: bold" />
-<!--                                cantidad de sistemas o de agraria en toltip title="Análisis de Sistemas: #{al.getaDs()} / Producción Agraria: #{al.getpA()}" />-->
+                                            <center><p:outputLabel value="#{topcolegio.cantCol}" style="color: #01579b;font-weight: bold" 
+                                                title="Análisis de Sistemas: #{al.getaDs()} / Producción Agraria: #{al.getpA()}" />
                                             </center>
                                         </p:column>
-<!--                                        <p:column headerText="EVALUADOS" style="width: 30%" > cantidad de cuantos fueron evaluados
-                                            <center><p:outputLabel value="#{al.cantCol}" style="color: #01579b"/></center>
-                                        </p:column>-->
+                                        <!--                                        <p:column headerText="EVALUADOS" style="width: 30%" > cantidad de cuantos fueron evaluados
+                                                                                    <center><p:outputLabel value="#{al.cantCol}" style="color: #01579b"/></center>
+                                                                                </p:column>-->
                                     </p:dataTable>
                                 </div>
                             </div>
                         </div>
 
+
                         <div class="col-md-5">
                             <div class="card c-dark palette-Amber bg">
                                 <div class="card-body card-padding">
                                     <h:form>
-                                        <p:chart type="pie" model="#{alumnosController.pieModel}"
-                                                 rendered="#{alumnosController.pieModel != null}"
-                                                 style="margin: 0 auto"
-                                                 responsive="true"/>
+                                        PORCENTAJE DE ALUMNOS POR CARRERA
+                                        <p:commandButton class="btn btn-primary pull-right mio" value="graficar" actionListener="#{alumnoC.listarGrafica()}"   update="panel"/>
+                                        <br/>
+                                        <h:panelGroup id="panel" layout="block">
+                                            <p:chart style="width:380px;height:250px;  margin-top:30px;" type="pie" model="#{alumnoC.pieModel}"  rendered="#{alumnoC.pieModel != null}" />
+                                        </h:panelGroup>
+
                                     </h:form>
+
                                 </div>
                             </div>
                         </div>

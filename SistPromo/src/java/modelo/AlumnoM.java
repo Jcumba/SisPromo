@@ -25,6 +25,26 @@ public class AlumnoM {
     private String cantidadEst; //cantidad de alumnos en total registrados
     private String ALUMNOS; //REGISTRO DE TIPO  "ALUMNO"
 
+    /*VARIABLES COMPLEMENTARIAS*/
+    private String TipoCar; //tipo de carrera
+    private int Caninscrt; //Cantidad de inscritos
+
+    public String getTipoCar() {
+        return TipoCar;
+    }
+
+    public void setTipoCar(String TipoCar) {
+        this.TipoCar = TipoCar;
+    }
+
+    public int getCaninscrt() {
+        return Caninscrt;
+    }
+
+    public void setCaninscrt(int Caninscrt) {
+        this.Caninscrt = Caninscrt;
+    }
+
     public String getALUMNOS() {
         return ALUMNOS;
     }

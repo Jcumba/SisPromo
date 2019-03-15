@@ -14,5 +14,6 @@ public interface AlumnoI {
    // void eliminarAlumno(AlumnoM alumno) throws Exception;
  List<AlumnoM> listarAlumno() throws Exception;
  List<AlumnoM> topColegios() throws Exception;
+ List<AlumnoM> CantAlumXCar() throws Exception;
 
 }

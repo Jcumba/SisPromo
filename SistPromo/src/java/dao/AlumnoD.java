@@ -191,4 +191,29 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
+    @Override
+    public List<AlumnoM> CantAlumXCar() throws Exception {
+        List<AlumnoM> listaCantAlumXCar;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "SELECT * FROM MV_ALUM_CARRERA";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listaCantAlumXCar = new ArrayList();
+            AlumnoM emp;
+            while (rs.next()) {
+                emp = new AlumnoM();
+                emp.setTipoCar(rs.getString("CARRERAS"));
+                emp.setCaninscrt(rs.getInt("TOTAL"));
+                listaCantAlumXCar.add(emp);
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+        return listaCantAlumXCar;
+    }
+
 }

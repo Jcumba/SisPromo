@@ -15,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.AlumnoM;
 import modelo.CarreraM;
+import org.primefaces.model.chart.PieChartModel;
 //import org.primefaces.PrimeFaces;
 
 @Named(value = "alumnoC")
@@ -25,12 +26,10 @@ public class AlumnoC implements Serializable {
     CarreraM carrera = new CarreraM();
     private List<AlumnoM> lstAlumno;
     private List<AlumnoM> lstTopAlumno;
+    private PieChartModel pieModel;
 
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
- 
-    
-    
     @PostConstruct
     public void init() {
         try {
@@ -40,8 +39,8 @@ public class AlumnoC implements Serializable {
         }
 
     }
-    
-     private void listarAlumno() throws Exception {
+
+    private void listarAlumno() throws Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
@@ -51,8 +50,7 @@ public class AlumnoC implements Serializable {
         }
     }
 
-
-     public void listarTopColegios() throws Exception {
+    public void listarTopColegios() throws Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
@@ -61,7 +59,7 @@ public class AlumnoC implements Serializable {
             throw e;
         }
     }
-     
+
     public void limpiar() {
         alumno = new AlumnoM();
     }
@@ -104,10 +102,8 @@ public class AlumnoC implements Serializable {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutocompleteColegio(query);
     }
-    
-    
-    
-    public void cantidadAlumnos() throws SQLException, Exception{
+
+    public void cantidadAlumnos() throws SQLException, Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
@@ -115,6 +111,31 @@ public class AlumnoC implements Serializable {
         } catch (SQLException e) {
             throw e;
         }
+    }
+
+    public void listarGrafica() {
+        AlumnoD dao;
+        List<AlumnoM> list;
+        try {
+            dao = new AlumnoD();
+            list = dao.CantAlumXCar();
+            graficar(list);
+        } catch (Exception e) {
+        } finally {
+        }
+    }
+    
+    
+    private void graficar(List<AlumnoM> list) {
+        pieModel = new PieChartModel();
+        for (AlumnoM tran : list) {
+            pieModel.set(tran.getTipoCar(), tran.getCaninscrt());
+        }
+        pieModel.setTitle(" ");
+        pieModel.setLegendPosition("e");
+        pieModel.setFill(false);
+        pieModel.setDiameter(190);
+
     }
 
     public AlumnoM getAlumno() {
@@ -141,8 +162,12 @@ public class AlumnoC implements Serializable {
         this.lstTopAlumno = lstTopAlumno;
     }
 
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
 
-
- 
+    public void setPieModel(PieChartModel pieModel) {
+        this.pieModel = pieModel;
+    }
 
 }
