@@ -23,7 +23,7 @@
     <h:body  >
         <a href="../index.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Iniciar Session</a>
         <br/>
-        <section class="form_wrap">
+        <section class="form_wrap" style="width: 1000px;height: 700px">
 
             <section class="cantact_info">
                 <section class="info_title">
@@ -36,11 +36,11 @@
                 </section>
             </section>
 
-            <h:form id="form"  class="form_contact">
+            <h:form id="form"  class="form_contact" >
                 <p:growl id="msg" life="1500" autoUpdate="true"/>
-                <div class="user_info">
+                <div class="user_info" >
 
-                    <p:panelGrid columns="2"> 
+                   
                        
                         <p:outputLabel value="CARRERA:"/>
                         <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 260px;">
@@ -48,8 +48,8 @@
                             <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
                         </p:selectOneMenu>
                         
-                        <p:outputLabel value="NOMBRE:"/>
-                        <p:inputText  value="#{alumnoC.alumno.NOMPER}"/>
+                        <p:outputLabel value="NOMBRE:" />
+                        <p:inputText class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" value="#{alumnoC.alumno.NOMPER}"/>
                         <p:outputLabel value="APELLIDO:"/>
                         <p:inputText value="#{alumnoC.alumno.APEPER}"/>
                         <p:outputLabel value="DNI"/>
@@ -71,11 +71,12 @@
                                          value="#{alumnoC.alumno.CODCOL}"
                                          completeMethod="#{alumnoC.completeTextCol}"
                                          style="width: 90%" maxlength="15"/>
-                        <p:commandButton  class="btn btn-primary pull-right mio" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}"  update="form"/>
-                        <h:commandLink style="width: 200px" value="Descargar PDF" class="btn btn-danger btn-block" actionListener="#{cronogramaC.descargarPdfCronograma()}">
+                        <p:commandButton  class="btn btn-primary pull-right mio" style="width: 300px;margin-left: 120px" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}"  update="form"/>
+                        <br/>
+                        <h:commandLink style="width: 200px;margin-left: 170px" value="Descargar PDF" class="btn btn-danger btn-block" actionListener="#{cronogramaC.descargarPdfCronograma()}">
                                <i class="zmdi zmdi-download"></i>
                             </h:commandLink>
-                    </p:panelGrid>
+ 
        
                 </div>
             </h:form>
