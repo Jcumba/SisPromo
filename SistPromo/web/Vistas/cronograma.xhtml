@@ -7,72 +7,77 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Cronograma</title>
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        <h:form id="FormTblCronograma">
-            <p:growl autoUpdate="true" life="1000"/>
-            <p:dataTable  id="tblCronograma"
-                          value="#{cronogramaC.lstCronograma}" 
-                          var="cronograma"
-                          selectionMode="single"
-                          selection="#{cronogramaC.selectedCronograma}"
-                          rowKey="#{cronograma.CODEXA}"
-                          rows="10" paginator="true"
-                          paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
-                          rowsPerPageTemplate="5,10,15" reflow="true">
-                <f:facet name="header">
-                    <p:commandButton  icon="fa fa-plus" value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}"/>
-                    <center>
-                        <h:commandLink actionListener="#{cronogramaC.descargarPdfCronograma()}">
-                            <p:graphicImage url="../../resources/img/pdf.png" width="60"/>
-                            <br/>
-                            <span style="color: black">Reporte de Cronograma</span>
-                        </h:commandLink>
-                    </center>
-                </f:facet>
-                <p:column headerText="FECHA">
-                    <p:outputLabel  value="#{cronograma.FECCROEXA}"/>
-                </p:column>
-            </p:dataTable>
-            <p:contextMenu>
-                <p:menuitem icon="fa fa-edit" value="Modificar" onclick="PF('dlgModCronograma').show();" update="FormDialog2"/>
-                <p:menuitem icon="fa fa-trash" value="Eliminar" actionListener="#{cronogramaC.eliminar()}" update="tblCronograma :FormCronograma">
-                    <p:confirm header="Confirmacion" message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
-                </p:menuitem>
-            </p:contextMenu>
-        </h:form>
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                        
+
+                <h:form class="form_contact" id="FormTblCronograma">
+                    <p:growl autoUpdate="true" life="1000"/>
+                    <p:dataTable  id="tblCronograma"
+                                  value="#{cronogramaC.lstCronograma}" 
+                                  var="cronograma"
+                                  class="table table-striped" 
+                                  selectionMode="single"
+                                  selection="#{cronogramaC.selectedCronograma}"
+                                  rowKey="#{cronograma.CODEXA}"
+                                  rows="10" paginator="true"
+                                  paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
+                                  rowsPerPageTemplate="5,10,15" reflow="true">
+                        <f:facet name="header">   
+                                                                <p:commandButton  class="btn btn-primary pull-right mio" icon="fa fa-plus" value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}"/>    
+                            <center>
+                                <h:commandLink value="Descargar PDF" class="btn btn-danger btn-block" style="width: 250px" actionListener="#{cronogramaC.descargarPdfCronograma()}">
+                                    <i class="zmdi zmdi-download"></i>
+                                </h:commandLink>
+                            </center>
+                        </f:facet>
+                        <p:column headerText="FECHA">
+                            <p:outputLabel  value="#{cronograma.FECCROEXA}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <p:contextMenu>
+                        <p:menuitem icon="fa fa-edit" value="Modificar" onclick="PF('dlgModCronograma').show();" update="FormDialog2"/>
+                        <p:menuitem icon="fa fa-trash" value="Eliminar" actionListener="#{cronogramaC.eliminar()}" update="tblCronograma :FormCronograma">
+                            <p:confirm header="Confirmacion" message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
+                        </p:menuitem>
+                    </p:contextMenu>
+                </h:form>
 
 
-        <h:form>
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
-            </p:confirmDialog>
-        </h:form>
+                <h:form>
+                    <p:confirmDialog global="true">
+                        <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+                </h:form>
 
-        <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModCronograma" resizable="false"  modal="true">
-            <h:form id="FormDialog2">
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="FECHA"/>
-                    <p:inputText value="#{cronogramaC.selectedCronograma.FECCROEXA}"/>
-                    <p:commandButton icon="fa fa-edit" value="MODIFICAR" actionListener="#{cronogramaC.modificar()}" update="FormTblCronograma:tblCronograma" onclick="PF('dlgModCronograma').hide;"/>
-                    <p:commandButton icon="fa fa-close" value="Cancelar" onclick="PF('dlgModCronograma').hide();"/>
-                </p:panelGrid>
-            </h:form>
-        </p:dialog>
+                <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModCronograma" resizable="false"  modal="true">
+                    <h:form id="FormDialog2">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="FECHA"/>
+                            <p:inputText value="#{cronogramaC.selectedCronograma.FECCROEXA}"/>
+                            <p:commandButton icon="fa fa-edit" value="MODIFICAR" actionListener="#{cronogramaC.modificar()}" update="FormTblCronograma:tblCronograma" onclick="PF('dlgModCronograma').hide;"/>
+                            <p:commandButton icon="fa fa-close" value="Cancelar" onclick="PF('dlgModCronograma').hide();"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
 
-        <p:dialog id="dlg"  header="Agregar Cronograma" widgetVar="dlgNewCronograma" resizable="false" modal="true">
-            <h:form id="FormCronograma">
-                <p:panelGrid columns="2">
-                    <p:outputLabel  value="FECHA"/>
-                    <p:inputText   value="#{cronogramaC.cronograma.FECCROEXA}"/>
-                    <p:commandButton  value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>
-                    <p:commandButton   icon="fa fa-close" value="Cancelar"  actionListener="#{cronogramaC.limpiar()}"  update="FormCronograma"  onclick="PF('dlgNewCronograma').hide();"/>
-                </p:panelGrid>
-            </h:form>
-        </p:dialog>
-
-
+                <p:dialog id="dlg"  header="Agregar Cronograma" widgetVar="dlgNewCronograma" resizable="false" modal="true">
+                    <h:form id="FormCronograma" class="form_contact">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel  value="FECHA"/>
+                            <p:inputText   value="#{cronogramaC.cronograma.FECCROEXA}"/>
+                            <p:commandButton class="btn btn-primary pull-right mio" value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>
+                            <p:commandButton  class="btn btn-primary pull-right mio" icon="fa fa-close" value="Cancelar"  actionListener="#{cronogramaC.limpiar()}"  update="FormCronograma"  onclick="PF('dlgNewCronograma').hide();"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

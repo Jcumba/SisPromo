@@ -9,9 +9,9 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="../resources/css/default.css"/>
-        <h:outputStylesheet name="../resources/css/cssLayout.css"/>
-
+<!--        <h:outputStylesheet name="../resources/css/default.css"/>
+        <h:outputStylesheet name="../resources/css/cssLayout.css"/>-->
+<link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
         <link rel="icon" type="image/png" href="../resources/img/admision.png" />
         <title>Sistemas Promocion</title>
 
@@ -251,18 +251,18 @@
                                 </li>
                             </h:panelGroup>
                         </ui:insert>
-<!--                        <ui:insert name="linkEstudiante">
-                            <h:panelGroup rendered="#usuarioController.usuario.NIVEL == '1'}">
-                                <li>
-                                    <a href="../content/student.xhtml"><i class="zmdi zmdi-face"></i> Estudiantes <span class="badge">#{alumnosController.alu.ALUMNOS}</span></a>
-                                </li>
-                            </h:panelGroup>
-                        </ui:insert>-->
+                        <!--                        <ui:insert name="linkEstudiante">
+                                                    <h:panelGroup rendered="#usuarioController.usuario.NIVEL == '1'}">
+                                                        <li>
+                                                            <a href="../content/student.xhtml"><i class="zmdi zmdi-face"></i> Estudiantes <span class="badge">#{alumnosController.alu.ALUMNOS}</span></a>
+                                                        </li>
+                                                    </h:panelGroup>
+                                                </ui:insert>-->
 
                         <ui:insert name="linkEstudiante">
-                                <li>
-                                    <a href="../Vistas/RegAlumno.xhtml"><i class="zmdi zmdi-face"></i> Estudiantes <span class="badge">#{alumnosController.alu.ALUMNOS}</span></a>
-                                </li>
+                            <li>
+                                <a href="../Vistas/RegAlumno.xhtml"><i class="zmdi zmdi-face"></i> Estudiantes <span class="badge">#{alumnosController.alu.ALUMNOS}</span></a>
+                            </li>
 
                         </ui:insert>
                         <ui:insert name="linkRegistro">
@@ -279,6 +279,13 @@
                             <li>
                                 <a href="../content/historial.xhtml"><i class="zmdi zmdi-view-list-alt"></i> Asistencias </a>
                             </li>
+                        </ui:insert>
+                        <ui:insert name="linkCronograma">
+                            <h:panelGroup>
+                                <li>
+                                    <a href="../Vistas/cronograma.xhtml"><i class="zmdi zmdi-file-add"></i>Cronograma</a>
+                                </li>
+                            </h:panelGroup>
                         </ui:insert>
                         <ui:insert name="linkAsignado">
                             <h:panelGroup rendered="#{userController.usuario.TIPO_USER == '1'}">
