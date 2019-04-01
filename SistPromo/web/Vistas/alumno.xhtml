@@ -87,129 +87,132 @@
 
         </section>
 
-        
-        
-        
-        
+
+
+
+
         <p:dialog style="background-color: #F2F2F2"   widgetVar="dlg2" modal="true" height="700" width="680">
-                <div class="container">
-                    <form id="new_customer" method="post">
-                        <div class="modal-header">
+            <div class="container">
+                <form id="new_customer" method="post">
+                    <div class="modal-header">
 
-                              <h3 style="margin-bottom: 10px;margin-left: 160px;color: #999999">FICHA DE INGRESO</h3>
-                            <button type="button" class="close">
-                                <span aria-hidden="true"></span>
-                            </button>
+                        <h3 style="margin-bottom: 10px;margin-left: 160px;color: #999999">FICHA DE INGRESO</h3>
+                        <button type="button" class="close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-row">
+                            <div class="col mb-3">
+                                <p:outputLabel value="Ingrese su DNI: "/>
+
+                                <input class="form-control" placeholder="Ingrese DNI" type="text" name="name" maxlength="8"/>
+                            </div>
+
+                            <button type="button" class="btn btn-secondary" id="reset12" style="background-color: #039BE5;height: 30 px;width: 150px;margin-top: 10px">Buscar</button>
+                            <br/>
+                            <br/>
+
+                            <div class="col mb-3">
+                                <p:outputLabel value="Nombres: "/>
+                                <input class="form-control" placeholder="Nombres" type="text" name="first_surname"/>
+                            </div>
+                            <br/>
+
+                            <div class="col mb-3">
+                                <p:outputLabel value="Apellidos: "/>
+                                <input class="form-control" placeholder="Apellidos" type="text" name="second_surname"/>
+
+                            </div>
                         </div>
-                        <div class="modal-body">
+                        <br/>
+                        <!--                            <div class="form-row">
+                                                        <div class="col-5 mb-3">
+                                                            <input class="form-control" placeholder="Birthday" type="date" name="birthday"/>
+                                                        </div>
+                        
+                                                        <div class="col-7 mb-3 d-flex align-items-center">
+                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                <input class="custom-control-input" type="radio" value="" name="gender" id="male"/>
+                                                                <label class="custom-control-label" for="male">Male</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                <input class="custom-control-input" type="radio" value="" name="gender" id="female"/>
+                                                                <label class="custom-control-label" for="female">Female</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                <input class="custom-control-input" type="radio" value="" name="gender" id="other"/>
+                                                                <label class="custom-control-label" for="other">Other</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
 
-                            <div class="form-row">
-                                <div class="col mb-3">
-                                    <p:outputLabel value="Ingrese su DNI: "/>
-
-                                    <input class="form-control" placeholder="Ingrese DNI" type="text" name="name" maxlength="8"/>
-                                </div>
-                                <br/>
-
-                                <div class="col mb-3">
-                                      <p:outputLabel value="Nombres: "/>
-                                    <input class="form-control" placeholder="Nombres" type="text" name="first_surname"/>
-                                </div>
-                                                           <br/>
-
-                                <div class="col mb-3">
-                                      <p:outputLabel value="Apellidos: "/>
-                                    <input class="form-control" placeholder="Apellidos" type="text" name="second_surname"/>
-                                  
-                                </div>
+                        <!--                            <div class="form-row">
+                                                        <div class="col mb-3">
+                                                            <input class="form-control" placeholder="Street 1" type="text" name="street_1"/>
+                                                        </div>
+                                                    </div>
+                        
+                        -->                            <div class="form-row">
+                            <div class="col mb-3">
+                                <p:outputLabel value="Codigo Identificador: "/>
+                                <input class="form-control" placeholder="Codigo identificador" type="text" name="street_2"/>
                             </div>
-<br/>
-<!--                            <div class="form-row">
-                                <div class="col-5 mb-3">
-                                    <input class="form-control" placeholder="Birthday" type="date" name="birthday"/>
-                                </div>
+                        </div><!--
 
-                                <div class="col-7 mb-3 d-flex align-items-center">
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" value="" name="gender" id="male"/>
-                                        <label class="custom-control-label" for="male">Male</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" value="" name="gender" id="female"/>
-                                        <label class="custom-control-label" for="female">Female</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" value="" name="gender" id="other"/>
-                                        <label class="custom-control-label" for="other">Other</label>
-                                    </div>
-                                </div>
-                            </div>-->
-
-<!--                            <div class="form-row">
-                                <div class="col mb-3">
-                                    <input class="form-control" placeholder="Street 1" type="text" name="street_1"/>
-                                </div>
+                        <div class="form-row">
+                            <div class="col mb-3">
+                                <input class="form-control" placeholder="City" type="text" name="city"/>
                             </div>
 
--->                            <div class="form-row">
-                                <div class="col mb-3">
-                                      <p:outputLabel value="Codigo Identificador: "/>
-                                    <input class="form-control" placeholder="Codigo identificador" type="text" name="street_2"/>
-                                </div>
-                            </div><!--
-
-                            <div class="form-row">
-                                <div class="col mb-3">
-                                    <input class="form-control" placeholder="City" type="text" name="city"/>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <input class="form-control" placeholder="State" type="text" name="state"/>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <input class="form-control" placeholder="ZipCode" type="text" name="zip_code"/>
-                                </div>
+                            <div class="col mb-3">
+                                <input class="form-control" placeholder="State" type="text" name="state"/>
                             </div>
 
-                            <div class="form-row">
-                                <div class="col mb-3">
-                                    <input class="form-control" placeholder="Phone number" type="text" name="phone_number"/>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <input class="form-control" placeholder="Official ID type" type="text" name="official_identification"/>
-                                </div>
+                            <div class="col mb-3">
+                                <input class="form-control" placeholder="ZipCode" type="text" name="zip_code"/>
                             </div>
-
-                            <div class="form-row">
-                                <div class="col">
-                                    <input class="form-control" placeholder="ID number" type="text" name="identification_number"/>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <input class="form-control" placeholder="Joint owner name" type="text" name="joint_owner_name"/>
-                                </div>
-                            </div>-->
-
-<!--                            <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" value=""/>
-                                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Default checkbox
-                                </label>
-                            </div>-->
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="reset1" style="background-color: #039BE5;height: 30 px;width: 150px">Imprimir</button>
-                            <input type="submit" name="commit" id="reset2" value="Cancelar" class="btn btn-primary"/>
+
+                        <div class="form-row">
+                            <div class="col mb-3">
+                                <input class="form-control" placeholder="Phone number" type="text" name="phone_number"/>
+                            </div>
+
+                            <div class="col mb-3">
+                                <input class="form-control" placeholder="Official ID type" type="text" name="official_identification"/>
+                            </div>
                         </div>
-                    </form>
-                </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <input class="form-control" placeholder="ID number" type="text" name="identification_number"/>
+                            </div>
+
+                            <div class="col mb-3">
+                                <input class="form-control" placeholder="Joint owner name" type="text" name="joint_owner_name"/>
+                            </div>
+                        </div>-->
+
+                        <!--                            <div class="custom-control custom-checkbox mb-3">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck1" value=""/>
+                                                        <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                                                    </div>
+                        
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
+                                                        <label class="form-check-label" for="defaultCheck1">
+                                                            Default checkbox
+                                                        </label>
+                                                    </div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="reset1" style="background-color: #6E6E6E;height: 30 px;width: 150px">Imprimir</button>
+                        <input type="submit" name="commit" id="reset2" value="Cancelar" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
 
         </p:dialog>  
 
