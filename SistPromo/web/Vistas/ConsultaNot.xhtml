@@ -39,7 +39,7 @@
                         <f:selectItem  noSelectionOption="true" itemLabel="Ingrese su DNI" itemValue="#{null}" />
                         <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
                     </p:selectOneMenu>
-<br/>
+                    <br/>
                     <p:dataTable var="car" value="#{dtBasicView.cars}">
                         <p:column headerText="N° de Pregunta">
                             <h:outputText value="#{car.id}" />
@@ -60,13 +60,14 @@
                     <br/>
                     <p:commandButton  class="btn btn-primary pull-right mio" style="width: 300px;margin-left: 120px" value="Imprimir Cartilla" actionListener="#{alumnoC.guardarAlumno()}"  update="form"/>
                     <br/>
-                    <p:commandButton  class="btn btn-primary pull-right mio" style="width: 300px;margin-left: 120px;background-color: #6E6E6E" value="Solicitar Ficha de Ingreso" type="button" onclick="PF('dlg2').show();" />
+                    <p:commandButton  class="btn btn-primary pull-right mio" style="width: 300px;margin-left: 120px;background-color: #6E6E6E" value="Resultados de Conscurso" type="button" onclick="PF('dlg3').show();" />
                     <br/>
-
-
                 </div>
             </h:form>
-
         </section>
+        <p:dialog style="background-color: #F2F2F2"   widgetVar="dlg3" modal="true" height="750" width="800">
+
+          
+        </p:dialog>
     </h:body>
 </html>
