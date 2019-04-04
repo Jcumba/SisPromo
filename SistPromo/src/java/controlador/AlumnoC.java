@@ -26,8 +26,10 @@ public class AlumnoC implements Serializable {
     CarreraM carrera = new CarreraM();
     private List<AlumnoM> lstAlumno;
     private List<AlumnoM> lstTopAlumno;
+    private List<AlumnoM> lstConsulta;
     private PieChartModel pieModel;
 
+    private String dni= null;
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
     @PostConstruct
@@ -83,26 +85,31 @@ public class AlumnoC implements Serializable {
         return dao.queryAutoCompleteUbi(query);
     }
 
-//    public void showMessages() throws ParseException {
-//        String fechaHoy = Cal.get(Calendar.DATE) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.YEAR);
-//        Calendar cal = Calendar.getInstance();
-//        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
-//        String strFecha = fechaHoy;
-//        Date fecha = null;
-//        fecha = formatoDelTexto.parse(strFecha);
-//        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
-//        cal.setTime(fecha);
-//        cal.add(Calendar.DATE, 5);
-//        System.out.println(formatoDeFecha.format(cal.getTime()));
-//
-//        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Usted se ha registrado correctamente  " + "Fecha de Examen  " + formatoDeFecha.format(cal.getTime()) + "  Aula: 1");
-//        PrimeFaces.current().dialog().showMessageDynamic(message);
-//    }
     public List<String> completeTextCol(String query) throws SQLException, Exception {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutocompleteColegio(query);
     }
-
+    
+    
+    public List<String> competeTextDni(String query) throws SQLException, Exception{
+        AlumnoD dao = new AlumnoD();
+        return dao.queryAutoCompleteDni(query);
+    }
+    
+    
+    public void consultar() throws Exception{
+    AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            lstConsulta = dao.consultar(dni);
+            limpiar();
+        } catch (Exception e) {
+            throw e;
+        }
+    
+        
+    }
+    
     public void cantidadAlumnos() throws SQLException, Exception {
         AlumnoD dao;
         try {
@@ -168,6 +175,30 @@ public class AlumnoC implements Serializable {
 
     public void setPieModel(PieChartModel pieModel) {
         this.pieModel = pieModel;
+    }
+
+    public CarreraM getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(CarreraM carrera) {
+        this.carrera = carrera;
+    }
+
+    public List<AlumnoM> getLstConsulta() {
+        return lstConsulta;
+    }
+
+    public void setLstConsulta(List<AlumnoM> lstConsulta) {
+        this.lstConsulta = lstConsulta;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
 }

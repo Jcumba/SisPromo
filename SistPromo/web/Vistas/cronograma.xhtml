@@ -13,7 +13,7 @@
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
-                        
+
 
                 <h:form class="form_contact" id="FormTblCronograma">
                     <p:growl autoUpdate="true" life="1000"/>
@@ -28,7 +28,7 @@
                                   paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
                                   rowsPerPageTemplate="5,10,15" reflow="true">
                         <f:facet name="header">   
-                                                                <p:commandButton  class="btn btn-primary pull-right mio" icon="fa fa-plus" value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}"/>    
+                            <p:commandButton  class="btn btn-primary pull-right mio" icon="fa fa-plus" value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}"/>    
                             <center>
                                 <h:commandLink value="Descargar PDF" class="btn btn-danger btn-block" style="width: 250px" actionListener="#{cronogramaC.descargarPdfCronograma()}">
                                     <i class="zmdi zmdi-download"></i>
