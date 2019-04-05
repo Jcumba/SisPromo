@@ -19,9 +19,10 @@ public class CronogramaD extends Dao implements CronogramaI{
     public void guardar(CronogramaM cronograma) throws Exception {
         try {
             this.conectar();
-            String sql="INSERT INTO CRONOGRAMA_EXAMEN (FECCROEXA) VALUES (to_date(?,'dd/mm/yyyy'))";
+            String sql="INSERT INTO CRONOGRAMA_EXAMEN (FECCROEXA,HORCROEXA) VALUES (to_date(?,'dd/mm/yyyy'),?)";
             PreparedStatement ps=this.getCn().prepareStatement(sql);
             ps.setString(1, cronograma.getFECCROEXA());
+            ps.setString(2, cronograma.getHORCROEXA());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;

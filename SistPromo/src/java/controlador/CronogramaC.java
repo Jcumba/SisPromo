@@ -30,7 +30,7 @@ public class CronogramaC implements Serializable {
         cronograma = new CronogramaM();
     }
 
-    public void guardarCronograma() {
+    public void guardarCronograma() throws Exception{
         CronogramaD dao;
         try {
             dao = new CronogramaD();
@@ -40,6 +40,7 @@ public class CronogramaC implements Serializable {
             listarCronograma();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERRO AL AGREGAR", null));
+                throw e;
         }
     }
 
