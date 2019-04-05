@@ -13,6 +13,9 @@
         <link href="../resources/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css"/>
 
         <!-- CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
         <link href="../resources/css/Responsive.css" rel="stylesheet" type="text/css"/>
         <!-- CSS -->
@@ -25,64 +28,52 @@
         <a href="ConsultaNot.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Resultados de Examen</a>
 
         <br/>
-        <section class="form_wrap " style="width: 1000px;height: 800px">
+        <section class="form_wrap form-group" style="width: 500px;height: 950px">
 
-            <section class="cantact_info ">
 
-                <section class="info_title">
-                    <img  src="../resources/img/logo-white_1.png" alt=""/>
-                    <span class="fa fa-user-circle"></span>
 
-                </section>
-                <section class="info_items">
-                    <p><span class="fa fa-envelope"></span> informes@vallegrande.edu.pe</p>
-                    <p><span class="fa fa-mobile"></span> Teléfono: (01) 581 2261</p>
-
-                </section>
-            </section>
-
-            <h:form id="form"  class="form_contact" >
+            <h:form id="form"  class="form_contact form-group" >
                 <p:growl id="msg" life="1500" autoUpdate="true"/>
-                <h3 style="margin-bottom: 10px;margin-left: 150px;color: #999999">REGISTRATE AL CONCURSO</h3>
+                <img src="../resources/img/logo2342234.jpg" alt="" style="margin-left: 180px"/>
+                <h3 style="margin-bottom: 10px;color: #999999;width: 420px;text-align: center">REGISTRATE AL CONCURSO</h3>
+                <br/>
                 <div class="user_info" >
 
                     <p:outputLabel value="CARRERA:"/>
-                    <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 260px;">
+                    <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 420px;">
                         <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
                         <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel style="margin-top: 8px" value="NOMBRE:" />
-                    <p:inputText class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" value="#{alumnoC.alumno.NOMPER}"/>
+                    <p:inputText class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" style="width: 420px" value="#{alumnoC.alumno.NOMPER}"/>
                     <p:outputLabel value="APELLIDO:"/>
-                    <p:inputText value="#{alumnoC.alumno.APEPER}"/>
+                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px" />
                     <p:outputLabel value="DNI:"/>
-                    <p:inputText value="#{alumnoC.alumno.DNIPER}" maxlength="8">
+                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px"  maxlength="8">
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:inputText>
                     <p:outputLabel for="date" value="FECHA DE NACIMIENTO:"/>
-                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" mask="99/99/9999"/>
-
-
+                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px"  mask="99/99/9999"/>
 
                     <p:outputLabel value="CELULAR:"/>
-                    <p:inputText value="#{alumnoC.alumno.CELPER}" maxlength="9">
+                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px"  maxlength="9">
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:inputText>
                     <p:outputLabel  value="DISTRITO:"/>
-                    <p:autoComplete  maxResults="16" 
+                    <p:autoComplete  maxResults="16"  
                                      emptyMessage="No se encontro ningún registro"
                                      value="#{alumnoC.alumno.UBIGEO_CODUBI}"
                                      completeMethod="#{alumnoC.completeTextUbi}"
-                                     style="width: 90%" maxlength="15" />
+                                     style="width: 420px" maxlength="15" />
                     <p:outputLabel  value="COLEGIO:"/>
                     <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
-                                     value="#{alumnoC.alumno.CODCOL}"
+                                     value="#{alumnoC.alumno.CODCOL}"        
                                      completeMethod="#{alumnoC.completeTextCol}"
-                                     style="width: 90%" maxlength="15"/>
-                    <p:commandButton  class="btn btn-primary pull-right mio" style="width: 300px;margin-left: 120px" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}"  update="form"/>
+                                     style="width: 420px" maxlength="15"/>
+                    <p:commandButton  class="btn btn-primary pull-right mio button" style="width: 300px;margin-left: 60px" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}"  update="form"/>
                     <br/>
-                    <a href="buscador.xhtml" class="btn btn-info pull-right mio"  style="width: 300px;margin-left: 120px"  role="button">Solicitar Ficha de Ingreso</a>
+                    <a href="buscador.xhtml" class="btn btn-info pull-right mio button"  style="width: 300px;margin-left: 60px"  role="button">Solicitar Ficha de Ingreso</a>
                     <br/>
                 </div>
             </h:form>
