@@ -36,7 +36,10 @@
                             </center>
                         </f:facet>
                         <p:column headerText="FECHA">
-                            <p:outputLabel  value="#{cronograma.FECCROEXA}"/>
+                            <p:outputLabel  style="color: black; font-weight: bold;"  value="#{cronograma.FECCROEXA}"/>
+                        </p:column>
+                        <p:column headerText="HORA">
+                            <p:outputLabel    style="color: black; font-weight: bold;"  value="#{cronograma.HORCROEXA}"/>
                         </p:column>
                     </p:dataTable>
                     <p:contextMenu>
@@ -72,7 +75,7 @@
                             <p:outputLabel  value="FECHA"/>
                             <p:inputMask mask="99/99/9999"   value="#{cronogramaC.cronograma.FECCROEXA}"/>
                             <p:outputLabel value="HORA"/>
-                            <p:inputMask mask="99:99"  value="#{cronogramaC.cronograma.HORCROEXA}"/>
+                            <p:inputMask mask="99:99:AM"  value="#{cronogramaC.cronograma.HORCROEXA}"/>
                             <p:commandButton class="btn btn-primary pull-right mio" value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>
                             <p:commandButton  class="btn btn-primary pull-right mio" icon="fa fa-close" value="Cancelar"  actionListener="#{cronogramaC.limpiar()}"  update="FormCronograma"  onclick="PF('dlgNewCronograma').hide();"/>
                         </p:panelGrid>

@@ -43,6 +43,7 @@ public class CronogramaD extends Dao implements CronogramaI{
                 CronogramaM cronograma = new CronogramaM();
                 cronograma.setCODEXA(rs.getString("CODEXA"));
                 cronograma.setFECCROEXA(rs.getString("FECCROEXA"));
+                cronograma.setHORCROEXA(rs.getString("HORCROEXA"));
                 listarCronograma.add(cronograma);
                 
             }
