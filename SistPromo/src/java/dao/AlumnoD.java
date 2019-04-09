@@ -168,6 +168,68 @@ public class AlumnoD extends Dao implements AlumnoI {
        }
    }
     
+   
+    
+    public List<String> queryAutoCompleteNotas(String a) throws SQLException, Exception{
+        this.conectar();
+        ResultSet rs;
+        List<String> lista;
+        try {
+            String sql="SELECT DNIPER FROM MV_LSTNOTAS WHERE DNIPER LIKE ? ";
+            PreparedStatement ps=this.getCn().prepareCall(sql);
+            ps.setString(1, "%" + a + "%");
+            rs = ps.executeQuery();
+            lista = new ArrayList();
+            while(rs.next()){
+                lista.add(rs.getString("DNIPER"));
+            }
+            return lista;
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            this.cerrar();
+        }
+    }
+    
+    
+    public List<AlumnoM> consultarNotas(String dni) throws Exception{
+       List<AlumnoM> consultar;
+       ResultSet rs;
+       try {
+           this.conectar();
+           String sql="SELECT * FROM MV_LSTNOTAS WHERE DNIPER LIKE ?";
+           PreparedStatement ps =this.getCn().prepareStatement(sql);
+           ps.setString(1, dni);
+           rs = ps.executeQuery();
+           consultar = new ArrayList();
+           AlumnoM alumno;
+           while(rs.next()){
+               alumno = new AlumnoM();
+               alumno.setDNIPER(rs.getString("DNIPER"));
+               alumno.setNOMPER(rs.getString("NOMPER"));
+               alumno.setAPEPER(rs.getString("APEPER"));
+               alumno.setRES1(rs.getString("RES1"));
+               alumno.setRES2(rs.getString("RES2"));
+               alumno.setRES3(rs.getString("RES3"));
+               alumno.setRES4(rs.getString("RES4"));
+               alumno.setRES5(rs.getString("RES5"));
+               alumno.setRES6(rs.getString("RES6"));
+               alumno.setRES7(rs.getString("RES7"));
+               alumno.setRES8(rs.getString("RES8"));
+               alumno.setRES9(rs.getString("RES9"));
+               alumno.setRES10(rs.getString("RES10"));
+               alumno.setRES11(rs.getString("RES11"));
+               alumno.setRES12(rs.getString("RES12"));
+               alumno.setRES13(rs.getString("RES13"));
+               consultar.add(alumno);
+           }
+           return consultar;
+       } catch (SQLException e) {
+       throw e;
+       }finally{
+           this.cerrar();
+       }
+   }
 
     @Override
     public List<AlumnoM> listarAlumno() throws Exception {

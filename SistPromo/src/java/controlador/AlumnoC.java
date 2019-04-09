@@ -27,9 +27,11 @@ public class AlumnoC implements Serializable {
     private List<AlumnoM> lstAlumno;
     private List<AlumnoM> lstTopAlumno;
     private List<AlumnoM> lstConsulta;
+    private List<AlumnoM> lstConsultaNotas;
     private PieChartModel pieModel;
 
     private String dni= null;
+    private String Notas=null;
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
     @PostConstruct
@@ -96,6 +98,11 @@ public class AlumnoC implements Serializable {
         return dao.queryAutoCompleteDni(query);
     }
     
+        
+    public List<String> competeTextNotas(String query) throws SQLException, Exception{
+        AlumnoD dao = new AlumnoD();
+        return dao.queryAutoCompleteNotas(query);
+    }
     
     public void consultar() throws Exception{
     AlumnoD dao;
@@ -105,9 +112,19 @@ public class AlumnoC implements Serializable {
             limpiar();
         } catch (Exception e) {
             throw e;
-        }
+        }     
+    }
     
-        
+    
+    public void consultarNotas() throws Exception{
+    AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            lstConsultaNotas = dao.consultarNotas(Notas);
+            limpiar();
+        } catch (Exception e) {
+            throw e;
+        }     
     }
     
     public void cantidadAlumnos() throws SQLException, Exception {
@@ -201,4 +218,22 @@ public class AlumnoC implements Serializable {
         this.dni = dni;
     }
 
+    public String getNotas() {
+        return Notas;
+    }
+
+    public void setNotas(String Notas) {
+        this.Notas = Notas;
+    }
+
+    public List<AlumnoM> getLstConsultaNotas() {
+        return lstConsultaNotas;
+    }
+
+    public void setLstConsultaNotas(List<AlumnoM> lstConsultaNotas) {
+        this.lstConsultaNotas = lstConsultaNotas;
+    }
+
+    
+    
 }

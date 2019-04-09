@@ -3,89 +3,97 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui">
+
     <h:head>
-        <title>Contact V5</title>
+        <title>Ficha de Ingreso</title>
         <link href="../resources/css/Estilo.css" rel="stylesheet" type="text/css"/>
         <script src="../resources/js/Estilojs.js" type="text/javascript"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
         <link href="../resources/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css"/>
+
         <!-- CSS -->
 
         <link href="../resources/css/Responsive.css" rel="stylesheet" type="text/css"/>
         <!-- CSS -->
         <link href="../resources/css/app.min.1.css" rel="stylesheet" type="text/css"/>
-        <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
-
-            .form-inline {  
-                display: flex;
-                flex-flow: row wrap;
-                align-items: center;
-            }
-
-            .form-inline label {
-                margin: 5px 10px 5px 0;
-            }
-
-            .form-inline input {
-                vertical-align: middle;
-                margin: 5px 10px 5px 0;
-                padding: 10px;
-                background-color: #fff;
-                border: 1px solid #ddd;
-            }
-
-            .form-inline button {
-                padding: 10px 20px;
-                background-color: dodgerblue;
-                border: 1px solid #ddd;
-                color: white;
-                cursor: pointer;
-            }
-
-            .form-inline button:hover {
-                background-color: royalblue;
-            }
-
-            @media (max-width: 800px) {
-                .form-inline input {
-                    margin: 10px 0;
-                }
-
-                .form-inline {
-                    flex-direction: column;
-                    align-items: stretch;
-                }
-            }
-        </style>
     </h:head>
     <h:body>
 
+        <section class="form_wrap form-group " style="width: 600px;height: 900px">
+            <h:form class="form_contact  " id="Consultar">
+                <p:growl id="msg" life="1500" autoUpdate="true"/>
+                <h:panelGrid columns="2">
+                    <p:autoComplete maxResults="5"
+                                    style="width: 300px;margin-top: 14px"
+                                    emptyMessage="No se encontro ningun registro"                
+                                    forceSelection="true"
+                                    placeholder="DNI"
+                                    maxlength="8"
+                                    value="#{alumnoC.notas}"
+                                    completeMethod="#{alumnoC.competeTextNotas}">
+                    </p:autoComplete>
+                    <p:commandButton class="btn btn-primary pull-right mio"   style="margin-bottom: 3px;margin-left: 50px" value="CONSULTAR" actionListener="#{alumnoC.consultarNotas()}" update="tblConsultas Consultar"/>
+                </h:panelGrid>
+                <br/>
+
+                <p:dataGrid value="#{alumnoC.lstConsultaNotas}"
+                            id="tblConsultas"
+                            style="width: 300px"
+                            var="consulta"
+                            emptyMessage="Sin Resultados">
+                    <p:column  headerText="Datos">
+
+                        <p:outputLabel style="color: #0174DF; font-weight: bold;" value="DNI:  #{consulta.DNIPER} - #{consulta.NOMPER}  #{consulta.APEPER}"/>
+
+                            <p:separator/>
+ 
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 1: #{consulta.RES1}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 2: #{consulta.RES2}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 3: #{consulta.RES3}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 4: #{consulta.RES4}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 5: #{consulta.RES5}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 6: #{consulta.RES6}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 7: #{consulta.RES7}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 8: #{consulta.RES8}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 9: #{consulta.RES9}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 10: #{consulta.RES10}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 11: #{consulta.RES11}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 12: #{consulta.RES12}"/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 13: #{consulta.RES13}"/>
+                            <br/>
+                            <br/> 
+                    </p:column> 
+                </p:dataGrid>
+            </h:form> 
+        </section>
        
-
-        <p:panel id="basic" header="Basic" footer="Movie Details" style="margin-bottom:20px;width: 900px;margin">
-         
-            <form class="form-inline" action="/action_page.php">
-
-            <label for="email">Email:</label>
-            <input  class="p-col-12 p-md-6 p-lg-3" type="email" id="email" placeholder="Enter email" name="email"/>
-
-            <label for="pwd">Password:</label>
-            <input type="password" class="p-col-12 p-md-6 p-lg-3" id="pwd" placeholder="Enter password" name="pswd"/>
-
-            <label for="pwd">Password:</label>
-            <input type="password" class="p-col-12 p-md-6 p-lg-3" id="pwd" placeholder="Enter password" name="pswd"/>
-
-
-            <button type="submit">Submit</button>
-
-            </form>
-
-  
-        </p:panel>
-
     </h:body>
 </html>

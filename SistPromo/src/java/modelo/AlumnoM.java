@@ -28,6 +28,128 @@ public class AlumnoM {
     /*VARIABLES COMPLEMENTARIAS*/
     private String TipoCar; //tipo de carrera
     private int Caninscrt; //Cantidad de inscritos
+    
+    
+    /*variables VISTA_CONSULTAR NOTAS*/
+    private String RES1;
+    private String RES2;
+    private String RES3;
+    private String RES4;
+    private String RES5;
+    private String RES6;
+    private String RES7;
+    private String RES8;
+    private String RES9;
+    private String RES10;
+    private String RES11;
+    private String RES12;
+    private String RES13;
+
+    public String getRES1() {
+        return RES1;
+    }
+
+    public void setRES1(String RES1) {
+        this.RES1 = RES1;
+    }
+
+    public String getRES2() {
+        return RES2;
+    }
+
+    public void setRES2(String RES2) {
+        this.RES2 = RES2;
+    }
+
+    public String getRES3() {
+        return RES3;
+    }
+
+    public void setRES3(String RES3) {
+        this.RES3 = RES3;
+    }
+
+    public String getRES4() {
+        return RES4;
+    }
+
+    public void setRES4(String RES4) {
+        this.RES4 = RES4;
+    }
+
+    public String getRES5() {
+        return RES5;
+    }
+
+    public void setRES5(String RES5) {
+        this.RES5 = RES5;
+    }
+
+    public String getRES6() {
+        return RES6;
+    }
+
+    public void setRES6(String RES6) {
+        this.RES6 = RES6;
+    }
+
+    public String getRES7() {
+        return RES7;
+    }
+
+    public void setRES7(String RES7) {
+        this.RES7 = RES7;
+    }
+
+    public String getRES8() {
+        return RES8;
+    }
+
+    public void setRES8(String RES8) {
+        this.RES8 = RES8;
+    }
+
+    public String getRES9() {
+        return RES9;
+    }
+
+    public void setRES9(String RES9) {
+        this.RES9 = RES9;
+    }
+
+    public String getRES10() {
+        return RES10;
+    }
+
+    public void setRES10(String RES10) {
+        this.RES10 = RES10;
+    }
+
+    public String getRES11() {
+        return RES11;
+    }
+
+    public void setRES11(String RES11) {
+        this.RES11 = RES11;
+    }
+
+    public String getRES12() {
+        return RES12;
+    }
+
+    public void setRES12(String RES12) {
+        this.RES12 = RES12;
+    }
+
+    public String getRES13() {
+        return RES13;
+    }
+
+    public void setRES13(String RES13) {
+        this.RES13 = RES13;
+    }
+
+    
 
     public String getTipoCar() {
         return TipoCar;
