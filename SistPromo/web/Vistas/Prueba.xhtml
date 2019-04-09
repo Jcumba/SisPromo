@@ -18,14 +18,39 @@
         <link href="../resources/css/Responsive.css" rel="stylesheet" type="text/css"/>
         <!-- CSS -->
         <link href="../resources/css/app.min.1.css" rel="stylesheet" type="text/css"/>
+        <style>
+            #customers {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            #customers tr:hover {background-color: #ddd;}
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #045FB4;
+                color: white;
+            }
+        </style>
     </h:head>
     <h:body>
 
-        <section class="form_wrap form-group " style="width: 600px;height: 900px">
+        <section class="form_wrap form-group " style="width: 600px;height: 930px">
 
-            
+
             <h:form class="form_contact  " id="Consultar">
                 <p:growl id="msg" life="1500" autoUpdate="true"/>
+                    <h3 style="margin-bottom: 10px;color: #999999;width: 420px;text-align: center;margin-left: 62px">FICHA DE RESPUESTAS</h3>
                 <h:panelGrid columns="2">
                     <p:autoComplete maxResults="5"
                                     style="width: 300px;margin-top: 14px"
@@ -46,54 +71,74 @@
                             var="consulta"
                             emptyMessage="Sin Resultados">
                     <p:column  headerText="Datos">
-                        <img src="../resources/img/images_1.png" alt="" style="width: 50px"/>
+                        <img src="../resources/img/favicon.png" alt="" style="width: 40px;margin-right: 10px"/>
                         <p:outputLabel style="color: #0174DF; font-weight: bold;" value="DNI:  #{consulta.DNIPER} - #{consulta.NOMPER}  #{consulta.APEPER}"/>
                         <p:separator/>
-
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 1: #{consulta.RES1}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 2: #{consulta.RES2}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 3: #{consulta.RES3}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 4: #{consulta.RES4}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 5: #{consulta.RES5}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 6: #{consulta.RES6}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 7: #{consulta.RES7}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 8: #{consulta.RES8}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 9: #{consulta.RES9}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 10: #{consulta.RES10}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 11: #{consulta.RES11}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 12: #{consulta.RES12}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 13: #{consulta.RES13}"/>
-                        <br/>
-                        <br/> 
+                        <table id="customers" style="width: 500px">
+                            <tr>
+                                <th>Pregunta N°</th>
+                                <th>Respuesta</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES1}"/></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES2}"/></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES3}"/></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES4}"/></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES5}"/></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES6}"/></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES7}"/></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES8}"/></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES9}"/></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES10}"/></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES11}"/></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES12}"/></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES13}"/></td>
+                            </tr>
+                        </table>
                     </p:column> 
                 </p:dataGrid>
+                <h:commandLink value="Descargar PDF" class="btn btn-danger btn-block" style="width: 250px;margin-left: 120px;margin-top: 10px"  >
+                    <i class="zmdi zmdi-download"></i>
+                </h:commandLink>
             </h:form> 
+
         </section>
 
     </h:body>
