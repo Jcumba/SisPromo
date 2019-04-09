@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>Ficha de Ingreso</title>
+        <title>Ficha de Resultados</title>
         <link href="../resources/css/Estilo.css" rel="stylesheet" type="text/css"/>
         <script src="../resources/js/Estilojs.js" type="text/javascript"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -22,6 +22,8 @@
     <h:body>
 
         <section class="form_wrap form-group " style="width: 600px;height: 900px">
+
+            
             <h:form class="form_contact  " id="Consultar">
                 <p:growl id="msg" life="1500" autoUpdate="true"/>
                 <h:panelGrid columns="2">
@@ -44,56 +46,55 @@
                             var="consulta"
                             emptyMessage="Sin Resultados">
                     <p:column  headerText="Datos">
-
+                        <img src="../resources/img/images_1.png" alt="" style="width: 50px"/>
                         <p:outputLabel style="color: #0174DF; font-weight: bold;" value="DNI:  #{consulta.DNIPER} - #{consulta.NOMPER}  #{consulta.APEPER}"/>
+                        <p:separator/>
 
-                            <p:separator/>
- 
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 1: #{consulta.RES1}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 2: #{consulta.RES2}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 3: #{consulta.RES3}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 4: #{consulta.RES4}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 5: #{consulta.RES5}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 6: #{consulta.RES6}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 7: #{consulta.RES7}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 8: #{consulta.RES8}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 9: #{consulta.RES9}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 10: #{consulta.RES10}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 11: #{consulta.RES11}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 12: #{consulta.RES12}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 13: #{consulta.RES13}"/>
-                            <br/>
-                            <br/> 
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 1: #{consulta.RES1}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 2: #{consulta.RES2}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 3: #{consulta.RES3}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 4: #{consulta.RES4}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 5: #{consulta.RES5}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 6: #{consulta.RES6}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 7: #{consulta.RES7}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 8: #{consulta.RES8}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 9: #{consulta.RES9}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 10: #{consulta.RES10}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 11: #{consulta.RES11}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 12: #{consulta.RES12}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="N° PREGUNTA 13: #{consulta.RES13}"/>
+                        <br/>
+                        <br/> 
                     </p:column> 
                 </p:dataGrid>
             </h:form> 
         </section>
-       
+
     </h:body>
 </html>
