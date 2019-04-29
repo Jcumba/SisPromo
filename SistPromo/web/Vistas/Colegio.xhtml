@@ -27,12 +27,12 @@
                                 value="#{colegioC.colegio.UBIGEO_CODUBI}"
                                 completeMethod="#{alumnoC.completeTextUbi}"
                                 style="width: 90%" maxlength="15"/>
-                <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio" />
+                <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio :formcol:tblcol" />
             </p:panelGrid>
         </h:form>
         <br/>
         <h:form id="formcol">
-            <p:dataTable var="colegio" value="#{colegioC.lstColegio}">
+            <p:dataTable  id="tblcol" var="colegio" value="#{colegioC.lstColegio}">
                 <p:column headerText="Colegio">
                     <h:outputText value="#{colegio.NOMCOL}" />
                 </p:column>
