@@ -30,7 +30,7 @@ public class AlumnoM {
     private int Caninscrt; //Cantidad de inscritos
     
     
-    /*variables VISTA_CONSULTAR NOTAS*/
+    /*variables VISTA_CONSULTAR NOTAS RESPUESTAS*/
     private String RES1;
     private String RES2;
     private String RES3;
@@ -44,6 +44,248 @@ public class AlumnoM {
     private String RES11;
     private String RES12;
     private String RES13;
+    
+    /*variables VISTA DE CONSULTA DE SOLUCIONARIO */
+    private String SOL1;
+    private String SOL2;
+    private String SOL3;
+    private String SOL4;
+    private String SOL5;
+    private String SOL6;
+    private String SOL7;
+    private String SOL8;
+    private String SOL9;
+    private String SOL10;
+    private String SOL11;
+    private String SOL12;
+    private String SOL13;
+    
+    /*variables vista CONSULTA DE SOLUCIONARIO_PUNTAJES*/
+    
+    private String PUNTAJ1;
+    private String PUNTAJ2;
+    private String PUNTAJ3;
+    private String PUNTAJ4;
+    private String PUNTAJ5;
+    private String PUNTAJ6;
+    private String PUNTAJ7;
+    private String PUNTAJ8;
+    private String PUNTAJ9;
+    private String PUNTAJ10;
+    private String PUNTAJ11;
+    private String PUNTAJ12;
+    private String PUNTAJ13;
+
+    public String getSOL1() {
+        return SOL1;
+    }
+
+    public void setSOL1(String SOL1) {
+        this.SOL1 = SOL1;
+    }
+
+    public String getSOL2() {
+        return SOL2;
+    }
+
+    public void setSOL2(String SOL2) {
+        this.SOL2 = SOL2;
+    }
+
+    public String getSOL3() {
+        return SOL3;
+    }
+
+    public void setSOL3(String SOL3) {
+        this.SOL3 = SOL3;
+    }
+
+    public String getSOL4() {
+        return SOL4;
+    }
+
+    public void setSOL4(String SOL4) {
+        this.SOL4 = SOL4;
+    }
+
+    public String getSOL5() {
+        return SOL5;
+    }
+
+    public void setSOL5(String SOL5) {
+        this.SOL5 = SOL5;
+    }
+
+    public String getSOL6() {
+        return SOL6;
+    }
+
+    public void setSOL6(String SOL6) {
+        this.SOL6 = SOL6;
+    }
+
+    public String getSOL7() {
+        return SOL7;
+    }
+
+    public void setSOL7(String SOL7) {
+        this.SOL7 = SOL7;
+    }
+
+    public String getSOL8() {
+        return SOL8;
+    }
+
+    public void setSOL8(String SOL8) {
+        this.SOL8 = SOL8;
+    }
+
+    public String getSOL9() {
+        return SOL9;
+    }
+
+    public void setSOL9(String SOL9) {
+        this.SOL9 = SOL9;
+    }
+
+    public String getSOL10() {
+        return SOL10;
+    }
+
+    public void setSOL10(String SOL10) {
+        this.SOL10 = SOL10;
+    }
+
+    public String getSOL11() {
+        return SOL11;
+    }
+
+    public void setSOL11(String SOL11) {
+        this.SOL11 = SOL11;
+    }
+
+    public String getSOL12() {
+        return SOL12;
+    }
+
+    public void setSOL12(String SOL12) {
+        this.SOL12 = SOL12;
+    }
+
+    public String getSOL13() {
+        return SOL13;
+    }
+
+    public void setSOL13(String SOL13) {
+        this.SOL13 = SOL13;
+    }
+
+    public String getPUNTAJ1() {
+        return PUNTAJ1;
+    }
+
+    public void setPUNTAJ1(String PUNTAJ1) {
+        this.PUNTAJ1 = PUNTAJ1;
+    }
+
+    public String getPUNTAJ2() {
+        return PUNTAJ2;
+    }
+
+    public void setPUNTAJ2(String PUNTAJ2) {
+        this.PUNTAJ2 = PUNTAJ2;
+    }
+
+    public String getPUNTAJ3() {
+        return PUNTAJ3;
+    }
+
+    public void setPUNTAJ3(String PUNTAJ3) {
+        this.PUNTAJ3 = PUNTAJ3;
+    }
+
+    public String getPUNTAJ4() {
+        return PUNTAJ4;
+    }
+
+    public void setPUNTAJ4(String PUNTAJ4) {
+        this.PUNTAJ4 = PUNTAJ4;
+    }
+
+    public String getPUNTAJ5() {
+        return PUNTAJ5;
+    }
+
+    public void setPUNTAJ5(String PUNTAJ5) {
+        this.PUNTAJ5 = PUNTAJ5;
+    }
+
+    public String getPUNTAJ6() {
+        return PUNTAJ6;
+    }
+
+    public void setPUNTAJ6(String PUNTAJ6) {
+        this.PUNTAJ6 = PUNTAJ6;
+    }
+
+    public String getPUNTAJ7() {
+        return PUNTAJ7;
+    }
+
+    public void setPUNTAJ7(String PUNTAJ7) {
+        this.PUNTAJ7 = PUNTAJ7;
+    }
+
+    public String getPUNTAJ8() {
+        return PUNTAJ8;
+    }
+
+    public void setPUNTAJ8(String PUNTAJ8) {
+        this.PUNTAJ8 = PUNTAJ8;
+    }
+
+    public String getPUNTAJ9() {
+        return PUNTAJ9;
+    }
+
+    public void setPUNTAJ9(String PUNTAJ9) {
+        this.PUNTAJ9 = PUNTAJ9;
+    }
+
+    public String getPUNTAJ10() {
+        return PUNTAJ10;
+    }
+
+    public void setPUNTAJ10(String PUNTAJ10) {
+        this.PUNTAJ10 = PUNTAJ10;
+    }
+
+    public String getPUNTAJ11() {
+        return PUNTAJ11;
+    }
+
+    public void setPUNTAJ11(String PUNTAJ11) {
+        this.PUNTAJ11 = PUNTAJ11;
+    }
+
+    public String getPUNTAJ12() {
+        return PUNTAJ12;
+    }
+
+    public void setPUNTAJ12(String PUNTAJ12) {
+        this.PUNTAJ12 = PUNTAJ12;
+    }
+
+    public String getPUNTAJ13() {
+        return PUNTAJ13;
+    }
+
+    public void setPUNTAJ13(String PUNTAJ13) {
+        this.PUNTAJ13 = PUNTAJ13;
+    }
+    
+    
+    
 
     public String getRES1() {
         return RES1;

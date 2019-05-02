@@ -18,6 +18,15 @@
         <link href="../resources/css/Responsive.css" rel="stylesheet" type="text/css"/>
         <!-- CSS -->
         <link href="../resources/css/app.min.1.css" rel="stylesheet" type="text/css"/>
+
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
     </h:head>
     <h:body style="float: left;margin-left: 50px">
         <section class="form_wrap form-group" style="width: 750px;height: 500px">
@@ -42,7 +51,7 @@
                             var="consulta"
                             emptyMessage="Sin Resultados">
                     <p:column headerText="Datos">
-                        <p:outputLabel style="color: black; font-weight: bold;" value="DNI: #{consulta.DNIPER}"/>
+                            <p:outputLabel style="color: black; font-weight: bold;" value="DNI: #{consulta.DNIPER}"/>
                         <br/>
                         <br/>
                         <p:outputLabel style="color: black; font-weight: bold;"  value="NOMBRE: #{consulta.NOMPER}"/>
@@ -51,6 +60,9 @@
                         <p:outputLabel  style="color: black; font-weight: bold;" value="NOMBRE: #{consulta.APEPER}"/>
                         <br/>
                         <br/>
+
+
+
                         <center>
                             <h:commandLink value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.descargarPdfCronograma()}">
                                 <i class="zmdi zmdi-download"></i>
@@ -60,6 +72,9 @@
 
                     </p:column> 
                 </p:dataGrid>
+
+
+
 
             </h:form> 
             <a href="../index.xhtml" class="btn btn-success" style="background: #2E9AFE;width: 200px;height: 35px;margin-top: 402px;margin-left: 50px"  >Cancelar</a>
