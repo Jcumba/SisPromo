@@ -7,6 +7,7 @@ public class AulaM {
     private String FORAUL;
     private String ESTAUL;
     private String EXAMEN_CODEXA;
+    private String FECCROEXA, HORCROEXA;
 
     public String getCODAUL() {
         return CODAUL;
@@ -46,6 +47,22 @@ public class AulaM {
 
     public void setEXAMEN_CODEXA(String EXAMEN_CODEXA) {
         this.EXAMEN_CODEXA = EXAMEN_CODEXA;
+    }
+
+    public String getFECCROEXA() {
+        return FECCROEXA;
+    }
+
+    public void setFECCROEXA(String FECCROEXA) {
+        this.FECCROEXA = FECCROEXA;
+    }
+
+    public String getHORCROEXA() {
+        return HORCROEXA;
+    }
+
+    public void setHORCROEXA(String HORCROEXA) {
+        this.HORCROEXA = HORCROEXA;
     }
     
 

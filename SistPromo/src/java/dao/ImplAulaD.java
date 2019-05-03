@@ -1,4 +1,3 @@
-
 package dao;
 
 import Interfaces.AulaI;
@@ -12,15 +11,14 @@ import java.util.List;
 //import java.util.List;
 import modelo.AulaM;
 
-
-public class ImplAulaD  extends Dao implements AulaI{
+public class ImplAulaD extends Dao implements AulaI {
 
     @Override
     public void guardar(AulaM aula) throws Exception {
         try {
             this.conectar();
-            String sql="INSERT INTO AULA (NUMAUL,FORAUL,ESTAUL,EXAMEN_CODEXA) VALUES (?,?,?,?)";
-            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            String sql = "INSERT INTO AULA (NUMAUL,FORAUL,ESTAUL,EXAMEN_CODEXA) VALUES (?,?,?,?)";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, aula.getNUMAUL());
             ps.setString(2, aula.getFORAUL());
             ps.setString(3, "A");
@@ -28,34 +26,72 @@ public class ImplAulaD  extends Dao implements AulaI{
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
+        }finally{
+            this.cerrar();
         }
+    }
+
+    @Override
+    public void modificar(AulaM aula) throws Exception {
+        try {
+            this.conectar();
+            String sql = "UPDATE AULA SET NUMAUL=?,FORAUL=? WHERE CODAUL=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, aula.getNUMAUL());
+            ps.setString(2, aula.getFORAUL());
+            ps.setString(3, aula.getCODAUL());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            this.cerrar();
+        }
+    }
+
+    @Override
+    public void eliminar(AulaM aula) throws Exception {
+        try {
+            this.conectar();
+            String sql = "UPDATE AULA SET ESTAUL=? WHERE CODAUL=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, "I");
+            ps.setString(2, aula.getCODAUL());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            this.cerrar();
+        }
+
     }
 
     @Override
     public List<AulaM> listarAula() throws Exception {
         List<AulaM> listarAula;
         ResultSet rs;
-        try {  
+        try {
             this.conectar();
-            String sql="SELECT * FROM AULA";
-            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            String sql = "SELECT * FROM VW_LISAULCRO";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarAula = new ArrayList();
-            while(rs.next()) {
+            while (rs.next()) {
                 AulaM aula = new AulaM();
                 aula.setCODAUL(rs.getString("CODAUL"));
                 aula.setNUMAUL(rs.getString("NUMAUL"));
                 aula.setFORAUL(rs.getString("FORAUL"));
+                aula.setFECCROEXA(rs.getString("FECCROEXA"));
+                aula.setHORCROEXA(rs.getString("HORCROEXA"));
                 listarAula.add(aula);
             }
-            
+
         } catch (SQLException e) {
             throw e;
-            
-        }finally{
+
+        } finally {
             this.cerrar();
         }
         return listarAula;
     }
-    
+
 }
