@@ -29,11 +29,13 @@ public class AlumnoC implements Serializable {
     private List<AlumnoM> lstConsulta;
     private List<AlumnoM> lstConsultaNotas;
     private PieChartModel pieModel;
+    private AlumnoM selectedAlumno;
 
-    private String dni= null;
-    private String Notas=null;
+    private String dni = null;
+    private String Notas = null;
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
+
     @PostConstruct
     public void init() {
         try {
@@ -82,6 +84,33 @@ public class AlumnoC implements Serializable {
         }
     }
 
+    public void modificarAlumno()  throws Exception{
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            dao.modificarAlumno(selectedAlumno);
+            listarAlumno();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificado Correctamente", null));
+            limpiar();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al Agregar", null));
+            throw e;
+        }
+    }
+
+    public void eliminarrAlumno()  throws Exception{
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            dao.eliminarAlumno(selectedAlumno);
+            listarAlumno();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminado Correctamente", null));
+            limpiar();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al Eliminar", null));
+            throw e;
+        }
+    }
     public List<String> completeTextUbi(String query) throws SQLException, Exception {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutoCompleteUbi(query);
@@ -91,42 +120,39 @@ public class AlumnoC implements Serializable {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutocompleteColegio(query);
     }
-    
-    
-    public List<String> competeTextDni(String query) throws SQLException, Exception{
+
+    public List<String> competeTextDni(String query) throws SQLException, Exception {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutoCompleteDni(query);
     }
-    
-        
-    public List<String> competeTextNotas(String query) throws SQLException, Exception{
+
+    public List<String> competeTextNotas(String query) throws SQLException, Exception {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutoCompleteNotas(query);
     }
-    
-    public void consultar() throws Exception{
-    AlumnoD dao;
+
+    public void consultar() throws Exception {
+        AlumnoD dao;
         try {
             dao = new AlumnoD();
             lstConsulta = dao.consultar(dni);
             limpiar();
         } catch (Exception e) {
             throw e;
-        }     
+        }
     }
-    
-    
-    public void consultarNotas() throws Exception{
-    AlumnoD dao;
+
+    public void consultarNotas() throws Exception {
+        AlumnoD dao;
         try {
             dao = new AlumnoD();
             lstConsultaNotas = dao.consultarNotas(Notas);
             limpiar();
         } catch (Exception e) {
             throw e;
-        }     
+        }
     }
-    
+
     public void cantidadAlumnos() throws SQLException, Exception {
         AlumnoD dao;
         try {
@@ -148,8 +174,7 @@ public class AlumnoC implements Serializable {
         } finally {
         }
     }
-    
-    
+
     private void graficar(List<AlumnoM> list) {
         pieModel = new PieChartModel();
         for (AlumnoM tran : list) {
@@ -234,6 +259,12 @@ public class AlumnoC implements Serializable {
         this.lstConsultaNotas = lstConsultaNotas;
     }
 
-    
-    
+    public AlumnoM getSelectedAlumno() {
+        return selectedAlumno;
+    }
+
+    public void setSelectedAlumno(AlumnoM selectedAlumno) {
+        this.selectedAlumno = selectedAlumno;
+    }
+
 }

@@ -264,17 +264,18 @@ public class AlumnoD extends Dao implements AlumnoI {
         try {
             this.conectar();
             String sql;
-            sql = "select * FROM MV_ALUMNOS";
+            sql = "SELECT * FROM VW_LISALUMCOL";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarAlumno = new ArrayList();
             AlumnoM alumno;
             while (rs.next()) {
                 alumno = new AlumnoM();
+                alumno.setCODPER(rs.getString("CODPER"));
                 alumno.setNOMPER(rs.getString("NOMPER"));
                 alumno.setAPEPER(rs.getString("APEPER"));
                 alumno.setDNIPER(rs.getString("DNIPER"));
-                alumno.setCELPER(rs.getString("CELPER"));
+                alumno.setNOMCOL(rs.getString("NOMCOL"));
                 listarAlumno.add(alumno);
             }
         } catch (SQLException e) {
@@ -353,6 +354,41 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
         return listaCantAlumXCar;
+    }
+
+    @Override
+    public void modificarAlumno(AlumnoM alumno) throws Exception {
+        try {
+            this.conectar();
+            String sql="UPDATE PERSONA SET NOMPER=?, APEPER=?, DNIPER=?,COLEGIO_CODCOL=? where CODPER=?";
+            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            ps.setString(1, alumno.getNOMPER());
+            ps.setString(2, alumno.getAPEPER());
+            ps.setString(3, alumno.getDNIPER());
+            ps.setString(4, alumno.getCOLEGIO_CODCOL());
+            ps.setString(5, alumno.getCODPER());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally{
+            this.cerrar();
+        }
+    }
+
+    @Override
+    public void eliminarAlumno(AlumnoM alumno) throws Exception {
+        try {
+            this.conectar();
+            String sql="UPDATE PERSONA SET ESTPER=? WHERE CODPER=?";
+            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            ps.setString(1, "I");
+            ps.setString(2, alumno.getCODPER());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            this.cerrar();
+        }
     }
 
 }
