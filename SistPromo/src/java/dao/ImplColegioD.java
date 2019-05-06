@@ -14,10 +14,10 @@ public class ImplColegioD extends Dao implements ColegioI {
     public void guardarColegio(ColegioM colegio) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO COLEGIO(NOMCOL,CODREFCOL,UBIGEO_CODUBI) VALUES (?,?,?)";
+            String sql = "INSERT INTO COLEGIO(NOMCOL,ESTCOL,UBIGEO_CODUBI) VALUES (?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, colegio.getNOMCOL());
-            ps.setString(2, colegio.getCODREFCOL());
+            ps.setString(2, "A");
             ps.setString(3, colegio.getUBIGEO_CODUBI());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -31,11 +31,11 @@ public class ImplColegioD extends Dao implements ColegioI {
     public void modificarColegio(ColegioM colegio) throws Exception {
         try {
             this.conectar();
-            String sql = "UPDATE COLEGIO set NOMCOL=?, CODREFCOL=?,UBIGEO_CODUBI=?  where CODCOL=?";
+            String sql = "UPDATE COLEGIO set NOMCOL=?,UBIGEO_CODUBI=?  where CODCOL=?";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, colegio.getNOMCOL());
-            ps.setString(2, colegio.getCODREFCOL());
-            ps.setString(3, colegio.getUBIGEO_CODUBI());
+            ps.setString(2, colegio.getUBIGEO_CODUBI());
+            ps.setString(3, colegio.getCODCOL());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -66,7 +66,7 @@ public class ImplColegioD extends Dao implements ColegioI {
         try {
             this.conectar();
             String sql;
-            sql = "select * FROM VW_COLEGIO";
+            sql = "select * FROM VW_COLEGIO1";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarColegio = new ArrayList();
@@ -75,9 +75,7 @@ public class ImplColegioD extends Dao implements ColegioI {
                 colegio = new ColegioM();
                 colegio.setCODCOL(rs.getString("CODCOL"));
                 colegio.setNOMCOL(rs.getString("NOMCOL"));
-                colegio.setDEPUBICA(rs.getString("DEPUBI"));
-                colegio.setPROUBICA(rs.getString("PROUBI"));
-                colegio.setDISUBICA(rs.getString("DISUBI"));
+                colegio.setUBIGEO(rs.getString("UBIGEO"));
                 listarColegio.add(colegio);
             }
         } catch (SQLException e) {

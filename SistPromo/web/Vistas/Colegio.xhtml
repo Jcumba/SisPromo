@@ -1,58 +1,49 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
 
     <h:head>
         <title>Colegio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-
-        <h:form id="Colegio">
-            <p:growl id="msg" showDetail="true" life="1000"  autoUpdate="true"/>  
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Nombre de Colegio: "/>
-                <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true"/>
-
-                <p:outputLabel value="Codigo Referencia Modular"/>
-                <p:inputText value="#{colegioC.colegio.CODREFCOL}"  maxlength="15">
-                    <p:keyFilter regEx="/[\d]/"/>
-                </p:inputText>       
-                <p:outputLabel  value="Ubicacion de Colegio: "/>
-                <p:autoComplete maxResults="10" emptyMessage="No se encontro ningun Registro"
-                                value="#{colegioC.colegio.UBIGEO_CODUBI}"
-                                completeMethod="#{alumnoC.completeTextUbi}"
-                                style="width: 90%" maxlength="15"/>
-                <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio :formcol:tblcol" />
-            </p:panelGrid>
-        </h:form>
-        <br/>
-        <h:form id="formcol">
-            <p:dataTable  id="tblcol" var="colegio" value="#{colegioC.lstColegio}">
-                <p:column headerText="Colegio">
-                    <h:outputText value="#{colegio.NOMCOL}" />
-                </p:column>
-
-                <p:column headerText="Departamento">
-                    <h:outputText value="#{colegio.DEPUBICA}" />
-                </p:column>
-
-                <p:column headerText="Provincia">
-                    <h:outputText value="#{colegio.PROUBICA}" />
-                </p:column>
-
-                <p:column headerText="Distrito">
-                    <h:outputText value="#{colegio.DISUBICA}" />
-                </p:column>
-            </p:dataTable>
-        </h:form>
-
-
-
-
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                <h:form id="Colegio">
+                    <p:growl id="msg" showDetail="true" life="1000"  autoUpdate="true"/>  
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Nombre de Colegio: "/>
+                        <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true"/>      
+                        <p:outputLabel  value="Ubicacion de Colegio: "/>
+                        <p:autoComplete maxResults="10" emptyMessage="No se encontro ningun Registro"
+                                        value="#{colegioC.colegio.UBIGEO_CODUBI}"
+                                        completeMethod="#{alumnoC.completeTextUbi}"
+                                        style="width: 90%" maxlength="15"/>
+                        <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio :formcol:tblcol" />
+                    </p:panelGrid>
+                </h:form>
+                <br/>
+                <h:form id="formcol">
+                    <p:dataTable  id="tblcol" var="colegio" value="#{colegioC.lstColegio}">
+                        <p:column headerText="Colegio"  filterBy="#{colegio.NOMCOL}">
+                            <h:outputText value="#{colegio.NOMCOL}" />
+                        </p:column>
+                        <p:column headerText="Departamento">
+                            <h:outputText value="#{colegio.UBIGEO}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            #{fn:length(colegioC.lstColegio)} REGISTROS.
+                        </f:facet>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

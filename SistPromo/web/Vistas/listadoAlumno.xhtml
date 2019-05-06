@@ -27,7 +27,7 @@
                         <p:column headerText="APELLIDO">
                             <p:outputLabel value="#{per.APEPER}"/>
                         </p:column>
-                        <p:column headerText="DNI">
+                        <p:column headerText="DNI"  filterBy="#{per.DNIPER}">
                             <p:outputLabel value="#{per.DNIPER}"/>
                         </p:column>
                         <p:column headerText="COLEGIO">
@@ -39,7 +39,7 @@
                     </p:dataTable>
                     <p:contextMenu>
                         <p:menuitem icon="fa fa-edit" value="Modificar"  onclick="PF('dlgModAlumno').show();" update="FormDialog2"/>
-                        <p:menuitem icon="fa fa-trash" value="Eliminar" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
+                        <p:menuitem icon="fa fa-trash" value="Desactivar" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
                             <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
                         </p:menuitem>
                     </p:contextMenu>

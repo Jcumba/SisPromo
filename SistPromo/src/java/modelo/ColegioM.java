@@ -9,6 +9,7 @@ public class ColegioM {
     private String UBIGEO_CODUBI;
     
 //    Vista
+    private String UBIGEO;
     private String DEPUBICA;
     private String PROUBICA;
     private String DISUBICA;
@@ -70,6 +71,14 @@ public class ColegioM {
 
     public void setUBIGEO_CODUBI(String UBIGEO_CODUBI) {
         this.UBIGEO_CODUBI = UBIGEO_CODUBI;
+    }
+
+    public String getUBIGEO() {
+        return UBIGEO;
+    }
+
+    public void setUBIGEO(String UBIGEO) {
+        this.UBIGEO = UBIGEO;
     }
 
 }
