@@ -7,47 +7,70 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Alumnos</title>
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
 
-<!--        <p:commandButton value="REFRESCAR"   update="FormTblAlumno:tblAlumno"/>-->
-        <h:form id="FormTblAlumno">
-            <p:growl autoUpdate="true" life="1000"/>
-            <p:dataTable id="tblAlumno"
-                         value="#{alumnoC.lstAlumno}" var="per"
-                         selectionMode="single"  selection="#{alumnoC.selectedAlumno}"
-                         rowKey="#{per.CODPER}">
-                <p:column headerText="NOMBRE">
-                    <p:outputLabel value="#{per.NOMPER}"/>
-                </p:column>
-                <p:column headerText="APELLIDO">
-                    <p:outputLabel value="#{per.APEPER}"/>
-                </p:column>
-                <p:column headerText="DNI">
-                    <p:outputLabel value="#{per.DNIPER}"/>
-                </p:column>
-                <p:column headerText="COLEGIO">
-                    <p:outputLabel value="#{per.NOMCOL}"/>
-                </p:column>
-                <f:facet name="footer">
-                    #{fn:length(alumnoC.lstAlumno)} REGISTROS.
-                </f:facet>
-            </p:dataTable>
-            <p:contextMenu>
-                <p:menuitem icon="fa fa-trash" value="Eliminar" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
-                    <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
-                </p:menuitem>
-            </p:contextMenu>
-        </h:form>
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                <h:form id="FormTblAlumno">
+                    <p:growl autoUpdate="true" life="1000"/>
+                    <p:dataTable id="tblAlumno"
+                                 value="#{alumnoC.lstAlumno}" var="per"
+                                 selectionMode="single"  selection="#{alumnoC.selectedAlumno}"
+                                 rowKey="#{per.CODPER}">
+                        <p:column headerText="NOMBRE">
+                            <p:outputLabel value="#{per.NOMPER}"/>
+                        </p:column>
+                        <p:column headerText="APELLIDO">
+                            <p:outputLabel value="#{per.APEPER}"/>
+                        </p:column>
+                        <p:column headerText="DNI">
+                            <p:outputLabel value="#{per.DNIPER}"/>
+                        </p:column>
+                        <p:column headerText="COLEGIO">
+                            <p:outputLabel value="#{per.NOMCOL}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            #{fn:length(alumnoC.lstAlumno)} REGISTROS.
+                        </f:facet>
+                    </p:dataTable>
+                    <p:contextMenu>
+                        <p:menuitem icon="fa fa-edit" value="Modificar"  onclick="PF('dlgModAlumno').show();" update="FormDialog2"/>
+                        <p:menuitem icon="fa fa-trash" value="Eliminar" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
+                            <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
+                        </p:menuitem>
+                    </p:contextMenu>
+                </h:form>
 
-        <h:form>
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
-            </p:confirmDialog>
-        </h:form>
-      
+                <h:form>
+                    <p:confirmDialog global="true">
+                        <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+                </h:form>
+
+
+                <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModAlumno" resizable="false"  modal="true">
+                    <h:form id="FormDialog2">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NOMBRE"/>
+                            <p:inputText value="#{alumnoC.selectedAlumno.NOMPER}"/>
+                            <p:outputLabel value="APELLIDO"/>
+                            <p:inputText value="#{alumnoC.selectedAlumno.APEPER}"/>
+                            <p:outputLabel value="DNI"/>
+                            <p:inputText value="#{alumnoC.selectedAlumno.DNIPER}"/>
+                             <p:outputLabel value="COLEGIO"/>
+                             <p:inputText value="#{alumnoC.selectedAlumno.NOMCOL}"/>
+                            <p:commandButton icon="fa fa-edit" value="Modificar" actionListener="#{alumnoC.modificarAlumno()}" update=":FormTblAlumno:tblAlumno"  onclick="PF('dlgModAlumno').hide();"/>
+                            <p:commandButton icon="fa fa-close" value="Cancelar"  onclick="PF('dlgModAlumno').hide();"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

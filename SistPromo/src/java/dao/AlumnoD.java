@@ -360,7 +360,7 @@ public class AlumnoD extends Dao implements AlumnoI {
     public void modificarAlumno(AlumnoM alumno) throws Exception {
         try {
             this.conectar();
-            String sql="UPDATE PERSONA SET NOMPER=?, APEPER=?, DNIPER=?,COLEGIO_CODCOL=? where CODPER=?";
+            String sql="UPDATE PERSONA SET NOMPER=?, APEPER=?, DNIPER=?,COLEGIO_CODCOL=? WHERE CODPER=?";
             PreparedStatement ps=this.getCn().prepareStatement(sql);
             ps.setString(1, alumno.getNOMPER());
             ps.setString(2, alumno.getAPEPER());
