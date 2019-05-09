@@ -22,7 +22,7 @@
         <a href="../index.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Iniciar Session</a>
 
         <a href="Prueba.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Resultados de Examen</a>
-
+         <a href="Dashboart.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">SA</a>
         <br/>
         <section class="form_wrap form-group  " style="width: 500px;height: 950px">
 
@@ -42,9 +42,14 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel style="margin-top: 8px" value="NOMBRE:" />
-                    <p:inputText class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" style="width: 420px" value="#{alumnoC.alumno.NOMPER}"/>
+                    <p:inputText    class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" style="width: 420px" value="#{alumnoC.alumno.NOMPER}"
+                                    onkeyup="this.value = this.value.toUpperCase();">
+                        <p:keyFilter regEx="/[a-z_]/i"/> 	
+                    </p:inputText>
                     <p:outputLabel value="APELLIDO:"/>
-                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px" />
+                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px" onkeyup="this.value = this.value.toUpperCase();">
+                    <p:keyFilter regEx="/[a-z_]/i"/>
+                    </p:inputText>
                     <p:outputLabel value="DNI:"/>
                     <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px"  maxlength="8">
                         <p:keyFilter regEx="/[\d]/"/>
@@ -61,12 +66,16 @@
                                      emptyMessage="No se encontro ningún registro"
                                      value="#{alumnoC.alumno.UBIGEO_CODUBI}"
                                      completeMethod="#{alumnoC.completeTextUbi}"
-                                     style="width: 420px" maxlength="15" />
+                                     style="width: 420px" maxlength="15" onkeyup="this.value = this.value.toUpperCase();">
+                        <p:keyFilter regEx="/[\d]/"/>
+                    </p:autoComplete>
                     <p:outputLabel  value="COLEGIO:"/>
                     <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
                                      value="#{alumnoC.alumno.CODCOL}"        
                                      completeMethod="#{alumnoC.completeTextCol}"
-                                     style="width: 420px" maxlength="15"/>
+                                     style="width: 420px" maxlength="15">
+                        <p:keyFilter regEx="/[\d]/"/>
+                    </p:autoComplete>
                     <p:commandButton  class="btn btn-primary pull-right mio button" style="width: 300px;margin-left: 60px" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}"  update="form"/>
                     <br/>
                     <a href="buscador.xhtml" class="btn btn-info pull-right mio button"  style="width: 300px;margin-left: 60px"  role="button">Solicitar Ficha de Ingreso</a>

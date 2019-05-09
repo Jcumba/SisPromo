@@ -14,14 +14,21 @@
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
                 <h:form id="FormAula">
-                    <p:growl id="msg" showDetail="true" life="1000"  autoUpdate="true"/>
+                    <p:growl id="msg" showDetail="true" life="2000"  autoUpdate="true"/>
                     <p:panel  style="margin-bottom:20px;width:50%">
                         <p:panelGrid columns="2">
-                            <p:outputLabel value="NUM DE AULA"  />
-                            <p:inputText   value="#{aulaC.aula.NUMAUL}" maxlength="2" required="true" requiredMessage="INGRESE EL AULA">
-                                <p:keyFilter regEx="/[\d]/"/>
-                            </p:inputText>
-                            <p:outputLabel value="FORO DE AULA"/>
+                            <p:outputLabel value="NUM DE AULA"/>
+                            <p:selectOneMenu value="#{aulaC.aula.NUMAUL}">  
+                                <f:selectItem itemLabel="Seleccione Aula" itemValue="#{null}" itemDisabled="true"/>
+                                <f:selectItem itemLabel="A1" itemValue="A1" /> 
+                                <f:selectItem itemLabel="A2" itemValue="A2" />
+                                <f:selectItem itemLabel="A3" itemValue="A3" /> 
+                                <f:selectItem itemLabel="A4" itemValue="A4" />
+                                <f:selectItem itemLabel="A5" itemValue="A5" /> 
+                                <f:selectItem itemLabel="A6" itemValue="A6" />
+                                <f:selectItem itemLabel="A7" itemValue="A7" /> 
+                            </p:selectOneMenu>
+                            <p:outputLabel value="AFORO DE AULA"/>
                             <p:inputText   value="#{aulaC.aula.FORAUL}" maxlength="2" required="true" requiredMessage="INGRESE EL FORO DE AULA">
                                 <p:keyFilter regEx="/[\d]/"/>
                             </p:inputText>
@@ -77,10 +84,17 @@
                 <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModAula" resizable="false"  modal="true">
                     <h:form id="FormDialog2">
                         <p:panelGrid columns="2">
-                            <p:outputLabel value="NUM DE AULA"/>
-                            <p:inputText   value="#{aulaC.selectedAula.NUMAUL}"  maxlength="2" required="true" requiredMessage="INGRESE EL NUMERO DE AULA">
-                                <p:keyFilter regEx="/[\d]/"/>
-                            </p:inputText>
+                              <p:outputLabel value="NUM DE AULA"/>
+                              <p:selectOneMenu value="#{aulaC.selectedAula.NUMAUL}">  
+                                <f:selectItem itemLabel="Seleccione Aula" itemValue="#{null}" itemDisabled="true"/>
+                                <f:selectItem itemLabel="A1" itemValue="A1" /> 
+                                <f:selectItem itemLabel="A2" itemValue="A2" />
+                                <f:selectItem itemLabel="A3" itemValue="A3" /> 
+                                <f:selectItem itemLabel="A4" itemValue="A4" />
+                                <f:selectItem itemLabel="A5" itemValue="A5" /> 
+                                <f:selectItem itemLabel="A6" itemValue="A6" />
+                                <f:selectItem itemLabel="A7" itemValue="A7" /> 
+                            </p:selectOneMenu>
                             <p:outputLabel value="FORO DE AULA"/>
                             <p:inputText   value="#{aulaC.selectedAula.FORAUL}" maxlength="2" required="true" requiredMessage="INGRESE FORO DE AULA">
                                 <p:keyFilter regEx="/[\d]/"/>
