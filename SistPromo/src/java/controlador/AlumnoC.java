@@ -28,6 +28,7 @@ public class AlumnoC implements Serializable {
     private List<AlumnoM> lstTopAlumno;
     private List<AlumnoM> lstConsulta;
     private List<AlumnoM> lstConsultaNotas;
+    private List<AlumnoM> lstOrdenMerito;
     private PieChartModel pieModel;
     private AlumnoM selectedAlumno;
 
@@ -41,6 +42,7 @@ public class AlumnoC implements Serializable {
         try {
             listarAlumno();
             listarTopColegios();
+            listarOrdenMerito();
         } catch (Exception e) {
         }
 
@@ -84,7 +86,7 @@ public class AlumnoC implements Serializable {
         }
     }
 
-    public void modificarAlumno()  throws Exception{
+    public void modificarAlumno() throws Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
@@ -98,7 +100,7 @@ public class AlumnoC implements Serializable {
         }
     }
 
-    public void eliminarrAlumno()  throws Exception{
+    public void eliminarrAlumno() throws Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
@@ -111,6 +113,7 @@ public class AlumnoC implements Serializable {
             throw e;
         }
     }
+
     public List<String> completeTextUbi(String query) throws SQLException, Exception {
         AlumnoD dao = new AlumnoD();
         return dao.queryAutoCompleteUbi(query);
@@ -265,6 +268,24 @@ public class AlumnoC implements Serializable {
 
     public void setSelectedAlumno(AlumnoM selectedAlumno) {
         this.selectedAlumno = selectedAlumno;
+    }
+
+    public List<AlumnoM> getLstOrdenMerito() {
+        return lstOrdenMerito;
+    }
+
+    public void setLstOrdenMerito(List<AlumnoM> lstOrdenMerito) {
+        this.lstOrdenMerito = lstOrdenMerito;
+    }
+
+    private void listarOrdenMerito() throws SQLException, Exception {
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            lstOrdenMerito = dao.OrdenMerito();
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 
 }
