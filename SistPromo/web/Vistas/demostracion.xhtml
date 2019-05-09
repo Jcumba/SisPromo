@@ -194,18 +194,18 @@
 
         <p:dialog header="ORDEN DE  MERITO" widgetVar="dlg2" modal="true"  style="width: 300px;height: 300px">
             <h:form style="width: 500px;height: 700px">
-            <p:dataTable var="merito" value="#{alumnoC.lstOrdenMerito}">
-                <p:column headerText="Alumno">
-                    <h:outputText value="#{merito.ALUMMERIT}" />
-                </p:column>
-                 <p:column headerText="Cantidad">
-                     <h:outputText value="#{merito.CANTMERIT}" />
-                </p:column>
-                 <p:column headerText="Puntaje">
-                     <h:outputText value="#{merito.PUNTJMERIT}" />
-                </p:column>
-            </p:dataTable>
-                </h:form>
+                <p:dataTable  id="customers" var="merito" value="#{alumnoC.lstOrdenMerito}">
+                    <p:column headerText="Alumno">
+                        <h:outputText value="#{merito.ALUMMERIT}" />
+                    </p:column>
+                    <p:column headerText="Cantidad">
+                        <h:outputText value="#{merito.CANTMERIT}" />
+                    </p:column>
+                    <p:column headerText="Puntaje">
+                        <h:outputText value="#{merito.PUNTJMERIT}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
         </p:dialog>   
 
 
