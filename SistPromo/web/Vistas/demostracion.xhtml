@@ -45,7 +45,7 @@
                 padding-top: 12px;
                 padding-bottom: 12px;
                 text-align: left;
-                background-color: #045FB4;
+                background-color: #0080FF;
                 color: white;
             }
         </style>
@@ -194,7 +194,7 @@
 
         <p:dialog header="ORDEN DE  MERITO" widgetVar="dlg2" modal="true"  style="width: 300px;height: 300px">
             <h:form style="width: 500px;height: 700px">
-                <p:dataTable  id="customers" var="merito" value="#{alumnoC.lstOrdenMerito}">
+                <p:dataTable  id="customers" var="merito" value="#{alumnoC.lstOrdenMerito}"  style="width: 500px;margin-top: 10px">
                     <p:column headerText="Alumno">
                         <h:outputText value="#{merito.ALUMMERIT}" />
                     </p:column>
@@ -205,6 +205,9 @@
                         <h:outputText value="#{merito.PUNTJMERIT}" />
                     </p:column>
                 </p:dataTable>
+                <h:commandLink value="Descargar PDF" class="btn btn-danger btn-block" style="width: 200px;margin-left: 300px;margin-top: 10px"  actionListener="#{alumnoC.descargarPdfMerito()}">
+                    <i class="zmdi zmdi-download"></i>
+                </h:commandLink>
             </h:form>
         </p:dialog>   
 

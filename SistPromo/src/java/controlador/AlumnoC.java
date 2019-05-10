@@ -58,6 +58,18 @@ public class AlumnoC implements Serializable {
         }
     }
 
+       public void descargarPdfMerito() throws Exception {
+        Reportes rs;
+        try {
+            rs = new Reportes();
+            rs.exportarPDFMerito();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    
+    
     public void listarTopColegios() throws Exception {
         AlumnoD dao;
         try {
