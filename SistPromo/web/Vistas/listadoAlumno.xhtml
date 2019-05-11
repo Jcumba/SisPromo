@@ -10,6 +10,7 @@
         <title>Alumnos</title>
         <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
         <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
+
     </h:head>
     <h:body>
 
@@ -18,9 +19,17 @@
                 <h:form id="FormTblAlumno">
                     <p:growl autoUpdate="true" life="1000"/>
                     <p:dataTable id="tblAlumno" value="#{alumnoC.lstAlumno}" var="per" selectionMode="single"  selection="#{alumnoC.selectedAlumno}"
-                                 rowKey="#{per.CODPER}">
+                                 rowKey="#{per.CODPER}"  paginator="true" rows="5"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                        <p:column headerText="DNI">
+                            <p:outputLabel value="#{per.DNIPER}"/>
+                        </p:column>
                         <p:column headerText="NOMBRE">
                             <p:outputLabel value="#{per.NOMPER}"/>
+                        </p:column>
+                        <p:column headerText="APELLIDO">
+                            <p:outputLabel value="#{per.APEPER}"/>
                         </p:column>
                         <p:column headerText="COLEGIO">
                             <p:outputLabel value="#{per.NOMCOL}"/>
@@ -30,7 +39,7 @@
                         </f:facet>
                     </p:dataTable>
                     <p:contextMenu>
-                        <p:menuitem value="Modificar"  onclick="PF('dlgModAlumno').show();" update="FormDialog2"/>
+
                         <p:menuitem icon="fa fa-trash" value="Desactivar" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
                             <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
                         </p:menuitem>
@@ -42,26 +51,7 @@
                         <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
                     </p:confirmDialog>
                 </h:form>
-                <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModAlumno"
-                  appendTo="@(body)"
-                  closeOnEscape="true"
-                  resizable="false"
-                  responsive="true"
-                  modal="true"  
-                  showEffect="fade"
-                  hideEffect="fade"
-                  onHide="clearPer()">
-                    <h:form id="FormDialog2">
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="NOMBRE"/>
-                            <p:inputText value="#{alumnoC.selectedAlumno.NOMPER}">
-                            </p:inputText> 
-                            <p:commandButton value="MODIFICAR" actionListener="#{alumnoC.modificarAlumno()}"
-                                             update=":FormTblAlumno:tblAlumno" onclick="PF('dlgModAlumno').hide();"/>
-                            <p:commandButton value="CANCELAR" onclick="PF('dlgModAlumno').hide();"/>
-                        </p:panelGrid>
-                    </h:form>
-                </p:dialog>
+
             </ui:define>
         </ui:composition>
     </h:body>

@@ -10,6 +10,8 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import lombok.Data;
@@ -17,15 +19,12 @@ import modelo.UsuarioM;
 import org.primefaces.context.RequestContext;
 import services.SessionUtils;
 
-
-
-
 @Data
 @Named(value = "usuarioController")
 @SessionScoped
 public class UsuarioController implements Serializable {
 
-  private UsuarioM usuario = new UsuarioM();
+    private UsuarioM usuario = new UsuarioM();
     private int Contador = 0;
 
     private String User;
@@ -93,6 +92,12 @@ public class UsuarioController implements Serializable {
         System.out.println(SessionUtils.ObtenerNombreSesion());
     }
 
-
+    public void redireccionPrincipal() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/SistPromo/faces/Vistas/alumno.xhtml");
+        } catch (IOException ex) {
+            System.err.println("Error en Redireccion Principal -> " + ex.getMessage());
+        }
+    }
 
 }
