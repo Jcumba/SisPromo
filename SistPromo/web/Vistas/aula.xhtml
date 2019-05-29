@@ -29,7 +29,7 @@
                                 <f:selectItem itemLabel="A7" itemValue="A7" /> 
                             </p:selectOneMenu>
                             <p:outputLabel value="AFORO DE AULA"/>
-                            <p:inputText   value="#{aulaC.aula.FORAUL}" maxlength="2" required="true" requiredMessage="INGRESE EL FORO DE AULA">
+                            <p:inputText   value="#{aulaC.aula.AFORAUL}" maxlength="2" required="true" requiredMessage="INGRESE EL FORO DE AULA">
                                 <p:keyFilter regEx="/[\d]/"/>
                             </p:inputText>
                             <p:outputLabel value="FECHA DE EXAMEN"/>
@@ -53,8 +53,8 @@
                         <p:column headerText="Numero de Aula">
                             <p:outputLabel value="#{aula.NUMAUL}"/>
                         </p:column>
-                        <p:column headerText="Foro de Aula">
-                            <p:outputLabel value="#{aula.NUMAUL}"/>
+                        <p:column headerText="Aforo de Aula">
+                            <p:outputLabel value="#{aula.AFORAUL}"/>
                         </p:column>
                         <p:column headerText="Fecha de Examen">
                             <p:outputLabel value="#{aula.FECCROEXA}"/>
@@ -96,7 +96,7 @@
                                 <f:selectItem itemLabel="A7" itemValue="A7" /> 
                             </p:selectOneMenu>
                             <p:outputLabel value="FORO DE AULA"/>
-                            <p:inputText   value="#{aulaC.selectedAula.FORAUL}" maxlength="2" required="true" requiredMessage="INGRESE FORO DE AULA">
+                            <p:inputText   value="#{aulaC.selectedAula.AFORAUL}" maxlength="2" required="true" requiredMessage="INGRESE FORO DE AULA">
                                 <p:keyFilter regEx="/[\d]/"/>
                             </p:inputText>
 

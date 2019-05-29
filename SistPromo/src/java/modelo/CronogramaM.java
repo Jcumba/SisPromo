@@ -1,8 +1,8 @@
-
 package modelo;
 
 
 public class CronogramaM {
+
     private String CODEXA;
     private String FECCROEXA;
     private String HORCROEXA;
@@ -15,15 +15,6 @@ public class CronogramaM {
         this.CODEXA = CODEXA;
     }
 
-  
-    public String getFECCROEXA() {
-        return FECCROEXA;
-    }
-
-    public void setFECCROEXA(String FECCROEXA) {
-        this.FECCROEXA = FECCROEXA;
-    }
-
     public String getHORCROEXA() {
         return HORCROEXA;
     }
@@ -32,6 +23,11 @@ public class CronogramaM {
         this.HORCROEXA = HORCROEXA;
     }
 
+    public String getFECCROEXA() {
+        return FECCROEXA;
+    }
 
-    
+    public void setFECCROEXA(String FECCROEXA) {
+        this.FECCROEXA = FECCROEXA;
+    }
 }

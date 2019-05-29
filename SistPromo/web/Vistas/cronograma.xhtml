@@ -72,8 +72,8 @@
                 <p:dialog id="dlg"  header="Agregar Cronograma" widgetVar="dlgNewCronograma" resizable="false" modal="true">
                     <h:form id="FormCronograma" class="form_contact">
                         <p:panelGrid columns="2">
-                            <p:outputLabel  value="FECHA"/>
-                            <p:inputMask mask="99/99/9999"   value="#{cronogramaC.cronograma.FECCROEXA}"/>
+                            <p:outputLabel value="FECHA"/>
+                            <p:inputMask value="#{cronogramaC.cronograma.FECCROEXA}"  mask="99/99/9999"/>
                             <p:outputLabel value="HORA"/>
                             <p:inputMask mask="99:99:AM"  value="#{cronogramaC.cronograma.HORCROEXA}"/>
                             <p:commandButton class="btn btn-primary pull-right mio" value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>

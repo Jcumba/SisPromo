@@ -17,10 +17,10 @@ public class ImplAulaD extends Dao implements AulaI {
     public void guardar(AulaM aula) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO AULA (NUMAUL,FORAUL,ESTAUL,EXAMEN_CODEXA) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO AULA (NUMAUL,AFORAUL,ESTAUL,EXAMEN_CODEXA) VALUES (?,?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, aula.getNUMAUL());
-            ps.setString(2, aula.getFORAUL());
+            ps.setString(2, aula.getAFORAUL());
             ps.setString(3, "A");
             ps.setString(4, aula.getEXAMEN_CODEXA());
             ps.executeUpdate();
@@ -35,10 +35,10 @@ public class ImplAulaD extends Dao implements AulaI {
     public void modificar(AulaM aula) throws Exception {
         try {
             this.conectar();
-            String sql = "UPDATE AULA SET NUMAUL=?,FORAUL=? WHERE CODAUL=?";
+            String sql = "UPDATE AULA SET NUMAUL=?,AFORAUL=? WHERE CODAUL=?";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, aula.getNUMAUL());
-            ps.setString(2, aula.getFORAUL());
+            ps.setString(2, aula.getAFORAUL());
             ps.setString(3, aula.getCODAUL());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -79,7 +79,7 @@ public class ImplAulaD extends Dao implements AulaI {
                 AulaM aula = new AulaM();
                 aula.setCODAUL(rs.getString("CODAUL"));
                 aula.setNUMAUL(rs.getString("NUMAUL"));
-                aula.setFORAUL(rs.getString("FORAUL"));
+                aula.setAFORAUL(rs.getString("AFORAUL"));
                 aula.setFECCROEXA(rs.getString("FECCROEXA"));
                 aula.setHORCROEXA(rs.getString("HORCROEXA"));
                 listarAula.add(aula);

@@ -48,9 +48,11 @@ public class ImplColegioD extends Dao implements ColegioI {
     public void eliminarColegio(ColegioM colegio) throws Exception {
         try {
             this.conectar();
-            String sql = "DELETE FROM COLEGIO WHERE CODCOL LIKE ?";
+            String sql="UPDATE COLEGIO SET ESTCOL=? WHERE  CODCOL=?";
+//            String sql = "DELETE FROM COLEGIO WHERE CODCOL LIKE ?";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
-            ps.setString(1, colegio.getCODCOL());
+            ps.setString(1,"I");
+            ps.setString(2, colegio.getCODCOL());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;

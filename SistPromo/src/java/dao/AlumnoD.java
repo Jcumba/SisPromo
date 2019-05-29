@@ -34,6 +34,41 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
+       @Override
+    public void modificarAlumno(AlumnoM alumno) throws Exception {
+        try {
+            this.conectar();
+            String sql = "UPDATE PERSONA SET NOMPER=?, APEPER=?, DNIPER=?,COLEGIO_CODCOL=? WHERE CODPER=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, alumno.getNOMPER());
+            ps.setString(2, alumno.getAPEPER());
+            ps.setString(3, alumno.getDNIPER());
+            ps.setString(4, alumno.getCODCOL());
+            ps.setString(5, alumno.getCODPER());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+
+    @Override
+    public void eliminarAlumno(AlumnoM alumno) throws Exception {
+        try {
+            this.conectar();
+            String sql = "UPDATE PERSONA SET ESTPER=? WHERE CODPER=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, "I");
+            ps.setString(2, alumno.getCODPER());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+
 
     public List<String> queryAutoCompleteUbi(String a) throws SQLException, ClassNotFoundException, Exception {
         this.conectar();
@@ -352,41 +387,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         return listaCantAlumXCar;
     }
 
-    @Override
-    public void modificarAlumno(AlumnoM alumno) throws Exception {
-        try {
-            this.conectar();
-            String sql = "UPDATE PERSONA SET NOMPER=?, APEPER=?, DNIPER=?,COLEGIO_CODCOL=? WHERE CODPER=?";
-            PreparedStatement ps = this.getCn().prepareStatement(sql);
-            ps.setString(1, alumno.getNOMPER());
-            ps.setString(2, alumno.getAPEPER());
-            ps.setString(3, alumno.getDNIPER());
-            ps.setString(4, alumno.getCOLEGIO_CODCOL());
-            ps.setString(5, alumno.getCODPER());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-    }
-
-    @Override
-    public void eliminarAlumno(AlumnoM alumno) throws Exception {
-        try {
-            this.conectar();
-            String sql = "UPDATE PERSONA SET ESTPER=? WHERE CODPER=?";
-            PreparedStatement ps = this.getCn().prepareStatement(sql);
-            ps.setString(1, "I");
-            ps.setString(2, alumno.getCODPER());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-    }
-
+ 
     @Override
     public List<AlumnoM> OrdenMerito() throws Exception {
         List<AlumnoM> listarMerito;

@@ -1,6 +1,4 @@
-
 package controlador;
-
 
 import dao.AlumnoD;
 import dao.ImplColegioD;
@@ -27,10 +25,10 @@ import org.primefaces.PrimeFaces;
 @SessionScoped
 public class ColegioC implements Serializable {
 
-    ColegioM colegio = new ColegioM();
+    private ColegioM colegio = new ColegioM();
     private ColegioM selectedColegio;
     private List<ColegioM> lstColegio;
-    
+
     Calendar Cal = Calendar.getInstance();
     String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
 
@@ -42,13 +40,10 @@ public class ColegioC implements Serializable {
         }
 
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         colegio = new ColegioM();
     }
-            
-    
- 
 
     private void listarColegio() throws Exception {
         ImplColegioD dao;
@@ -60,11 +55,13 @@ public class ColegioC implements Serializable {
         }
     }
 
-
     public void modificarColegio() {
+        AlumnoD dao1;
         ImplColegioD dao;
         try {
+            dao1 = new AlumnoD();
             dao = new ImplColegioD();
+            selectedColegio.setUBIGEO_CODUBI(dao1.leerUbi(selectedColegio.getUBIGEO_CODUBI()));
             dao.modificarColegio(selectedColegio);
             listarColegio();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MODIFICADO", "Correctamente"));
@@ -73,7 +70,7 @@ public class ColegioC implements Serializable {
         }
     }
 
-    public void guardarColegio() {
+    public void guardarColegio() throws Exception {
         AlumnoD dao1;
         ImplColegioD dao;
         try {
@@ -86,10 +83,11 @@ public class ColegioC implements Serializable {
             listarColegio();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo agregar"));
+            throw e;
         }
     }
 
-    public void eliminarColegio() {
+    public void eliminarColegio() throws Exception {
         ImplColegioD dao;
         try {
             dao = new ImplColegioD();
@@ -98,6 +96,7 @@ public class ColegioC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ELIMINADO", "Correctamente"));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo eliminar"));
+            throw e;
         }
     }
 

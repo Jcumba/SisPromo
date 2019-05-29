@@ -39,8 +39,8 @@
                         </f:facet>
                     </p:dataTable>
                     <p:contextMenu>
-
-                        <p:menuitem icon="fa fa-trash" value="Desactivar" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
+                        <p:menuitem value="MODIFICAR" onclick="PF('dlgModAlumno').show();"  update="FormDialog2"/>
+                        <p:menuitem value="DESACTIVAR" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
                             <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
                         </p:menuitem>
                     </p:contextMenu>
@@ -51,6 +51,28 @@
                         <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
                     </p:confirmDialog>
                 </h:form>
+
+                <p:dialog id="dialogo" header="ACTUALIZAR DATOS" widgetVar="dlgModAlumno"  height="250" width="500"  resizable="false" modal="true">
+                    <h:form id="FormDialog2">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="DNI"/>
+                            <p:inputText value="#{alumnoC.selectedAlumno.DNIPER}"/>
+                            <p:outputLabel value="NOMBRE"/>
+                            <p:inputText value="#{alumnoC.selectedAlumno.NOMPER}"/>
+                            <p:outputLabel value="APELLIDO"/>
+                            <p:inputText value="#{alumnoC.selectedAlumno.APEPER}"/>
+                            <p:outputLabel value="COLEGIO"/>
+                            <p:autoComplete maxResults="10" emptyMessage="No se encontro ningún registro"
+                                            value="#{alumnoC.selectedAlumno.CODCOL}" completeMethod="#{alumnoC.completeTextCol}"
+                                            style="width: 400px" maxlength="15">
+                            </p:autoComplete>
+                            <p:commandButton value="MODIFICAR" actionListener="#{alumnoC.modificarAlumno()}"  update=":FormTblAlumno:tblAlumno"  oncomplete="PF('dlgModAlumno').hide()"/>
+                            <p:commandButton value="CANCELAR" oncomplete="PF('dlgModAlumno').hide()"/>
+                        </p:panelGrid>
+
+
+                    </h:form>
+                </p:dialog>   
 
             </ui:define>
         </ui:composition>

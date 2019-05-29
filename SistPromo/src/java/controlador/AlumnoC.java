@@ -22,7 +22,7 @@ import org.primefaces.model.chart.PieChartModel;
 @SessionScoped
 public class AlumnoC implements Serializable {
 
-    AlumnoM alumno = new AlumnoM();
+    private AlumnoM alumno = new AlumnoM();
     CarreraM carrera = new CarreraM();
     private List<AlumnoM> lstAlumno;
     private List<AlumnoM> lstTopAlumno;
@@ -102,10 +102,11 @@ public class AlumnoC implements Serializable {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
+            selectedAlumno.setCODCOL(dao.obtenerCodigoColegio(selectedAlumno.getCODCOL()));
             dao.modificarAlumno(selectedAlumno);
-            limpiar();
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificado Correctamente", null));
             listarAlumno();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificado Correctamente", null));
+            limpiar();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR AL MODIFICAR", null));
             throw e;

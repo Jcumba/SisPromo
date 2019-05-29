@@ -4,7 +4,7 @@ package modelo;
 public class AulaM {
     private String CODAUL;
     private String NUMAUL;
-    private String FORAUL;
+    private String AFORAUL;
     private String ESTAUL;
     private String EXAMEN_CODEXA;
     private String FECCROEXA, HORCROEXA;
@@ -25,13 +25,15 @@ public class AulaM {
         this.NUMAUL = NUMAUL;
     }
 
-    public String getFORAUL() {
-        return FORAUL;
+    public String getAFORAUL() {
+        return AFORAUL;
     }
 
-    public void setFORAUL(String FORAUL) {
-        this.FORAUL = FORAUL;
+    public void setAFORAUL(String AFORAUL) {
+        this.AFORAUL = AFORAUL;
     }
+
+ 
 
     public String getESTAUL() {
         return ESTAUL;
