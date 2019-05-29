@@ -9,11 +9,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.AulaM;
+import modelo.CronogramaM;
 
 @Named(value = "aulaC")
 @SessionScoped
 public class AulaC implements Serializable {
 
+    CronogramaM cronograma = new CronogramaM();
     AulaM aula = new AulaM();
     private List<AulaM> lstAula;
     private AulaM selectedAula;
@@ -106,6 +108,14 @@ public class AulaC implements Serializable {
 
     public void setSelectedAula(AulaM selectedAula) {
         this.selectedAula = selectedAula;
+    }
+
+    public CronogramaM getCronograma() {
+        return cronograma;
+    }
+
+    public void setCronograma(CronogramaM cronograma) {
+        this.cronograma = cronograma;
     }
 
 }

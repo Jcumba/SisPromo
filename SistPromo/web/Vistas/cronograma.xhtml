@@ -13,8 +13,6 @@
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
-
-
                 <h:form class="form_contact" id="FormTblCronograma">
                     <p:growl autoUpdate="true" life="1000"/>
                     <p:dataTable  id="tblCronograma"
@@ -36,7 +34,10 @@
                             </center>
                         </f:facet>
                         <p:column headerText="FECHA">
-                            <p:outputLabel  style="color: black; font-weight: bold;"  value="#{cronograma.FECCROEXA}"/>
+                            <p:outputLabel  style="color: black; font-weight: bold;"  value="#{cronograma.fechaTemporal}">
+                                <f:convertDateTime locale="es" pattern="dd MMM yyyy"/>
+                            </p:outputLabel>
+                                
                         </p:column>
                         <p:column headerText="HORA">
                             <p:outputLabel    style="color: black; font-weight: bold;"  value="#{cronograma.HORCROEXA}"/>
@@ -62,7 +63,9 @@
                     <h:form id="FormDialog2">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="FECHA"/>
-                            <p:inputText value="#{cronogramaC.selectedCronograma.FECCROEXA}"/>
+                            <p:calendar  id="popup" value="#{cronogramaC.selectedCronograma.fechaTemporal}"  locale="es" navigator="true" pattern="dd MMM yyyy"/>
+                            <p:outputLabel value="HORA"/>
+                            <p:inputText value="#{cronogramaC.selectedCronograma.HORCROEXA}"/>
                             <p:commandButton icon="fa fa-edit" value="MODIFICAR" actionListener="#{cronogramaC.modificar()}" update="FormTblCronograma:tblCronograma" onclick="PF('dlgModCronograma').hide;"/>
                             <p:commandButton icon="fa fa-close" value="Cancelar" onclick="PF('dlgModCronograma').hide();"/>
                         </p:panelGrid>
@@ -73,7 +76,7 @@
                     <h:form id="FormCronograma" class="form_contact">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="FECHA"/>
-                            <p:inputMask value="#{cronogramaC.cronograma.FECCROEXA}"  mask="99/99/9999"/>
+                            <p:calendar  id="popup" value="#{cronogramaC.cronograma.fechaTemporal}"  locale="es" navigator="true" pattern="dd MMM yyyy"/>
                             <p:outputLabel value="HORA"/>
                             <p:inputMask mask="99:99:AM"  value="#{cronogramaC.cronograma.HORCROEXA}"/>
                             <p:commandButton class="btn btn-primary pull-right mio" value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>
@@ -83,6 +86,21 @@
                 </p:dialog>
             </ui:define>
         </ui:composition>
+        <script>
+            PrimeFaces.locales['es'] = {
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                firstDay: 1,
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                ampm: false
+            };
+        </script>
+
     </h:body>
 </html>
 

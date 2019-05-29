@@ -30,17 +30,18 @@ public class CronogramaC implements Serializable {
         cronograma = new CronogramaM();
     }
 
-    public void guardarCronograma() throws Exception{
+    public void guardarCronograma() throws Exception {
         CronogramaD dao;
         try {
             dao = new CronogramaD();
+            cronograma.setFECINC(new java.sql.Date(cronograma.getFechaTemporal().getTime()));
             dao.guardar(cronograma);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO", null));
             listarCronograma();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERRO AL AGREGAR", null));
-                throw e;
+            throw e;
         }
     }
 

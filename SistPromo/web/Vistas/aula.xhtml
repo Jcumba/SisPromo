@@ -33,9 +33,9 @@
                                 <p:keyFilter regEx="/[\d]/"/>
                             </p:inputText>
                             <p:outputLabel value="FECHA DE EXAMEN"/>
-                            <p:selectOneMenu  value="#{aulaC.aula.EXAMEN_CODEXA}" required="true" requiredMessage="INGRESE EL FECHA DE EXAMEN">
-                                <f:selectItem  itemLabel="Seleccione Fecha" itemDisabled="true" />
-                                <f:selectItems  value="#{cronogramaC.lstCronograma}" var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.FECCROEXA}"/>
+                            <p:selectOneMenu value="#{aulaC.aula.EXAMEN_CODEXA}">
+                                <f:selectItem itemLabel="Seleccione Fecha" itemDisabled="true"/>
+                                <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}"  itemLabel="#{cronograma.FECCROEXA}"/>  
                             </p:selectOneMenu>
                             <p:commandButton  value="GUARDAR" actionListener="#{aulaC.guardar()}"  update="FormAula :FormtblAula:tblAula"/>
                         </p:panelGrid>
