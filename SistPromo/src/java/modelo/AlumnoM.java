@@ -80,6 +80,18 @@ public class AlumnoM {
     private String ALUMMERIT;
     private String CANTMERIT;
     private String PUNTJMERIT;
+    private String NOMPERMERIT;
+
+    public String getNOMPERMERIT() {
+        return NOMPERMERIT;
+    }
+
+    public void setNOMPERMERIT(String NOMPERMERIT) {
+        this.NOMPERMERIT = NOMPERMERIT;
+    }
+    
+    
+    
 
     public String getALUMMERIT() {
         return ALUMMERIT;
