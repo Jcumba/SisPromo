@@ -7,21 +7,18 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Cronograma</title>
-        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
-        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
+<!--        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>-->
     </h:head>
     <h:body>
-        <ui:composition template="../Template/Dashboart.xhtml">
-            <ui:define name="content">
+<!--        <ui:composition template="../Template/Dashboart.xhtml">
+            <ui:define name="content">-->
                 <h:form class="form_contact" id="FormTblCronograma">
                     <p:growl autoUpdate="true" life="1000"/>
-                    <p:dataTable  id="tblCronograma"
-                                  value="#{cronogramaC.lstCronograma}" 
-                                  var="cronograma"
-                                  class="table table-striped" 
+                    <p:dataTable  id="tblCronograma"    var="cronograma"   value="#{cronogramaC.lstCronograma}" 
+                                   rowKey="#{cronograma.CODEXA}"  class="table table-striped" 
                                   selectionMode="single"
                                   selection="#{cronogramaC.selectedCronograma}"
-                                  rowKey="#{cronograma.CODEXA}"
                                   rows="10" paginator="true"
                                   paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
                                   rowsPerPageTemplate="5,10,15" reflow="true">
@@ -37,7 +34,6 @@
                             <p:outputLabel  style="color: black; font-weight: bold;"  value="#{cronograma.fechaTemporal}">
                                 <f:convertDateTime locale="es" pattern="dd MMM yyyy"/>
                             </p:outputLabel>
-                                
                         </p:column>
                         <p:column headerText="HORA">
                             <p:outputLabel    style="color: black; font-weight: bold;"  value="#{cronograma.HORCROEXA}"/>
@@ -63,7 +59,7 @@
                     <h:form id="FormDialog2">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="FECHA"/>
-                            <p:calendar  id="popup" value="#{cronogramaC.selectedCronograma.fechaTemporal}"  locale="es" navigator="true" pattern="dd MMM yyyy"/>
+                            <p:calendar  id="popup" value="#{cronogramaC.selectedCronograma.fechaTemporal}"  locale="es" navigator="true" pattern="dd/MM/yyyy"/>
                             <p:outputLabel value="HORA"/>
                             <p:inputText value="#{cronogramaC.selectedCronograma.HORCROEXA}"/>
                             <p:commandButton icon="fa fa-edit" value="MODIFICAR" actionListener="#{cronogramaC.modificar()}" update="FormTblCronograma:tblCronograma" onclick="PF('dlgModCronograma').hide;"/>
@@ -76,7 +72,7 @@
                     <h:form id="FormCronograma" class="form_contact">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="FECHA"/>
-                            <p:calendar  id="popup" value="#{cronogramaC.cronograma.fechaTemporal}"  locale="es" navigator="true" pattern="dd MMM yyyy"/>
+                            <p:calendar  id="popup" value="#{cronogramaC.cronograma.fechaTemporal}"  locale="es" navigator="true" pattern="dd/MM/yyyy"/>
                             <p:outputLabel value="HORA"/>
                             <p:inputMask mask="99:99:AM"  value="#{cronogramaC.cronograma.HORCROEXA}"/>
                             <p:commandButton class="btn btn-primary pull-right mio" value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>
@@ -84,8 +80,8 @@
                         </p:panelGrid>
                     </h:form>
                 </p:dialog>
-            </ui:define>
-        </ui:composition>
+<!--            </ui:define>
+        </ui:composition>-->
         <script>
             PrimeFaces.locales['es'] = {
                 prevText: 'Anterior',
