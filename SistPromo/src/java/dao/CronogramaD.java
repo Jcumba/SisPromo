@@ -4,20 +4,20 @@ import Interfaces.CronogramaI;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.Format;
-import java.text.SimpleDateFormat;
+//import java.text.Format;
+//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.CronogramaM;
 
 public class CronogramaD extends Dao implements CronogramaI {
- Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+// Format formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public void guardar(CronogramaM cronograma) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO CRONOGRAMA_EXAMEN (FECCROEXA,HORCROEXA) VALUES (to_char(?,'dd/mm/YYYY'),?)";
+            String sql = "INSERT INTO CRONOGRAMA_EXAMEN (FECCROEXA,HORCROEXA) VALUES (?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setDate(1, cronograma.getFECINC());
             ps.setString(2, cronograma.getHORCROEXA());
@@ -36,7 +36,7 @@ public class CronogramaD extends Dao implements CronogramaI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT * FROM CRONOGRAMA_EXAMEN WHERE ROWNUM < 2 ORDER BY CODEXA DESC";
+            String sql = "SELECT CODEXA,FECCROEXA, HORCROEXA FROM CRONOGRAMA_EXAMEN WHERE ROWNUM < 2 ORDER BY CODEXA DESC";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarCronograma = new ArrayList();
