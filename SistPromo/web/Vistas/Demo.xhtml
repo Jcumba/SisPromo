@@ -35,30 +35,10 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <h:form id="tableta">
-                            <p:dataTable class="table table-bordered" id="dataTable"  var="alumno" value="#{alumnoC.lstAlumno}">
-                                <p:column headerText="Nombre">
-                                    <h:outputText value="#{alumno.NOMPER}" />
-                                </p:column>
-
-                                <p:column headerText="Apellido">
-                                    <h:outputText value="#{alumno.APEPER}" />
-                                </p:column>
-
-                                <p:column headerText="DNI">
-                                    <h:outputText value="#{alumno.DNIPER}" />
-                                </p:column>
-
-                                <p:column headerText="celular">
-                                    <h:outputText value="#{alumno.CELPER}" />
-                                </p:column>
-
-                                <p:column headerText="colegio">
-                                    <h:outputText value="#{alumno.NOMCOL}" />
-                                </p:column>
-
-                            </p:dataTable>
-                        </h:form>
+                        
+                        <p:commandButton value="agregar" style="margin-bottom: 15px;height: 40px"/>
+                        
+         
                     </div>
                 </div>
             </div>
