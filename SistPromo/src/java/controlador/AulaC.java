@@ -4,22 +4,28 @@ import dao.ImplAulaD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.AulaM;
-import modelo.CronogramaM;
+
 
 @Named(value = "aulaC")
 @SessionScoped
 public class AulaC implements Serializable {
 
-    CronogramaM cronograma = new CronogramaM();
+    
     AulaM aula = new AulaM();
     private List<AulaM> lstAula;
     private AulaM selectedAula;
 
+    
+ 
+    
+    
     @PostConstruct
     public void iniciar() {
         try {
@@ -28,7 +34,8 @@ public class AulaC implements Serializable {
         }
 
     }
-
+    
+    
     public void limpiar() {
         aula = new AulaM();
     }
@@ -37,6 +44,7 @@ public class AulaC implements Serializable {
         ImplAulaD dao;
         try {
             dao = new ImplAulaD();
+            aula.setFECINC(new java.sql.Date(aula.getFechaTemporal().getTime()));
             dao.guardar(aula);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGARDO CORRECTAMENTE", null));
@@ -110,12 +118,5 @@ public class AulaC implements Serializable {
         this.selectedAula = selectedAula;
     }
 
-    public CronogramaM getCronograma() {
-        return cronograma;
-    }
-
-    public void setCronograma(CronogramaM cronograma) {
-        this.cronograma = cronograma;
-    }
 
 }

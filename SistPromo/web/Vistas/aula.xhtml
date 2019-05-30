@@ -14,7 +14,7 @@
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
                 <h:form id="FormAula">
-                    <p:growl id="msg" showDetail="true" life="2000"  autoUpdate="true"/>
+                    <p:growl id="msg" showDetail="true" life="10000"  autoUpdate="true"/>
                     <p:panel  style="margin-bottom:20px;width:50%">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="NUM DE AULA"/>
@@ -33,12 +33,13 @@
                                 <p:keyFilter regEx="/[\d]/"/>
                             </p:inputText>
                             <p:outputLabel value="FECHA DE EXAMEN"/>
-                            <p:selectOneMenu value="#{aulaC.aula.EXAMEN_CODEXA}">
+                            <p:selectOneMenu value="#{aulaC.aula.FECINC}">
                                 <f:selectItem itemLabel="Seleccione Fecha" itemDisabled="true"/>
-                                <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}"  itemLabel="#{cronograma.FECCROEXA}"/>  
+                                <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.fechaTemporal}"/>
+                                <f:convertDateTime locale="es" pattern="dd MM yyyy"/>
                             </p:selectOneMenu>
                             <p:commandButton  value="GUARDAR" actionListener="#{aulaC.guardar()}"  update="FormAula :FormtblAula:tblAula"/>
-                        </p:panelGrid>
+                        </p:panelGrid> 
                     </p:panel>
                 </h:form>
 
@@ -48,7 +49,7 @@
                                  selection="#{aulaC.selectedAula}" selectionMode="single"
                                  rows="5"
                                  paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+
                                  rowsPerPageTemplate="5,10,15">
                         <p:column headerText="Numero de Aula">
                             <p:outputLabel value="#{aula.NUMAUL}"/>
@@ -57,7 +58,9 @@
                             <p:outputLabel value="#{aula.AFORAUL}"/>
                         </p:column>
                         <p:column headerText="Fecha de Examen">
-                            <p:outputLabel value="#{aula.FECCROEXA}"/>
+                            <p:outputLabel value="#{aula.fechaTemporal}">
+                                <f:convertDateTime locale="es" pattern="dd MM yyyy"/>
+                            </p:outputLabel>
                         </p:column>
                         <p:column headerText="Hora de Examen">
                             <p:outputLabel value="#{aula.HORCROEXA}"/>
@@ -84,8 +87,8 @@
                 <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModAula" resizable="false"  modal="true">
                     <h:form id="FormDialog2">
                         <p:panelGrid columns="2">
-                              <p:outputLabel value="NUM DE AULA"/>
-                              <p:selectOneMenu value="#{aulaC.selectedAula.NUMAUL}">  
+                            <p:outputLabel value="NUM DE AULA"/>
+                            <p:selectOneMenu value="#{aulaC.selectedAula.NUMAUL}">  
                                 <f:selectItem itemLabel="Seleccione Aula" itemValue="#{null}" itemDisabled="true"/>
                                 <f:selectItem itemLabel="A1" itemValue="A1" /> 
                                 <f:selectItem itemLabel="A2" itemValue="A2" />
@@ -101,9 +104,9 @@
                             </p:inputText>
 
                             <p:outputLabel value="FECHA DE EXAMEN"/>
-                            <p:selectOneMenu  value="#{aulaC.selectedAula.EXAMEN_CODEXA}">
+                            <p:selectOneMenu  value="#{aulaC.selectedAula.FECINC}">
                                 <f:selectItem  itemLabel="Seleccione Fecha" itemDisabled="true" />
-                                <f:selectItems  value="#{cronogramaC.lstCronograma}" var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.FECCROEXA}"/>
+                                <f:selectItems  value="#{cronogramaC.lstCronograma}" var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.fechaTemporal}"/>
                             </p:selectOneMenu>
                             <p:commandButton icon="fa fa-edit" value="Modificar" actionListener="#{aulaC.modificarAula()}" update=":FormtblAula:tblAula"  onclick="PF('dlgModAutor').hide();"/>
                             <p:commandButton icon="fa fa-close" value="Cancelar"  onclick="PF('dlgModAula').hide();"/>
@@ -112,6 +115,21 @@
                 </p:dialog>
             </ui:define>
         </ui:composition>
+
+        <script>
+            PrimeFaces.locales['es'] = {
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                firstDay: 1,
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                ampm: false
+            };
+        </script>
     </h:body>
 </html>
 

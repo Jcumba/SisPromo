@@ -42,7 +42,7 @@ public class UsuarioController implements Serializable {
                         FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
                         break;
                     case "2":
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Dashboart.xhtml");
                         break;
                     default:
                         break;
@@ -75,7 +75,7 @@ public class UsuarioController implements Serializable {
                     FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
                     break;
                 case "2":
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Template.xhtml");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Template/Dashboart.xhtml");
                     break;
             }
         }

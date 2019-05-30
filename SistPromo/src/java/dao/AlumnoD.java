@@ -34,7 +34,8 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
-       @Override
+
+    @Override
     public void modificarAlumno(AlumnoM alumno) throws Exception {
         try {
             this.conectar();
@@ -68,7 +69,6 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
-
 
     public List<String> queryAutoCompleteUbi(String a) throws SQLException, ClassNotFoundException, Exception {
         this.conectar();
@@ -387,7 +387,6 @@ public class AlumnoD extends Dao implements AlumnoI {
         return listaCantAlumXCar;
     }
 
- 
     @Override
     public List<AlumnoM> OrdenMerito() throws Exception {
         List<AlumnoM> listarMerito;
@@ -402,6 +401,7 @@ public class AlumnoD extends Dao implements AlumnoI {
             AlumnoM merito;
             while (rs.next()) {
                 merito = new AlumnoM();
+                merito.setNOMPERMERIT(rs.getString("NOMPER"));
                 merito.setALUMMERIT(rs.getString("ALUMNO"));
                 merito.setCANTMERIT(rs.getString("CANTIDAD"));
                 merito.setPUNTJMERIT(rs.getString("PUNTAJE"));

@@ -1,6 +1,8 @@
 
 package modelo;
 
+import java.sql.Date;
+
 public class AulaM {
     private String CODAUL;
     private String NUMAUL;
@@ -9,6 +11,25 @@ public class AulaM {
     private String EXAMEN_CODEXA;
     private String FECCROEXA, HORCROEXA;
 
+    
+     Date FECINC;
+    java.util.Date fechaTemporal;
+
+    public Date getFECINC() {
+        return FECINC;
+    }
+
+    public void setFECINC(Date FECINC) {
+        this.FECINC = FECINC;
+    }
+
+    public java.util.Date getFechaTemporal() {
+        return fechaTemporal;
+    }
+
+    public void setFechaTemporal(java.util.Date fechaTemporal) {
+        this.fechaTemporal = fechaTemporal;
+    }
     public String getCODAUL() {
         return CODAUL;
     }
