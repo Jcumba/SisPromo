@@ -68,7 +68,7 @@
     <h:body>
         <div class="container-contact100">
             <div class="wrap-contact100">
-                <form class="contact100-form validate-form">
+                <h:form class="contact100-form validate-form">
                     <img src="../resources/img/demo.jpg" style="margin-left: 120px;margin-bottom: 10px" alt=""/>
 
                     <span class="contact100-form-title">
@@ -87,6 +87,7 @@
 
 
                     <p:dataTable var="merito" value="#{alumnoC.lstOrdenMerito}" scrollable="true" scrollHeight="300">
+
                         <p:column headerText="Nombres y Apellidos" >
                             <h:outputText value="#{merito.ALUMMERIT} #{merito.NOMPERMERIT}" />
                         </p:column>
@@ -100,7 +101,12 @@
                     <div class="container-contact100-form-btn">
                         <a href="Resultados.xhtml" class="contact100-form-btn" role="button">Consultar Respuestas de Examen</a>
                     </div>
-                </form>
+                    
+                    <h:commandLink value="Descargar PDF" style="margin-top: 10px" class="btn btn-danger btn-block" actionListener="#{alumnoC.descargarPdfMerito()}"  >
+                        <i class="zmdi zmdi-download"></i>
+                    </h:commandLink>
+
+                </h:form>
 
 
                 <div class="contact100-more flex-col-c-m" style="background-image: url('images/bg-01.jpg');">
