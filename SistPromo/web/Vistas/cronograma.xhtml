@@ -8,10 +8,11 @@
     <h:head>
         <title>Cronograma</title>
 
+  
     </h:head>
     <h:body>
-        <ui:composition template="../Template/Dashboart.xhtml">
-            <ui:define name="content">
+<!--<ui:composition template="../Template/Dashboart.xhtml">
+            <ui:define name="content">-->
                 <h:form class="form_contact" id="FormTblCronograma">
                     <p:growl autoUpdate="true" life="1000"/>
                     <p:dataTable  id="tblCronograma"
@@ -83,8 +84,7 @@
                         </p:panelGrid>
                     </h:form>
                 </p:dialog>
-            </ui:define>
-        </ui:composition>
+
         <script>
             PrimeFaces.locales['es'] = {
                 prevText: 'Anterior',
@@ -99,7 +99,8 @@
                 ampm: false
             };
         </script>
-
+<!--            </ui:define>
+        </ui:composition>-->
     </h:body>
 </html>
 

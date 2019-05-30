@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Solucionario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+
+
+        <p:commandButton value="Nuevo Examen" type="button" onclick="PF('dlgExamenes').show();" />
+
+        <h:form id="FormListSol" style="margin-top: 15px">
+            <p:dataTable var="solucionario" value="#{solucionarioC.lstSolucionario}">
+                <p:column headerText="Nombre Examen">
+                    <h:outputText value="#{solucionario.NOMEXAMEN}" />
+                </p:column>
+                <p:column headerText="Modalidad">
+                    <h:outputText value="#{solucionario.MODALIDAD}" />
+                </p:column>
+                <p:column headerText="N° Preguntas">
+                    <h:outputText value="#{solucionario.NUMPREGUNT}" />
+                </p:column>
+
+
+
+                <p:column headerText="So.7">
+                    <h:outputLink id="fade" value="#">
+                        <h:outputText value="Soluciones" />
+                    </h:outputLink>
+                    <p:tooltip id="toolTipFade" for="fade" value="There are 4 options for position" position="top">
+                        <h:outputText  value="Solucion N° 1: - #{solucionario.SOL1}" />
+                        <br/>
+                         <h:outputText value="Solucion N° 2: - #{solucionario.SOL2}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 3: - #{solucionario.SOL3}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 4: - #{solucionario.SOL4}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 5: - #{solucionario.SOL5}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 6: - #{solucionario.SOL6}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 7: - #{solucionario.SOL7}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 8: - #{solucionario.SOL8}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 9: - #{solucionario.SOL9}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 10: - #{solucionario.SOL10}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 11: - #{solucionario.SOL11}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 12: - #{solucionario.SOL12}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 13: - #{solucionario.SOL13}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 14: - #{solucionario.SOL14}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 15: - #{solucionario.SOL15}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 16: - #{solucionario.SOL16}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 17: - #{solucionario.SOL17}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 18: - #{solucionario.SOL18}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 19: - #{solucionario.SOL19}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 20: - #{solucionario.SOL20}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 21: - #{solucionario.SOL21}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 22: - #{solucionario.SOL22}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 23: - #{solucionario.SOL23}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 24: - #{solucionario.SOL24}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 25: - #{solucionario.SOL25}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 26: - #{solucionario.SOL26}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 27: - #{solucionario.SOL27}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 28: - #{solucionario.SOL28}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 29: - #{solucionario.SOL29}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 30: - #{solucionario.SOL30}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 31: - #{solucionario.SOL31}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 32: - #{solucionario.SOL32}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 33: - #{solucionario.SOL33}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 34: - #{solucionario.SOL34}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 35: - #{solucionario.SOL35}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 36: - #{solucionario.SOL36}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 37: - #{solucionario.SOL37}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 38: - #{solucionario.SOL38}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 39: - #{solucionario.SOL39}" />
+                         <br/>
+                         <h:outputText value="Solucion N° 40: - #{solucionario.SOL40}" />
+                    </p:tooltip>
+
+                </p:column>
+                
+            </p:dataTable>
+        </h:form>
+
+        <p:dialog header="Rellenar Solucionario" widgetVar="dlgExamenes" modal="true" height="100">
+
+        </p:dialog> 
+
+
+
+    </h:body>
+</html>

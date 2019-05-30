@@ -10,171 +10,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-
-        <ui:composition template="../Template/Template.xhtml">
-            <ui:define name="linkMerito">
-                <li class="active"><a style="cursor: pointer"><i class="zmdi zmdi-flag"></i> Meritos</a></li>
-            </ui:define>
+        <ui:composition template="../Template/Dashboart.xhtml">
             <ui:define name="content">
-                <h:form id="formMeritos">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="card-body card-padding">
-                                        <div class="col-md-7">
-                                            <h4>Listado de promedios por curso</h4>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <h:commandLink value="Descargar PDF" class="btn btn-danger btn-block"
-                                                           actionListener="#{userController.descargarPdfCarrera()}">
-                                                <i class="zmdi zmdi-download"></i>
-                                            </h:commandLink>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group fg-float">
-                                                <div class="fg-line">
-                                                    <p:remoteCommand name="listaPromeAS" actionListener="#{userController.promedioGeneralCarAS()}" update="tblPromGen"/>
-                                                    <p:remoteCommand name="listaPromePA" actionListener="#{userController.promedioGeneralCarPA()}" update="tblPromGen"/>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p:dataTable var="merito" value="#{alumnoC.lstOrdenMerito}" scrollable="true" scrollHeight="300">
 
-                                                    <p:menuButton value="Selecciona la carrera" rendered="#{userController.usuario.TIPO_USER == '1'}">
-                                                        <p:menuitem value="Análisis de sistemas" actionListener="#{userController.listarMeritosAS()}" update="formMeritos pnlAS pnlPA" oncomplete="listaPromeAS();"/>
-                                                        <p:menuitem value="Producción agraria" actionListener="#{userController.listarMeritosPA()}" update="formMeritos pnlAS pnlPA" oncomplete="listaPromePA();"/>
-                                                    </p:menuButton>
+                                <p:column  filterBy="#{merito.ALUMMERIT}" headerText="Nombres y Apellidos" >
+                                    <h:outputText value="#{merito.ALUMMERIT} #{merito.NOMPERMERIT}" />
+                                </p:column>
 
-                                                    <p:commandButton value="Listar AS" actionListener="#{userController.listarMeritosAS()}" update="formMeritos pnlAS pnlPA" oncomplete="listaPromeAS();"
-                                                                     rendered="#{userController.usuario.codCarReg == '1' and userController.usuario.TIPO_USER == '2'}"/>
-                                                    <p:commandButton value="Listar PA" actionListener="#{userController.listarMeritosPA()}" update="formMeritos pnlAS pnlPA" oncomplete="listaPromePA();"
-                                                                     rendered="#{userController.usuario.codCarReg == '2' and userController.usuario.TIPO_USER == '2'}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <p:column headerText="Puntaje"  >
+                                    <h:outputText value="#{merito.PUNTJMERIT}" />
+                                </p:column>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="card-body card-padding">
-                                        <div class="col-md-12">
-                                            <h4>Leyenda</h4>
-                                        </div>
-                                        <p:panel id="pnlAS" rendered="#{userController.merito}">
-                                            <div class="col-md-4">
-                                                <label style="font-weight: bold; font-size: 0.9em">PROG</label><span style="font-size: 0.8em">= Programación</span><br/>
-                                                <label style="font-weight: bold; font-size: 0.9em">ROB</label><span style="font-size: 0.8em">= Robótica</span><br/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label style="font-weight: bold; font-size: 0.9em">ST</label><span style="font-size: 0.8em">= Soporte técnico</span><br/>
-                                                <label style="font-weight: bold; font-size: 0.9em">OFI</label><span style="font-size: 0.8em">= Ofimática</span><br/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label style="font-weight: bold; font-size: 0.9em">MATE</label><span style="font-size: 0.8em">= Matemáticas</span><br/>
-                                                <label style="font-weight: bold; font-size: 0.9em">CI</label><span style="font-size: 0.8em">= Centro de interés</span><br/>
-                                            </div>
-                                        </p:panel>
-                                        <p:panel id="pnlPA" rendered="#{!userController.merito}">
-                                            <div class="col-md-4">
-                                                <label style="font-weight: bold; font-size: 0.9em">CL</label><span style="font-size: 0.8em">= Cultura general</span><br/>
-                                                <label style="font-weight: bold; font-size: 0.9em">RM</label><span style="font-size: 0.8em">= Razonamiento matemático</span><br/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label style="font-weight: bold; font-size: 0.9em">AV</label><span style="font-size: 0.8em">= Aptitud verbal</span><br/>
-                                                <label style="font-weight: bold; font-size: 0.9em">QUI</label><span style="font-size: 0.8em">= Química</span><br/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label style="font-weight: bold; font-size: 0.9em">TE</label><span style="font-size: 0.8em">= Tópicos especiales</span><br/>
-                                                <label style="font-weight: bold; font-size: 0.9em">GR</label><span style="font-size: 0.8em">= Gramática</span><br/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label style="font-weight: bold; font-size: 0.9em">MATE</label><span style="font-size: 0.8em">= Matemática</span><br/>
-                                            </div>
-                                        </p:panel>
-                                    </div>
-                                </div>
-                            </div>
+                            </p:dataTable>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card" style="overflow: scroll;width: 100%;height: 550px">
-                        <div class="row">
-                            <div class="col-md-10"  >
-                                <p:dataTable value="#{userController.lstMeritos1}" var="lm" id="tblMeritos" style="font-size: 1em"
-                                             rendered="#{userController.merito}" emptyMessage="No hay registros">
-                                    <p:column headerText="N°" style="width: 3%">
-                                        <h:outputText value="#{lm.ROWNUM2}"/>
-                                    </p:column>
-                                    <p:column headerText="Apellidos y Nombres" style="width: 35%">
-                                        <h:outputText value="#{lm.NOMBRE}"/>
-                                    </p:column>
-                                    <p:column headerText="PROG" style="text-align: center" >
-                                        <h:outputText value="#{lm.programacion}" />
-                                    </p:column>
-                                    <p:column headerText="ROB" style="text-align: center">
-                                        <h:outputText value="#{lm.robotica}"/>
-                                    </p:column>
-                                    <p:column headerText="ST" style="text-align: center">
-                                        <h:outputText value="#{lm.soporteTecnico}"/>
-                                    </p:column>
-                                    <p:column headerText="OFI" style="text-align: center">
-                                        <h:outputText value="#{lm.ofimatica}"/>
-                                    </p:column>
-                                    <p:column headerText="MATE" style="text-align: center">
-                                        <h:outputText value="#{lm.matematicas}"/>
-                                    </p:column>
-                                    <p:column headerText="CI" style="text-align: center">
-                                        <h:outputText value="#{lm.CI}"/>
-                                    </p:column>
-                                </p:dataTable>
-                                <p:dataTable value="#{userController.lstMeritosPA}" var="lmpa" id="tblMeritosPA" style="font-size: 1em"
-                                             rendered="#{!userController.merito}" emptyMessage="No hay registros">
-                                    <p:column headerText="N°" style="width: 3%">
-                                        <h:outputText value="#{lmpa.ROWNUM2}"/>
-                                    </p:column>
-                                    <p:column headerText="Apellidos y Nombres" style="width: 35%">
-                                        <h:outputText value="#{lmpa.NOMBRE}"/>
-                                    </p:column>
-                                    <p:column headerText="CG" style="text-align: center" >
-                                        <h:outputText value="#{lmpa.culturaGen}" />
-                                    </p:column>
-                                    <p:column headerText="RM" style="text-align: center">
-                                        <h:outputText value="#{lmpa.razonaMate}"/>
-                                    </p:column>
-                                    <p:column headerText="AV" style="text-align: center">
-                                        <h:outputText value="#{lmpa.aptitudVerbal}"/>
-                                    </p:column>
-                                    <p:column headerText="QUI" style="text-align: center">
-                                        <h:outputText value="#{lmpa.quimica}"/>
-                                    </p:column>
-                                    <p:column headerText="TE" style="text-align: center">
-                                        <h:outputText value="#{lmpa.topicos}"/>
-                                    </p:column>
-                                    <p:column headerText="GR" style="text-align: center">
-                                        <h:outputText value="#{lmpa.gramatica}"/>
-                                    </p:column>
-                                    <p:column headerText="MATE" style="text-align: center">
-                                        <h:outputText value="#{lmpa.matematica}"/>
-                                    </p:column>
-                                </p:dataTable>
-                            </div>
-
-                            <div class="col-md-2" >
-                                <p:dataTable value="#{userController.lstPromedioGeneral}" var="promgen" id="tblPromGen" scrollable="true"
-                                             style="font-size: 1em"  emptyMessage="No hay registros"> 
-                                    <p:column headerText="PROM" style="text-align: center">
-                                        <h:outputText value="#{promgen.PROMDGEN}" style="font-size: 1em" class="#{promgen.PROMDGEN lt 13 ? 'notaMenor' : 'notaMayor'}"/>
-                                    </p:column>
-                                    <p:column headerText="POND" style="text-align: center">
-                                        <h:outputText value="#{promgen.PROMPOND}" style="font-size: 1em" class="#{promgen.PROMPOND lt 13 ? 'notaMenor' : 'notaMayor'}"/>
-                                    </p:column>
-                                </p:dataTable>
-                            </div>
-                        </div>
-
-                    </div>
-                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>
