@@ -52,7 +52,6 @@ public class SolucionarioC implements Serializable {
         try {
             dao = new SolucionarioD();
             dao.guardarSolucionario(solucion);
-            listarSolucionario();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO", "Correctamente"));
             limpiarSolucionario();
         } catch (Exception e) {
