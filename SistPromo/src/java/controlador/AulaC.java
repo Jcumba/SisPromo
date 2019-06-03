@@ -4,8 +4,6 @@ import dao.ImplAulaD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -22,10 +20,8 @@ public class AulaC implements Serializable {
     private List<AulaM> lstAula;
     private AulaM selectedAula;
 
-    
  
-    
-    
+  
     @PostConstruct
     public void iniciar() {
         try {
@@ -44,7 +40,7 @@ public class AulaC implements Serializable {
         ImplAulaD dao;
         try {
             dao = new ImplAulaD();
-            aula.setFECINC(new java.sql.Date(aula.getFechaTemporal().getTime()));
+//            aula.setFECINC(new java.sql.Date(aula.getFechaTemporal().getTime()));
             dao.guardar(aula);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGARDO CORRECTAMENTE", null));

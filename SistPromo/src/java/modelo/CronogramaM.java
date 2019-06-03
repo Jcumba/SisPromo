@@ -49,5 +49,7 @@ public class CronogramaM {
 
     public void setFechaTemporal(java.util.Date fechaTemporal) {
         this.fechaTemporal = fechaTemporal;
+ 
     }
+
 }

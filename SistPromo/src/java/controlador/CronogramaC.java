@@ -18,6 +18,10 @@ public class CronogramaC implements Serializable {
     private List<CronogramaM> lstCronograma;
     private CronogramaM selectedCronograma;
 
+    
+     
+    
+    
     @PostConstruct
     public void iniciar() {
         try {
@@ -34,7 +38,7 @@ public class CronogramaC implements Serializable {
         CronogramaD dao;
         try {
             dao = new CronogramaD();
-            cronograma.setFECINC(new java.sql.Date(cronograma.getFechaTemporal().getTime()));
+//            cronograma.setFECINC(new java.sql.Date(cronograma.getFechaTemporal().getTime()));
             dao.guardar(cronograma);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO", null));

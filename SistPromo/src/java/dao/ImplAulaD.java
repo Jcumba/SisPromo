@@ -13,6 +13,8 @@ import modelo.AulaM;
 
 public class ImplAulaD extends Dao implements AulaI {
 
+  
+
     @Override
     public void guardar(AulaM aula) throws Exception {
         try {
@@ -22,7 +24,7 @@ public class ImplAulaD extends Dao implements AulaI {
             ps.setString(1, aula.getNUMAUL());
             ps.setString(2, aula.getAFORAUL());
             ps.setString(3, "A");
-            ps.setDate(4, aula.getFECINC());
+            ps.setString(4, aula.getEXAMEN_CODEXA());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -80,7 +82,7 @@ public class ImplAulaD extends Dao implements AulaI {
                 aula.setCODAUL(rs.getString("CODAUL"));
                 aula.setNUMAUL(rs.getString("NUMAUL"));
                 aula.setAFORAUL(rs.getString("AFORAUL"));
-                aula.setFechaTemporal(rs.getDate("FECCROEXA"));
+                aula.setEXAMEN_CODEXA(rs.getString("FECCROEXA"));
                 aula.setHORCROEXA(rs.getString("HORCROEXA"));
                 listarAula.add(aula);
             }

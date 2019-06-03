@@ -1,9 +1,9 @@
-
 package modelo;
 
 import java.sql.Date;
 
 public class AulaM {
+
     private String CODAUL;
     private String NUMAUL;
     private String AFORAUL;
@@ -11,8 +11,7 @@ public class AulaM {
     private String EXAMEN_CODEXA;
     private String FECCROEXA, HORCROEXA;
 
-    
-     Date FECINC;
+    Date FECINC;
     java.util.Date fechaTemporal;
 
     public Date getFECINC() {
@@ -30,6 +29,7 @@ public class AulaM {
     public void setFechaTemporal(java.util.Date fechaTemporal) {
         this.fechaTemporal = fechaTemporal;
     }
+
     public String getCODAUL() {
         return CODAUL;
     }
@@ -53,8 +53,6 @@ public class AulaM {
     public void setAFORAUL(String AFORAUL) {
         this.AFORAUL = AFORAUL;
     }
-
- 
 
     public String getESTAUL() {
         return ESTAUL;
@@ -87,6 +85,5 @@ public class AulaM {
     public void setHORCROEXA(String HORCROEXA) {
         this.HORCROEXA = HORCROEXA;
     }
-    
 
 }

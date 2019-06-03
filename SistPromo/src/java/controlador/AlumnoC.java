@@ -36,7 +36,13 @@ public class AlumnoC implements Serializable {
     private String Notas = null;
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
-
+    
+        public void limpiar() {
+        alumno = new AlumnoM();
+    }
+    
+   
+    
     @PostConstruct
     public void init() {
         try {
@@ -80,9 +86,7 @@ public class AlumnoC implements Serializable {
         }
     }
 
-    public void limpiar() {
-        alumno = new AlumnoM();
-    }
+
 
     public void guardarAlumno() {
         AlumnoD dao;
@@ -102,8 +106,8 @@ public class AlumnoC implements Serializable {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
-            selectedAlumno.setCODCOL(dao.obtenerCodigoColegio(selectedAlumno.getCODCOL()));
-            dao.modificarAlumno(selectedAlumno);
+            alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
+            dao.modificarAlumno(alumno);
             listarAlumno();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificado Correctamente", null));
             limpiar();
@@ -117,7 +121,7 @@ public class AlumnoC implements Serializable {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
-            dao.eliminarAlumno(selectedAlumno);
+            dao.eliminarAlumno(alumno);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminado Correctamente", null));
             listarAlumno();

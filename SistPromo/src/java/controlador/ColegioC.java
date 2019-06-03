@@ -5,17 +5,12 @@ import dao.ImplColegioD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
 import modelo.ColegioM;
-import org.primefaces.PrimeFaces;
+
 
 /**
  *
@@ -29,8 +24,8 @@ public class ColegioC implements Serializable {
     private ColegioM selectedColegio;
     private List<ColegioM> lstColegio;
 
-    Calendar Cal = Calendar.getInstance();
-    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
+//    Calendar Cal = Calendar.getInstance();
+//    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
 
     @PostConstruct
     public void init() {
@@ -55,7 +50,7 @@ public class ColegioC implements Serializable {
         }
     }
 
-    public void modificarColegio() {
+    public void modificarColegio() throws Exception {
         AlumnoD dao1;
         ImplColegioD dao;
         try {
@@ -67,6 +62,7 @@ public class ColegioC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MODIFICADO", "Correctamente"));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo modificar"));
+            throw e;
         }
     }
 

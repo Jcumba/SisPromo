@@ -18,7 +18,7 @@ public class AsignacionC implements Serializable {
         asignacion = new AsignacionM();
     }
 
-    public void guardar() {
+    public void guardar() throws Exception {
         ImplAsignacionD dao;
         try {
             dao = new ImplAsignacionD();
@@ -27,6 +27,8 @@ public class AsignacionC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO CORRECTAMENTE", null));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL AGREGAR", null));
+            throw e;
+        
         }
     }
 
