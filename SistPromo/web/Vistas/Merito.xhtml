@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Ficha de Resultados</title>
+
+    </h:head>
+    <h:body>
+                <h:form>
+                    <p:dataTable var="merito" value="#{alumnoC.lstOrdenMerito}" scrollable="true" scrollHeight="300">
+
+                        <p:column headerText="Nombres y Apellidos" >
+                            <h:outputText value="#{merito.ALUMMERIT} #{merito.NOMPERMERIT}" />
+                        </p:column>
+
+                        <p:column headerText="Puntaje"  >
+                            <h:outputText value="#{merito.PUNTJMERIT}" />
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <div >
+                        <a href="Resultados.xhtml"   role="button">Consultar Respuestas de Examen</a>
+                    </div>
+                    
+                    <h:commandLink value="Descargar PDF" style="margin-top: 10px" class="btn btn-danger btn-block" actionListener="#{alumnoC.descargarPdfMerito()}"  >
+                        <i class="zmdi zmdi-download"></i>
+                    </h:commandLink>
+
+                </h:form>
+
+    </h:body>
+</html>
