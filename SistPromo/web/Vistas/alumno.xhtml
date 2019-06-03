@@ -19,10 +19,9 @@
 
     </h:head>
     <h:body >
-        <a href="../index.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Iniciar Session</a>
-
+        <!--<a href="../index.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Iniciar Session</a>-->
         <a href="Prueba.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Resultados de Examen</a>
-         <a href="Dashboart.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">SA</a>
+
         <br/>
         <section class="form_wrap form-group  " style="width: 500px;height: 950px">
 
@@ -30,7 +29,7 @@
 
             <h:form id="form"  class="form_contact form-group" >
                 <p:growl id="msg" life="1500" autoUpdate="true"/>
-                <img src="../resources/img/logo2342234.jpg" alt="" style="margin-left: 180px"/>
+                <img src="../resources/img/demo.jpg" style="margin-left: 115px;margin-bottom: 10px" alt=""/>
                 <h3 style="margin-bottom: 10px;color: #999999;width: 420px;text-align: center">REGISTRATE AL CONCURSO</h3>
                 <br/>
                 <div class="user_info" >
@@ -44,11 +43,11 @@
                     <p:outputLabel style="margin-top: 8px" value="NOMBRE:" />
                     <p:inputText    class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" style="width: 420px" value="#{alumnoC.alumno.NOMPER}"
                                     onkeyup="this.value = this.value.toUpperCase();">
-                        <p:keyFilter regEx="/[a-z_]/i"/> 	
+                        <p:keyFilter regEx="/[a-z_ ]/i"/> 	
                     </p:inputText>
                     <p:outputLabel value="APELLIDO:"/>
                     <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px" onkeyup="this.value = this.value.toUpperCase();">
-                    <p:keyFilter regEx="/[a-z_]/i"/>
+                    <p:keyFilter regEx="/[a-z_ ]/i"/>
                     </p:inputText>
                     <p:outputLabel value="DNI:"/>
                     <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px"  maxlength="8">

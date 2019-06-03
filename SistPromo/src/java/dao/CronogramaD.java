@@ -36,7 +36,7 @@ public class CronogramaD extends Dao implements CronogramaI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT CODEXA,(TO_CHAR(FECCROEXA, 'DD/MM/YYYY')) as fecha,HORCROEXA  FROM CRONOGRAMA_EXAMEN WHERE ROWNUM < 2 ORDER BY CODEXA DESC";
+            String sql = "SELECT CODEXA,TO_CHAR(FECCROEXA, 'DD/MM/YYYY') as fecha,HORCROEXA  FROM CRONOGRAMA_EXAMEN WHERE ROWNUM < 2 ORDER BY CODEXA DESC";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarCronograma = new ArrayList();
