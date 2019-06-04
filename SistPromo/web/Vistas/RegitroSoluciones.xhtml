@@ -10,8 +10,9 @@
     </h:head>
     <h:body>
 
-
-        <p:commandButton value="Nuevo Examen" type="button" onclick="PF('dlgExamenes').show();" />
+        <h:form>
+            <p:commandButton value="Nuevo Examen" type="button" onclick="PF('dlgExamenes').show();" />        
+        </h:form>
 
         <h:form id="FormListSol" style="margin-top: 15px">
 
@@ -26,7 +27,7 @@
                          rowsPerPageTemplate="6,12,16" reflow="true">
 
 
-                <p:column headerText="Nombre Examen">
+                <p:column headerText="Tipo Examen">
                     <h:outputText value="#{solucionario.NOMEXAMEN}" />
                 </p:column>
                 <p:column headerText="Modalidad">
@@ -249,7 +250,7 @@
                     </p:selectOneMenu>
 
 
-                    <p:outputLabel value="Nombre de Examen:" />
+                    <p:outputLabel value="Tipo de Examen:" />
                     <p:inputText value="#{solucionarioC.solucion.NOMEXAMEN}"  required="true"/>
 
                     <p:outputLabel value="N° de Preguntas: " />
@@ -372,7 +373,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°14:" />
                     <p:selectOneRadio id="console14" value="#{solucionarioC.solucion.SOL14}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -381,7 +382,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°15:" />
                     <p:selectOneRadio id="console15" value="#{solucionarioC.solucion.SOL15}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -390,7 +391,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°16:" />
                     <p:selectOneRadio id="console16" value="#{solucionarioC.solucion.SOL16}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -399,7 +400,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°17:" />
                     <p:selectOneRadio id="console17" value="#{solucionarioC.solucion.SOL17}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -408,7 +409,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°18:" />
                     <p:selectOneRadio id="console18" value="#{solucionarioC.solucion.SOL18}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -417,8 +418,8 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
-                    
+
+
                     <p:outputLabel value="Pregunta N°19:" />
                     <p:selectOneRadio id="console19" value="#{solucionarioC.solucion.SOL19}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -427,7 +428,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°20:" />
                     <p:selectOneRadio id="console20" value="#{solucionarioC.solucion.SOL20}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -436,7 +437,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°21:" />
                     <p:selectOneRadio id="console21" value="#{solucionarioC.solucion.SOL21}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -445,7 +446,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°22:" />
                     <p:selectOneRadio id="console22" value="#{solucionarioC.solucion.SOL22}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -454,7 +455,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°23:" />
                     <p:selectOneRadio id="console23" value="#{solucionarioC.solucion.SOL23}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -463,7 +464,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°24:" />
                     <p:selectOneRadio id="console24" value="#{solucionarioC.solucion.SOL24}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -472,7 +473,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°25:" />
                     <p:selectOneRadio id="console25" value="#{solucionarioC.solucion.SOL25}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -481,7 +482,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°26:" />
                     <p:selectOneRadio id="console26" value="#{solucionarioC.solucion.SOL26}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -490,7 +491,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°27:" />
                     <p:selectOneRadio id="console27" value="#{solucionarioC.solucion.SOL27}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -499,7 +500,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°28:" />
                     <p:selectOneRadio id="console28" value="#{solucionarioC.solucion.SOL28}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -508,7 +509,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°29:" />
                     <p:selectOneRadio id="console29" value="#{solucionarioC.solucion.SOL29}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -517,7 +518,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°30:" />
                     <p:selectOneRadio id="console30" value="#{solucionarioC.solucion.SOL30}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -526,7 +527,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°31:" />
                     <p:selectOneRadio id="console31" value="#{solucionarioC.solucion.SOL31}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -535,7 +536,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°32:" />
                     <p:selectOneRadio id="console32" value="#{solucionarioC.solucion.SOL32}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -544,7 +545,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°33:" />
                     <p:selectOneRadio id="console33" value="#{solucionarioC.solucion.SOL33}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -553,7 +554,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°34:" />
                     <p:selectOneRadio id="console34" value="#{solucionarioC.solucion.SOL34}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -562,7 +563,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°35:" />
                     <p:selectOneRadio id="console35" value="#{solucionarioC.solucion.SOL35}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -571,7 +572,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°36:" />
                     <p:selectOneRadio id="console36" value="#{solucionarioC.solucion.SOL36}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -580,7 +581,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°37:" />
                     <p:selectOneRadio id="console37" value="#{solucionarioC.solucion.SOL37}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -589,7 +590,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°38:" />
                     <p:selectOneRadio id="console38" value="#{solucionarioC.solucion.SOL38}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -598,7 +599,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°39:" />
                     <p:selectOneRadio id="console39" value="#{solucionarioC.solucion.SOL39}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />
@@ -607,7 +608,7 @@
                         <f:selectItem itemLabel="D" itemValue="D" />
                         <f:selectItem itemLabel="E" itemValue="E" />
                     </p:selectOneRadio>
-                    
+
                     <p:outputLabel value="Pregunta N°40:" />
                     <p:selectOneRadio id="console40" value="#{solucionarioC.solucion.SOL40}" required="true" >
                         <f:selectItem itemLabel="A" itemValue="A" />

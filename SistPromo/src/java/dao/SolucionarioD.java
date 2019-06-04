@@ -23,7 +23,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
     public void guardarSolucionario(SolucionesM solucion) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO SOLUCIONARIO(SOL1,SOL2,SOL3,SOL4,SOL5,SOL6,SOL7,SOL8,SOL9,SOL10,SOL11,SOL12,SOL13,SOL14,SOL15,SOL16,SOL17,SOL18,SOL19,SOL20,SOL21,SOL22,SOL23,SOL24,SOL25,SOL26,SOL27,SOL28,SOL29,SOL30,SOL31,SOL32,SOL33,SOL34,SOL35,SOL36,SOL37,SOL38,SOL39,SOL40,NOMEXA,NUMPRE,MODALIDAD)  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO SOLUCIONARIO(SOL1,SOL2,SOL3,SOL4,SOL5,SOL6,SOL7,SOL8,SOL9,SOL10,SOL11,SOL12,SOL13,SOL14,SOL15,SOL16,SOL17,SOL18,SOL19,SOL20,SOL21,SOL22,SOL23,SOL24,SOL25,SOL26,SOL27,SOL28,SOL29,SOL30,SOL31,SOL32,SOL33,SOL34,SOL35,SOL36,SOL37,SOL38,SOL39,SOL40,TIPEXA,NUMPRE,MODEXA,ESTSOL)  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, solucion.getSOL1());
             ps.setString(2, solucion.getSOL2());
@@ -68,6 +68,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
             ps.setString(41, solucion.getNOMEXAMEN());
             ps.setString(42, solucion.getNUMPREGUNT());
             ps.setString(43, solucion.getMODALIDAD());
+            ps.setString(44,  "A");//ESTADO DE EXAMEN
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -141,9 +142,9 @@ public class SolucionarioD extends Dao implements SolucionarioI {
                 solucion.setSOL38(rs.getString("SOL38"));
                 solucion.setSOL39(rs.getString("SOL39"));
                 solucion.setSOL40(rs.getString("SOL40"));
-                solucion.setNOMEXAMEN(rs.getString("NOMEXA"));
+                solucion.setNOMEXAMEN(rs.getString("TIPEXA"));
                 solucion.setNUMPREGUNT(rs.getString("NUMPRE"));
-                solucion.setMODALIDAD(rs.getString("MODALIDAD"));
+                solucion.setMODALIDAD(rs.getString("MODEXA"));
                 listarSolucion.add(solucion);
             }
         } catch (SQLException e) {
