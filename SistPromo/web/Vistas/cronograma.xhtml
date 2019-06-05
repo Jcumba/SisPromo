@@ -31,7 +31,7 @@
                 <p:menuitem value="Registro de Soluciones" outcome="RegitroSoluciones.xhtml">
                     <f:param name="i" value="5" />
                 </p:menuitem>
-                <p:menuitem value="Prueba" outcome="Prueba.xhtml">
+                <p:menuitem value="Prueba" outcome="Merito.xhtml">
                     <f:param name="i" value="5" />
                 </p:menuitem>
             </p:tabMenu>
@@ -57,6 +57,9 @@
                         </h:commandLink>
                     </center>
                 </f:facet>
+                 <p:column headerText="MODALIDAD">
+                     <p:outputLabel  style="color: black; font-weight: bold;"  value="#{cronograma.TIPEXA}"/>
+                </p:column>
                 <p:column headerText="FECHA">
                     <p:outputLabel  style="color: black; font-weight: bold;"  value="#{cronograma.FECCROEXA}"/>
                 </p:column>
@@ -96,6 +99,12 @@
         <p:dialog id="dlg"  header="Agregar Cronograma" widgetVar="dlgNewCronograma" resizable="false" modal="true">
             <h:form id="FormCronograma" class="form_contact">
                 <p:panelGrid columns="2">
+                    <p:outputLabel value="TIPO DE EXAMEN"/>
+                    <p:selectOneMenu value="#{cronogramaC.cronograma.SOLUCIONARIO_CODSOL}">
+                        <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                        <f:selectItems  value="#{solucionarioC.lstSolucionario}" var="solucionario" itemValue="#{solucionario.CODSOL}"  itemLabel="#{solucionario.NOMEXAMEN}" />
+                    </p:selectOneMenu>
+                 
                     <p:outputLabel value="FECHA"/>
                     <p:inputMask   value="#{cronogramaC.cronograma.FECCROEXA}" mask="99/99/9999"/>
                     <p:outputLabel value="HORA"/>
@@ -107,7 +116,7 @@
         </p:dialog>
         <!--            </ui:define>
                 </ui:composition>-->
-        <script>
+<!--        <script>
             PrimeFaces.locales['es'] = {
                 prevText: 'Anterior',
                 nextText: 'Siguiente',
@@ -120,7 +129,7 @@
                 secondText: 'Segundo',
                 ampm: false
             };
-        </script>
+        </script>-->
 <!--            </ui:define>
         </ui:composition>-->
     </h:body>

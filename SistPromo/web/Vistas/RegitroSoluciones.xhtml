@@ -259,7 +259,12 @@
 
 
                     <p:outputLabel value="Tipo de Examen:" />
-                    <p:inputText value="#{solucionarioC.solucion.NOMEXAMEN}"  required="true"/>
+                    <p:selectOneMenu value="#{solucionarioC.solucion.NOMEXAMEN}">
+                        <f:selectItem itemLabel="Selecciones"  itemValue=""/>
+                        <f:selectItem itemLabel="ORDINARIO"  itemValue="ORDINARIO"/>
+                        <f:selectItem itemLabel="CONCURSO"  itemValue="CONCURSO"/>
+                        <f:selectItem/>
+                    </p:selectOneMenu>
 
                     <p:outputLabel value="N° de Preguntas: " />
                     <p:inputText value="#{solucionarioC.solucion.NUMPREGUNT}"  required="true"/> 

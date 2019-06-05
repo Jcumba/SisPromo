@@ -1,4 +1,4 @@
-package modelo;
+ package modelo;
 
 import java.sql.Date;
 
@@ -7,6 +7,7 @@ public class CronogramaM {
     private String CODEXA;
     private String FECCROEXA;
     private String HORCROEXA;
+    private String TIPEXA,MODEXA,SOLUCIONARIO_CODSOL;
     Date FECINC;
     java.util.Date fechaTemporal;
 
@@ -50,6 +51,30 @@ public class CronogramaM {
     public void setFechaTemporal(java.util.Date fechaTemporal) {
         this.fechaTemporal = fechaTemporal;
  
+    }
+
+    public String getTIPEXA() {
+        return TIPEXA;
+    }
+
+    public void setTIPEXA(String TIPEXA) {
+        this.TIPEXA = TIPEXA;
+    }
+
+    public String getMODEXA() {
+        return MODEXA;
+    }
+
+    public void setMODEXA(String MODEXA) {
+        this.MODEXA = MODEXA;
+    }
+
+    public String getSOLUCIONARIO_CODSOL() {
+        return SOLUCIONARIO_CODSOL;
+    }
+
+    public void setSOLUCIONARIO_CODSOL(String SOLUCIONARIO_CODSOL) {
+        this.SOLUCIONARIO_CODSOL = SOLUCIONARIO_CODSOL;
     }
 
 }
