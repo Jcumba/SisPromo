@@ -10,12 +10,12 @@ package modelo;
  * @author PC
  */
 public class SolucionesM {
-    
+
     private String CODSOL;
     private String NOMEXAMEN;
     private String NUMPREGUNT;
     private String MODALIDAD;
-    
+
     private String SOL1;
     private String SOL2;
     private String SOL3;
@@ -57,6 +57,27 @@ public class SolucionesM {
     private String SOL39;
     private String SOL40;
 
+    private String FECHA;
+    private String HORA;
+
+    public String getHORA() {
+        return HORA;
+    }
+
+    public void setHORA(String HORA) {
+        this.HORA = HORA;
+    }
+    
+    
+
+    public String getFECHA() {
+        return FECHA;
+    }
+
+    public void setFECHA(String FECHA) {
+        this.FECHA = FECHA;
+    }
+
     public String getMODALIDAD() {
         return MODALIDAD;
     }
@@ -65,7 +86,6 @@ public class SolucionesM {
         this.MODALIDAD = MODALIDAD;
     }
 
-    
     public String getSOL14() {
         return SOL14;
     }
@@ -282,9 +302,6 @@ public class SolucionesM {
         this.SOL40 = SOL40;
     }
 
-    
-    
-    
     public String getCODSOL() {
         return CODSOL;
     }
@@ -413,5 +430,4 @@ public class SolucionesM {
         this.SOL13 = SOL13;
     }
 
-    
 }

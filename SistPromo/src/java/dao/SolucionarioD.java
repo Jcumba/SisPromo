@@ -19,7 +19,7 @@ import modelo.SolucionesM;
  */
 public class SolucionarioD extends Dao implements SolucionarioI {
 
-      @Override
+    @Override
     public void guardarSolucionario(SolucionesM solucion) throws Exception {
         try {
             this.conectar();
@@ -68,7 +68,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
             ps.setString(41, solucion.getNOMEXAMEN());
             ps.setString(42, solucion.getNUMPREGUNT());
             ps.setString(43, solucion.getMODALIDAD());
-            ps.setString(44,  "A");//ESTADO DE EXAMEN
+            ps.setString(44, "A");//ESTADO DE EXAMEN
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -89,15 +89,15 @@ public class SolucionarioD extends Dao implements SolucionarioI {
 
     @Override
     public List<SolucionesM> listarSolucionario() throws Exception {
-        List<SolucionesM> listarSolucion;
+        List<SolucionesM> listarfecexa;
         ResultSet rs;
         try {
             this.conectar();
             String sql;
-            sql = "SELECT * FROM SOLUCIONARIO ORDER BY CODSOL DESC";
+            sql = "SELECT * FROM SOLUCIONARIO  ORDER BY CODSOL DESC";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
-            listarSolucion = new ArrayList();
+            listarfecexa = new ArrayList();
             SolucionesM solucion;
             while (rs.next()) {
                 solucion = new SolucionesM();
@@ -145,7 +145,77 @@ public class SolucionarioD extends Dao implements SolucionarioI {
                 solucion.setNOMEXAMEN(rs.getString("TIPEXA"));
                 solucion.setNUMPREGUNT(rs.getString("NUMPRE"));
                 solucion.setMODALIDAD(rs.getString("MODEXA"));
-                listarSolucion.add(solucion);
+                listarfecexa.add(solucion);
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+        return listarfecexa;
+    
+    }
+
+    @Override
+    public List<SolucionesM> listarFecExam() throws Exception {
+        List<SolucionesM> listarSolucion;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql;
+            sql = "SELECT * FROM VW_CONSLTFECHAS_EXAMEN  ";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listarSolucion = new ArrayList();
+            SolucionesM examen;
+            while (rs.next()) {
+                examen = new SolucionesM();
+                examen.setNOMEXAMEN(rs.getString("TIPEXA"));
+                examen.setMODALIDAD(rs.getString("MODEXA"));
+                examen.setFECHA(rs.getString("FECHA"));
+                examen.setHORA(rs.getString("HORCROEXA"));
+                examen.setNUMPREGUNT(rs.getString("NUMPRE"));
+                examen.setSOL1(rs.getString("SOL1"));
+                examen.setSOL2(rs.getString("SOL2"));
+                examen.setSOL3(rs.getString("SOL3"));
+                examen.setSOL4(rs.getString("SOL4"));
+                examen.setSOL5(rs.getString("SOL5"));
+                examen.setSOL6(rs.getString("SOL6"));
+                examen.setSOL7(rs.getString("SOL7"));
+                examen.setSOL8(rs.getString("SOL8"));
+                examen.setSOL9(rs.getString("SOL9"));
+                examen.setSOL10(rs.getString("SOL10"));
+                examen.setSOL11(rs.getString("SOL11"));
+                examen.setSOL12(rs.getString("SOL12"));
+                examen.setSOL13(rs.getString("SOL13"));
+                examen.setSOL14(rs.getString("SOL14"));
+                examen.setSOL15(rs.getString("SOL15"));
+                examen.setSOL16(rs.getString("SOL16"));
+                examen.setSOL17(rs.getString("SOL17"));
+                examen.setSOL18(rs.getString("SOL18"));
+                examen.setSOL19(rs.getString("SOL19"));
+                examen.setSOL20(rs.getString("SOL20"));
+                examen.setSOL21(rs.getString("SOL21"));
+                examen.setSOL22(rs.getString("SOL22"));
+                examen.setSOL23(rs.getString("SOL23"));
+                examen.setSOL24(rs.getString("SOL24"));
+                examen.setSOL25(rs.getString("SOL25"));
+                examen.setSOL26(rs.getString("SOL26"));
+                examen.setSOL27(rs.getString("SOL27"));
+                examen.setSOL28(rs.getString("SOL28"));
+                examen.setSOL29(rs.getString("SOL29"));
+                examen.setSOL30(rs.getString("SOL30"));
+                examen.setSOL31(rs.getString("SOL31"));
+                examen.setSOL32(rs.getString("SOL32"));
+                examen.setSOL33(rs.getString("SOL33"));
+                examen.setSOL34(rs.getString("SOL34"));
+                examen.setSOL35(rs.getString("SOL35"));
+                examen.setSOL36(rs.getString("SOL36"));
+                examen.setSOL37(rs.getString("SOL37"));
+                examen.setSOL38(rs.getString("SOL38"));
+                examen.setSOL39(rs.getString("SOL39"));
+                examen.setSOL40(rs.getString("SOL40"));
+                listarSolucion.add(examen);
             }
         } catch (SQLException e) {
             throw e;
@@ -153,6 +223,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
             this.cerrar();
         }
         return listarSolucion;
-    }
-
 }
+}
+
+

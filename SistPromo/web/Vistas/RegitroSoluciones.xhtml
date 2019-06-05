@@ -622,8 +622,31 @@
                 </p:panelGrid>
             </h:form>
         </p:dialog> 
+        
+        <h:form id="formexamen" style="margin-top: 15px">
+            <p:dataTable var="examen" value="#{solucionarioC.lstExamenAsig}">
+                <p:column headerText="Tipo de Examen">
+                    <h:outputText value="#{examen.NOMEXAMEN}" />
+                </p:column>
 
+                <p:column headerText="Modalidad">
+                    <h:outputText value="#{examen.MODALIDAD}" />
+                </p:column>
 
+                <p:column headerText="Fecha de Examen">
+                    <h:outputText value="#{examen.FECHA}" />
+                </p:column>
+
+                <p:column headerText="Hora del Examen">
+                    <h:outputText value="#{examen.HORA}" />
+                </p:column>
+                
+                <p:column headerText="Numero de Preguntas">
+                    <h:outputText value="#{examen.NUMPREGUNT}" />
+                </p:column>
+                
+            </p:dataTable>
+        </h:form>
 
     </h:body>
 </html>

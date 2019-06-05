@@ -26,11 +26,13 @@ public class SolucionarioC implements Serializable {
     private SolucionesM solucion = new SolucionesM();
     private SolucionesM selectedSolucionario;
     private List<SolucionesM> lstSolucionario;
+    private List<SolucionesM> lstExamenAsig;
 
     @PostConstruct
     public void init() {
         try {
             listarSolucionario();
+            listarFecExamen();
         } catch (Exception e) {
         }
 
@@ -46,8 +48,7 @@ public class SolucionarioC implements Serializable {
         }
     }
 
-    
-      public void guardarSolucionario() throws Exception {
+    public void guardarSolucionario() throws Exception {
         SolucionarioD dao;
         try {
             dao = new SolucionarioD();
@@ -60,9 +61,8 @@ public class SolucionarioC implements Serializable {
 //            throw e;
         }
     }
-      
-      
-      public void modificarSolucionario() {
+
+    public void modificarSolucionario() {
         SolucionarioD dao;
         try {
             dao = new SolucionarioD();
@@ -101,6 +101,24 @@ public class SolucionarioC implements Serializable {
 
     private void limpiarSolucionario() {
         solucion = new SolucionesM();
+    }
+
+    public List<SolucionesM> getLstExamenAsig() {
+        return lstExamenAsig;
+    }
+
+    public void setLstExamenAsig(List<SolucionesM> lstExamenAsig) {
+        this.lstExamenAsig = lstExamenAsig;
+    }
+
+    private void listarFecExamen() throws Exception {
+        SolucionarioD dao;
+        try {
+            dao = new SolucionarioD();
+            lstExamenAsig = dao.listarFecExam();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
 }

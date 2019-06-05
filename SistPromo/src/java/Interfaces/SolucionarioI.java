@@ -24,5 +24,6 @@ public interface SolucionarioI {
 
     //Este método sirve para listar los registros de la tabla cliente de la base de datos FactElect
     List<SolucionesM> listarSolucionario() throws Exception;
+    List<SolucionesM> listarFecExam() throws Exception;
 
 }
