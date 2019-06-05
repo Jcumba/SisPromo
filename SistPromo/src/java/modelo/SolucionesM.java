@@ -56,10 +56,20 @@ public class SolucionesM {
     private String SOL38;
     private String SOL39;
     private String SOL40;
+    private String ESTAD;
 
     private String FECHA;
     private String HORA;
 
+    public String getESTAD() {
+        return ESTAD;
+    }
+
+    public void setESTAD(String ESTAD) {
+        this.ESTAD = ESTAD;
+    }
+
+    
     public String getHORA() {
         return HORA;
     }

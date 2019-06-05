@@ -124,6 +124,12 @@
                     </p:tooltip>
 
                 </p:column>
+                
+                <p:column headerText="ESTADO">
+                    <h:outputText value="#{solucionario.ESTAD}" />
+                </p:column>
+
+
             </p:dataTable>
             <p:contextMenu for="Soluciones">
 
@@ -229,6 +235,8 @@
                     <p:inputText  value="#{solucionarioC.selectedSolucionario.SOL39}"  />
                     <p:outputLabel value="Solucion N° 40:" />
                     <p:inputText  value="#{solucionarioC.selectedSolucionario.SOL40}"  />
+                     <p:outputLabel value="ESTADO DE EXAMEN:" />
+                     <p:inputText  value="#{solucionarioC.selectedSolucionario.ESTAD}"  />
 
                     <p:commandButton  value="MODIFICAR:" actionListener="#{solucionarioC.modificarSolucionario()}" update=":FormListSol:Soluciones" icon="fa fa-pencil" oncomplete="PF('dlgModSoluciones').hide()"/> 
                     <p:commandButton value="CANCELAR" oncomplete="PF('dlgModSoluciones').hide()" />
@@ -622,9 +630,9 @@
                 </p:panelGrid>
             </h:form>
         </p:dialog> 
-        
+
         <h:form id="formexamen" style="margin-top: 15px">
-            <p:dataTable var="examen" value="#{solucionarioC.lstExamenAsig}">
+            <p:dataTable id="forexamenes" var="examen" value="#{solucionarioC.lstExamenAsig}">
                 <p:column headerText="Tipo de Examen">
                     <h:outputText value="#{examen.NOMEXAMEN}" />
                 </p:column>
@@ -640,11 +648,11 @@
                 <p:column headerText="Hora del Examen">
                     <h:outputText value="#{examen.HORA}" />
                 </p:column>
-                
+
                 <p:column headerText="Numero de Preguntas">
                     <h:outputText value="#{examen.NUMPREGUNT}" />
                 </p:column>
-                
+
             </p:dataTable>
         </h:form>
 

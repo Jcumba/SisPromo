@@ -145,6 +145,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
                 solucion.setNOMEXAMEN(rs.getString("TIPEXA"));
                 solucion.setNUMPREGUNT(rs.getString("NUMPRE"));
                 solucion.setMODALIDAD(rs.getString("MODEXA"));
+                solucion.setESTAD(rs.getString("ESTSOL"));
                 listarfecexa.add(solucion);
             }
         } catch (SQLException e) {
