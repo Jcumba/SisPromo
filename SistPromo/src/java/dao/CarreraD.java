@@ -14,9 +14,10 @@ public class CarreraD extends Dao implements CarreraI {
     public void guardarCarrera(CarreraM carrera) throws Exception {
          try {
              this.conectar();
-             String sql="Insert into CARRERA (NOMCAR) VALUES (?)";
+             String sql="Insert into CARRERA (NOMCAR,ESTCAR) VALUES (?,?)";
              PreparedStatement ps=this.getCn().prepareStatement(sql);
              ps.setString(1, carrera.getNOMCAR());
+             ps.setString(2, "I");
              ps.executeUpdate();
          } catch (SQLException e) {
              throw e;
@@ -34,7 +35,7 @@ public class CarreraD extends Dao implements CarreraI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "select * from CARRERA";
+            String sql = "select * from CARRERA where ESTCAR LIKE 'A'";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarCarrera = new ArrayList<>();

@@ -19,7 +19,7 @@ public class ImplAulaD extends Dao implements AulaI {
     public void guardar(AulaM aula) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO AULA (NUMAUL,AFORAUL,ESTAUL,EXAMEN_CODEXA) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO AULA(NUMAUL,AFORAUL,ESTAUL,EXAMEN_CODEXA) VALUES (?,?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, aula.getNUMAUL());
             ps.setString(2, aula.getAFORAUL());
@@ -73,7 +73,7 @@ public class ImplAulaD extends Dao implements AulaI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT * FROM VW_LISAULCRO";
+            String sql="SELECT * FROM VW_AULA";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarAula = new ArrayList();
@@ -84,16 +84,15 @@ public class ImplAulaD extends Dao implements AulaI {
                 aula.setAFORAUL(rs.getString("AFORAUL"));
                 aula.setEXAMEN_CODEXA(rs.getString("FECCROEXA"));
                 aula.setHORCROEXA(rs.getString("HORCROEXA"));
+                aula.setMODEXA(rs.getString("MODEXA"));
+                aula.setTIPEXA(rs.getString("TIPEXA"));
                 listarAula.add(aula);
             }
-
         } catch (SQLException e) {
             throw e;
-
         } finally {
             this.cerrar();
         }
         return listarAula;
     }
-
 }

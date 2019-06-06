@@ -8,8 +8,7 @@ public class AulaM {
     private String NUMAUL;
     private String AFORAUL;
     private String ESTAUL;
-    private String EXAMEN_CODEXA;
-    private String FECCROEXA, HORCROEXA;
+    private String EXAMEN_CODEXA, HORCROEXA, MODEXA,TIPEXA;
 
     Date FECINC;
     java.util.Date fechaTemporal;
@@ -70,13 +69,6 @@ public class AulaM {
         this.EXAMEN_CODEXA = EXAMEN_CODEXA;
     }
 
-    public String getFECCROEXA() {
-        return FECCROEXA;
-    }
-
-    public void setFECCROEXA(String FECCROEXA) {
-        this.FECCROEXA = FECCROEXA;
-    }
 
     public String getHORCROEXA() {
         return HORCROEXA;
@@ -86,4 +78,23 @@ public class AulaM {
         this.HORCROEXA = HORCROEXA;
     }
 
+
+
+    public String getTIPEXA() {
+        return TIPEXA;
+    }
+
+    public void setTIPEXA(String TIPEXA) {
+        this.TIPEXA = TIPEXA;
+    }
+
+    public String getMODEXA() {
+        return MODEXA;
+    }
+
+    public void setMODEXA(String MODEXA) {
+        this.MODEXA = MODEXA;
+    }
+
+ 
 }

@@ -33,8 +33,11 @@
                 <p:menuitem value="Registro de Soluciones" outcome="RegitroSoluciones.xhtml">
                     <f:param name="i" value="5" />
                 </p:menuitem>
-                <p:menuitem value="Prueba" outcome="Merito.xhtml">
+                <p:menuitem value="Merito" outcome="Merito.xhtml">
                     <f:param name="i" value="5" />
+                </p:menuitem>
+                <p:menuitem value="Registro Soluciones" outcome="RegitroSoluciones.xhtml">
+                    <f:param name="i" value="6" />
                 </p:menuitem>
             </p:tabMenu>
         </h:form>
@@ -76,6 +79,12 @@
                          paginator="true"
 
                          rowsPerPageTemplate="5,10,15">
+                 <p:column headerText="MODALIDAD">
+                     <p:outputLabel value="#{aula.MODEXA}"/>
+                </p:column>
+                 <p:column headerText="TIPO DE EXAMEN">
+                     <p:outputLabel value="#{aula.TIPEXA}"/>
+                </p:column>
                 <p:column headerText="Numero de Aula">
                     <p:outputLabel value="#{aula.NUMAUL}"/>
                 </p:column>
@@ -126,7 +135,7 @@
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:inputText>
                     <p:outputLabel value="FECHA DE EXAMEN"/>
-                    <p:selectOneMenu value="#{aulaC.selectedAula.FECCROEXA}">
+                    <p:selectOneMenu value="#{aulaC.selectedAula.EXAMEN_CODEXA}">
                         <f:selectItem itemLabel="Seleccione Fecha" itemDisabled="true" itemValue="#{null}"/>
                         <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.FECCROEXA}"/>
                     </p:selectOneMenu>
