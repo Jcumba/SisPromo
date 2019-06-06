@@ -35,7 +35,7 @@
                 <p:menuitem value="Merito" outcome="Merito.xhtml">
                     <f:param name="i" value="5" />
                 </p:menuitem>
-                <p:menuitem value="Registro Soluciones" outcome="RegistroSoluciones.xhtml">
+                <p:menuitem value="Registro Soluciones" outcome="RegitroSoluciones.xhtml">
                     <f:param name="i" value="6" />
                 </p:menuitem>
             </p:tabMenu>
@@ -74,7 +74,17 @@
                         <p:outputLabel style="color: black; font-weight: bold;"  value="NOMBRE: #{consulta.NOMPER}"/>
                         <br/>
                         <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="NOMBRE: #{consulta.APEPER}"/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="APELLIDO: #{consulta.APEPER}"/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="FECHA DE EXAMEN: #{consulta.FECCROEXA}"/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="HORA DE EXAMEN: #{consulta.HORCROEXA}"/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="NUMERO DE AULA: #{consulta.NUMAUL}"/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="MODALIDAD: #{consulta.MODEXA}"/>
+                        <br/>
+                        <p:outputLabel  style="color: black; font-weight: bold;" value="TIPO DE EXAMEN: #{consulta.TIPEXA}"/>
                         <br/>
                         <br/>
                         <center>

@@ -12,7 +12,7 @@ public class AlumnoM {
     private String COLEGIO_CODCOL;
     private String CARRERA_CODCAR;
     private String UBIGEO_CODUBI;
-    private String AULA_CODAUL;
+    private String AULA_CODAUL,FECCROEXA,HORCROEXA,MODEXA,TIPEXA,NUMAUL;
 
     private String CODCOL;
     private String NOMCOL;
@@ -602,6 +602,46 @@ public class AlumnoM {
 
     public void setNOMCAR(String NOMCAR) {
         this.NOMCAR = NOMCAR;
+    }
+
+    public String getFECCROEXA() {
+        return FECCROEXA;
+    }
+
+    public void setFECCROEXA(String FECCROEXA) {
+        this.FECCROEXA = FECCROEXA;
+    }
+
+    public String getHORCROEXA() {
+        return HORCROEXA;
+    }
+
+    public void setHORCROEXA(String HORCROEXA) {
+        this.HORCROEXA = HORCROEXA;
+    }
+
+    public String getMODEXA() {
+        return MODEXA;
+    }
+
+    public void setMODEXA(String MODEXA) {
+        this.MODEXA = MODEXA;
+    }
+
+    public String getTIPEXA() {
+        return TIPEXA;
+    }
+
+    public void setTIPEXA(String TIPEXA) {
+        this.TIPEXA = TIPEXA;
+    }
+
+    public String getNUMAUL() {
+        return NUMAUL;
+    }
+
+    public void setNUMAUL(String NUMAUL) {
+        this.NUMAUL = NUMAUL;
     }
 
 }

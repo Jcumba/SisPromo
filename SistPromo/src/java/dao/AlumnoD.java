@@ -295,7 +295,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         try {
             this.conectar();
             String sql;
-            sql = "SELECT * FROM VW_LISALUMCOL";
+            sql = "SELECT * FROM  VW_BUSCADOR";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarAlumno = new ArrayList();
@@ -306,7 +306,11 @@ public class AlumnoD extends Dao implements AlumnoI {
                 alumno.setNOMPER(rs.getString("NOMPER"));
                 alumno.setAPEPER(rs.getString("APEPER"));
                 alumno.setDNIPER(rs.getString("DNIPER"));
-                alumno.setNOMCOL(rs.getString("NOMCOL"));
+                alumno.setFECCROEXA(rs.getString("FECCROEXA"));
+                alumno.setHORCROEXA(rs.getString("HORCROEXA"));
+                alumno.setNUMAUL(rs.getString("NUMAUL"));
+                alumno.setMODEXA(rs.getString("MODEXA"));
+                alumno.setTIPEXA(rs.getString("TIPEXA"));
                 listarAlumno.add(alumno);
             }
         } catch (SQLException e) {

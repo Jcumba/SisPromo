@@ -15,7 +15,7 @@ public class Reportes extends Dao {
   
     public void exportarPDFCronograma() throws JRException, IOException, Exception {
         this.conectar();
-        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("resources/report/SisPromo.jasper"));
+        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("resources/reporte/ConnecBuscador.jasper"));
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), null, this.getCn());
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         response.addHeader("Content-disposition", "attachment; filename=Cronograma.pdf");
