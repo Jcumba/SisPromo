@@ -5,10 +5,6 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
-//import java.text.ParseException;
-//import java.text.SimpleDateFormat;
-//import java.util.Calendar;
-//import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -16,7 +12,6 @@ import javax.faces.context.FacesContext;
 import modelo.AlumnoM;
 import modelo.CarreraM;
 import org.primefaces.model.chart.PieChartModel;
-//import org.primefaces.PrimeFaces;
 
 @Named(value = "alumnoC")
 @SessionScoped
@@ -25,6 +20,7 @@ public class AlumnoC implements Serializable {
     private AlumnoM alumno = new AlumnoM();
     CarreraM carrera = new CarreraM();
     private List<AlumnoM> lstAlumno;
+    private List<AlumnoM> lstAlumnosRegistrado;
     private List<AlumnoM> lstTopAlumno;
     private List<AlumnoM> lstConsulta;
     private List<AlumnoM> lstConsultaNotas;
@@ -36,17 +32,15 @@ public class AlumnoC implements Serializable {
     private String Notas = null;
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
-    
-        public void limpiar() {
+
+    public void limpiar() {
         alumno = new AlumnoM();
     }
-    
-   
-    
+
     @PostConstruct
     public void init() {
         try {
-            listarAlumno();
+            listarAlumnosRegistrados();
             listarTopColegios();
             listarOrdenMerito();
         } catch (Exception e) {
@@ -64,7 +58,7 @@ public class AlumnoC implements Serializable {
         }
     }
 
-       public void descargarPdfMerito() throws Exception {
+    public void descargarPdfMerito() throws Exception {
         Reportes rs;
         try {
             rs = new Reportes();
@@ -74,8 +68,16 @@ public class AlumnoC implements Serializable {
         }
     }
 
-    
-    
+    public void listarAlumnosRegistrados() throws Exception {
+        AlumnoD dao;
+        try {
+            dao = new AlumnoD();
+            lstAlumnosRegistrado = dao.listarAlumnoRegistrado();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public void listarTopColegios() throws Exception {
         AlumnoD dao;
         try {
@@ -86,9 +88,7 @@ public class AlumnoC implements Serializable {
         }
     }
 
-
-
-    public void guardarAlumno() {
+    public void guardarAlumno() throws Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
@@ -97,8 +97,10 @@ public class AlumnoC implements Serializable {
             dao.guardarAlumno(alumno);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregado Correctamente", null));
             limpiar();
+            listarAlumnosRegistrados();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL AGREGAR", null));
+            throw e;
         }
     }
 
@@ -173,25 +175,34 @@ public class AlumnoC implements Serializable {
         }
     }
 
-    public void cantidadAlumnos() throws SQLException, Exception {
+//    public void cantidadAlumnos() throws SQLException, Exception {
+//        AlumnoD dao;
+//        try {
+//            dao = new AlumnoD();
+//            dao.cantidadAlumnos(alumno);
+//        } catch (SQLException e) {
+//            throw e;
+//        }
+//    }
+
+//    public void listarGrafica() {
+//        AlumnoD dao;
+//        List<AlumnoM> list;
+//        try {
+//            dao = new AlumnoD();
+//            list = dao.CantAlumXCar();
+//            graficar(list);
+//        } catch (Exception e) {
+//        } finally {
+//        }
+//    }
+     private void listarOrdenMerito() throws SQLException, Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
-            dao.cantidadAlumnos(alumno);
+            lstOrdenMerito = dao.OrdenMerito();
         } catch (SQLException e) {
             throw e;
-        }
-    }
-
-    public void listarGrafica() {
-        AlumnoD dao;
-        List<AlumnoM> list;
-        try {
-            dao = new AlumnoD();
-            list = dao.CantAlumXCar();
-            graficar(list);
-        } catch (Exception e) {
-        } finally {
         }
     }
 
@@ -295,14 +306,14 @@ public class AlumnoC implements Serializable {
         this.lstOrdenMerito = lstOrdenMerito;
     }
 
-    private void listarOrdenMerito() throws SQLException, Exception {
-        AlumnoD dao;
-        try {
-            dao = new AlumnoD();
-            lstOrdenMerito = dao.OrdenMerito();
-        } catch (SQLException e) {
-            throw e;
-        }
+    public List<AlumnoM> getLstAlumnosRegistrado() {
+        return lstAlumnosRegistrado;
     }
+
+    public void setLstAlumnosRegistrado(List<AlumnoM> lstAlumnosRegistrado) {
+        this.lstAlumnosRegistrado = lstAlumnosRegistrado;
+    }
+
+   
 
 }

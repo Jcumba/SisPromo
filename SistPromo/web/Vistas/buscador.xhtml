@@ -26,16 +26,10 @@
                 <p:menuitem value="BUSCADOR" outcome="buscador.xhtml">
                     <f:param name="i" value="4" />
                 </p:menuitem>
-                 <p:menuitem value="ASIGNACION" outcome="asignacion.xhtml">
+                <p:menuitem value="REGISTRO DE SOLUCIONES" outcome="RegitroSoluciones.xhtml">
                     <f:param name="i" value="5" />
                 </p:menuitem>
-                <p:menuitem value="Registro de Soluciones" outcome="RegitroSoluciones.xhtml">
-                    <f:param name="i" value="5" />
-                </p:menuitem>
-                <p:menuitem value="Merito" outcome="Merito.xhtml">
-                    <f:param name="i" value="5" />
-                </p:menuitem>
-                <p:menuitem value="Registro Soluciones" outcome="RegitroSoluciones.xhtml">
+                <p:menuitem value="MERITO" outcome="Merito.xhtml">
                     <f:param name="i" value="6" />
                 </p:menuitem>
             </p:tabMenu>
@@ -68,25 +62,13 @@
                             var="consulta"
                             emptyMessage="Sin Resultados">
                     <p:column headerText="Datos">
-                        <p:outputLabel style="color: black; font-weight: bold;" value="DNI: #{consulta.DNIPER}"/>
+                        <p:outputLabel  value="DNI: #{consulta.DNIPER}"/>
                         <br/>
                         <br/>
-                        <p:outputLabel style="color: black; font-weight: bold;"  value="NOMBRE: #{consulta.NOMPER}"/>
+                        <p:outputLabel   value="NOMBRE: #{consulta.NOMPER}"/>
                         <br/>
                         <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="APELLIDO: #{consulta.APEPER}"/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="FECHA DE EXAMEN: #{consulta.FECCROEXA}"/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="HORA DE EXAMEN: #{consulta.HORCROEXA}"/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="NUMERO DE AULA: #{consulta.NUMAUL}"/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="MODALIDAD: #{consulta.MODEXA}"/>
-                        <br/>
-                        <p:outputLabel  style="color: black; font-weight: bold;" value="TIPO DE EXAMEN: #{consulta.TIPEXA}"/>
-                        <br/>
-                        <br/>
+                        <p:outputLabel value="APELLIDO: #{consulta.APEPER}"/>
                         <center>
                             <h:commandLink value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.descargarPdfCronograma()}">
                                 <i class="zmdi zmdi-download"></i>

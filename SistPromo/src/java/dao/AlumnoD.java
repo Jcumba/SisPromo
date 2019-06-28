@@ -390,6 +390,33 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
         return listaCantAlumXCar;
     }
+    
+    public List<AlumnoM> listarAlumnoRegistrado() throws Exception{
+        List<AlumnoM> listarAlumnoRegistrado;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="select * from VW_LISTAALUMNOSREGISTRADOS";
+            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            rs=ps.executeQuery();
+            listarAlumnoRegistrado = new ArrayList();
+            AlumnoM alumno;
+            while(rs.next()){
+                alumno = new AlumnoM();
+                alumno.setCODPER(rs.getString("CODPER"));
+                alumno.setNOMPER(rs.getString("NOMPER"));
+                alumno.setAPEPER(rs.getString("APEPER"));
+                alumno.setDNIPER(rs.getString("DNIPER"));
+                alumno.setNOMCOL(rs.getString("NOMCOL"));
+                listarAlumnoRegistrado.add(alumno);
+            }
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            this.cerrar();
+        }
+        return listarAlumnoRegistrado;
+    }
 
     @Override
     public List<AlumnoM> OrdenMerito() throws Exception {
@@ -418,5 +445,5 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
         return listarMerito;
     }
-
+   
 }
