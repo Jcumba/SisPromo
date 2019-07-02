@@ -4,7 +4,7 @@ import java.util.List;
 import modelo.AlumnoM;
 
 public interface AlumnoI {
-
+    void guardarAlumnoHistorial(AlumnoM alumno) throws Exception;
     void guardarAlumno(AlumnoM alumno) throws Exception;
 
     void cantidadAlumnos(AlumnoM alumno) throws Exception;

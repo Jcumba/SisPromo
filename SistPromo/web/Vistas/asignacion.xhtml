@@ -16,11 +16,16 @@
                     <f:selectItem  itemLabel="Seleccione" itemDisabled="true" />
                     <f:selectItems  value="#{aulaC.lstAula}" var="aula"  itemValue="#{aula.CODAUL}" itemLabel="#{aula.NUMAUL}"/>
                 </p:selectOneMenu>
+
                 <p:outputLabel value="ALUMNO"/>
-                <p:selectOneMenu  value="#{asignacionC.asignacion.PERSONA_CODPER}">
-                    <f:selectItem  itemLabel="Seleccione" itemDisabled="true" />
-                    <f:selectItems  value="#{alumnoC.lstAlumno}" var="alumno"  itemValue="#{alumno.CODPER}" itemLabel="#{alumno.NOMPER}"/>
+                <p:selectOneMenu value="#{asignacionC.asignacion.PERSONA_CODPER}">
+                    <f:selectItem value="Seleccione" itemDisabled="true" />
+                    <f:selectItems value="#{alumnoC.lstAlumnosRegistrado}"  var="alumno"  itemValue="#{alumno.CODPER}" itemLabel="#{alumno.NOMPER}"/>
                 </p:selectOneMenu>
+                    
+
+
+
             </p:panelGrid>
             <p:commandButton   value="GUARDAR" actionListener="#{asignacionC.guardar()}" update="FormAsignacion"/>
         </h:form>

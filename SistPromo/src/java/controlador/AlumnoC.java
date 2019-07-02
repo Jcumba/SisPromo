@@ -1,6 +1,7 @@
 package controlador;
 
 import dao.AlumnoD;
+
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ import org.primefaces.model.chart.PieChartModel;
 public class AlumnoC implements Serializable {
 
     private AlumnoM alumno = new AlumnoM();
+
     CarreraM carrera = new CarreraM();
     private List<AlumnoM> lstAlumno;
     private List<AlumnoM> lstAlumnosRegistrado;
@@ -27,7 +29,6 @@ public class AlumnoC implements Serializable {
     private List<AlumnoM> lstOrdenMerito;
     private PieChartModel pieModel;
     private AlumnoM selectedAlumno;
-
     private String dni = null;
     private String Notas = null;
 //    Calendar Cal = Calendar.getInstance();
@@ -40,6 +41,7 @@ public class AlumnoC implements Serializable {
     @PostConstruct
     public void init() {
         try {
+            listarAlumno();
             listarAlumnosRegistrados();
             listarTopColegios();
             listarOrdenMerito();
@@ -95,6 +97,7 @@ public class AlumnoC implements Serializable {
             alumno.setUBIGEO_CODUBI(dao.leerUbi(alumno.getUBIGEO_CODUBI()));
             alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
             dao.guardarAlumno(alumno);
+            dao.guardarAlumnoHistorial(alumno);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregado Correctamente", null));
             limpiar();
             listarAlumnosRegistrados();
@@ -184,7 +187,6 @@ public class AlumnoC implements Serializable {
 //            throw e;
 //        }
 //    }
-
 //    public void listarGrafica() {
 //        AlumnoD dao;
 //        List<AlumnoM> list;
@@ -196,7 +198,7 @@ public class AlumnoC implements Serializable {
 //        } finally {
 //        }
 //    }
-     private void listarOrdenMerito() throws SQLException, Exception {
+    private void listarOrdenMerito() throws SQLException, Exception {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
@@ -313,7 +315,5 @@ public class AlumnoC implements Serializable {
     public void setLstAlumnosRegistrado(List<AlumnoM> lstAlumnosRegistrado) {
         this.lstAlumnosRegistrado = lstAlumnosRegistrado;
     }
-
-   
 
 }

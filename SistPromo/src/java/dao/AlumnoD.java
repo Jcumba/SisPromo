@@ -36,6 +36,24 @@ public class AlumnoD extends Dao implements AlumnoI {
     }
 
     @Override
+    public void guardarAlumnoHistorial(AlumnoM alumno) throws Exception {
+        try {
+            this.conectar();
+            String sql = "INSERT INTO HISTORIAL_PERSONA (NOMPER,APEPER,DNIPER,CELPER) VALUES (?,?,?,?)";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, alumno.getNOMPER());
+            ps.setString(2, alumno.getAPEPER());
+            ps.setString(3, alumno.getDNIPER());
+            ps.setString(4, alumno.getCELPER());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+
+    @Override
     public void modificarAlumno(AlumnoM alumno) throws Exception {
         try {
             this.conectar();
@@ -390,18 +408,18 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
         return listaCantAlumXCar;
     }
-    
-    public List<AlumnoM> listarAlumnoRegistrado() throws Exception{
+
+    public List<AlumnoM> listarAlumnoRegistrado() throws Exception {
         List<AlumnoM> listarAlumnoRegistrado;
         ResultSet rs;
         try {
             this.conectar();
-            String sql="select * from VW_LISTAALUMNOSREGISTRADOS";
-            PreparedStatement ps=this.getCn().prepareStatement(sql);
-            rs=ps.executeQuery();
+            String sql = "select * from VW_LISTAALUMNOSREGISTRADOS";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
             listarAlumnoRegistrado = new ArrayList();
             AlumnoM alumno;
-            while(rs.next()){
+            while (rs.next()) {
                 alumno = new AlumnoM();
                 alumno.setCODPER(rs.getString("CODPER"));
                 alumno.setNOMPER(rs.getString("NOMPER"));
@@ -412,7 +430,7 @@ public class AlumnoD extends Dao implements AlumnoI {
             }
         } catch (SQLException e) {
             throw e;
-        }finally{
+        } finally {
             this.cerrar();
         }
         return listarAlumnoRegistrado;
@@ -445,5 +463,5 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
         return listarMerito;
     }
-   
+
 }
