@@ -1,14 +1,24 @@
 package dao;
 
 import Interfaces.AlumnoI;
+import java.io.File;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 
 import modelo.AlumnoM;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 public class AlumnoD extends Dao implements AlumnoI {
 
@@ -198,7 +208,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT * FROM VW_CONSULTA WHERE DNIPER LIKE ?";
+            String sql = "SELECT * FROM VW_SEARCH WHERE DNIPER LIKE ?";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, dni);
             rs = ps.executeQuery();
@@ -210,6 +220,9 @@ public class AlumnoD extends Dao implements AlumnoI {
                 alumno.setDNIPER(rs.getString("DNIPER"));
                 alumno.setNOMPER(rs.getString("NOMPER"));
                 alumno.setAPEPER(rs.getString("APEPER"));
+                alumno.setNUMAUL(rs.getString("NUMAUL"));
+                alumno.setFECCROEXA(rs.getString("FECCROEXA"));
+                alumno.setHORCROEXA(rs.getString("HORCROEXA"));
                 consulta.add(alumno);
             }
             return consulta;
@@ -464,4 +477,22 @@ public class AlumnoD extends Dao implements AlumnoI {
         return listarMerito;
     }
 
+      //METODO REPORTE_PDF_FECHADEEXAMEN
+    public void REPORTE_PDF_FECHADEEXAMEN(Map parameters) throws JRException, IOException, Exception {
+        conectar();
+        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("resources/reporte/Search0.jasper"));
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), parameters, this.getCn());
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        response.addHeader("Content-disposition", "attachment; filename=FECHA DE EXAMEN.pdf");
+        try (ServletOutputStream stream = response.getOutputStream()) {
+            JasperExportManager.exportReportToPdfStream(jasperPrint, stream);
+            stream.flush();
+        }
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+    
+    
+    
+    
+    
 }

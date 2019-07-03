@@ -1,10 +1,13 @@
 package controlador;
 
+import dao.AlumnoD;
 import dao.CronogramaD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -13,15 +16,11 @@ import modelo.CronogramaM;
 @Named(value = "cronogramaC")
 @SessionScoped
 public class CronogramaC implements Serializable {
-
+    private String DNIPER;
     CronogramaM cronograma = new CronogramaM();
     private List<CronogramaM> lstCronograma;
     private CronogramaM selectedCronograma;
 
-    
-     
-    
-    
     @PostConstruct
     public void iniciar() {
         try {
@@ -49,11 +48,26 @@ public class CronogramaC implements Serializable {
         }
     }
 
-    public void descargarPdfCronograma() throws Exception {
-        Reportes rs;
+//    public void descargarPdfCronograma() throws Exception {
+//        Reportes rs;
+//        try {
+//            rs = new Reportes();
+//            rs.exportarPDFCronograma();
+//        } catch (Exception e) {
+//            throw e;
+//        }
+//    }
+    
+    
+//    DESCARGAR REPORTE_PDF_FECHADEEXAMEN
+    public void REPORTE_PDF_FECHADEEXAMEN(String DNIPER) throws Exception {
+        AlumnoD dao = new AlumnoD();
         try {
-            rs = new Reportes();
-            rs.exportarPDFCronograma();
+            Map<String, Object> parameters = new HashMap(); // Libro de parametros
+            parameters.put("DNIPER",DNIPER); //Insertamos un parametro
+            dao.REPORTE_PDF_FECHADEEXAMEN(parameters);
+//            reportAlu.REPORTE_PDF_ALUMNO(parameters); //Pido exportar Reporte con los parametros
+//            report.exportarPDF2(parameters);
         } catch (Exception e) {
             throw e;
         }
@@ -102,4 +116,13 @@ public class CronogramaC implements Serializable {
         this.selectedCronograma = selectedCronograma;
     }
 
+    public String getDNIPER() {
+        return DNIPER;
+    }
+
+    public void setDNIPER(String DNIPER) {
+        this.DNIPER = DNIPER;
+    }
+
+ 
 }

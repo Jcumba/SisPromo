@@ -96,8 +96,8 @@ public class AlumnoC implements Serializable {
             dao = new AlumnoD();
             alumno.setUBIGEO_CODUBI(dao.leerUbi(alumno.getUBIGEO_CODUBI()));
             alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
-            dao.guardarAlumno(alumno);
             dao.guardarAlumnoHistorial(alumno);
+            dao.guardarAlumno(alumno);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregado Correctamente", null));
             limpiar();
             listarAlumnosRegistrados();

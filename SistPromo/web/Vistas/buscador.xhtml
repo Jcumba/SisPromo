@@ -62,18 +62,33 @@
                             var="consulta"
                             emptyMessage="Sin Resultados">
                     <p:column headerText="Datos">
-                        <p:outputLabel  value="DNI: #{consulta.DNIPER}"/>
                         <br/>
                         <br/>
                         <p:outputLabel   value="NOMBRE: #{consulta.NOMPER}"/>
                         <br/>
-                        <br/>
+                        <br/> 
                         <p:outputLabel value="APELLIDO: #{consulta.APEPER}"/>
+                        <br/>
+                        <br/>
+                        <p:outputLabel  value="DNI: #{consulta.DNIPER}"/>  
+                        <br/>
+                        <br/>
+                        <p:outputLabel  value="AULA: #{consulta.NUMAUL}"/>  
+                        <br/>
+                        <br/>
+                        <p:outputLabel  value="FECHA DE EXAMEN: #{consulta.FECCROEXA}"/>  
+                        <br/>
+                        <br/>
+                        <p:outputLabel  value="HORA DE EXAMEN #{consulta.HORCROEXA}"/>  
+                        <br/>
+                        <br/>
                         <center>
-                            <h:commandLink value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.descargarPdfCronograma()}">
+                            <h:commandLink value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.REPORTE_PDF_FECHADEEXAMEN}">
                                 <i class="zmdi zmdi-download"></i>
                             </h:commandLink>
                         </center>
+                        <br/>
+                        <br/>
                     </p:column> 
                 </p:dataGrid>
             </h:form>
