@@ -73,11 +73,11 @@
                          paginator="true"
 
                          rowsPerPageTemplate="5,10,15">
-                 <p:column headerText="MODALIDAD">
-                     <p:outputLabel value="#{aula.MODEXA}"/>
+                <p:column headerText="MODALIDAD">
+                    <p:outputLabel value="#{aula.MODEXA}"/>
                 </p:column>
-                 <p:column headerText="TIPO DE EXAMEN">
-                     <p:outputLabel value="#{aula.TIPEXA}"/>
+                <p:column headerText="TIPO DE EXAMEN">
+                    <p:outputLabel value="#{aula.TIPEXA}"/>
                 </p:column>
                 <p:column headerText="Numero de Aula">
                     <p:outputLabel value="#{aula.NUMAUL}"/>
@@ -102,7 +102,6 @@
                 </p:menuitem>
             </p:contextMenu>
         </h:form>
-
         <h:form>
             <p:confirmDialog global="true">
                 <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
