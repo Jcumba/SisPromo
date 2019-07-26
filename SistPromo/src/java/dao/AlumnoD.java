@@ -254,6 +254,26 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
+    public String buscarDniAlumno(String dniAlum) throws Exception{
+        this.conectar();
+        try {
+            ResultSet rs;
+            String sql="SELECT DNIPER FROM PERSONA WHERE DNIPER LIKE ?";
+            PreparedStatement ps=this.getCn().prepareCall(sql);
+            ps.setString(1, dniAlum);
+            rs = ps.executeQuery();
+            if (rs.next()){
+                return  rs.getString("DNIPER");
+            }
+            return null;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+    
+    
     public List<AlumnoM> consultarNotas(String dni) throws Exception {
         List<AlumnoM> consultar;
         ResultSet rs;

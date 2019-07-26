@@ -19,7 +19,7 @@ import org.primefaces.model.chart.PieChartModel;
 public class AlumnoC implements Serializable {
 
     private AlumnoM alumno = new AlumnoM();
-
+    private String uniqueAlumn;
     CarreraM carrera = new CarreraM();
     private List<AlumnoM> lstAlumno;
     private List<AlumnoM> lstAlumnosRegistrado;
@@ -94,13 +94,20 @@ public class AlumnoC implements Serializable {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
-            alumno.setUBIGEO_CODUBI(dao.leerUbi(alumno.getUBIGEO_CODUBI()));
-            alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
-            dao.guardarAlumnoHistorial(alumno);
-            dao.guardarAlumno(alumno);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregado Correctamente", null));
-            limpiar();
-            listarAlumnosRegistrados();
+            this.setUniqueAlumn(dao.buscarDniAlumno(alumno.getDNIPER()));
+            if (alumno.getDNIPER().equals(this.uniqueAlumn)) {
+                limpiar();
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR", "Alumno ya está registrado"));
+            } else {
+                alumno.setUBIGEO_CODUBI(dao.leerUbi(alumno.getUBIGEO_CODUBI()));
+                alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
+                dao.guardarAlumnoHistorial(alumno);
+                dao.guardarAlumno(alumno);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregado Correctamente", null));
+                limpiar();
+                listarAlumnosRegistrados();
+            }
+
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL AGREGAR", null));
             throw e;
@@ -314,6 +321,14 @@ public class AlumnoC implements Serializable {
 
     public void setLstAlumnosRegistrado(List<AlumnoM> lstAlumnosRegistrado) {
         this.lstAlumnosRegistrado = lstAlumnosRegistrado;
+    }
+
+    public String getUniqueAlumn() {
+        return uniqueAlumn;
+    }
+
+    public void setUniqueAlumn(String uniqueAlumn) {
+        this.uniqueAlumn = uniqueAlumn;
     }
 
 }
