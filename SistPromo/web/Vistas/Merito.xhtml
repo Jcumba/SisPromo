@@ -10,8 +10,8 @@
 
     </h:head>
     <h:body>
-                <h:form>
-                    <p:dataTable var="merito" value="#{alumnoC.lstOrdenMerito}" scrollable="true" scrollHeight="300">
+        <h:form >
+            <p:dataTable var="merito" value="#{alumnoC.lstOrdenMerito}" scrollable="true" scrollHeight="300">
 
                         <p:column headerText="Nombres y Apellidos" >
                             <h:outputText value="#{merito.ALUMMERIT} #{merito.NOMPERMERIT}" />
