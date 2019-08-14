@@ -208,7 +208,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT * FROM VW_SEARCH WHERE DNIPER LIKE ?";
+            String sql = "SELECT * FROM VW_SEARCH01 WHERE DNIPER LIKE ?";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, dni);
             rs = ps.executeQuery();
@@ -258,7 +258,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         this.conectar();
         try {
             ResultSet rs;
-            String sql="SELECT DNIPER FROM PERSONA WHERE DNIPER LIKE ?";
+            String sql="SELECT DNIPER FROM PERSONA WHERE ESTPER='A' and DNIPER LIKE ?";
             PreparedStatement ps=this.getCn().prepareCall(sql);
             ps.setString(1, dniAlum);
             rs = ps.executeQuery();

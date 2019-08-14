@@ -120,7 +120,7 @@ public class AlumnoC implements Serializable {
             dao = new AlumnoD();
             alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
             dao.modificarAlumno(alumno);
-            listarAlumno();
+            listarAlumnosRegistrados();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificado Correctamente", null));
             limpiar();
         } catch (Exception e) {
@@ -136,7 +136,7 @@ public class AlumnoC implements Serializable {
             dao.eliminarAlumno(alumno);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminado Correctamente", null));
-            listarAlumno();
+            listarAlumnosRegistrados();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR AL ELIMINAR", null));
             throw e;
