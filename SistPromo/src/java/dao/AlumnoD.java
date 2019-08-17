@@ -44,6 +44,21 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
+    
+    public void asignacionAlumno(String  codigoPersona) throws Exception {
+        this.conectar();
+        try {
+            String sql="CALL ASIGNACION_ALUMNO(?);END;";
+            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            ps.setString(1, codigoPersona);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }finally {
+            this.cerrar();
+        }
+        
+    }
 
     @Override
     public void guardarAlumnoHistorial(AlumnoM alumno) throws Exception {

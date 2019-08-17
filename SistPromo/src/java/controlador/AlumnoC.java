@@ -103,6 +103,7 @@ public class AlumnoC implements Serializable {
                 alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
                 dao.guardarAlumnoHistorial(alumno);
                 dao.guardarAlumno(alumno);
+                dao.asignacionAlumno(alumno.getCODPER());
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO CORRECTAMENTE", null));
                 limpiar();
                 listarAlumnosRegistrados();
