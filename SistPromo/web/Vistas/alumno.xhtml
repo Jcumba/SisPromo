@@ -28,7 +28,7 @@
 
 
             <h:form id="form"  class="form_contact form-group" >
-                <p:growl id="msg" life="1500" autoUpdate="true"/>
+                <p:growl id="msg" life="2000" autoUpdate="true"/>
                 <center>
                      <p:panelGrid columns="1">            
                 <img src="../resources/img/demo.jpg" style="margin-left: 115px;margin-bottom: 10px" alt=""/>
@@ -37,29 +37,29 @@
                 <div class="user_info" >
 
                     <p:outputLabel value="CARRERA:"/>
-                    <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 420px;">
+                    <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 420px;" required="true" requiredMessage="Selecione Carrera">
                         <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
                         <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel style="margin-top: 8px" value="NOMBRE:" />
                     <p:inputText    class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" style="width: 420px" value="#{alumnoC.alumno.NOMPER}"
-                                    onkeyup="this.value = this.value.toUpperCase();">
+                                    onkeyup="this.value = this.value.toUpperCase();" required="true" requiredMessage="Ingrese Nombre">
                         <p:keyFilter regEx="/[a-z_ ]/i"/> 	
                     </p:inputText>
                     <p:outputLabel value="APELLIDO:"/>
-                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px" onkeyup="this.value = this.value.toUpperCase();">
+                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px" onkeyup="this.value = this.value.toUpperCase();" required="true" requiredMessage="Ingrese Apellido">
                     <p:keyFilter regEx="/[a-z_ ]/i"/>
                     </p:inputText>
                     <p:outputLabel value="DNI:"/>
-                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px"  maxlength="8">
+                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px"  maxlength="8" required="true" requiredMessage="Ingrese DNI">
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:inputText>
                     <p:outputLabel for="date" value="FECHA DE NACIMIENTO:"/>
-                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px"  mask="99/99/9999"/>
+                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px"  mask="99/99/9999" required="true" requiredMessage="Ingrese Fecha de Nacimiento"/>
 
                     <p:outputLabel value="CELULAR:"/>
-                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px"  maxlength="9">
+                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px"  maxlength="9" required="true" requiredMessage="Ingrese Celular">
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:inputText>
                     <p:outputLabel  value="DISTRITO:"/>
@@ -67,14 +67,14 @@
                                      emptyMessage="No se encontro ningún registro"
                                      value="#{alumnoC.alumno.UBIGEO_CODUBI}"
                                      completeMethod="#{alumnoC.completeTextUbi}"
-                                     style="width: 420px" maxlength="15">
+                                     style="width: 420px" maxlength="15" required="true" requiredMessage="Ingrese Distrito"> 
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:autoComplete>
                     <p:outputLabel  value="COLEGIO:"/>
                     <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
                                      value="#{alumnoC.alumno.CODCOL}"        
                                      completeMethod="#{alumnoC.completeTextCol}"
-                                     style="width: 420px" maxlength="15">
+                                     style="width: 420px" maxlength="15" required="true" requiredMessage="Ingrese Colegio">
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:autoComplete>
                     <p:commandButton  class="btn btn-primary pull-right mio button" style="width: 300px;margin-left: 60px" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}" 
