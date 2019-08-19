@@ -86,6 +86,7 @@ public class ImplAulaD extends Dao implements AulaI {
                 aula.setHORCROEXA(rs.getString("HORCROEXA"));
                 aula.setMODEXA(rs.getString("MODEXA"));
                 aula.setTIPEXA(rs.getString("TIPEXA"));
+                aula.setESTAUL(rs.getString("ESTAUL"));
                 listarAula.add(aula);
             }
         } catch (SQLException e) {
