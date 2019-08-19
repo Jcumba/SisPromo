@@ -27,8 +27,8 @@
 
 
 
-            <h:form id="form"  class="form_contact form-group" >
-                <p:growl id="msg" life="2000" autoUpdate="true"/>
+            <h:form id="FormPersona"  class="form_contact form-group" >
+                <p:growl id="msg" showDetail="true" life="2000" autoUpdate="true"/>
                 <center>
                      <p:panelGrid columns="1">            
                 <img src="../resources/img/demo.jpg" style="margin-left: 115px;margin-bottom: 10px" alt=""/>
@@ -78,7 +78,7 @@
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:autoComplete>
                     <p:commandButton  class="btn btn-primary pull-right mio button" style="width: 300px;margin-left: 60px" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}" 
-                                       update="form"/>
+                                       update="FormPersona"/>
                     <br/>
                     <a href="buscador.xhtml" class="btn btn-info pull-right mio button"  style="width: 300px;margin-left: 60px"  role="button">Solicitar Ficha de Ingreso</a>
                     <br/>
