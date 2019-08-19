@@ -8,20 +8,19 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import lombok.Data;
 import modelo.AulaM;
-
 
 @Named(value = "aulaC")
 @SessionScoped
+@Data
 public class AulaC implements Serializable {
 
-    
     AulaM aula = new AulaM();
     private List<AulaM> lstAula;
     private AulaM selectedAula;
+    private String uniqueAula;
 
- 
-  
     @PostConstruct
     public void iniciar() {
         try {
@@ -30,8 +29,7 @@ public class AulaC implements Serializable {
         }
 
     }
-    
-    
+
     public void limpiar() {
         aula = new AulaM();
     }
@@ -40,11 +38,17 @@ public class AulaC implements Serializable {
         ImplAulaD dao;
         try {
             dao = new ImplAulaD();
-//            aula.setFECINC(new java.sql.Date(aula.getFechaTemporal().getTime()));
-            dao.guardar(aula);
-            limpiar();
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGARDO CORRECTAMENTE", null));
-            listar();
+            this.setUniqueAula(dao.buscarAula(aula.getNUMAUL()));
+            if (aula.getNUMAUL().equals(this.uniqueAula)) {
+                limpiar();
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR, AULA YA REGISTRADO", null));
+            } else {
+                dao.guardar(aula);
+                limpiar();
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGARDO CORRECTAMENTE", null));
+                listar();
+            }
+
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL MODIFICAR", null));
             throw e;
@@ -89,30 +93,5 @@ public class AulaC implements Serializable {
             throw e;
         }
     }
-
-    public AulaM getAula() {
-        return aula;
-    }
-
-    public void setAula(AulaM aula) {
-        this.aula = aula;
-    }
-
-    public List<AulaM> getLstAula() {
-        return lstAula;
-    }
-
-    public void setLstAula(List<AulaM> lstAula) {
-        this.lstAula = lstAula;
-    }
-
-    public AulaM getSelectedAula() {
-        return selectedAula;
-    }
-
-    public void setSelectedAula(AulaM selectedAula) {
-        this.selectedAula = selectedAula;
-    }
-
 
 }

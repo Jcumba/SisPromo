@@ -96,4 +96,23 @@ public class ImplAulaD extends Dao implements AulaI {
         }
         return listarAula;
     }
+    
+    public String buscarAula(String numAula) throws Exception{
+        this.conectar();
+        try {
+            ResultSet rs;
+            String sql="SELECT NUMAUL FROM AULA WHERE  NUMAUL LIKE ?";
+            PreparedStatement ps = this.getCn().prepareCall(sql);
+            ps.setString(1, numAula);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return  rs.getString("NUMAUL");
+            }
+            return null;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
 }

@@ -10,12 +10,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import lombok.Data;
 import modelo.AlumnoM;
 import modelo.CarreraM;
 import org.primefaces.model.chart.PieChartModel;
 
+
 @Named(value = "alumnoC")
 @SessionScoped
+@Data
 public class AlumnoC implements Serializable {
 
     private AlumnoM alumno = new AlumnoM();
@@ -227,108 +230,6 @@ public class AlumnoC implements Serializable {
 
     }
 
-    public AlumnoM getAlumno() {
-        return alumno;
-    }
-
-    public void setAlumno(AlumnoM alumno) {
-        this.alumno = alumno;
-    }
-
-    public List<AlumnoM> getLstAlumno() {
-        return lstAlumno;
-    }
-
-    public void setLstAlumno(List<AlumnoM> lstAlumno) {
-        this.lstAlumno = lstAlumno;
-    }
-
-    public List<AlumnoM> getLstTopAlumno() {
-        return lstTopAlumno;
-    }
-
-    public void setLstTopAlumno(List<AlumnoM> lstTopAlumno) {
-        this.lstTopAlumno = lstTopAlumno;
-    }
-
-    public PieChartModel getPieModel() {
-        return pieModel;
-    }
-
-    public void setPieModel(PieChartModel pieModel) {
-        this.pieModel = pieModel;
-    }
-
-    public CarreraM getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(CarreraM carrera) {
-        this.carrera = carrera;
-    }
-
-    public List<AlumnoM> getLstConsulta() {
-        return lstConsulta;
-    }
-
-    public void setLstConsulta(List<AlumnoM> lstConsulta) {
-        this.lstConsulta = lstConsulta;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getNotas() {
-        return Notas;
-    }
-
-    public void setNotas(String Notas) {
-        this.Notas = Notas;
-    }
-
-    public List<AlumnoM> getLstConsultaNotas() {
-        return lstConsultaNotas;
-    }
-
-    public void setLstConsultaNotas(List<AlumnoM> lstConsultaNotas) {
-        this.lstConsultaNotas = lstConsultaNotas;
-    }
-
-    public AlumnoM getSelectedAlumno() {
-        return selectedAlumno;
-    }
-
-    public void setSelectedAlumno(AlumnoM selectedAlumno) {
-        this.selectedAlumno = selectedAlumno;
-    }
-
-    public List<AlumnoM> getLstOrdenMerito() {
-        return lstOrdenMerito;
-    }
-
-    public void setLstOrdenMerito(List<AlumnoM> lstOrdenMerito) {
-        this.lstOrdenMerito = lstOrdenMerito;
-    }
-
-    public List<AlumnoM> getLstAlumnosRegistrado() {
-        return lstAlumnosRegistrado;
-    }
-
-    public void setLstAlumnosRegistrado(List<AlumnoM> lstAlumnosRegistrado) {
-        this.lstAlumnosRegistrado = lstAlumnosRegistrado;
-    }
-
-    public String getUniqueAlumn() {
-        return uniqueAlumn;
-    }
-
-    public void setUniqueAlumn(String uniqueAlumn) {
-        this.uniqueAlumn = uniqueAlumn;
-    }
+ 
 
 }
