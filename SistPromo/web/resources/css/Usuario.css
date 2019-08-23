@@ -1,0 +1,9 @@
+ .footerbar {
+  background-color: #f54;
+  bottom: 0;
+  color: #eee;
+  padding: 1rem;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}

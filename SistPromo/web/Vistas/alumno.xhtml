@@ -3,92 +3,90 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Registro de Admision</title>
-        <link href="../resources/css/Estilo.css" rel="stylesheet" type="text/css"/>
-        <script src="../resources/js/Estilojs.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <title>Registro de Postulantes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../resources/css/demo.css" rel="stylesheet" type="text/css"/>
+        <style>
+            a:link, a:visited {
+                background-color: #03a9f4;
+                color: white;
+                padding: 10px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin-left: 120px;
+                font-size: 12px;
+            }
 
-        <link href="../resources/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css"/>
-        <!-- CSS -->
-
-        <link href="../resources/css/Responsive.css" rel="stylesheet" type="text/css"/>
-        <!-- CSS -->
-        <link href="../resources/css/app.min.1.css" rel="stylesheet" type="text/css"/>
-
+            a:hover, a:active {
+                background-color: #2E9AFE;
+            }
+        </style>
     </h:head>
-    <h:body >
-        <!--<a href="../index.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Iniciar Session</a>-->
-        <a href="Merito.xhtml" class="btn btn-success" style="background-color: #4091EC;border-bottom-color: #4091EC;float: right;margin-top: 15px;margin-right: 20px">Resultados de Examen</a>
-
-        <br/>
-<!--        <section class="form_wrap form-group  " style="width: 500px;height: 950px">-->
-
-
-
-            <h:form id="FormPersona"  class="form_contact form-group" >
-                <p:growl id="msg" showDetail="true" life="2000" autoUpdate="true"/>
-                <center>
-                     <p:panelGrid columns="1">            
-                <img src="../resources/img/demo.jpg" style="margin-left: 115px;margin-bottom: 10px" alt=""/>
-                <h3 style="margin-bottom: 10px;color: #999999;width: 420px;text-align: center">REGISTRATE AL CONCURSO</h3>
-                <br/>
-                <div class="user_info" >
-
-                    <p:outputLabel value="CARRERA:"/>
-                    <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 420px;" required="true" requiredMessage="Selecione Carrera">
-                        <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
-                        <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
-                    </p:selectOneMenu>
-
-                    <p:outputLabel style="margin-top: 8px" value="NOMBRE:" />
-                    <p:inputText    class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all input-block" style="width: 420px" value="#{alumnoC.alumno.NOMPER}"
-                                    onkeyup="this.value = this.value.toUpperCase();" required="true" requiredMessage="Ingrese Nombre">
-                        <p:keyFilter regEx="/[a-z_ ]/i"/> 	
-                    </p:inputText>
-                    <p:outputLabel value="APELLIDO:"/>
-                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px" onkeyup="this.value = this.value.toUpperCase();" required="true" requiredMessage="Ingrese Apellido">
-                    <p:keyFilter regEx="/[a-z_ ]/i"/>
-                    </p:inputText>
-                    <p:outputLabel value="DNI:"/>
-                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px"  maxlength="8" required="true" requiredMessage="Ingrese DNI">
-                        <p:keyFilter regEx="/[\d]/"/>
-                    </p:inputText>
-                    <p:outputLabel for="date" value="FECHA DE NACIMIENTO:"/>
-                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px"  mask="99/99/9999" required="true" requiredMessage="Ingrese Fecha de Nacimiento"/>
-
-                    <p:outputLabel value="CELULAR:"/>
-                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px"  maxlength="9" required="true" requiredMessage="Ingrese Celular">
-                        <p:keyFilter regEx="/[\d]/"/>
-                    </p:inputText>
-                    <p:outputLabel  value="DISTRITO:"/>
-                    <p:autoComplete  maxResults="16"  
-                                     emptyMessage="No se encontro ningún registro"
-                                     value="#{alumnoC.alumno.UBIGEO_CODUBI}"
-                                     completeMethod="#{alumnoC.completeTextUbi}"
-                                     style="width: 420px" maxlength="15" required="true" requiredMessage="Ingrese Distrito"> 
-                        <p:keyFilter regEx="/[\d]/"/>
-                    </p:autoComplete>
-                    <p:outputLabel  value="COLEGIO:"/>
-                    <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
-                                     value="#{alumnoC.alumno.CODCOL}"        
-                                     completeMethod="#{alumnoC.completeTextCol}"
-                                     style="width: 420px" maxlength="15" required="true" requiredMessage="Ingrese Colegio">
-                        <p:keyFilter regEx="/[\d]/"/>
-                    </p:autoComplete>
-                    <p:commandButton  class="btn btn-primary pull-right mio button" style="width: 300px;margin-left: 60px" value="REGISTRAR" actionListener="#{alumnoC.guardarAlumno()}" 
-                                       update="FormPersona"/>
-                    <br/>
-                    <a href="buscador.xhtml" class="btn btn-info pull-right mio button"  style="width: 300px;margin-left: 60px"  role="button">Solicitar Ficha de Ingreso</a>
-                    <br/>
+    <h:body>
+        <div class="container">
+            <div class="login-block">
+                <div class="login-panel">
+                    <img src="../resources/img/logo-white.png" alt="" style="margin-left: 20px"/>
                 </div>
-                </p:panelGrid>
-                </center>
-               
-              
-            </h:form>
-<!--        </section>-->
+
+                <div class="sign-in">
+                    <h:form id="form"   >
+                        <p:growl id="msg" life="1500" autoUpdate="true"/>
+                        <br/>
+                        <p:outputLabel value="Carrera:" />
+
+                        <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 395px;margin-bottom: 20px">
+                            <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
+                            <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel  value="Nombres:" />
+                        <p:inputText   style="width: 420px;margin-bottom: 20px" value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();">
+                            <p:keyFilter regEx="/[a-z_ ]/i"/> 	
+                        </p:inputText>
+                        <p:outputLabel value="Apellidos" />
+                        <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px;margin-bottom: 20px" onkeyup="this.value = this.value.toUpperCase();">
+                            <p:keyFilter regEx="/[a-z_ ]/i"/>
+                        </p:inputText>
+                        <p:outputLabel value="DNI:" />
+                        <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px;margin-bottom: 20px"  maxlength="8">
+                            <p:keyFilter regEx="/[\d]/"/>
+                        </p:inputText>
+                        <p:outputLabel for="date" value="Fecha de Nacimiento:" />
+                        <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px;margin-bottom: 20px"  mask="99/99/9999"/>
+
+                        <p:outputLabel value="Celular:" />
+                        <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px;margin-bottom: 20px"  maxlength="9">
+                            <p:keyFilter regEx="/[\d]/"/>
+                        </p:inputText>
+                        <p:outputLabel  value="Distrito:" />
+                        <p:autoComplete  maxResults="16"  
+                                         emptyMessage="No se encontro ningún registro"
+                                         value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                         completeMethod="#{alumnoC.completeTextUbi}"
+                                         style="width: 420px;margin-bottom: 20px" maxlength="15">
+                            <p:keyFilter regEx="/[\d]/"/>
+                        </p:autoComplete>
+                        <p:outputLabel  value="Colegio:" />
+                        <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                         value="#{alumnoC.alumno.CODCOL}"        
+                                         completeMethod="#{alumnoC.completeTextCol}"
+                                         style="width: 420px;margin-bottom: 20px" maxlength="15">
+                            <p:keyFilter regEx="/[\d]/"/>
+                        </p:autoComplete>
+                        <p:commandButton  class="btn btn-primary pull-right mio button" style="width: 300px;margin-left: 70px;margin-top: 15px" value="Regitrar" actionListener="#{alumnoC.guardarAlumno()}" 
+                                          update="form"/>
+
+                        <a href="buscador.xhtml" style="height: 10px;margin-top: 15px;"   >Solicitar Ficha de Ingreso</a>
+
+                    </h:form>
+                </div>
+            </div>
+        </div>
     </h:body>
 </html>
-

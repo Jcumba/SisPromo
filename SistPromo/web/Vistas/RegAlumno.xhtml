@@ -10,7 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-     
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="Content">
 
                 <div class="card-header" align="left">
                     <div class="row">
@@ -46,7 +47,7 @@
 
                     </h:form>
                 </p:dialog> 
-                
+
                 <h:form id="FormTblAlum">
                     <p:dataTable var="alumno" value="#{alumnoC.lstAlumno}" rows="10"
                                  class="table table-striped"
@@ -79,5 +80,8 @@
 
                     </p:dataTable>
                 </h:form>
+
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
