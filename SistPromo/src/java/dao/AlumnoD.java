@@ -26,17 +26,18 @@ public class AlumnoD extends Dao implements AlumnoI {
     public void guardarAlumno(AlumnoM alumno) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,FECNACPER,CELPER,ESTPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI)VALUES (?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?,?)";
+//            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,FECNACPER,CELPER,ESTPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI)VALUES (?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?,?)";
+              String sql="{CALL SP_ASIGNACION_DEMO(?,?,?,?,?,?,?)}";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, alumno.getNOMPER());
             ps.setString(2, alumno.getAPEPER());
             ps.setString(3, alumno.getDNIPER());
             ps.setString(4, alumno.getFECNACPER());
-            ps.setString(5, alumno.getCELPER());
-            ps.setString(6, "A"); //ESTADO DE PERSONA
-            ps.setString(7, alumno.getCODCOL()); //COLEGIO
-            ps.setString(8, alumno.getCARRERA_CODCAR()); //CARRERA
-            ps.setString(9, alumno.getUBIGEO_CODUBI()); //UBIGEO
+//            ps.setString(5, alumno.getCELPER());
+//            ps.setString(6, "A"); //ESTADO DE PERSONA
+            ps.setString(5, alumno.getCODCOL()); //COLEGIO
+            ps.setString(6, alumno.getCARRERA_CODCAR()); //CARRERA
+            ps.setString(7, alumno.getUBIGEO_CODUBI()); //UBIGEO
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
