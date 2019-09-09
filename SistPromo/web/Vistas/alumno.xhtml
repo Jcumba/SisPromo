@@ -8,85 +8,145 @@
     <h:head>
         <title>Registro de Postulantes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="../resources/css/demo.css" rel="stylesheet" type="text/css"/>
-        <style>
-            a:link, a:visited {
-                background-color: #03a9f4;
-                color: white;
-                padding: 10px 25px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                margin-left: 120px;
-                font-size: 12px;
-            }
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
 
-            a:hover, a:active {
-                background-color: #2E9AFE;
-            }
-        </style>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     </h:head>
     <h:body>
-        <div class="container">
-            <div class="login-block">
-                <div class="login-panel">
-                    <img src="../resources/img/logo-white.png" alt="" style="margin-left: 20px"/>
+
+        <div class="row" style="align-content: center">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="../resources/images/siste-carousel.png" alt=""/>
+
+                        <span class="card-title"><img src="../resources/images/logo-white.png" alt=""/></span>
+
+                    </div>
+                    <div class="card-content">
+                        <h:form id="form"   >
+                            <p:growl id="msg" life="1500" autoUpdate="true"/>
+                            <br/>
+                            <p:outputLabel value="Seleccione la Carrera:" />
+                            <BR/>
+                            <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 395px;margin-bottom: 20px">
+                                <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
+                                <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
+                            </p:selectOneMenu>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <div class="row">
+                                <div class="input-field col s5 ">
+                                    <p:inputText   style="width: 420px;margin-bottom: 20px" value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();">
+                                        <p:keyFilter regEx="/[a-z_ ]/i"/> 	
+                                    </p:inputText>
+                                    <label for="first_name">Nombres</label>
+                                </div>
+                                <div class="input-field col s5 ">
+                                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px;margin-bottom: 20px" onkeyup="this.value = this.value.toUpperCase();">
+                                        <p:keyFilter regEx="/[a-z_ ]/i"/>
+                                    </p:inputText>
+                                    <label for="last_name">Apellidos</label>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <div class="input-field col s5">
+                                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px;margin-bottom: 20px"  maxlength="8">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:inputText>
+                                    <label for="disabled">DNI:</label>
+                                </div>
+                                <div class="input-field col s5">
+                                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px;margin-bottom: 20px"  mask="99/99/9999"/>
+                                    <label for="disabled">Fecha Nacimiento</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+                                <div class="input-field col s2">
+                                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px;margin-bottom: 20px"  maxlength="9">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:inputText>
+                                    <label for="disabled">Nª Celular</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <p:autoComplete  maxResults="16"  
+                                                     emptyMessage="No se encontro ningún registro"
+                                                     value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                                     completeMethod="#{alumnoC.completeTextUbi}"
+                                                     style="width: 420px;margin-bottom: 20px" maxlength="15">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:autoComplete>
+                                    <label for="disabled">Distrito</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                                     value="#{alumnoC.alumno.CODCOL}"        
+                                                     completeMethod="#{alumnoC.completeTextCol}"
+                                                     style="width: 420px;margin-bottom: 20px" maxlength="15">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:autoComplete>
+                                    <label for="disabled">Colegio</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <p:commandButton  class="waves-effect waves-light btn-small blue darken-1 s12 m7"  value="Regitrar" actionListener="#{alumnoC.guardarAlumno()}" 
+                                              update="form"/>
+                        </h:form>
+
+                    </div>
+                    <div class="card-action  blue darken-1">
+                        <a href="buscador.xhtml" style="color: #ffffff">Solicitar ficha de Ingreso</a>
+                        <a href="buscador.xhtml" style="color: #ffffff">Resultados de Examen</a>
+                        <a href="buscador.xhtml" style="color: #ffffff">Ayuda</a>
+                    </div>
                 </div>
-
-                <div class="sign-in">
-                    <h:form id="form"   >
-                        <p:growl id="msg" life="1500" autoUpdate="true"/>
-                        <br/>
-                        <p:outputLabel value="Carrera:" />
-
-                        <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 395px;margin-bottom: 20px">
-                            <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
-                            <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel  value="Nombres:" />
-                        <p:inputText   style="width: 420px;margin-bottom: 20px" value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();">
-                            <p:keyFilter regEx="/[a-z_ ]/i"/> 	
-                        </p:inputText>
-                        <p:outputLabel value="Apellidos" />
-                        <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px;margin-bottom: 20px" onkeyup="this.value = this.value.toUpperCase();">
-                            <p:keyFilter regEx="/[a-z_ ]/i"/>
-                        </p:inputText>
-                        <p:outputLabel value="DNI:" />
-                        <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px;margin-bottom: 20px"  maxlength="8">
-                            <p:keyFilter regEx="/[\d]/"/>
-                        </p:inputText>
-                        <p:outputLabel for="date" value="Fecha de Nacimiento:" />
-                        <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px;margin-bottom: 20px"  mask="99/99/9999"/>
-
-                        <p:outputLabel value="Celular:" />
-                        <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px;margin-bottom: 20px"  maxlength="9">
-                            <p:keyFilter regEx="/[\d]/"/>
-                        </p:inputText>
-                        <p:outputLabel  value="Distrito:" />
-                        <p:autoComplete  maxResults="16"  
-                                         emptyMessage="No se encontro ningún registro"
-                                         value="#{alumnoC.alumno.UBIGEO_CODUBI}"
-                                         completeMethod="#{alumnoC.completeTextUbi}"
-                                         style="width: 420px;margin-bottom: 20px" maxlength="15">
-                            <p:keyFilter regEx="/[\d]/"/>
-                        </p:autoComplete>
-                        <p:outputLabel  value="Colegio:" />
-                        <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
-                                         value="#{alumnoC.alumno.CODCOL}"        
-                                         completeMethod="#{alumnoC.completeTextCol}"
-                                         style="width: 420px;margin-bottom: 20px" maxlength="15">
-                            <p:keyFilter regEx="/[\d]/"/>
-                        </p:autoComplete>
-                        <p:commandButton  class="btn btn-primary pull-right mio button" style="width: 300px;margin-left: 70px;margin-top: 15px" value="Regitrar" actionListener="#{alumnoC.guardarAlumno()}" 
-                                          update="form"/>
-
-                        <a href="buscador.xhtml" style="height: 10px;margin-top: 15px;"   >Solicitar Ficha de Ingreso</a>
-
-                    </h:form>
+            </div>
+            <div class="col s12 m5">
+                <div class="card-panel teal">
+                    <span class="white-text ">Misión<br/>
+                        Formar personas en el ámbito técnico profesional, considerando el sentido trascendente del hombre, desarrollando en ellos competencias, que faciliten su inserción laboral, contribuyendo de esta manera al desarrollo del país.</span>
+                </div>
+            </div>
+            <div class="col s12 m5">
+                <div class="card-panel teal">
+                    <span class="white-text">Visión<br/>
+                        Ser una institución referente de excelencia de  la educación técnico profesional del Perú, asociada al sector productivo</span>
+                </div>
+            </div>
+            <div class=" col s12 m5">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator"  src="../resources/images/portada.jpg" alt=""/>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Quienes Somos<i class="glyphicon glyphicon-envelope"></i></span>
+                        <p><a href="https://www.vallegrande.edu.pe/quienes-somos">Mas informacion</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">formación integral<i class="material-icons right">Cerrar</i></span>
+                        <p>En Valle Grande ofrecemos a los jóvenes una formación integral que asegura su éxito profesional, la cual se basa en la Metodología de la Alternancia (con excelentes resultados en Europa y América Latina) y en 3 pilares esenciales: la formación tecnológica, la formación empresarial y la formación humana, adquiriendo así, nuestros egresados, las competencias necesarias para:
+                            <br/>
+                            - Ocupar cargos de responsabilidad y toma de decisiones.
+                            <br/>
+                            - Resolución de problemas.
+                            <br/>
+                            - Brindar asesoría especializada.</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
+
     </h:body>
 </html>

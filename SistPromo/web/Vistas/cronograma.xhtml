@@ -12,8 +12,8 @@
     </h:head>
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
-            <ui:define name="Content">
-                <h:form class="form_contact" id="FormTblCronograma">
+            <ui:define name="content">
+                <h:form  id="FormTblCronograma">
                     <p:growl autoUpdate="true" life="1000"/>
                     <p:dataTable  id="tblCronograma"    var="cronograma"   value="#{cronogramaC.lstCronograma}" 
                                   rowKey="#{cronograma.CODEXA}"  class="table table-striped" 
@@ -23,7 +23,7 @@
                                   paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
                                   rowsPerPageTemplate="5,10,15" reflow="true">
                         <f:facet name="header">   
-                            <p:commandButton  class="btn btn-primary pull-right mio" icon="fa fa-plus" value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}" style="margin-bottom: 10px"/>    
+                            <p:commandButton   value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}" style="margin-bottom: 10px"/>    
                             <center>
                                 <h:commandLink value="Descargar PDF" class="btn btn-danger btn-block" style="width: 250px;color: #ffffff" actionListener="#{cronogramaC.descargarPdfCronograma()}">
                                     <i class="zmdi zmdi-download"></i>
@@ -41,8 +41,8 @@
                         </p:column>
                     </p:dataTable>
                     <p:contextMenu>
-                        <p:menuitem icon="fa fa-edit" value="Modificar" onclick="PF('dlgModCronograma').show();" update="FormDialog2"/>
-                        <p:menuitem icon="fa fa-trash" value="Eliminar" actionListener="#{cronogramaC.eliminar()}" update="tblCronograma :FormCronograma">
+                        <p:menuitem  value="Modificar" onclick="PF('dlgModCronograma').show();" update="FormDialog2"/>
+                        <p:menuitem  value="Eliminar" actionListener="#{cronogramaC.eliminar()}" update="tblCronograma :FormCronograma">
                             <p:confirm header="Confirmacion" message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
                         </p:menuitem>
                     </p:contextMenu>
@@ -62,8 +62,8 @@
                             <p:outputLabel value="FECHA"/>
                             <p:inputMask value="#{cronogramaC.selectedCronograma.FECCROEXA}"  mask="99/99/9999"/>
                             <p:outputLabel value="HORA"/>
-                            <p:inputText value="#{cronogramaC.selectedCronograma.HORCROEXA}"/>
-                            <p:commandButton icon="fa fa-edit" value="MODIFICAR" actionListener="#{cronogramaC.modificar()}" update="FormTblCronograma:tblCronograma" onclick="PF('dlgModCronograma').hide;"/>
+                            <p:inputMask value="#{cronogramaC.selectedCronograma.HORCROEXA}" mask="99:99AM"/>
+                            <p:commandButton   value="MODIFICAR" actionListener="#{cronogramaC.modificar()}" update="FormTblCronograma:tblCronograma" onclick="PF('dlgModCronograma').hide;"/>
                             <p:commandButton icon="fa fa-close" value="Cancelar" onclick="PF('dlgModCronograma').hide();"/>
                         </p:panelGrid>
                     </h:form>
@@ -105,6 +105,15 @@
                         </script>-->
                 <!--            </ui:define>
                         </ui:composition>-->
+                <footer class="page-footer grey lighten-5">
+                    <div class="footer-copyright">
+                        <div class="container" style="color: #000">
+                            <img src="../resources/images/ESCUDO.png" alt="" width="30px"/>
+                            © 2019 Instituto Superior Tecnico 
+                            <a class="black-text text-lighten-4 right " href="https://www.vallegrande.edu.pe/" >Valle Grande</a>
+                        </div>
+                    </div>
+                </footer>
             </ui:define>
         </ui:composition>
     </h:body>

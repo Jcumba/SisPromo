@@ -11,7 +11,7 @@
     </h:head>
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
-            <ui:define name="Content">
+            <ui:define name="content">
 
                 <h:form id="FormAula">
                     <p:growl id="msg" showDetail="true" life="2000"  autoUpdate="true"/>
@@ -117,6 +117,16 @@
                         </p:panelGrid>
                     </h:form>
                 </p:dialog>
+
+                <footer class="page-footer grey lighten-5">
+                    <div class="footer-copyright">
+                        <div class="container" style="color: #000">
+                            <img src="../resources/images/ESCUDO.png" alt="" width="30px"/>
+                            © 2019 Instituto Superior Tecnico 
+                            <a class="black-text text-lighten-4 right " href="https://www.vallegrande.edu.pe/" >Valle Grande</a>
+                        </div>
+                    </div>
+                </footer>
             </ui:define>
         </ui:composition>
     </h:body>

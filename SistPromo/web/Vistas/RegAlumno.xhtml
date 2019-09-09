@@ -11,18 +11,11 @@
     </h:head>
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
-            <ui:define name="Content">
+            <ui:define name="content">
 
-                <div class="card-header" align="left">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h2 style="color: #0D47A1">Lista de Estudiantes Registrados</h2> 
-                        </div>
-                        <div class="col-md-6">
-                            <p:commandButton onclick="PF('dlg2').show();" class="btn btn-primary pull-right mio" value="Colegios"/>
-                        </div>
-                    </div>
-                </div>
+                <h:form>
+                    <p:commandButton onclick="PF('dlg2').show();" class="blue darken-3"  style="margin-bottom: 15px" value="Colegios"/>
+                </h:form>
 
                 <p:dialog header="Listado de Colegios" widgetVar="dlg2" modal="true" height="400" width="700">
                     <h:form id="formcol">
@@ -43,7 +36,6 @@
                                 <h:outputText value="#{colegio.DISUBICA}" />
                             </p:column>
                         </p:dataTable>
-
 
                     </h:form>
                 </p:dialog> 
@@ -70,17 +62,18 @@
                             <h:outputText value="#{alumno.CELPER}" />
                         </p:column>
 
-                        <f:facet name="paginatorTopLeft">
-                            <p:commandButton type="button" icon="pi pi-refresh" />
-                        </f:facet>
-
-                        <f:facet name="paginatorBottomRight">
-                            <p:commandButton type="button" icon="pi pi-cloud-upload" />
-                        </f:facet>
 
                     </p:dataTable>
                 </h:form>
-
+                <footer class="page-footer grey lighten-5">
+                    <div class="footer-copyright">
+                        <div class="container" style="color: #000">
+                            <img src="../resources/images/ESCUDO.png" alt="" width="30px"/>
+                            © 2019 Instituto Superior Tecnico 
+                            <a class="black-text text-lighten-4 right " href="https://www.vallegrande.edu.pe/" >Valle Grande</a>
+                        </div>
+                    </div>
+                </footer>
             </ui:define>
         </ui:composition>
     </h:body>
