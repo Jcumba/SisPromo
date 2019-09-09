@@ -8,70 +8,96 @@
     <h:head>
         <title>Ficha de Ingreso</title>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
 
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     </h:head>
-    <h:body style="float: left;margin-left: 50px">
-        <section class="form_wrap form-group" style="width: 750px;height: 500px">
-            <h:form class="form_contact" id="Consulta01">
-                <p:growl id="msg" life="1500" autoUpdate="true"/>
-                <h:panelGrid columns="2">
-                    <p:autoComplete maxResults="5"
-                                    style="width: 300px;margin-top: 14px"
-                                    emptyMessage="No se encontro ningun registro"                
-                                    forceSelection="true"
-                                    placeholder="DNI"
-                                    maxlength="8"
-                                    value="#{alumnoC.dni}"
-                                    completeMethod="#{alumnoC.competeTextDni}">
-                    </p:autoComplete>
-                    <p:commandButton  class="btn btn-primary pull-right mio" style="margin-bottom: 3px;margin-left: 50px" value="CONSULTAR" actionListener="#{alumnoC.consultar()}" update="Consulta01 :FormTblbuscador:tblConsulta"/>
-                </h:panelGrid>
-                <br/>
-            </h:form> 
+    <h:body style="float: left;margin-left: 158px">
 
-            <h:form id="FormTblbuscador">
-                <p:dataGrid value="#{alumnoC.lstConsulta}"
-                            id="tblConsulta"
-                            style="width: 300px"
-                            var="consulta"
-                            emptyMessage="Sin Resultados">
-                    <p:column headerText="Datos">
-                        <br/>
-                        <br/>
-                        <p:outputLabel   value="NOMBRE: #{consulta.NOMPER}"/>
-                        <br/>
-                        <br/> 
-                        <p:outputLabel value="APELLIDO: #{consulta.APEPER}"/>
-                        <br/>
-                        <br/>
-                        <p:outputLabel  value="DNI: #{consulta.DNIPER}"/>  
-                        <br/>
-                        <br/>
-                        <p:outputLabel  value="AULA: #{consulta.NUMAUL}"/>  
-                        <br/>
-                        <br/>
-                        <p:outputLabel  value="FECHA DE EXAMEN: #{consulta.FECCROEXA}"/>  
-                        <br/>
-                        <br/>
-                        <p:outputLabel  value="HORA DE EXAMEN #{consulta.HORCROEXA}"/>  
-                        <br/>
-                        <br/>
-                        <center>
-                            <h:commandLink value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.REPORTE_PDF_FECHADEEXAMEN}">
-                                <i class="zmdi zmdi-download"></i>
-                            </h:commandLink>
-                        </center>
-                        <br/>
-                        <br/>
-                    </p:column> 
-                </p:dataGrid>
-            </h:form>
+        
+        <div class="col s12 m7">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="../resources/images/charles-zwn97hXUsdg-unsplash.jpg" alt="" style="height: 780px"/>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h:form class="form_contact" id="Consulta01">
+                            <p:growl id="msg" life="1500" autoUpdate="true"/>
+                            <h:panelGrid columns="2">
+                                <p:autoComplete maxResults="5"
+                                                style="width: 300px;margin-top: 14px"
+                                                emptyMessage="No se encontro ningun registro"                
+                                                forceSelection="true"
+                                                placeholder="DNI"
+                                                maxlength="8"
+                                                value="#{alumnoC.dni}"
+                                                completeMethod="#{alumnoC.competeTextDni}">
+                                </p:autoComplete>
+                                <p:commandButton  class="btn btn-primary pull-right mioblue " style="margin-bottom: 3px;margin-left: 50px" value="CONSULTAR" actionListener="#{alumnoC.consultar()}" update="Consulta01 :FormTblbuscador:tblConsulta"/>
+                            </h:panelGrid>
+                            <br/>
+                        </h:form> 
+
+                        <h:form id="FormTblbuscador">
+                            <p:dataGrid value="#{alumnoC.lstConsulta}"
+                                        id="tblConsulta"
+                                        style="width: 300px"
+                                        var="consulta"
+                                        emptyMessage="Sin Resultados">
+                                <p:column headerText="Datos">
+                                    <br/>
+                                    <br/>
+                                    <p:outputLabel   value="NOMBRE: #{consulta.NOMPER}"/>
+                                    <br/>
+                                    <br/> 
+                                    <p:outputLabel value="APELLIDO: #{consulta.APEPER}"/>
+                                    <br/>
+                                    <br/>
+                                    <p:outputLabel  value="DNI: #{consulta.DNIPER}"/>  
+                                    <br/>
+                                    <br/>
+                                    <p:outputLabel  value="AULA: #{consulta.NUMAUL}"/>  
+                                    <br/>
+                                    <br/>
+                                    <p:outputLabel  value="FECHA DE EXAMEN: #{consulta.FECCROEXA}"/>  
+                                    <br/>
+                                    <br/>
+                                    <p:outputLabel  value="HORA DE EXAMEN #{consulta.HORCROEXA}"/>  
+                                    <br/>
+                                    <br/>
+                                    <center>
+                                        <h:commandLink value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.REPORTE_PDF_FECHADEEXAMEN}">
+                                            <i class="zmdi zmdi-download"></i>
+                                        </h:commandLink>
+                                    </center>
+                                    <br/>
+                                    <br/>
+                                </p:column> 
+                            </p:dataGrid>
+                        </h:form>
 
 
 
-            <a href="../index.xhtml" class="btn btn-success" style="background: #2E9AFE;width: 200px;height: 35px;margin-top: 402px;margin-left: 50px"  >Cancelar</a>
-        </section>
+
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--
+                <section class="form_wrap form-group" style="width: 750px;height: 500px">
+        
+        
+        
+                    <a href="../index.xhtml" class="btn btn-success" style="background: #2E9AFE;width: 200px;height: 35px;margin-top: 402px;margin-left: 50px"  >Cancelar</a>
+                </section>-->
     </h:body>
 </html>
 

@@ -31,7 +31,7 @@
                         <p:column headerText="Modalidad">
                             <h:outputText value="#{solucionario.NOMEXAMEN}" />
                         </p:column>
-                        <p:column headerText="Tipo Examen">
+                        <p:column headerText="Nombre Examen">
                             <h:outputText value="#{solucionario.MODALIDAD}" />
                         </p:column>
                         <p:column headerText="N° Preguntas">
@@ -145,7 +145,6 @@
                     </p:confirmDialog>  
                 </h:form>
 
-
                 <p:dialog id="dlg" header="ACTUALIZAR RESPUESTAS DE EXAMEN" widgetVar="dlgModSoluciones" height="550" width="430" resizable="false" modal="true">
                     <h:form id="formDialog">
                         <img src="../resources/img/demo.jpg" style="margin-left: 100px;margin-bottom: 10px" alt=""/>
@@ -251,20 +250,22 @@
                         <p:growl id="msg" showDetail="true" life="1000" autoUpdate="true"/>
                         <p:panelGrid columns="2">
 
+
+                            <p:outputLabel value="Nombre de Examen:" />
+                            <p:inputText value="#{solucionarioC.solucion.NOMEXAMEN}"  required="true"/> 
+
+                            <p:outputLabel value="Tipo de Examen:" />
+                            <p:inputText value=""  required="true"/> 
+
                             <p:outputLabel for="console" value="Modalidad:" />
                             <p:selectOneMenu id="console" value="#{solucionarioC.solucion.MODALIDAD}"  style="width:125px">
                                 <f:selectItem itemLabel="Seleccione" itemValue="" />
-                                <f:selectItem itemLabel="ANALISIS" itemValue="ANALISIS" />
-                                <f:selectItem itemLabel="AGRARIA" itemValue="AGRARIA" />
+                                <f:selectItem itemLabel="ORDINARIO" itemValue="ORDINARIO" />
+                                <f:selectItem itemLabel="EXTRAORDINARIO" itemValue="EXTRAORDINARIO" />
                             </p:selectOneMenu>
 
 
-                            <p:outputLabel value="Tipo de Examen:" />
-                            <p:selectOneMenu value="#{solucionarioC.solucion.NOMEXAMEN}">
-                                <f:selectItem itemLabel="Selecciones"  itemValue=""/>
-                                <f:selectItem itemLabel="ORDINARIO"  itemValue="ORDINARIO"/>
-                                <f:selectItem itemLabel="CONCURSO"  itemValue="CONCURSO"/>
-                            </p:selectOneMenu>
+
 
                             <p:outputLabel value="N° de Preguntas: " />
                             <p:inputText value="#{solucionarioC.solucion.NUMPREGUNT}"  required="true"/> 
@@ -638,7 +639,7 @@
 
                 <h:form id="formexamen" style="margin-top: 15px">
                     <p:dataTable id="forexamenes" var="examen" value="#{solucionarioC.lstExamenAsig}">
-                        <p:column headerText="Tipo de Examen">
+                        <p:column headerText="Nombre de Examen">
                             <h:outputText value="#{examen.NOMEXAMEN}" />
                         </p:column>
 
@@ -661,7 +662,7 @@
                     </p:dataTable>
                 </h:form>
 
-            
+
             </ui:define>         
         </ui:composition>
     </h:body>
