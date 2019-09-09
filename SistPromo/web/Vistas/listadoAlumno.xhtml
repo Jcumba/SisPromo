@@ -9,88 +9,68 @@
     <h:head>
         <title>Alumnos</title>
 
-        <h:form>
-            <p:tabMenu activeIndex="#{param.i}">
-                <p:menuitem value="AULA" outcome="aula.xhtml">
-                    <f:param name="i" value="0" />
-                </p:menuitem>
-                <p:menuitem value="CRONOGRAMA" outcome="cronograma.xhtml">
-                    <f:param name="i" value="1" />
-                </p:menuitem>
-                <p:menuitem value="ALUMNOS" outcome="listadoAlumno.xhtml">
-                    <f:param name="i" value="2" />
-                </p:menuitem>
-                <p:menuitem value="COLEGIO" outcome="Colegio.xhtml">
-                    <f:param name="i" value="3" />
-                </p:menuitem>
-                <p:menuitem value="BUSCADOR" outcome="buscador.xhtml">
-                    <f:param name="i" value="4" />
-                </p:menuitem>
-                <p:menuitem value="REGISTRO DE SOLUCIONES" outcome="RegitroSoluciones.xhtml">
-                    <f:param name="i" value="5" />
-                </p:menuitem>
-                <p:menuitem value="MERITO" outcome="Merito.xhtml">
-                    <f:param name="i" value="6" />
-                </p:menuitem>
-            </p:tabMenu>
-        </h:form>
     </h:head>
     <h:body>
-        <h:form id="FormTblAlumno">
-            <p:growl autoUpdate="true" life="1000"/>
-            <p:dataTable id="tblAlumno" value="#{alumnoC.lstAlumnosRegistrado}" var="per" selectionMode="single"  selection="#{alumnoC.alumno}"
-                         rowKey="#{per.CODPER}"  paginator="true" rows="15"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                <p:column filterBy="#{per.DNIPER}"  headerText="DNI">
-                    <p:outputLabel value="#{per.DNIPER}"/>
-                </p:column>
-                <p:column headerText="NOMBRE">
-                    <p:outputLabel value="#{per.NOMPER}"/>
-                </p:column>
-                <p:column headerText="APELLIDO">
-                    <p:outputLabel value="#{per.APEPER}"/>
-                </p:column>
-                <p:column headerText="COLEGIO">
-                    <p:outputLabel value="#{per.NOMCOL}"/>
-                </p:column>
-                <f:facet name="footer">
-                    #{fn:length(alumnoC.lstAlumnosRegistrado)} REGISTROS.
-                </f:facet>
-            </p:dataTable>
-            <p:contextMenu>
-                <p:menuitem value="MODIFICAR" onclick="PF('dlgModAlumno').show();"  update="FormDialog2"/>
-                <p:menuitem value="DESACTIVAR" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
-                    <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
-                </p:menuitem>
-            </p:contextMenu>
-        </h:form>
-        <h:form>
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
-            </p:confirmDialog>
-        </h:form>
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
 
-        <p:dialog id="dialogo" header="ACTUALIZAR DATOS" widgetVar="dlgModAlumno"  height="250" width="500"  resizable="false" modal="true">
-            <h:form id="FormDialog2">
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="DNI"/>
-                    <p:inputText value="#{alumnoC.alumno.DNIPER}"/>
-                    <p:outputLabel value="NOMBRE"/>
-                    <p:inputText value="#{alumnoC.alumno.NOMPER}"/>
-                    <p:outputLabel value="APELLIDO"/>
-                    <p:inputText value="#{alumnoC.alumno.APEPER}"/>
-                    <p:outputLabel value="COLEGIO"/>
-                    <p:autoComplete maxResults="10" emptyMessage="No se encontro ningún registro"
-                                    value="#{alumnoC.alumno.CODCOL}" completeMethod="#{alumnoC.completeTextCol}"
-                                    maxlength="15">
-                    </p:autoComplete>
-                    <p:commandButton value="MODIFICAR" actionListener="#{alumnoC.modificarAlumno()}"  update=":FormTblAlumno:tblAlumno"  oncomplete="PF('dlgModAlumno').hide()"/>
-                    <p:commandButton value="CANCELAR" oncomplete="PF('dlgModAlumno').hide()"/>
-                </p:panelGrid>
-            </h:form>
-        </p:dialog>
-    </h:body>
-</html>
+                <h:form id="FormTblAlumno">
+                    <p:growl autoUpdate="true" life="1000"/>
+                    <p:dataTable id="tblAlumno" value="#{alumnoC.lstAlumnosRegistrado}" var="per" selectionMode="single"  selection="#{alumnoC.alumno}"
+                                 rowKey="#{per.CODPER}"  paginator="true" rows="15"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                        <p:column filterBy="#{per.DNIPER}"  headerText="DNI">
+                            <p:outputLabel value="#{per.DNIPER}"/>
+                        </p:column>
+                        <p:column headerText="NOMBRE">
+                            <p:outputLabel value="#{per.NOMPER}"/>
+                        </p:column>
+                        <p:column headerText="APELLIDO">
+                            <p:outputLabel value="#{per.APEPER}"/>
+                        </p:column>
+                        <p:column headerText="COLEGIO">
+                            <p:outputLabel value="#{per.NOMCOL}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            #{fn:length(alumnoC.lstAlumnosRegistrado)} REGISTROS.
+                        </f:facet>
+                    </p:dataTable>
+                    <p:contextMenu>
+                        <p:menuitem value="MODIFICAR" onclick="PF('dlgModAlumno').show();"  update="FormDialog2"/>
+                        <p:menuitem value="DESACTIVAR" actionListener="#{alumnoC.eliminarrAlumno()}"  update="tblAlumno">
+                            <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
+                        </p:menuitem>
+                    </p:contextMenu>
+                </h:form>
+                <h:form>
+                    <p:confirmDialog global="true">
+                        <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+                </h:form>
+
+                <p:dialog id="dialogo" header="ACTUALIZAR DATOS" widgetVar="dlgModAlumno"  height="250" width="500"  resizable="false" modal="true">
+                    <h:form id="FormDialog2">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="DNI"/>
+                            <p:inputText value="#{alumnoC.alumno.DNIPER}"/>
+                            <p:outputLabel value="NOMBRE"/>
+                            <p:inputText value="#{alumnoC.alumno.NOMPER}"/>
+                            <p:outputLabel value="APELLIDO"/>
+                            <p:inputText value="#{alumnoC.alumno.APEPER}"/>
+                            <p:outputLabel value="COLEGIO"/>
+                            <p:autoComplete maxResults="10" emptyMessage="No se encontro ningún registro"
+                                            value="#{alumnoC.alumno.CODCOL}" completeMethod="#{alumnoC.completeTextCol}"
+                                            maxlength="15">
+                            </p:autoComplete>
+                            <p:commandButton value="MODIFICAR" actionListener="#{alumnoC.modificarAlumno()}"  update=":FormTblAlumno:tblAlumno"  oncomplete="PF('dlgModAlumno').hide()"/>
+                            <p:commandButton value="CANCELAR" oncomplete="PF('dlgModAlumno').hide()"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+                </ui:define>
+                </ui:composition>
+                </h:body>
+                </html>
 

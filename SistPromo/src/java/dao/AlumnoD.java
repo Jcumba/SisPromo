@@ -26,18 +26,18 @@ public class AlumnoD extends Dao implements AlumnoI {
     public void guardarAlumno(AlumnoM alumno) throws Exception {
         try {
             this.conectar();
-//            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,FECNACPER,CELPER,ESTPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI)VALUES (?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?,?)";
-              String sql="{CALL SP_ASIGNACION_DEMO(?,?,?,?,?,?,?)}";
+            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,FECNACPER,CELPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI)VALUES(?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?)";
+//            String sql = "{CALL SP_ASIGNACION_DEMO(?,?,?,?,?,?,?,?)}";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, alumno.getNOMPER());
             ps.setString(2, alumno.getAPEPER());
             ps.setString(3, alumno.getDNIPER());
             ps.setString(4, alumno.getFECNACPER());
-//            ps.setString(5, alumno.getCELPER());
+            ps.setString(5, alumno.getCELPER());
 //            ps.setString(6, "A"); //ESTADO DE PERSONA
-            ps.setString(5, alumno.getCODCOL()); //COLEGIO
-            ps.setString(6, alumno.getCARRERA_CODCAR()); //CARRERA
-            ps.setString(7, alumno.getUBIGEO_CODUBI()); //UBIGEO
+            ps.setString(6, alumno.getCODCOL()); //COLEGIO
+            ps.setString(7, alumno.getCARRERA_CODCAR()); //CARRERA
+            ps.setString(8, alumno.getUBIGEO_CODUBI()); //UBIGEO
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -45,8 +45,8 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
-    
 
+    
     @Override
     public void guardarAlumnoHistorial(AlumnoM alumno) throws Exception {
         try {
@@ -256,16 +256,16 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
-    public String buscarDniAlumno(String dniAlum) throws Exception{
+    public String buscarDniAlumno(String dniAlum) throws Exception {
         this.conectar();
         try {
             ResultSet rs;
-            String sql="SELECT DNIPER FROM PERSONA WHERE ESTPER='A' and DNIPER LIKE ?";
-            PreparedStatement ps=this.getCn().prepareCall(sql);
+            String sql = "SELECT DNIPER FROM PERSONA WHERE ESTPER='A' and DNIPER LIKE ?";
+            PreparedStatement ps = this.getCn().prepareCall(sql);
             ps.setString(1, dniAlum);
             rs = ps.executeQuery();
-            if (rs.next()){
-                return  rs.getString("DNIPER");
+            if (rs.next()) {
+                return rs.getString("DNIPER");
             }
             return null;
         } catch (SQLException e) {
@@ -274,8 +274,7 @@ public class AlumnoD extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
-    
-    
+
     public List<AlumnoM> consultarNotas(String dni) throws Exception {
         List<AlumnoM> consultar;
         ResultSet rs;
@@ -499,7 +498,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         return listarMerito;
     }
 
-      //METODO REPORTE_PDF_FECHADEEXAMEN
+    //METODO REPORTE_PDF_FECHADEEXAMEN
     public void REPORTE_PDF_FECHADEEXAMEN(Map parameters) throws JRException, IOException, Exception {
         conectar();
         File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("resources/reporte/Search0.jasper"));
@@ -512,9 +511,5 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
         FacesContext.getCurrentInstance().responseComplete();
     }
-    
-    
-    
-    
-    
+
 }
