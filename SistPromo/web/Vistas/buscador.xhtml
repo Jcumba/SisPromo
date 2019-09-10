@@ -23,6 +23,9 @@
                     <img src="../resources/images/charles-zwn97hXUsdg-unsplash.jpg" alt="" style="height: 780px"/>
                 </div>
                 <div class="card-stacked">
+                    <div class="chip" style="margin-left: 10px;margin-top: 10px">
+                        ¡Ingrese su numero de DNI para generar su ficha de ingreso al examen!
+                    </div>
                     <div class="card-content">
                         <h:form class="form_contact" id="Consulta01">
                             <p:growl id="msg" life="1500" autoUpdate="true"/>
@@ -31,7 +34,7 @@
                                                 style="width: 300px;margin-top: 14px"
                                                 emptyMessage="No se encontro ningun registro"                
                                                 forceSelection="true"
-                                                placeholder="DNI"
+                                                placeholder="ingrese su DNI"
                                                 maxlength="8"
                                                 value="#{alumnoC.dni}"
                                                 completeMethod="#{alumnoC.competeTextDni}">
