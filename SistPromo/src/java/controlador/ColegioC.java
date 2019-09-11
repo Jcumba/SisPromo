@@ -26,7 +26,6 @@ public class ColegioC implements Serializable {
 
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
-
     @PostConstruct
     public void init() {
         try {
@@ -96,6 +95,11 @@ public class ColegioC implements Serializable {
         }
     }
 
+
+    
+  
+    
+    
     public ColegioM getColegio() {
         return colegio;
     }
@@ -119,5 +123,6 @@ public class ColegioC implements Serializable {
     public void setLstColegio(List<ColegioM> lstColegio) {
         this.lstColegio = lstColegio;
     }
+
 
 }

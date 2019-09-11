@@ -63,6 +63,7 @@
                 padding: 0;
             }
         </style>
+
     </h:head>
     <h:body class="main-body">
 
@@ -231,41 +232,56 @@
                             <h2>New York, USA</h2>
 
                             <div class="weather-today">
+
                                 <span class="weather-today-value">21℃</span>
                                 <img id="j_idt31" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" width="60" />
                             </div>
 
                             <ul class="weekly-weather">
-                                <li>
-                                    Thursday
-                                    <img id="j_idt33" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
-                                    <span class="weekly-weather-value">24</span>
-                                </li>
-                                <li>
-                                    Friday
-                                    <img id="j_idt35" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
-                                    <span class="weekly-weather-value">19</span>
-                                </li>
-                                <li>
-                                    Saturday
-                                    <img id="j_idt37" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
-                                    <span class="weekly-weather-value">15</span>
-                                </li>
-                                <li>
-                                    Sunday
-                                    <img id="j_idt39" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
-                                    <span class="weekly-weather-value">24</span>
-                                </li>
-                                <li>
-                                    Monday
-                                    <img id="j_idt41" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
-                                    <span class="weekly-weather-value">21</span>
-                                </li>
-                                <li>
-                                    Tuesday
-                                    <img id="j_idt43" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
-                                    <span class="weekly-weather-value">20</span>
-                                </li>
+                                <h:form id="fe">
+                                    <p:dataTable class="table table-striped"  
+                                                 id="forexamenes" var="examen" value="#{solucionarioC.lstExamenAsig}">
+                                        <p:column headerText="Examenes y Fechas">
+                                            <h:outputLink id="fade" value="#">
+                                                <h:outputText style="color: #000000" value="Examen: #{examen.NOMEXAMEN}" /><br/>
+                                            </h:outputLink>
+                                            <p:tooltip id="toolTipFade1" for="fade"  position="top">
+                                                <h:outputText value="Fecha: #{examen.FECHA} - Hora: #{examen.HORA}" />  
+                                            </p:tooltip>
+    
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:form>
+                                <!--                                <li>
+                                                                    Thursday
+                                                                    <img id="j_idt33" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
+                                                                    <span class="weekly-weather-value">24</span>
+                                                                </li>
+                                                                <li>
+                                                                    Friday
+                                                                    <img id="j_idt35" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
+                                                                    <span class="weekly-weather-value">19</span>
+                                                                </li>
+                                                                <li>
+                                                                    Saturday
+                                                                    <img id="j_idt37" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
+                                                                    <span class="weekly-weather-value">15</span>
+                                                                </li>
+                                                                <li>
+                                                                    Sunday
+                                                                    <img id="j_idt39" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
+                                                                    <span class="weekly-weather-value">24</span>
+                                                                </li>
+                                                                <li>
+                                                                    Monday
+                                                                    <img id="j_idt41" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
+                                                                    <span class="weekly-weather-value">21</span>
+                                                                </li>
+                                                                <li>
+                                                                    Tuesday
+                                                                    <img id="j_idt43" src="../../resources/icon/Ultima/weather-icon-1.svg" alt="" />
+                                                                    <span class="weekly-weather-value">20</span>
+                                                                </li>-->
                             </ul>
                         </div>
                     </div>
@@ -282,7 +298,7 @@
                             <div class="profile">
                                 <div class="profile-image"></div>
                                 <a id="profile-options" href="#">
-                                    <span class="profile-name"><p:outputLabel value="#{usuarioController.usuario.NOMPER}"/></span>
+                                    <span class="profile-name" ><p:outputLabel style="color: #ffffff" value="#{usuarioController.usuario.NOMPER} #{usuarioController.usuario.APEPER}"/></span>
                                     <i class="material-icons">keyboard_arrow_down</i>
                                 </a>
                             </div>
@@ -358,6 +374,12 @@
                                                 <span>Cronograma</span>
                                             </a>
                                         </li>
+                                        <li id="menuform:um_forms" role="menuitem">
+                                            <a href="../Vistas/Colegio.xhtml">
+                                                <i class="material-icons">exit_to_app</i>
+                                                <span>Colegios</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -413,6 +435,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <h:form>
+
+                        <p:commandButton value="graficar" actionListener="#{alumnoC.listarGrafica()}" update="panel"/>
+                        <h:panelGroup id="panel" layout="block">
+                            <p:chart type="pie" model="#{alumnoC.pieModel}" style="width: 600px;height: 600px" rendered="#{alumnoC.pieModel != null}" />
+
+                        </h:panelGroup>
+
+                    </h:form>
                     <footer class="page-footer grey lighten-5">
                         <div class="footer-copyright">
                             <div class="container" style="color: #000">
@@ -422,6 +454,7 @@
                             </div>
                         </div>
                     </footer>
+
                 </ui:insert>
 
             </div>

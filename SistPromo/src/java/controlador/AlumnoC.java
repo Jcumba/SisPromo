@@ -34,6 +34,8 @@ public class AlumnoC implements Serializable {
     private AlumnoM selectedAlumno;
     private String dni = null;
     private String Notas = null;
+
+     
 //    Calendar Cal = Calendar.getInstance();
 //    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
 
@@ -197,17 +199,17 @@ public class AlumnoC implements Serializable {
 //            throw e;
 //        }
 //    }
-//    public void listarGrafica() {
-//        AlumnoD dao;
-//        List<AlumnoM> list;
-//        try {
-//            dao = new AlumnoD();
-//            list = dao.CantAlumXCar();
-//            graficar(list);
-//        } catch (Exception e) {
-//        } finally {
-//        }
-//    }
+    public void listarGrafica() {
+        AlumnoD dao;
+        List<AlumnoM> list;
+        try {
+            dao = new AlumnoD();
+            list = dao.CantAlumXCar();
+            graficar(list);
+        } catch (Exception e) {
+        } finally {
+        }
+    }
     private void listarOrdenMerito() throws SQLException, Exception {
         AlumnoD dao;
         try {
@@ -227,9 +229,6 @@ public class AlumnoC implements Serializable {
         pieModel.setLegendPosition("e");
         pieModel.setFill(false);
         pieModel.setDiameter(190);
-
     }
-
- 
 
 }

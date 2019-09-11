@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+
+        <h:form id="form" style="margin-top: 15px">
+            <p:dataTable var="solucionario" 
+                         value="#{solucionarioC.lstSolucionario}"
+                         id="Soluciones"
+                         selection="#{solucionarioC.selectedSolucionario}"
+                         rowKey="#{solucionario.CODSOL}"
+                         selectionMode="single"  
+                         rows="12" paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="6,12,16" reflow="true">
+
+
+                <p:column headerText="Modalidad">
+                    <h:outputText value="#{solucionario.NOMEXAMEN}" />
+                </p:column>
+                <p:column headerText="Nombre Examen">
+                    <h:outputText value="#{solucionario.MODALIDAD}" />
+                </p:column>
+                <p:column headerText="N° Preguntas">
+                    <h:outputText value="#{solucionario.NUMPREGUNT}" />
+                </p:column>
+
+                <p:column headerText="ESTADO">
+                    <h:outputText value="#{solucionario.ESTAD}" />
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":form" oncomplete="PF('carDialog').show()" icon="pi pi-search" title="View">
+                        <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+        <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+        </p:dialog>
+
+    </h:body>
+</html>
