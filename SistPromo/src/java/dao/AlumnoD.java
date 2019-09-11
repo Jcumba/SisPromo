@@ -26,8 +26,8 @@ public class AlumnoD extends Dao implements AlumnoI {
     public void guardarAlumno(AlumnoM alumno) throws Exception {
         try {
             this.conectar();
-//            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,FECNACPER,CELPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI)VALUES(?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?)";
-            String sql = "{CALL SP_ASIGNACION_DEMO(?,?,?,?,?,?,?,?)}";
+            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,FECNACPER,CELPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI)VALUES(?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?)";
+//            String sql = "{CALL SP_ASIGNACION_DEMO(?,?,?,?,?,?,?,?)}";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, alumno.getNOMPER());
             ps.setString(2, alumno.getAPEPER());

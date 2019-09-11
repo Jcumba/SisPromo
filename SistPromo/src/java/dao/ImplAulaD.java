@@ -85,7 +85,7 @@ public class ImplAulaD extends Dao implements AulaI {
                 aula.setEXAMEN_CODEXA(rs.getString("FECCROEXA"));
                 aula.setHORCROEXA(rs.getString("HORCROEXA"));
                 aula.setMODEXA(rs.getString("MODEXA"));
-                aula.setTIPEXA(rs.getString("TIPEXA"));
+                aula.setTIPEXA(rs.getString("NOMTIPEXA"));
                 aula.setESTAUL(rs.getString("ESTAUL"));
                 listarAula.add(aula);
             }
