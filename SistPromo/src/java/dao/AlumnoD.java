@@ -502,7 +502,7 @@ public class AlumnoD extends Dao implements AlumnoI {
     //METODO REPORTE_PDF_FECHADEEXAMEN
     public void REPORTE_PDF_FECHADEEXAMEN(Map parameters) throws JRException, IOException, Exception {
         conectar();
-        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("resources/reporte/Search0.jasper"));
+        File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("Vistas\\Reportes\\BUSCAR.jasper"));
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(), parameters, this.getCn());
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         response.addHeader("Content-disposition", "attachment; filename=FECHA DE EXAMEN.pdf");

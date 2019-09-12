@@ -13,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.CronogramaM;
 
+
 @Named(value = "cronogramaC")
 @SessionScoped
 public class CronogramaC implements Serializable {
@@ -64,7 +65,7 @@ public class CronogramaC implements Serializable {
         AlumnoD dao = new AlumnoD();
         try {
             Map<String, Object> parameters = new HashMap(); // Libro de parametros
-            parameters.put("DNIPER",DNIPER); //Insertamos un parametro
+            parameters.put(null, DNIPER); //Insertamos un parametro
             dao.REPORTE_PDF_FECHADEEXAMEN(parameters);
 //            reportAlu.REPORTE_PDF_ALUMNO(parameters); //Pido exportar Reporte con los parametros
 //            report.exportarPDF2(parameters);

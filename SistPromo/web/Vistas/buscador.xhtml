@@ -16,7 +16,7 @@
     </h:head>
     <h:body style="float: left;margin-left: 158px">
 
-        
+
         <div class="col s12 m7">
             <div class="card horizontal">
                 <div class="card-image">
@@ -71,36 +71,39 @@
                                     <p:outputLabel  value="HORA DE EXAMEN #{consulta.HORCROEXA}"/>  
                                     <br/>
                                     <br/>
-                                    <center>
-                                        <h:commandLink value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.REPORTE_PDF_FECHADEEXAMEN}">
-                                            <i class="zmdi zmdi-download"></i>
-                                        </h:commandLink>
-                                    </center>
-                                    <br/>
-                                    <br/>
-                                </p:column> 
-                            </p:dataGrid>
-                        </h:form>
+                                    <p:column exportable="false">
+                                        <center>
+
+                                            <p:commandLink ajax="false" value="DESCARGAR FECHA DE EXAMEN" class="btn btn-danger btn-block" style="width: 250px;margin-top: 150px" actionListener="#{cronogramaC.REPORTE_PDF_FECHADEEXAMEN(DNIPER)}">
+                                                <i class="zmdi zmdi-download"></i>
+                                            </p:commandLink>
+                                            </center>
+                                    </p:column>
+                                                <br/>
+                                                <br/>
+                                                </p:column> 
+                                                </p:dataGrid>
+                                                </h:form>
 
 
 
 
-                    </div>
-                    <div class="card-action">
-                        <a href="alumno.xhtml" style="color: #0089ec">Volver</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                                </div>
+                                                <div class="card-action">
+                                                    <a href="alumno.xhtml" style="color: #0089ec">Volver</a>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </div>
 
 
-        <!--
-                <section class="form_wrap form-group" style="width: 750px;height: 500px">
-        
-        
-        
-                    <a href="../index.xhtml" class="btn btn-success" style="background: #2E9AFE;width: 200px;height: 35px;margin-top: 402px;margin-left: 50px"  >Cancelar</a>
-                </section>-->
-    </h:body>
-</html>
+                                                <!--
+                                                        <section class="form_wrap form-group" style="width: 750px;height: 500px">
+                                                
+                                                
+                                                
+                                                            <a href="../index.xhtml" class="btn btn-success" style="background: #2E9AFE;width: 200px;height: 35px;margin-top: 402px;margin-left: 50px"  >Cancelar</a>
+                                                        </section>-->
+                                                </h:body>
+                                                </html>
 
