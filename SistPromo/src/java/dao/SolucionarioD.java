@@ -23,7 +23,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
     public void guardarSolucionario(SolucionesM solucion) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO SOLUCIONARIO(SOL1,SOL2,SOL3,SOL4,SOL5,SOL6,SOL7,SOL8,SOL9,SOL10,SOL11,SOL12,SOL13,SOL14,SOL15,SOL16,SOL17,SOL18,SOL19,SOL20,SOL21,SOL22,SOL23,SOL24,SOL25,SOL26,SOL27,SOL28,SOL29,SOL30,SOL31,SOL32,SOL33,SOL34,SOL35,SOL36,SOL37,SOL38,SOL39,SOL40,TIPEXA,NUMPRE,MODEXA,ESTSOL)  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO SOLUCIONARIO(SOL1,SOL2,SOL3,SOL4,SOL5,SOL6,SOL7,SOL8,SOL9,SOL10,SOL11,SOL12,SOL13,SOL14,SOL15,SOL16,SOL17,SOL18,SOL19,SOL20,SOL21,SOL22,SOL23,SOL24,SOL25,SOL26,SOL27,SOL28,SOL29,SOL30,SOL31,SOL32,SOL33,SOL34,SOL35,SOL36,SOL37,SOL38,SOL39,SOL40,TIPO_EXAMEN_CODTIPEXA,NUMPRE,MODEXA,ESTSOL,NOMEXA)  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, solucion.getSOL1());
             ps.setString(2, solucion.getSOL2());
@@ -65,10 +65,11 @@ public class SolucionarioD extends Dao implements SolucionarioI {
             ps.setString(38, solucion.getSOL38());
             ps.setString(39, solucion.getSOL39());
             ps.setString(40, solucion.getSOL40());
-            ps.setString(41, solucion.getNOMEXAMEN());
+            ps.setString(41, solucion.getTIPO_EXAMEN_COD());
             ps.setString(42, solucion.getNUMPREGUNT());
             ps.setString(43, solucion.getMODALIDAD());
             ps.setString(44, "A");//ESTADO DE EXAMEN
+            ps.setString(45, solucion.getNOMEXAMEN());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -154,7 +155,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
             this.cerrar();
         }
         return listarfecexa;
-    
+
     }
 
     @Override
@@ -224,7 +225,5 @@ public class SolucionarioD extends Dao implements SolucionarioI {
             this.cerrar();
         }
         return listarSolucion;
+    }
 }
-}
-
-

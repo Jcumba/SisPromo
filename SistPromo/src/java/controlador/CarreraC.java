@@ -14,12 +14,14 @@ import modelo.CarreraM;
 public class CarreraC implements Serializable {
 
     private List<CarreraM> lstCarrera;
+    private List<CarreraM> lstMerito;
     CarreraM carrera = new CarreraM();
 
     @PostConstruct
     public void iniciar() {
         try {
             listar();
+            listarMerito();
         } catch (Exception e) {
         }
     }
@@ -49,6 +51,17 @@ public class CarreraC implements Serializable {
             throw e;
         }
     }
+    
+    
+    public void listarMerito() throws Exception {
+        CarreraD dao;
+        try {
+            dao = new CarreraD();
+            lstMerito = dao.listOrdenMerito();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
     public List<CarreraM> getLstCarrera() {
         return lstCarrera;
@@ -66,4 +79,13 @@ public class CarreraC implements Serializable {
         this.carrera = carrera;
     }
 
+    public List<CarreraM> getLstMerito() {
+        return lstMerito;
+    }
+
+    public void setLstMerito(List<CarreraM> lstMerito) {
+        this.lstMerito = lstMerito;
+    }
+
+    
 }

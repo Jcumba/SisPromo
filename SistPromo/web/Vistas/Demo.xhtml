@@ -10,42 +10,24 @@
     </h:head>
     <h:body>
 
-        <h:form id="form" style="margin-top: 15px">
-            <p:dataTable var="solucionario" 
-                         value="#{solucionarioC.lstSolucionario}"
-                         id="Soluciones"
-                         selection="#{solucionarioC.selectedSolucionario}"
-                         rowKey="#{solucionario.CODSOL}"
-                         selectionMode="single"  
-                         rows="12" paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="6,12,16" reflow="true">
+        <p:dataTable var="meritos" value="#{carreraC.lstMerito}">
+            <p:column headerText="Id">
+                <h:outputText value="#{meritos.ALUMMERIT}" />
+            </p:column>
 
+            <p:column headerText="Year">
+                <h:outputText value="#{meritos.CANTMERIT}" />
+            </p:column>
 
-                <p:column headerText="Modalidad">
-                    <h:outputText value="#{solucionario.NOMEXAMEN}" />
-                </p:column>
-                <p:column headerText="Nombre Examen">
-                    <h:outputText value="#{solucionario.MODALIDAD}" />
-                </p:column>
-                <p:column headerText="N° Preguntas">
-                    <h:outputText value="#{solucionario.NUMPREGUNT}" />
-                </p:column>
+            <p:column headerText="Brand">
+                <h:outputText value="#{meritos.NOMPERMERIT}" />
+            </p:column>
 
-                <p:column headerText="ESTADO">
-                    <h:outputText value="#{solucionario.ESTAD}" />
-                </p:column>
-                <p:column style="width:32px;text-align: center">
-                    <p:commandButton update=":form" oncomplete="PF('carDialog').show()" icon="pi pi-search" title="View">
-                        <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
-                    </p:commandButton>
-                </p:column>
+            <p:column headerText="Color">
+                <h:outputText value="#{meritos.PUNTJMERIT}" />
+            </p:column>
+        </p:dataTable>
 
-            </p:dataTable>
-        </h:form>
-        <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-
-        </p:dialog>
 
     </h:body>
 </html>

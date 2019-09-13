@@ -29,7 +29,6 @@ public class AlumnoC implements Serializable {
     private List<AlumnoM> lstTopAlumno;
     private List<AlumnoM> lstConsulta;
     private List<AlumnoM> lstConsultaNotas;
-    private List<AlumnoM> lstOrdenMerito;
     private PieChartModel pieModel;
     private AlumnoM selectedAlumno;
     private String dni = null;
@@ -49,7 +48,6 @@ public class AlumnoC implements Serializable {
             listarAlumno();
             listarAlumnosRegistrados();
             listarTopColegios();
-            listarOrdenMerito();
         } catch (Exception e) {
         }
 
@@ -210,15 +208,7 @@ public class AlumnoC implements Serializable {
         } finally {
         }
     }
-    private void listarOrdenMerito() throws SQLException, Exception {
-        AlumnoD dao;
-        try {
-            dao = new AlumnoD();
-            lstOrdenMerito = dao.OrdenMerito();
-        } catch (SQLException e) {
-            throw e;
-        }
-    }
+ 
 
     private void graficar(List<AlumnoM> list) {
         pieModel = new PieChartModel();
@@ -231,4 +221,7 @@ public class AlumnoC implements Serializable {
         pieModel.setDiameter(190);
     }
 
+   
+    
+    
 }

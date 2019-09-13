@@ -14,6 +14,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.SolucionesM;
+import modelo.TipExamM;
+
 
 /**
  *
@@ -27,6 +29,7 @@ public class SolucionarioC implements Serializable {
     private SolucionesM selectedSolucionario;
     private List<SolucionesM> lstSolucionario;
     private List<SolucionesM> lstExamenAsig;
+    TipExamM tipexam = new TipExamM();
 
     @PostConstruct
     public void init() {

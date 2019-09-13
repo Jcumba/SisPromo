@@ -9,25 +9,22 @@ import java.util.List;
 import modelo.CarreraM;
 
 public class CarreraD extends Dao implements CarreraI {
-    
-     @Override
-    public void guardarCarrera(CarreraM carrera) throws Exception {
-         try {
-             this.conectar();
-             String sql="Insert into CARRERA (NOMCAR,ESTCAR) VALUES (?,?)";
-             PreparedStatement ps=this.getCn().prepareStatement(sql);
-             ps.setString(1, carrera.getNOMCAR());
-             ps.setString(2, "I");
-             ps.executeUpdate();
-         } catch (SQLException e) {
-             throw e;
-         }finally{
-             this.cerrar();
-         }
-    }
 
-    
-    
+    @Override
+    public void guardarCarrera(CarreraM carrera) throws Exception {
+        try {
+            this.conectar();
+            String sql = "Insert into CARRERA (NOMCAR,ESTCAR) VALUES (?,?)";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, carrera.getNOMCAR());
+            ps.setString(2, "I");
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
 
     @Override
     public List<CarreraM> listarCarrera() throws Exception {
@@ -54,5 +51,30 @@ public class CarreraD extends Dao implements CarreraI {
 
     }
 
-   
+    @Override
+    public List<CarreraM> listOrdenMerito() throws Exception {
+        List<CarreraM> listarMerito;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "select * from VW_ORDEN_MERITO";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listarMerito = new ArrayList<>();
+            while (rs.next()) {
+                CarreraM merito = new CarreraM();
+                merito.setNOMPERMERIT(rs.getString("NOMBREMER"));
+                merito.setALUMMERIT(rs.getString("ALUMNOMER"));
+                merito.setCANTMERIT(rs.getString("CANTIDAD"));
+                merito.setPUNTJMERIT(rs.getString("PUNTAJE"));
+                listarMerito.add(merito);
+            }
+            return listarMerito;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+
 }

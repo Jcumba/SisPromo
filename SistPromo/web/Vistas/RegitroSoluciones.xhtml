@@ -256,7 +256,10 @@
                             <p:inputText value="#{solucionarioC.solucion.NOMEXAMEN}"  required="true"/> 
 
                             <p:outputLabel value="Tipo de Examen:" />
-                            <p:inputText value=""  required="true"/> 
+                            <p:selectOneMenu styleClass="selectpicker" value="#{solucionarioC.solucion.TIPO_EXAMEN_COD}" >
+                                <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
+                                <f:selectItems  value="#{tipExamenC.lstTipexamen}" var="examen"  itemLabel="#{examen.NOMTIPEXAM}" itemValue="#{examen.CODTIPEXAM}"/>
+                            </p:selectOneMenu>
 
                             <p:outputLabel for="console" value="Modalidad:" />
                             <p:selectOneMenu id="console" value="#{solucionarioC.solucion.MODALIDAD}"  style="width:125px">

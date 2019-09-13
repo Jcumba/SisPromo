@@ -15,6 +15,7 @@ public class SolucionesM {
     private String NOMEXAMEN;
     private String NUMPREGUNT;
     private String MODALIDAD;
+    private String TIPO_EXAMEN_COD;
 
     private String SOL1;
     private String SOL2;
@@ -440,4 +441,13 @@ public class SolucionesM {
         this.SOL13 = SOL13;
     }
 
+    public String getTIPO_EXAMEN_COD() {
+        return TIPO_EXAMEN_COD;
+    }
+
+    public void setTIPO_EXAMEN_COD(String TIPO_EXAMEN_COD) {
+        this.TIPO_EXAMEN_COD = TIPO_EXAMEN_COD;
+    }
+
+    
 }

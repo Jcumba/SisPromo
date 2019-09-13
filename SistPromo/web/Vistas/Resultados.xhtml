@@ -27,29 +27,28 @@
                     <h:form id="dial">
                         <p:commandButton  style="margin-left: 150px;margin-top: 5px" class=" blue darken-2 waves-effect waves-light btn modal-trigger" value="Puntuacion de Examen"  type="button" onclick="PF('dlg2').show();" />
                     </h:form>
-                    
+
                     <p:dialog  id="modal1" class="modal" header="Listado de Puntajes por alumno" widgetVar="dlg2" modal="true" height="650" width="500">
                         <h:form id="cerrar">
                             <div class="modal-content">
+                                <img  style="margin-left: 180px" src="../resources/images/photo_large.jpg" alt="" width="50px"/>
                                 <p>Examen:</p>
                                 <p>Fecha:</p>
                                 <p>Nombre de examen:</p>
                                 <p style="margin-left: 140px">ORDEN DE MERITO</p>
-                                    <p:dataTable var="merito" value="#{alumnoC.lstOrdenMerito}" scrollable="true" scrollHeight="300">
+                                <p:dataTable var="meritos" value="#{carreraC.lstMerito}">
+                                    <p:column headerText="Nombres y Apellidos">
+                                        <h:outputText value="#{meritos.ALUMMERIT} #{meritos.NOMPERMERIT}" />
+                                    </p:column>
 
-                                        <p:column headerText="Nombres y Apellidos" >
-                                            <h:outputText value="#{merito.ALUMMERIT} #{merito.NOMPERMERIT}" />
-                                        </p:column>
+                                    <p:column headerText="Puntaje">
+                                        <h:outputText value="#{meritos.PUNTJMERIT}" />
+                                    </p:column>
+                                </p:dataTable>
 
-                                        <p:column headerText="Puntaje"  >
-                                            <h:outputText value="#{merito.PUNTJMERIT}" />
-                                        </p:column>
-
-                                    </p:dataTable>
-
-                                    <h:commandLink value="Descargar PDF" style="margin-top: 10px" class="btn btn-danger btn-block" actionListener="#{alumnoC.descargarPdfMerito()}"  >
-                                        <i class="zmdi zmdi-download"></i>
-                                    </h:commandLink>
+                                <h:commandLink value="Descargar PDF" style="margin-top: 10px" class="btn btn-danger btn-block" actionListener="#{alumnoC.descargarPdfMerito()}"  >
+                                    <i class="zmdi zmdi-download"></i>
+                                </h:commandLink>
                             </div>
                             <p:commandButton class="btn btn-primary pull-right mio blue darken-2" value="Cerrar" onclick="PF('dlg2').hide();"/>
                         </h:form>

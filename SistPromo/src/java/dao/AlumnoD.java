@@ -27,7 +27,7 @@ public class AlumnoD extends Dao implements AlumnoI {
         try {
             this.conectar();
             String sql = "INSERT INTO PERSONA (NOMPER,APEPER,DNIPER,FECNACPER,CELPER,COLEGIO_CODCOL,CARRERA_CODCAR,UBIGEO_CODUBI)VALUES"
-                                            + "(?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?)";
+                    + "(?,?,?,(to_date(?,'dd/mm/yyyy')),?,?,?,?)";
 //            String sql = "{CALL SP_ASIGNACION_DEMO(?,?,?,?,?,?,?,?)}";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, alumno.getNOMPER());
@@ -47,7 +47,6 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
     }
 
-    
     @Override
     public void guardarAlumnoHistorial(AlumnoM alumno) throws Exception {
         try {
@@ -471,34 +470,6 @@ public class AlumnoD extends Dao implements AlumnoI {
         return listarAlumnoRegistrado;
     }
 
-    @Override
-    public List<AlumnoM> OrdenMerito() throws Exception {
-        List<AlumnoM> listarMerito;
-        ResultSet rs;
-        try {
-            this.conectar();
-            String sql;
-            sql = "SELECT * FROM VW_ORDEN_MERITO";
-            PreparedStatement ps = this.getCn().prepareStatement(sql);
-            rs = ps.executeQuery();
-            listarMerito = new ArrayList();
-            AlumnoM merito;
-            while (rs.next()) {
-                merito = new AlumnoM();
-                merito.setNOMPERMERIT(rs.getString("NOMPER"));
-                merito.setALUMMERIT(rs.getString("ALUMNO"));
-                merito.setCANTMERIT(rs.getString("CANTIDAD"));
-                merito.setPUNTJMERIT(rs.getString("PUNTAJE"));
-                listarMerito.add(merito);
-            }
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
-        return listarMerito;
-    }
-
     //METODO REPORTE_PDF_FECHADEEXAMEN
     public void REPORTE_PDF_FECHADEEXAMEN(Map parameters) throws JRException, IOException, Exception {
         conectar();
@@ -512,5 +483,6 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
         FacesContext.getCurrentInstance().responseComplete();
     }
+
 
 }

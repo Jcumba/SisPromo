@@ -78,47 +78,9 @@ public class AlumnoM {
     private String PUNTAJ12;
     private String PUNTAJ13;
     
-    /*lista de meritos*/
-    private String ALUMMERIT;
-    private String CANTMERIT;
-    private String PUNTJMERIT;
-    private String NOMPERMERIT;
 
-    public String getNOMPERMERIT() {
-        return NOMPERMERIT;
-    }
 
-    public void setNOMPERMERIT(String NOMPERMERIT) {
-        this.NOMPERMERIT = NOMPERMERIT;
-    }
-    
-    
-    
 
-    public String getALUMMERIT() {
-        return ALUMMERIT;
-    }
-
-    public void setALUMMERIT(String ALUMMERIT) {
-        this.ALUMMERIT = ALUMMERIT;
-    }
-
-    public String getCANTMERIT() {
-        return CANTMERIT;
-    }
-
-    public void setCANTMERIT(String CANTMERIT) {
-        this.CANTMERIT = CANTMERIT;
-    }
-
-    public String getPUNTJMERIT() {
-        return PUNTJMERIT;
-    }
-
-    public void setPUNTJMERIT(String PUNTJMERIT) {
-        this.PUNTJMERIT = PUNTJMERIT;
-    }
-    
     
 
     public String getSOL1() {

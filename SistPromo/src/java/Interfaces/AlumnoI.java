@@ -20,6 +20,6 @@ public interface AlumnoI {
 
     List<AlumnoM> CantAlumXCar() throws Exception;
 
-    List<AlumnoM> OrdenMerito() throws Exception;
+
 
 }
