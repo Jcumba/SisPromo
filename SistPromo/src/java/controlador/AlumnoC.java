@@ -215,10 +215,10 @@ public class AlumnoC implements Serializable {
         for (AlumnoM tran : list) {
             pieModel.set(tran.getTipoCar(), tran.getCaninscrt());
         }
-        pieModel.setTitle(" ");
-        pieModel.setLegendPosition("e");
+        pieModel.setTitle("");
+        pieModel.setLegendPosition("se");
         pieModel.setFill(false);
-        pieModel.setDiameter(190);
+        pieModel.setDiameter(200);
     }
 
    

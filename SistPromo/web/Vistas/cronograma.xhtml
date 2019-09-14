@@ -82,8 +82,8 @@
                             <p:inputMask   value="#{cronogramaC.cronograma.FECCROEXA}" mask="99/99/9999"/>
                             <p:outputLabel value="HORA"/>
                             <p:inputMask mask="99:99a*"  value="#{cronogramaC.cronograma.HORCROEXA}"/>
-                            <p:commandButton class="btn btn-primary pull-right mio" value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>
-                            <p:commandButton  class="btn btn-primary pull-right mio" icon="fa fa-close" value="Cancelar"  actionListener="#{cronogramaC.limpiar()}"  update="FormCronograma"  onclick="PF('dlgNewCronograma').hide();"/>
+                            <p:commandButton  value="Guardar" actionListener="#{cronogramaC.guardarCronograma()}"  update="FormCronograma :FormTblCronograma:tblCronograma"/>
+                            <p:commandButton   icon="fa fa-close" value="Cancelar"  actionListener="#{cronogramaC.limpiar()}"  update="FormCronograma"  onclick="PF('dlgNewCronograma').hide();"/>
                         </p:panelGrid>
                     </h:form>
                 </p:dialog>

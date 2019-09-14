@@ -7,27 +7,69 @@
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <!--CSS and JS - Van en esta Posicion para que funcione bien-->
+        <h:outputStylesheet library="css"  name="fontawesome-all.css"/>
+        <h:outputStylesheet library="css"  name="charts.css"/>
+        <h:outputStylesheet library="css"  name="clock.css"/>
+        <h:outputStylesheet library="css"  name="components.css"/>
+        <h:outputStylesheet library="css"  name="fileupload.css"/>
+        <h:outputStylesheet library="css"  name="galleria.css"/>
+        <h:outputStylesheet library="css"  name="inputswitch.css"/>
+        <h:outputStylesheet library="css"  name="keyboard.css"/>
+        <h:outputStylesheet library="css"  name="nanoscroller.css"/>
+        <h:outputStylesheet library="css"  name="ripple.css"/>
+        <h:outputStylesheet library="css"  name="schedule.css"/>
+        <h:outputStylesheet library="css"  name="scrollpanel.css"/>
+        <h:outputStylesheet library="css"  name="animate.css"/>
+        <h:outputStylesheet library="css"  name="layout-dark-green.css"/>
+        <h:outputStylesheet library="css"  name="theme-dark-green.css"/>
+        <h:outputScript library="js" name="charts.js" />
+        <h:outputScript library="js" name="clock.js" />
+        <h:outputScript library="js" name="components.js" />
+        <h:outputScript library="js" name="core.js" />
+        <h:outputScript library="js" name="fileupload.js" />
+        <h:outputScript library="js" name="galleria.js" />
+        <h:outputScript library="js" name="inputswitch.js" />
+        <h:outputScript library="js" name="keyboard.js" />
+        <h:outputScript library="js" name="layout.js" />
+        <h:outputScript library="js" name="moment.js" />
+        <h:outputScript library="js" name="nanoscroller.js" />
+        <h:outputScript library="js" name="raphael.js" />
+        <h:outputScript library="js" name="ripple.js" />
+        <h:outputScript library="js" name="schedule.js" />
+        <h:outputScript library="js" name="scrollpanel.js" />
+        <h:outputScript library="js" name="swipe.js" />
+        <h:outputScript library="js" name="touchswipe.js" />
+
     </h:head>
     <h:body>
 
-        <p:dataTable var="meritos" value="#{carreraC.lstMerito}">
-            <p:column headerText="Id">
-                <h:outputText value="#{meritos.ALUMMERIT}" />
-            </p:column>
+        <h:form id="asdas">
+            <h3 style="margin-top:0">Basic</h3>
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="console" value="Console:" />
+                <p:selectOneRadio id="console" value="#{radioView.console}" >
+                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                </p:selectOneRadio>
+            </h:panelGrid>
+        </h:form>
 
-            <p:column headerText="Year">
-                <h:outputText value="#{meritos.CANTMERIT}" />
-            </p:column>
-
-            <p:column headerText="Brand">
-                <h:outputText value="#{meritos.NOMPERMERIT}" />
-            </p:column>
-
-            <p:column headerText="Color">
-                <h:outputText value="#{meritos.PUNTJMERIT}" />
-            </p:column>
-        </p:dataTable>
-
-
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputText value="Keyup: " />
+                <p:inputText id="counter" value="#{listenerView.text}">
+                    <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent}" />
+                </p:inputText>
+                <h:outputText id="out" value="#{listenerView.text}" />
+            </h:panelGrid>
+        </h:form>
     </h:body>
 </html>

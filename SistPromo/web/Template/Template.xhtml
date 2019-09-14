@@ -78,10 +78,7 @@
                 <!--Icono-->
                 <div class="topbar-left">
                     <div class="logo">
-                        <img src="../resources/images/Imagen1sadasdsa.png" alt="" width="20px" style="margin-left: 68px;margin-bottom: 15px"/>
-                    </div>
-                    <div class="logo">
-                        <a style="color: #ffffff">SISTEMA PROMOCION</a> 
+                        <img src="../resources/images/LEGALSISPROMOCION.png" alt="" width="180px" style="margin-left: 10px;margin-bottom: 10px"/>
                     </div>
                 </div>
 
@@ -100,7 +97,7 @@
                     </a>
 
                     <ul class="topbar-items fadeInDown animated">
-                        <li>
+<!--                        <li>
                             <a href="#">
                                 <i class="topbar-icon material-icons">settings</i>
                                 <span class="topbar-item-name">Settings</span>
@@ -131,8 +128,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
+                        </li>-->
+<!--                        <li>
                             <a href="#">
                                 <i class="topbar-icon material-icons animated swing">message</i>
                                 <span class="topbar-badge animated rubberBand">5</span>
@@ -170,8 +167,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
+                        </li>-->
+<!--                        <li>
                             <a href="#">
                                 <i class="topbar-icon material-icons">timer</i>
                                 <span class="topbar-badge animated rubberBand">4</span>
@@ -203,7 +200,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>-->
                         <!--                        <li class="search-item">
                                                 <h:form>
                                                     <span class="md-inputfield">
@@ -287,7 +284,6 @@
                     </div>
                 </div>
             </div>
-
             <!--==========================================
                       MENU DE USUARIO
             ===========================================-->
@@ -439,8 +435,8 @@
                     <h:form>
 
                         <p:commandButton value="graficar" actionListener="#{alumnoC.listarGrafica()}" update="panel"/>
-                        <h:panelGroup id="panel" layout="block">
-                            <p:chart type="pie" model="#{alumnoC.pieModel}" style="width: 600px;height: 600px" rendered="#{alumnoC.pieModel != null}" />
+                        <h:panelGroup id="panel" layout="block" >
+                            <p:chart class="charts" type="pie" model="#{alumnoC.pieModel}"  style="margin-left: 100px" rendered="#{alumnoC.pieModel != null}" />
 
                         </h:panelGroup>
 
