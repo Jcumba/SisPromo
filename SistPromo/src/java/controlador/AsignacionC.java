@@ -28,7 +28,7 @@ public class AsignacionC implements Serializable {
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL AGREGAR", null));
             throw e;
-        
+
         }
     }
 
@@ -38,6 +38,20 @@ public class AsignacionC implements Serializable {
 
     public void setAsignacion(AsignacionM asignacion) {
         this.asignacion = asignacion;
+    }
+
+    private int number;
+
+    public void increment() {
+        number++;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
 }

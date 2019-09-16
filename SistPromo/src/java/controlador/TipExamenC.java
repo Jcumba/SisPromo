@@ -11,6 +11,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import modelo.TipExamM;
 
 /**
@@ -29,6 +31,20 @@ public class TipExamenC implements Serializable {
         try {
             listar();
         } catch (Exception e) {
+        }
+    }
+
+    public void guardarTipExam() throws Exception {
+        ImplTipExamenD dao;
+        try {
+            dao = new ImplTipExamenD();
+            dao.guardarTipExam(examen);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO", "Correctamente"));
+            limpiarTipExamen();
+            listar();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo agregar"));
+//            throw e;
         }
     }
 
@@ -57,6 +73,10 @@ public class TipExamenC implements Serializable {
             throw e;
         }
 
+    }
+
+    private void limpiarTipExamen() {
+        examen = new TipExamM();
     }
 
 }

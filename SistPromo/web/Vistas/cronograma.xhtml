@@ -72,7 +72,7 @@
                 <p:dialog id="dlg"  header="Agregar Cronograma" widgetVar="dlgNewCronograma" resizable="false" modal="true">
                     <h:form id="FormCronograma" class="form_contact">
                         <p:panelGrid columns="2">
-                            <p:outputLabel value="TIPO DE EXAMEN"/>
+                            <p:outputLabel value="Nombre de Examen"/>
                             <p:selectOneMenu value="#{cronogramaC.cronograma.SOLUCIONARIO_CODSOL}">
                                 <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
                                 <f:selectItems  value="#{solucionarioC.lstSolucionario}" var="solucionario" itemValue="#{solucionario.CODSOL}"  itemLabel="#{solucionario.NOMEXAMEN}" />

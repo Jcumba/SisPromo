@@ -143,7 +143,7 @@ public class SolucionarioD extends Dao implements SolucionarioI {
                 solucion.setSOL38(rs.getString("SOL38"));
                 solucion.setSOL39(rs.getString("SOL39"));
                 solucion.setSOL40(rs.getString("SOL40"));
-                solucion.setNOMEXAMEN(rs.getString("TIPEXA"));
+                solucion.setNOMEXAMEN(rs.getString("NOMEXA"));
                 solucion.setNUMPREGUNT(rs.getString("NUMPRE"));
                 solucion.setMODALIDAD(rs.getString("MODEXA"));
                 solucion.setESTAD(rs.getString("ESTSOL"));
@@ -165,14 +165,14 @@ public class SolucionarioD extends Dao implements SolucionarioI {
         try {
             this.conectar();
             String sql;
-            sql = "SELECT * FROM VW_CONSLTFECHAS_EXAMEN  ";
+            sql = "SELECT * FROM VW_CONSLTFECHAS_EXAMEN";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarSolucion = new ArrayList();
             SolucionesM examen;
             while (rs.next()) {
                 examen = new SolucionesM();
-                examen.setNOMEXAMEN(rs.getString("TIPEXA"));
+                examen.setNOMEXAMEN(rs.getString("NOMEXA"));
                 examen.setMODALIDAD(rs.getString("MODEXA"));
                 examen.setFECHA(rs.getString("FECHA"));
                 examen.setHORA(rs.getString("HORCROEXA"));
