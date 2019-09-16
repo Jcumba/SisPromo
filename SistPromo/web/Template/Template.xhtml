@@ -432,15 +432,7 @@
                         </div>
                     </div>
 
-                    <h:form>
 
-                        <p:commandButton value="graficar" actionListener="#{alumnoC.listarGrafica()}" update="panel"/>
-                        <h:panelGroup id="panel" layout="block" >
-                            <p:chart class="charts" type="pie" model="#{alumnoC.pieModel}"  style="margin-left: 100px" rendered="#{alumnoC.pieModel != null}" />
-
-                        </h:panelGroup>
-
-                    </h:form>
                     <footer class="page-footer grey lighten-5">
                         <div class="footer-copyright">
                             <div class="container" style="color: #000">

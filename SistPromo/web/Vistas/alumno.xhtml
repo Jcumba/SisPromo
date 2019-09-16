@@ -14,9 +14,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     </h:head>
-    <h:body>
+    <h:body class="blue accent-2">
 
-        <div class="row" style="align-content: center">
+        <div class="row" style="align-content: center;margin-left: 350px">
             <div class="col s12 m7">
                 <div class="card">
                     <div class="card-image">
@@ -41,13 +41,13 @@
 
                             <div class="row">
                                 <div class="input-field col s5 ">
-                                    <p:inputText   style="width: 420px;margin-bottom: 20px" value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();">
+                                    <p:inputText   style="width: 230px;margin-bottom: 20px" value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();">
                                         <p:keyFilter regEx="/[a-z_ ]/i"/> 	
                                     </p:inputText>
                                     <label for="first_name">Nombres</label>
                                 </div>
                                 <div class="input-field col s5 ">
-                                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 420px;margin-bottom: 20px" onkeyup="this.value = this.value.toUpperCase();">
+                                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 310px;margin-bottom: 20px" onkeyup="this.value = this.value.toUpperCase();">
                                         <p:keyFilter regEx="/[a-z_ ]/i"/>
                                     </p:inputText>
                                     <label for="last_name">Apellidos</label>
@@ -57,13 +57,13 @@
 
                             <div class="row">
                                 <div class="input-field col s5">
-                                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 420px;margin-bottom: 20px"  maxlength="8">
+                                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 230px;margin-bottom: 20px"  maxlength="8">
                                         <p:keyFilter regEx="/[\d]/"/>
                                     </p:inputText>
                                     <label for="disabled">DNI:</label>
                                 </div>
                                 <div class="input-field col s5">
-                                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 420px;margin-bottom: 20px"  mask="99/99/9999"/>
+                                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 320px;margin-bottom: 20px"  mask="99/99/9999"/>
                                     <label for="disabled">Fecha Nacimiento</label>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
 
                             <div class="row">
                                 <div class="input-field col s2">
-                                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 420px;margin-bottom: 20px"  maxlength="9">
+                                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 85px;margin-bottom: 20px"  maxlength="9">
                                         <p:keyFilter regEx="/[\d]/"/>
                                     </p:inputText>
                                     <label for="disabled">Nª Celular</label>
@@ -82,7 +82,7 @@
                                                      emptyMessage="No se encontro ningún registro"
                                                      value="#{alumnoC.alumno.UBIGEO_CODUBI}"
                                                      completeMethod="#{alumnoC.completeTextUbi}"
-                                                     style="width: 420px;margin-bottom: 20px" maxlength="15">
+                                                     style="width: 200px;margin-bottom: 20px" maxlength="15">
                                         <p:keyFilter regEx="/[\d]/"/>
                                     </p:autoComplete>
                                     <label for="disabled">Distrito</label>
@@ -91,10 +91,10 @@
                                     <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
                                                      value="#{alumnoC.alumno.CODCOL}"        
                                                      completeMethod="#{alumnoC.completeTextCol}"
-                                                     style="width: 420px;margin-bottom: 20px" maxlength="15">
+                                                     style="width: 250px;margin-bottom: 20px;margin-left: 70px" maxlength="15">
                                         <p:keyFilter regEx="/[\d]/"/>
                                     </p:autoComplete>
-                                    <label for="disabled">Colegio</label>
+                                    <label for="disabled" style="margin-left: 70px">Colegio</label>
                                 </div>
                             </div>
                             <br/>
@@ -110,43 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m5">
-                <div class="card-panel teal">
-                    <span class="white-text ">Misión<br/>
-                        Formar personas en el ámbito técnico profesional, considerando el sentido trascendente del hombre, desarrollando en ellos competencias, que faciliten su inserción laboral, contribuyendo de esta manera al desarrollo del país.</span>
-                </div>
-            </div>
-            <div class="col s12 m5">
-                <div class="card-panel teal">
-                    <span class="white-text">Visión<br/>
-                        Ser una institución referente de excelencia de  la educación técnico profesional del Perú, asociada al sector productivo</span>
-                </div>
-            </div>
-            <div class=" col s12 m5">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator"  src="../resources/images/portada.jpg" alt=""/>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Quienes Somos<i class="glyphicon glyphicon-envelope"></i></span>
-                        <p><a href="https://www.vallegrande.edu.pe/quienes-somos">Mas informacion</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">formación integral<i class="material-icons right">Cerrar</i></span>
-                        <p>En Valle Grande ofrecemos a los jóvenes una formación integral que asegura su éxito profesional, la cual se basa en la Metodología de la Alternancia (con excelentes resultados en Europa y América Latina) y en 3 pilares esenciales: la formación tecnológica, la formación empresarial y la formación humana, adquiriendo así, nuestros egresados, las competencias necesarias para:
-                            <br/>
-                            - Ocupar cargos de responsabilidad y toma de decisiones.
-                            <br/>
-                            - Resolución de problemas.
-                            <br/>
-                            - Brindar asesoría especializada.</p>
-                    </div>
-                </div>
-            </div>
         </div>
-
-
-
 
     </h:body>
 </html>
