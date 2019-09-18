@@ -57,16 +57,16 @@ public class CarreraD extends Dao implements CarreraI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "select * from VW_ORDEN_MERITO";
+            String sql = "select * from VW_ESTADO_APROBATORIO";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarMerito = new ArrayList<>();
             while (rs.next()) {
                 CarreraM merito = new CarreraM();
-                merito.setNOMPERMERIT(rs.getString("NOMBREMER"));
-                merito.setALUMMERIT(rs.getString("ALUMNOMER"));
-                merito.setCANTMERIT(rs.getString("CANTIDAD"));
-                merito.setPUNTJMERIT(rs.getString("PUNTAJE"));
+                merito.setNOMBRESAP(rs.getString("NOMBRESAP"));
+                merito.setAPELLIDOAP(rs.getString("APELLIDOAP"));
+                merito.setPUNTJAP(rs.getString("PUNTJAP"));
+                merito.setAPROBADO(rs.getString("APROBADOS"));
                 listarMerito.add(merito);
             }
             return listarMerito;

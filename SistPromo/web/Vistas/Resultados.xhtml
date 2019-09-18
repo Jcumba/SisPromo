@@ -37,12 +37,15 @@
                                 <p>Nombre de examen:</p>
                                 <p style="margin-left: 140px">ORDEN DE MERITO</p>
                                 <p:dataTable var="meritos" value="#{carreraC.lstMerito}">
-                                    <p:column headerText="Nombres y Apellidos">
-                                        <h:outputText value="#{meritos.ALUMMERIT} #{meritos.NOMPERMERIT}" />
+                                    <p:column headerText="Nombres y Apellidos" style="width: 200px">
+                                        <h:outputText value="#{meritos.NOMBRESAP} #{meritos.APELLIDOAP}" />
                                     </p:column>
 
-                                    <p:column headerText="Puntaje">
-                                        <h:outputText value="#{meritos.PUNTJMERIT}" />
+                                    <p:column headerText="Puntaje" >
+                                        <h:outputText value="#{meritos.PUNTJAP}" />
+                                    </p:column>
+                                    <p:column headerText="Estado" style="width: 130px">
+                                         <h:outputText value="#{meritos.APROBADO}" />
                                     </p:column>
                                 </p:dataTable>
 

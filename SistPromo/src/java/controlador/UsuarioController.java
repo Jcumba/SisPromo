@@ -10,8 +10,10 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import lombok.Data;
@@ -23,6 +25,9 @@ import services.SessionUtils;
 @Named(value = "usuarioController")
 @SessionScoped
 public class UsuarioController implements Serializable {
+
+    private UsuarioM selectedUsuario;
+    private List<UsuarioM> lstUsuario;
 
     private UsuarioM usuario = new UsuarioM();
     private int Contador = 0;
@@ -98,6 +103,42 @@ public class UsuarioController implements Serializable {
         } catch (IOException ex) {
             System.err.println("Error en Redireccion Principal -> " + ex.getMessage());
         }
+    }
+
+    @PostConstruct
+    public void init() {
+        try {
+            listarUsuario();
+        } catch (Exception e) {
+        }
+    }
+
+    private void listarUsuario() throws Exception {
+        ImplUsuarioD dao;
+        try {
+            dao = new ImplUsuarioD();
+            lstUsuario = dao.listarUsuario();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void guardarArea() throws Exception {
+        ImplUsuarioD dao;
+        try {
+            dao = new ImplUsuarioD();
+            dao.guardarUsuario(usuario);
+            listarUsuario();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO", "Correctamente"));
+            limpiarUsuario();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR", "No se pudo agregar"));
+//            throw e;
+        }
+    }
+
+    private void limpiarUsuario() {
+        usuario = new UsuarioM();
     }
 
 }

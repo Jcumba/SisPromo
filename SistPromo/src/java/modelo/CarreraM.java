@@ -6,42 +6,44 @@ public class CarreraM {
     private String NOMCAR;
 
     /*lista de meritos*/
-    private String ALUMMERIT;
-    private String CANTMERIT;
-    private String PUNTJMERIT;
-    private String NOMPERMERIT;
+    private String APELLIDOAP;
+    private String PUNTJAP;
+    private String NOMBRESAP;
+    private String APROBADO;
 
-    public String getALUMMERIT() {
-        return ALUMMERIT;
+    public String getAPELLIDOAP() {
+        return APELLIDOAP;
     }
 
-    public void setALUMMERIT(String ALUMMERIT) {
-        this.ALUMMERIT = ALUMMERIT;
+    public void setAPELLIDOAP(String APELLIDOAP) {
+        this.APELLIDOAP = APELLIDOAP;
     }
 
-    public String getCANTMERIT() {
-        return CANTMERIT;
+    public String getPUNTJAP() {
+        return PUNTJAP;
     }
 
-    public void setCANTMERIT(String CANTMERIT) {
-        this.CANTMERIT = CANTMERIT;
+    public void setPUNTJAP(String PUNTJAP) {
+        this.PUNTJAP = PUNTJAP;
     }
 
-    public String getPUNTJMERIT() {
-        return PUNTJMERIT;
+    public String getNOMBRESAP() {
+        return NOMBRESAP;
     }
 
-    public void setPUNTJMERIT(String PUNTJMERIT) {
-        this.PUNTJMERIT = PUNTJMERIT;
+    public void setNOMBRESAP(String NOMBRESAP) {
+        this.NOMBRESAP = NOMBRESAP;
     }
 
-    public String getNOMPERMERIT() {
-        return NOMPERMERIT;
+    public String getAPROBADO() {
+        return APROBADO;
     }
 
-    public void setNOMPERMERIT(String NOMPERMERIT) {
-        this.NOMPERMERIT = NOMPERMERIT;
+    public void setAPROBADO(String APROBADO) {
+        this.APROBADO = APROBADO;
     }
+
+    
 
     public String getCODCAR() {
         return CODCAR;
