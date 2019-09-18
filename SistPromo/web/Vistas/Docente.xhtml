@@ -7,35 +7,100 @@
     <h:head>
         <title>Docente</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           
+
     </h:head>
     <h:body>
 
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
-                <h:form id="form"   >
-                    <p:dataTable var="usuario" value="#{usuarioController.lstUsuario}">
-                        <p:column headerText="Nombre">
-                            <h:outputText value="#{usuario.NOMPER}" />
-                        </p:column>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="col s12">
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                                <div class="row valign-wrapper">
+                                    <div class="col s2">
+                                        <img src="" alt="" class="responsive-img"/> <!-- notice the "circle" class -->
+                                    </div>
+                                    <div class="col s10">
+                                        <span class="black-text">
+                                            This is a square image. Add the "circle" class to it to make it appear circular.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="col s12">
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                                <div class="row valign-wrapper">
 
-                        <p:column headerText="Apellido">
-                            <h:outputText value="#{usuario.APEPER}" />
-                        </p:column>
+                                    <div class="col s12">
+                                        <span class="black-text">
+                                            <div class="chip" style="margin-left: 150px">
+                                                Registro de Profesores
+                                            </div>
+                                            <h:form id="formUsuario">
+                                                <p:growl id="msg1" showDetail="true" life="1000"  autoUpdate="true"/>  
+                                                <p:outputLabel value="Nombres: "/>
+                                                <p:inputText value="#{usuarioController.usuario.NOMPER}" required="true" >
+                                                    <p:keyFilter regEx="/[a-z_ ]/i"/> 	
+                                                </p:inputText>  
 
-                        <p:column headerText="DNI">
-                            <h:outputText value="#{usuario.DNIPER}" />
-                        </p:column>
-                        
-<!--                        <p:column headerText="Usuario">
-                            <h:outputText value="#usuario.USU}" />
-                        </p:column>
-                        
-                        <p:column headerText="Contraseña">
-                            <h:outputText value="#usuario.PAS}" />
-                        </p:column>-->
-                    </p:dataTable>
-                    </h:form>
+                                                <p:outputLabel value="Apellidos:"/>
+                                                <p:inputText value="#{usuarioController.usuario.APEPER}" required="true" >
+                                                    <p:keyFilter regEx="/[a-z_ ]/i"/>
+                                                </p:inputText> 
+
+                                                <p:outputLabel value="DNI:"/>
+                                                <p:inputText value="#{usuarioController.usuario.DNIPER}" maxlength="8" required="true" >
+                                                    <p:keyFilter regEx="/[\d]/"/>
+                                                </p:inputText> 
+
+                                                <p:outputLabel value="Usuario:"/>
+                                                <p:inputText value="#{usuarioController.usuario.USU}" required="true" /> 
+
+                                                <p:outputLabel value="Contraseña:"/>
+                                                <p:password value="#{usuarioController.usuario.PAS}" required="true" /> 
+
+                                                <p:commandButton  value="AGREGAR" actionListener="#{usuarioController.guardarUsuario()}"  update="formUsuario :formtableusuario:tableusuario" />
+                                            </h:form>
+                                            <br/>
+                                            <h:form id="formtableusuario">
+                                                <p:dataTable id="tableusuario" var="usuario" value="#{usuarioController.lstUsuario}">
+                                                    <p:column headerText="Nombres y Apellidos" style="width: 350px">
+                                                        <h:outputText value="#{usuario.NOMPER}#{usuario.APEPER}"  />
+                                                    </p:column>
+
+                                                    <p:column headerText="DNI">
+                                                        <h:outputText value="#{usuario.DNIPER}" />
+                                                    </p:column>
+
+                                                </p:dataTable>
+                                            </h:form>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="col s12">
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                                <div class="row valign-wrapper">
+                                    <div class="col s2">
+                                        <img src="" alt="" class="responsive-img"/> <!-- notice the "circle" class -->
+                                    </div>
+                                    <div class="col s10">
+                                        <span class="black-text">
+                                            This is a square image. Add the "circle" class to it to make it appear circular.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

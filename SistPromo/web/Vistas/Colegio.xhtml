@@ -15,75 +15,91 @@
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
-                <h:form id="Colegio">
-                    <p:growl id="msg" showDetail="true" life="1000"  autoUpdate="true"/>  
-                    <p:panelGrid columns="2">
-                        <p:outputLabel value="NOMBRE DE COLEGIO: "/>
-                        <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true" onkeyup="this.value = this.value.toUpperCase();"/>    
-                        <p:outputLabel value="DISTRITO"/>
-                        <p:autoComplete maxResults="16"
-                                        emptyMessage="No se encontro ningun registro"
-                                        value="#{colegioC.colegio.UBIGEO_CODUBI}"
-                                        completeMethod="#{alumnoC.completeTextUbi}"
-                                        style="width: 420px" maxlength="15">
-                        </p:autoComplete>
-                        <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio :formcol:tblcol" />
-                    </p:panelGrid>
-                </h:form>
-                <br/>
-                <h:form id="formcol">
-                    <p:dataTable  id="tblcol" var="colegio" value="#{colegioC.lstColegio}" selectionMode="single" selection="#{colegioC.selectedColegio}" 
-                                  rowKey="#{colegio.CODCOL}" rows="10" paginator="true"
-                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                  rowsPerPageTemplate="5,10,15">
-                        <p:column headerText="Colegio"  filterBy="#{colegio.NOMCOL}">
-                            <h:outputText value="#{colegio.NOMCOL}" />
-                        </p:column>
-                        <p:column headerText="Distrito">
-                            <h:outputText value="#{colegio.UBIGEO}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            #{fn:length(colegioC.lstColegio)} REGISTROS.
-                        </f:facet>
-                    </p:dataTable>
-                    <p:contextMenu>
-                        <p:menuitem value="MODIFICAR" onclick="PF('dlgModColegio').show();"   update="FormDialog2"/>
-                        <p:menuitem value="ELIMINAR" actionListener="#{colegioC.eliminarColegio()}" update="tblcol: Colegio">
-                            <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
-                        </p:menuitem>
-                    </p:contextMenu>
-                </h:form>
-                <h:form>
-                    <p:confirmDialog global="true">
-                        <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                        <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
-                    </p:confirmDialog>
-                </h:form>
+                <div class="col s6">
+                    <h:form id="Colegio">
+                        <p:growl id="msg1" showDetail="true" life="1000"  autoUpdate="true"/>  
 
-                <p:dialog id="dialogo"  header="Actualizar Datos" widgetVar="dlgModColegio" width="500" resizable="false" modal="true">
-                    <h:form  id="FormDialog2">
-                        <p:panelGrid  columns="2">
-                            <p:outputLabel value="NOMBRE DE COLEGIO"/>
-                            <p:inputText value="#{colegioC.selectedColegio.NOMCOL}"  onkeyup="this.value = this.value.toUpperCase();"/>
-                            <p:outputLabel value="DISTRITO"/>
-                            <p:autoComplete dropdown="true" maxResults="10" emptyMessage="No se encontro ningún registro"
-                                            value="#{colegioC.selectedColegio.UBIGEO_CODUBI}"
-                                            completeMethod="#{alumnoC.completeTextUbi}"
-                                            style="width: 90%"> 
-                            </p:autoComplete>
+                        <div class="card-panel grey lighten-5 z-depth-1">
+                            <div class="row valign-wrapper">
+                                <div class="col s2">
+                                    <img src="../resources/images/ESCUDO.png" alt="" class="responsive-img"/> <!-- notice the "circle" class -->
+                                </div>
+                                <div class="col s10">
+                                    <span class="black-text">
+                                        <div class="chip" style="margin-left: 10px">
+                                            Registrar en este campo los Colegios y ubicaciones
+                                        </div>
+                                        <br/>
+                                        <p:outputLabel value="NOMBRE DE COLEGIO: "/>
+                                        <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true" onkeyup="this.value = this.value.toUpperCase();"/>    
+                                        <p:outputLabel value="DISTRITO"/>
+                                        <p:autoComplete maxResults="16"
+                                                        emptyMessage="No se encontro ningun registro"
+                                                        value="#{colegioC.colegio.UBIGEO_CODUBI}"
+                                                        completeMethod="#{alumnoC.completeTextUbi}"
+                                                        style="width: 420px" maxlength="15">
+                                        </p:autoComplete>
+                                        <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio :formcol:tblcol" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
 
-                            <p:commandButton value="MODIFICAR" actionListener="#{colegioC.modificarColegio()}"  update=":formcol:tblcol"  oncomplete="PF('dlgModColegio').hide()"/>
-                            <p:commandButton value="CANCELAR" oncomplete="PF('dlgModColegio').hide()"/>
-                        </p:panelGrid>
+                    </h:form> 
+                    <h:form id="formcol">
+                        <p:dataTable  id="tblcol" var="colegio" value="#{colegioC.lstColegio}" selectionMode="single" selection="#{colegioC.selectedColegio}" 
+                                      rowKey="#{colegio.CODCOL}" rows="10" paginator="true"
+                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                      rowsPerPageTemplate="5,10,15">
+                            <p:column headerText="Colegio"  filterBy="#{colegio.NOMCOL}">
+                                <h:outputText value="#{colegio.NOMCOL}" />
+                            </p:column>
+                            <p:column headerText="Distrito">
+                                <h:outputText value="#{colegio.UBIGEO}"/>
+                            </p:column>
+                            <f:facet name="footer">
+                                #{fn:length(colegioC.lstColegio)} REGISTROS.
+                            </f:facet>
+                        </p:dataTable>
+                        <p:contextMenu>
+                            <p:menuitem value="MODIFICAR" onclick="PF('dlgModColegio').show();"   update="FormDialog2"/>
+                            <p:menuitem value="ELIMINAR" actionListener="#{colegioC.eliminarColegio()}" update="tblcol: Colegio">
+                                <p:confirm header="Confirmación"   message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
+                            </p:menuitem>
+                        </p:contextMenu>
                     </h:form>
-                    <h:form>           
-                        <p:growl id="message" showDetail="true" />
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    <h:form>
+                        <p:confirmDialog global="true">
+                            <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                            <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
                         </p:confirmDialog>
                     </h:form>
-                </p:dialog>
+
+                    <p:dialog id="dialogo"  header="Actualizar Datos" widgetVar="dlgModColegio" width="500" resizable="false" modal="true">
+                        <h:form  id="FormDialog2">
+                            <p:panelGrid  columns="2">
+                                <p:outputLabel value="NOMBRE DE COLEGIO"/>
+                                <p:inputText value="#{colegioC.selectedColegio.NOMCOL}"  onkeyup="this.value = this.value.toUpperCase();"/>
+                                <p:outputLabel value="DISTRITO"/>
+                                <p:autoComplete dropdown="true" maxResults="10" emptyMessage="No se encontro ningún registro"
+                                                value="#{colegioC.selectedColegio.UBIGEO_CODUBI}"
+                                                completeMethod="#{alumnoC.completeTextUbi}"
+                                                style="width: 90%"> 
+                                </p:autoComplete>
+
+                                <p:commandButton value="MODIFICAR" actionListener="#{colegioC.modificarColegio()}"  update=":formcol:tblcol"  oncomplete="PF('dlgModColegio').hide()"/>
+                                <p:commandButton value="CANCELAR" oncomplete="PF('dlgModColegio').hide()"/>
+                            </p:panelGrid>
+                        </h:form>
+                        <h:form>           
+                            <p:growl id="message" showDetail="true" />
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </h:form>
+                    </p:dialog>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

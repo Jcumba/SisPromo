@@ -123,7 +123,7 @@ public class UsuarioController implements Serializable {
         }
     }
 
-    public void guardarArea() throws Exception {
+    public void guardarUsuario() throws Exception {
         ImplUsuarioD dao;
         try {
             dao = new ImplUsuarioD();
