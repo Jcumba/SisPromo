@@ -12,34 +12,27 @@
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
-
                 <h:form>
                     <p:commandButton onclick="PF('dlg2').show();" class="blue darken-3"  style="margin-bottom: 15px" value="Colegios"/>
                 </h:form>
-
                 <p:dialog header="Listado de Colegios" widgetVar="dlg2" modal="true" height="400" width="700">
                     <h:form id="formcol">
                         <p:dataTable class="table table-striped" var="colegio" value="#{colegioC.lstColegio}">
                             <p:column headerText="Colegio">
                                 <h:outputText value="#{colegio.NOMCOL}" />
                             </p:column>
-
                             <p:column headerText="Departamento">
                                 <h:outputText value="#{colegio.DEPUBICA}" />
                             </p:column>
-
                             <p:column headerText="Provincia">
                                 <h:outputText value="#{colegio.PROUBICA}" />
                             </p:column>
-
                             <p:column headerText="Distrito">
                                 <h:outputText value="#{colegio.DISUBICA}" />
                             </p:column>
                         </p:dataTable>
-
                     </h:form>
                 </p:dialog> 
-
                 <h:form id="FormTblAlum">
                     <p:dataTable var="alumno" value="#{alumnoC.lstAlumno}" rows="10"
                                  class="table table-striped"
@@ -49,20 +42,15 @@
                         <p:column headerText="Nombres">
                             <h:outputText value="#{alumno.NOMPER}" />
                         </p:column>
-
                         <p:column headerText="Apellidos">
                             <h:outputText value="#{alumno.APEPER}" />
                         </p:column>
-
                         <p:column headerText="DNI">
                             <h:outputText value="#{alumno.DNIPER}" />
                         </p:column>
-
                         <p:column headerText="Telefono - Celular ">
                             <h:outputText value="#{alumno.CELPER}" />
                         </p:column>
-
-
                     </p:dataTable>
                 </h:form>
                 <footer class="page-footer grey lighten-5">

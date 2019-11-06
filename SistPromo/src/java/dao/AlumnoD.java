@@ -386,7 +386,7 @@ public class AlumnoD extends Dao implements AlumnoI {
             AlumnoM emp;
             while (rs.next()) {
                 emp = new AlumnoM();
-                emp.setNomCol(rs.getString("COLEGIOS"));
+                emp.setNOMCOL(rs.getString("COLEGIOS"));
                 emp.setCantCol(rs.getString("SISTEMAS"));
                 listaTop.add(emp);
             }
@@ -443,31 +443,30 @@ public class AlumnoD extends Dao implements AlumnoI {
         return listaCantAlumXCar;
     }
 
-    public List<AlumnoM> listarAlumnoRegistrado() throws Exception {
-        List<AlumnoM> listarAlumnoRegistrado;
+    public List<AlumnoM> listarAlumnoRegistrados() throws Exception {
+        List<AlumnoM> listarAlumnoRegistrados;
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "select * from VW_LISTAALUMNOSREGISTRADOS";
+            String sql = "SELECT * FROM VW_LISTARALUMNOSREGISTRADOS";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
-            listarAlumnoRegistrado = new ArrayList();
+            listarAlumnoRegistrados = new ArrayList<>();
             AlumnoM alumno;
             while (rs.next()) {
                 alumno = new AlumnoM();
                 alumno.setCODPER(rs.getString("CODPER"));
-                alumno.setNOMPER(rs.getString("NOMPER"));
-                alumno.setAPEPER(rs.getString("APEPER"));
                 alumno.setDNIPER(rs.getString("DNIPER"));
+                alumno.setALUMNO(rs.getString("ALUMNO"));
                 alumno.setNOMCOL(rs.getString("NOMCOL"));
-                listarAlumnoRegistrado.add(alumno);
+                listarAlumnoRegistrados.add(alumno);
             }
+            return listarAlumnoRegistrados;
         } catch (SQLException e) {
             throw e;
         } finally {
             this.cerrar();
         }
-        return listarAlumnoRegistrado;
     }
 
     //METODO REPORTE_PDF_FECHADEEXAMEN
@@ -483,6 +482,5 @@ public class AlumnoD extends Dao implements AlumnoI {
         }
         FacesContext.getCurrentInstance().responseComplete();
     }
-
 
 }

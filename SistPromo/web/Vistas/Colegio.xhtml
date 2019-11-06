@@ -9,47 +9,52 @@
 
     <h:head>
         <title>Colegio</title>
-
+       
+  
 
     </h:head>
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
-                <div class="col s6">
+              
                     <h:form id="Colegio">
-                        <p:growl id="msg1" showDetail="true" life="1000"  autoUpdate="true"/>  
-
-                        <div class="card-panel grey lighten-5 z-depth-1">
-                            <div class="row valign-wrapper">
-                                <div class="col s2">
-                                    <img src="../resources/images/ESCUDO.png" alt="" class="responsive-img"/> <!-- notice the "circle" class -->
-                                </div>
-                                <div class="col s10">
-                                    <span class="black-text">
-                                        <div class="chip" style="margin-left: 10px">
-                                            Registrar en este campo los Colegios y ubicaciones
-                                        </div>
-                                        <br/>
-                                        <p:outputLabel value="NOMBRE DE COLEGIO: "/>
-                                        <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true" onkeyup="this.value = this.value.toUpperCase();"/>    
-                                        <p:outputLabel value="DISTRITO"/>
-                                        <p:autoComplete maxResults="16"
-                                                        emptyMessage="No se encontro ningun registro"
-                                                        value="#{colegioC.colegio.UBIGEO_CODUBI}"
-                                                        completeMethod="#{alumnoC.completeTextUbi}"
-                                                        style="width: 420px" maxlength="15">
-                                        </p:autoComplete>
-                                        <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio :formcol:tblcol" />
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
+                        <p:growl id="msg1" showDetail="true" life="1000"  autoUpdate="true"/>
+<!--                        <center>-->
+                           <h3><b style="margin-left: 460px">REGISTRO DE COLEGIO</b></h3> 
+<!--                        </center>-->
+                        
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NOMBRE DE COLEGIO: "/>
+                            <p:inputText value="#{colegioC.colegio.NOMCOL}" required="true" onkeyup="this.value = this.value.toUpperCase();"/>    
+                            <p:outputLabel value="DISTRITO"/>
+                            <p:autoComplete maxResults="16"
+                                            emptyMessage="No se encontro ningun registro"
+                                            value="#{colegioC.colegio.UBIGEO_CODUBI}"
+                                            completeMethod="#{alumnoC.completeTextUbi}"
+                                            maxlength="15">
+                            </p:autoComplete>  
+                        </p:panelGrid>
+                        <br>
+                         <center>
+                          <p:commandButton  value="REGISTRAR" actionListener="#{colegioC.guardarColegio()}"  update="Colegio :formcol:tblcol"/>  
+                        </center>
+                        
+                        </br>
+                        
+                       
                     </h:form> 
                     <h:form id="formcol">
-                        <p:dataTable  id="tblcol" var="colegio" value="#{colegioC.lstColegio}" selectionMode="single" selection="#{colegioC.selectedColegio}" 
-                                      rowKey="#{colegio.CODCOL}" rows="10" paginator="true"
-                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        <p:dataTable  id="tblcol"
+                                      var="colegio" 
+                                      value="#{colegioC.lstColegio}" 
+                                      selectionMode="single" 
+                                      selection="#{colegioC.selectedColegio}" 
+                                      rowKey="#{colegio.CODCOL}" 
+                                      rows="10"
+                                      paginator="true"
+                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+                                      {PreviousPageLink} {PageLinks} {NextPageLink} 
+                                      {LastPageLink} {RowsPerPageDropdown}"
                                       rowsPerPageTemplate="5,10,15">
                             <p:column headerText="Colegio"  filterBy="#{colegio.NOMCOL}">
                                 <h:outputText value="#{colegio.NOMCOL}" />
@@ -99,7 +104,7 @@
                             </p:confirmDialog>
                         </h:form>
                     </p:dialog>
-                </div>
+              
             </ui:define>
         </ui:composition>
     </h:body>

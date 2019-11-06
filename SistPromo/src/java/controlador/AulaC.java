@@ -41,7 +41,7 @@ public class AulaC implements Serializable {
             this.setUniqueAula(dao.buscarAula(aula.getNUMAUL()));
             if (aula.getNUMAUL().equals(this.uniqueAula)) {
                 limpiar();
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR, AULA YA REGISTRADO", null));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error, Aula ya Registrada", "Seleccione otra por favor"));
             } else {
                 dao.guardar(aula);
                 limpiar();

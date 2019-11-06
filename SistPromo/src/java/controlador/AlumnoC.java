@@ -15,7 +15,6 @@ import modelo.AlumnoM;
 import modelo.CarreraM;
 import org.primefaces.model.chart.PieChartModel;
 
-
 @Named(value = "alumnoC")
 @SessionScoped
 @Data
@@ -34,23 +33,18 @@ public class AlumnoC implements Serializable {
     private String dni = null;
     private String Notas = null;
 
-     
-//    Calendar Cal = Calendar.getInstance();
-//    String fechaActual = Cal.get(Calendar.YEAR) + "/" + (Cal.get(Calendar.MONTH) + 01) + "/" + Cal.get(Calendar.DATE);
-
     public void limpiar() {
         alumno = new AlumnoM();
     }
 
     @PostConstruct
-    public void init() {
+    public void iniciar() {
         try {
+            listarAlunoRegistrados();
             listarAlumno();
-            listarAlumnosRegistrados();
-            listarTopColegios();
+            listarGrafica();
         } catch (Exception e) {
         }
-
     }
 
     private void listarAlumno() throws Exception {
@@ -63,21 +57,21 @@ public class AlumnoC implements Serializable {
         }
     }
 
-    public void descargarPdfMerito() throws Exception {
-        Reportes rs;
+    private void listarAlunoRegistrados() throws Exception {
+        AlumnoD dao1;
         try {
-            rs = new Reportes();
-            rs.exportarPDFMerito();
+            dao1 = new AlumnoD();
+            lstAlumnosRegistrado = dao1.listarAlumnoRegistrados();
         } catch (Exception e) {
             throw e;
         }
     }
 
-    public void listarAlumnosRegistrados() throws Exception {
-        AlumnoD dao;
+    public void descargarPdfMerito() throws Exception {
+        Reportes rs;
         try {
-            dao = new AlumnoD();
-            lstAlumnosRegistrado = dao.listarAlumnoRegistrado();
+            rs = new Reportes();
+            rs.exportarPDFMerito();
         } catch (Exception e) {
             throw e;
         }
@@ -108,26 +102,10 @@ public class AlumnoC implements Serializable {
                 dao.guardarAlumno(alumno);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AGREGADO CORRECTAMENTE", null));
                 limpiar();
-                listarAlumnosRegistrados();
+                listarAlunoRegistrados();
             }
-
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL AGREGAR", null));
-            throw e;
-        }
-    }
-
-    public void modificarAlumno() throws Exception {
-        AlumnoD dao;
-        try {
-            dao = new AlumnoD();
-            alumno.setCODCOL(dao.obtenerCodigoColegio(alumno.getCODCOL()));
-            dao.modificarAlumno(alumno);
-            listarAlumnosRegistrados();
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificado Correctamente", null));
-            limpiar();
-        } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR AL MODIFICAR", null));
             throw e;
         }
     }
@@ -136,10 +114,10 @@ public class AlumnoC implements Serializable {
         AlumnoD dao;
         try {
             dao = new AlumnoD();
-            dao.eliminarAlumno(alumno);
+            dao.eliminarAlumno(selectedAlumno);
             limpiar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminado Correctamente", null));
-            listarAlumnosRegistrados();
+            listarAlunoRegistrados();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR AL ELIMINAR", null));
             throw e;
@@ -188,15 +166,6 @@ public class AlumnoC implements Serializable {
         }
     }
 
-//    public void cantidadAlumnos() throws SQLException, Exception {
-//        AlumnoD dao;
-//        try {
-//            dao = new AlumnoD();
-//            dao.cantidadAlumnos(alumno);
-//        } catch (SQLException e) {
-//            throw e;
-//        }
-//    }
     public void listarGrafica() {
         AlumnoD dao;
         List<AlumnoM> list;
@@ -208,7 +177,6 @@ public class AlumnoC implements Serializable {
         } finally {
         }
     }
- 
 
     private void graficar(List<AlumnoM> list) {
         pieModel = new PieChartModel();
@@ -221,7 +189,4 @@ public class AlumnoC implements Serializable {
         pieModel.setDiameter(200);
     }
 
-   
-    
-    
 }
