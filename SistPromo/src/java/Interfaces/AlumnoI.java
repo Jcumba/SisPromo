@@ -19,6 +19,8 @@ public interface AlumnoI {
     List<AlumnoM> topColegios() throws Exception;
 
     List<AlumnoM> CantAlumXCar() throws Exception;
+    
+  
 
 
 

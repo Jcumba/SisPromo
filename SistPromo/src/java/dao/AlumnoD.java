@@ -362,7 +362,7 @@ public class AlumnoD extends Dao implements AlumnoI {
                 alumno.setHORCROEXA(rs.getString("HORCROEXA"));
                 alumno.setNUMAUL(rs.getString("NUMAUL"));
                 alumno.setMODEXA(rs.getString("MODEXA"));
-                alumno.setTIPEXA(rs.getString("TIPEXA"));
+                alumno.setTIPEXA(rs.getString("TIPO_EXAMEN_CODTIPEXA"));
                 listarAlumno.add(alumno);
             }
         } catch (SQLException e) {

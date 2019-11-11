@@ -83,6 +83,15 @@ public class AlumnoM {
     private String PUNTAJ12;
     private String PUNTAJ13;
     
+    
+//    LISTADO DE ALUMNOS
+    
+    private String LSTNOMPER;
+    private String LSTAPEPER;
+    private String LSTDNIPER;
+    private String LSTCELPER;
+    private String LSTFECNACPER;
+    
 
 
 
