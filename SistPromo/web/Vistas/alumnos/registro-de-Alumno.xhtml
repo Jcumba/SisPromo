@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Registro de Postulantes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    </h:head>
+    <h:body class="blue accent-2">
+
+        <div class="row" style="align-content: center;margin-left: 350px">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="../resources/images/siste-carousel.png" alt=""/>
+
+                        <span class="card-title"><img src="../resources/images/logo-white.png" alt=""/></span>
+
+                    </div>
+                    <div class="card-content">
+                        <h:form id="form"   >
+                            <p:growl id="msg" life="1500" autoUpdate="true"/>
+                            <br/>
+                            <p:outputLabel value="Seleccione la Carrera:" />
+                            <BR/>
+                            <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" style="width: 395px;margin-bottom: 20px">
+                                <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
+                                <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
+                            </p:selectOneMenu>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <div class="row">
+                                <div class="input-field col s5 ">
+                                    <p:inputText   style="width: 230px;margin-bottom: 20px" value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();">
+                                        <p:keyFilter regEx="/[a-z_ ]/i"/> 	
+                                    </p:inputText>
+                                    <label for="first_name">Nombres</label>
+                                </div>
+                                <div class="input-field col s5 ">
+                                    <p:inputText value="#{alumnoC.alumno.APEPER}" style="width: 310px;margin-bottom: 20px" onkeyup="this.value = this.value.toUpperCase();">
+                                        <p:keyFilter regEx="/[a-z_ ]/i"/>
+                                    </p:inputText>
+                                    <label for="last_name">Apellidos</label>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <div class="input-field col s5">
+                                    <p:inputText value="#{alumnoC.alumno.DNIPER}" style="width: 230px;margin-bottom: 20px"  maxlength="8">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:inputText>
+                                    <label for="disabled">DNI:</label>
+                                </div>
+                                <div class="input-field col s5">
+                                    <p:inputMask id="date" value="#{alumnoC.alumno.FECNACPER}" style="width: 320px;margin-bottom: 20px"  mask="99/99/9999"/>
+                                    <label for="disabled">Fecha Nacimiento</label>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+                                <div class="input-field col s2">
+                                    <p:inputText value="#{alumnoC.alumno.CELPER}" style="width: 85px;margin-bottom: 20px"  maxlength="9">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:inputText>
+                                    <label for="disabled">Nª Celular</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <p:autoComplete  maxResults="16"  
+                                                     emptyMessage="No se encontro ningún registro"
+                                                     value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                                     completeMethod="#{alumnoC.completeTextUbi}"
+                                                     style="width: 200px;margin-bottom: 20px" maxlength="15">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:autoComplete>
+                                    <label for="disabled">Distrito</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                                     value="#{alumnoC.alumno.CODCOL}"        
+                                                     completeMethod="#{alumnoC.completeTextCol}"
+                                                     style="width: 250px;margin-bottom: 20px;margin-left: 70px" maxlength="15">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:autoComplete>
+                                    <label for="disabled" style="margin-left: 70px">Colegio</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <p:commandButton class="waves-effect waves-light btn-small blue darken-1 s12 m7"  value="Regitrar" actionListener="#{alumnoC.guardarAlumno()}" update="form"/>
+                         <!--class="waves-effect waves-light btn-small blue darken-1 s12 m7"-->
+                        </h:form>
+
+                    </div>
+                    <div class="card-action  blue darken-1">
+                        <a href="buscador.xhtml" style="color: #ffffff">Solicitar ficha de Ingreso</a>
+                        <a href="resultados-de-Examen.xhtml" style="color: #ffffff">Resultados de Examen</a>
+                        <a href="buscador.xhtml" style="color: #ffffff">Ayuda</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+</html>

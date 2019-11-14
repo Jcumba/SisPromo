@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Docente</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+    <h:body>
+
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <div class="card">
+
+                        <h:form id="formUsuario">
+                            <p:growl id="msg1" showDetail="true" life="1000"  autoUpdate="true"/>  
+                            <p:panelGrid  columns="2" styleClass="ui-panelgrid-blank">
+
+                                <p:outputLabel value="Nombres: "/>
+                                <p:inputText value="#{usuarioController.usuario.NOMPER}" required="true" >
+                                    <p:keyFilter regEx="/[a-z_ ]/i"/> 	
+                                </p:inputText>  
+
+                                <p:outputLabel value="Apellidos:"/>
+                                <p:inputText value="#{usuarioController.usuario.APEPER}" required="true" >
+                                    <p:keyFilter regEx="/[a-z_ ]/i"/>
+                                </p:inputText> 
+
+                                <p:outputLabel value="DNI:"/>
+                                <p:inputText value="#{usuarioController.usuario.DNIPER}" maxlength="8" required="true" >
+                                    <p:keyFilter regEx="/[\d]/"/>
+                                </p:inputText> 
+
+                                <p:outputLabel value="Usuario:"/>
+                                <p:inputText value="#{usuarioController.usuario.USU}" required="true" /> 
+
+                                <p:outputLabel value="Contraseña:"/>
+                                <p:password value="#{usuarioController.usuario.PAS}" required="true" /> 
+
+                                <p:commandButton class="btn btn-primary m-w-120" value="AGREGAR" actionListener="#{usuarioController.guardarUsuario()}"  update="formUsuario :formtableusuario:tableusuario" />
+                            </p:panelGrid>
+                        </h:form>
+                        <br/>
+                        <h:form id="formtableusuario">
+                            <p:dataTable id="tableusuario" var="usuario" value="#{usuarioController.lstUsuario}">
+                                <p:column headerText="Nombres y Apellidos" style="width: 350px">
+                                    <h:outputText value="#{usuario.NOMPER}#{usuario.APEPER}"  />
+                                </p:column>
+
+                                <p:column headerText="DNI">
+                                    <h:outputText value="#{usuario.DNIPER}" />
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+
+
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
