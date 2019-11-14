@@ -41,6 +41,22 @@
 
                         </h:form>
 
+                        <h:form id="demostraciones">
+                            <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+                                <p:outputLabel for="button" value="Button:" />
+                                <p:calendar id="button" value="#{calendarJava8View.date3}" showOn="true" />
+                                <p:outputLabel for="date" value="Date: " />
+                                <p:inputMask id="date" value="#{maskView.date}" mask="99/99/9999"/>
+                              
+                          
+
+                                <p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
+                            </p:panelGrid>
+                        </h:form>
+
+                        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+                            <h:outputText value="This is a Modal Dialog." />
+                        </p:dialog>   
 
                     </div>
                 </div>
