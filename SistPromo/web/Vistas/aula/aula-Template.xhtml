@@ -38,7 +38,7 @@
                                     <f:selectItem itemLabel="Seleccione Fecha" itemDisabled="true"/>
                                     <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.FECCROEXA}"/>
                                 </p:selectOneMenu>
-                                <p:commandButton  class="btn btn-primary m-w-120" value="GUARDAR" actionListener="#{aulaC.guardar()}"  update="FormAula :FormtblAula:tblAula"/>
+                                <p:commandButton  class="btn btn-primary m-w-120" value="AGREGAR" actionListener="#{aulaC.guardar()}"  update="FormAula :FormtblAula:tblAula"/>
                             </p:panelGrid> 
 
                         </h:form>

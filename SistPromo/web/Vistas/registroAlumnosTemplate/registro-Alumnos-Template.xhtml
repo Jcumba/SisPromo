@@ -16,9 +16,13 @@
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                     <div class="card">
 
-                        <h:form id="form"   >
+                        <h:form id="form">
                             <p:growl id="msg" life="1500" autoUpdate="true"/>
-                            <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+                            <img style="margin-left: 600px" src="../../resources/images/photo_large.jpg" alt="" width="50px"/>
+                            <h1><b style="margin-left: 460px">REGISTRO DE ALUMNOS</b></h1>
+                            
+                            <p:separator/>
+                            <p:panelGrid columns="4" styleClass="ui-panelgrid-blank">
                                 <p:outputLabel value="Seleccione la Carrera:" />
                                 <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" >
                                     <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
@@ -69,7 +73,7 @@
                                     <p:keyFilter regEx="/[\d]/"/>
                                 </p:autoComplete>
 
-                                <p:commandButton class="waves-effect waves-light btn-small blue darken-1 s12 m7"  value="Regitrar" actionListener="#{alumnoC.guardarAlumno()}" update="form"/>
+                                <p:commandButton   value="AGREGAR" icon="fa fa-plus-square" actionListener="#{alumnoC.guardarAlumno()}" update="form"/>
                                 <!--class="waves-effect waves-light btn-small blue darken-1 s12 m7"-->
                             </p:panelGrid>
                         </h:form>

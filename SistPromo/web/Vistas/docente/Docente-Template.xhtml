@@ -18,7 +18,7 @@
 
                         <h:form id="formUsuario">
                             <p:growl id="msg1" showDetail="true" life="1000"  autoUpdate="true"/>  
-                            <p:panelGrid  columns="2" styleClass="ui-panelgrid-blank">
+                            <p:panelGrid  columns="4" styleClass="ui-panelgrid-blank">
 
                                 <p:outputLabel value="Nombres: "/>
                                 <p:inputText value="#{usuarioController.usuario.NOMPER}" required="true" >
@@ -40,7 +40,7 @@
 
                                 <p:outputLabel value="Contraseña:"/>
                                 <p:password value="#{usuarioController.usuario.PAS}" required="true" /> 
-
+                                <br/>
                                 <p:commandButton class="btn btn-primary m-w-120" value="AGREGAR" actionListener="#{usuarioController.guardarUsuario()}"  update="formUsuario :formtableusuario:tableusuario" />
                             </p:panelGrid>
                         </h:form>

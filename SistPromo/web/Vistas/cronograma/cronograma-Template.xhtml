@@ -18,6 +18,11 @@
                     <div class="card">
                         <h:form  id="FormTblCronograma">
                             <p:growl autoUpdate="true" life="1000"/>
+                            <p:commandButton  class="btn btn-primary m-w-120" value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}" style="margin-bottom: 10px" icon="fa fa-plus-square"/>    
+                            <p:commandButton id="btP" value="Descargar" ajax="false" style="background-color:#FFD700;color: #000;font-weight:bold;margin-top: 15px" icon="fa fa-fw fa-download">
+                                <p:dataExporter type="xls" target="tblCronograma" fileName="ListadoEmpleados_Desplazamiento" pageOnly="true"/>
+                            </p:commandButton>
+                            
                             <p:dataTable  id="tblCronograma"    var="cronograma"   value="#{cronogramaC.lstCronograma}" 
                                           rowKey="#{cronograma.CODEXA}"  class="table table-striped" 
                                           selectionMode="single"
@@ -25,14 +30,7 @@
                                           rows="10" paginator="true"
                                           paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
                                           rowsPerPageTemplate="5,10,15" reflow="true">
-                                <f:facet name="header">   
-                                    <p:commandButton  class="btn btn-primary m-w-120" value="Nuevo Cronograma" onclick="PF('dlgNewCronograma').show();" actionListener="#{cronogramaC.limpiar()}" style="margin-bottom: 10px"/>    
-                                    <center>
-                                        <h:commandLink value="Descargar PDF" class="btn btn-danger btn-block" style="width: 250px;color: #ffffff" actionListener="#{cronogramaC.descargarPdfCronograma()}">
-                                            <i class="zmdi zmdi-download"></i>
-                                        </h:commandLink>
-                                    </center>
-                                </f:facet>
+
                                 <p:column headerText="MODALIDAD">
                                     <p:outputLabel  style="color: black; font-weight: bold;"  value="#{cronograma.TIPEXA}"/>
                                 </p:column>
