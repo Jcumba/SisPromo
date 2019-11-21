@@ -159,7 +159,7 @@ public class SolucionarioImpl extends Dao implements SolucionarioI {
         try {
             this.conectar();
             String sql;
-            sql = "SELECT * FROM VW_SOLUCIONARIO ORDER BY CODSOL DESC";
+            sql = "SELECT * FROM VW_SOLUCIONARIO";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarfecexa = new ArrayList();

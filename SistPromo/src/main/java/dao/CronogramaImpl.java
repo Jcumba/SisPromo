@@ -21,6 +21,7 @@ public class CronogramaImpl extends Dao implements CronogramaI {
             ps.setString(2, cronograma.getHORCROEXA());
             ps.setString(3, cronograma.getSOLUCIONARIO_CODSOL());
             ps.setString(4, "A");
+            ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -44,7 +45,8 @@ public class CronogramaImpl extends Dao implements CronogramaI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT * FROM VW_CRONOGRAMA";
+            String sql = "SELECT CODEXA,FECCROEXA,HORCROEXA,NOMTIPEXA FROM CRONOGRAMA_EXAMEN INNER JOIN TIPO_EXAMEN\n"
+                    + "ON CRONOGRAMA_EXAMEN.CODEXA = TIPO_EXAMEN.CODTIPEXA WHERE CRONOGRAMA_EXAMEN.ESTCRO='A' ORDER BY CODTIPEXA DESC";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarCronograma = new ArrayList();
