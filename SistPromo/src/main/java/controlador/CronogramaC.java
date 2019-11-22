@@ -47,6 +47,34 @@ public class CronogramaC implements Serializable {
         }
     }
 
+    public void modificarCronograma() throws Exception {
+        CronogramaImpl dao;
+        try {
+            dao = new CronogramaImpl();
+            dao.modificarCronograma(selectedCronograma);
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MODIFICADO", null));
+            listarCronograma();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERRO AL MODIFICAR", null));
+            throw e;
+        }
+    }
+
+    public void eliminarCronograma() throws Exception {
+        CronogramaImpl dao;
+        try {
+            dao = new CronogramaImpl();
+            dao.eliminarCronograma(selectedCronograma);
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ELIMINADO", null));
+            listarCronograma();
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERRO AL ELIMINAR", null));
+            throw e;
+        }
+    }
+
     public void listarCronograma() throws Exception {
         CronogramaImpl dao;
         try {

@@ -19,7 +19,7 @@ public class CronogramaImpl extends Dao implements CronogramaI {
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, cronograma.getFECCROEXA());
             ps.setString(2, cronograma.getHORCROEXA());
-            ps.setString(3, cronograma.getSOLUCIONARIO_CODSOL());
+            ps.setString(3, "1");
             ps.setString(4, "A");
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -31,12 +31,36 @@ public class CronogramaImpl extends Dao implements CronogramaI {
 
     @Override
     public void modificarCronograma(CronogramaM cronograma) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         try {
+            this.conectar();
+            String sql = "UPDATE  CRONOGRAMA_EXAMEN  SET FECCROEXA=?, HORCROEXA=? WHERE CODEXA=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, cronograma.getFECCROEXA() );
+            ps.setString(2, cronograma.getHORCROEXA());
+            ps.setString(3, cronograma.getCODEXA());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
     }
+    
 
     @Override
     public void eliminarCronograma(CronogramaM crongrama) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         try {
+            this.conectar();
+            String sql = "UPDATE  CRONOGRAMA_EXAMEN  SET ESTCRO=? WHERE CODEXA=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, "I");
+            ps.setString(2, crongrama.getCODEXA());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
     }
 
     @Override
@@ -45,8 +69,7 @@ public class CronogramaImpl extends Dao implements CronogramaI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT CODEXA,FECCROEXA,HORCROEXA,NOMTIPEXA FROM CRONOGRAMA_EXAMEN INNER JOIN TIPO_EXAMEN\n"
-                    + "ON CRONOGRAMA_EXAMEN.CODEXA = TIPO_EXAMEN.CODTIPEXA WHERE CRONOGRAMA_EXAMEN.ESTCRO='A' ORDER BY CODTIPEXA DESC";
+            String sql="SELECT * FROM VW_CRONOGRAMA";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarCronograma = new ArrayList();
@@ -55,7 +78,7 @@ public class CronogramaImpl extends Dao implements CronogramaI {
                 cronograma.setCODEXA(rs.getString("CODEXA"));
                 cronograma.setFECCROEXA(rs.getString("FECCROEXA"));
                 cronograma.setHORCROEXA(rs.getString("HORCROEXA"));
-                cronograma.setNOMTIPEXA(rs.getString("NOMTIPEXA"));
+                cronograma.setMODEXA(rs.getString("MODEXA"));
                 listarCronograma.add(cronograma);
             }
             return listarCronograma;

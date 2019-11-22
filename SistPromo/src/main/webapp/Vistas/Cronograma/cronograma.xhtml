@@ -45,8 +45,7 @@
                 </p:column>
             </p:dataTable>
             <p:contextMenu>
-                <p:menuitem  value="Modificar" onclick="PF('dlgModCronograma').show();" update="FormDialog2"/>
-                <p:menuitem  value="Eliminar" actionListener="#{cronogramaC.eliminar()}" update="tblCronograma :FormCronograma">
+                <p:menuitem  value="Eliminar" actionListener="#{cronogramaC.eliminarCronograma()}" update="tblCronograma :FormCronograma">
                     <p:confirm header="Confirmacion" message="¿Estás seguro de Eliminar?" icon="ui-icon-alert"/>
                 </p:menuitem>
             </p:contextMenu>
