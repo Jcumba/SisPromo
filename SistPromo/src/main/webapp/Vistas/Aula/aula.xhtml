@@ -59,9 +59,6 @@
                 <p:column headerText="AFORO">
                     <p:outputLabel value="#{aula.AFORAUL}"/>
                 </p:column>
-                <p:column headerText="ESTADO">
-                    <p:outputLabel  value="#{aula.ESTAUL}"/>
-                </p:column>
                 <p:column headerText="FECHA">
                     <p:outputLabel style="color: black; font-weight: bold;" value="#{aula.EXAMEN_CODEXA}"/>
                 </p:column>
@@ -85,9 +82,14 @@
         </h:form>
 
         <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModAula" resizable="false"  modal="true" width="500" height="500">
+            
             <h:form id="FormDialog2">
                 <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
-                    <p:outputLabel value="N° de Aula:"/>
+                    <p:outputLabel  value="MODALIDA"  />
+                    <p:inputText value="#{aulaC.selectedAula.MODEXA}" disabled="true"/>
+                    <p:outputLabel  value="TIPO DE EXAMEN"/>
+                    <p:inputText value="#{aulaC.selectedAula.TIPEXA}" disabled="true"/>
+                    <p:outputLabel value="N° DE AULA:"/>
                     <p:selectOneMenu value="#{aulaC.selectedAula.NUMAUL}">  
                         <f:selectItem itemLabel="Seleccione Aula" itemValue="#{null}" itemDisabled="true"/>
                         <f:selectItem itemLabel="A1" itemValue="A1" /> 
@@ -98,15 +100,17 @@
                         <f:selectItem itemLabel="A6" itemValue="A6" />
                         <f:selectItem itemLabel="A7" itemValue="A7" /> 
                     </p:selectOneMenu>
-                    <p:outputLabel value="Aforo de Aula:"/>
+                    <p:outputLabel value="AFORO:"/>
                     <p:inputText   value="#{aulaC.selectedAula.AFORAUL}" maxlength="2" required="true" requiredMessage="INGRESE FORO DE AULA">
                         <p:keyFilter regEx="/[\d]/"/>
                     </p:inputText>
-                    <p:outputLabel value="Fecha de Examen:"/>
+                    <p:outputLabel value="FECHA:"/>
                     <p:selectOneMenu value="#{aulaC.selectedAula.EXAMEN_CODEXA}">
                         <f:selectItem itemLabel="Seleccione Fecha" itemDisabled="true" itemValue="#{null}"/>
                         <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.FECCROEXA}"/>
                     </p:selectOneMenu>
+                       <p:outputLabel value="HORA"/>
+                       <p:inputText value="#{aulaC.selectedAula.HORCROEXA}" disabled="true" />  
                     <p:commandButton class="btn btn-primary m-w-120" icon="fa fa-edit" value="Modificar" actionListener="#{aulaC.modificarAula()}" update=":FormtblAula:tblAula"  onclick="PF('dlgModAutor').hide();"/>
                     <p:commandButton class="btn btn-primary m-w-120" icon="fa fa-close" value="Cancelar"  onclick="PF('dlgModAula').hide();"/>
                 </p:panelGrid>
