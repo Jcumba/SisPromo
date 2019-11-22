@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Registro de Postulantes</title>
+    </h:head>
+    <h:body class="blue accent-2">
+        <h:form id="Form">
+            <p:growl id="msg" life="2000">
+                <p:autoUpdate/>
+            </p:growl>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Seleccione la Carrera:" />
+                <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" >
+                    <f:selectItem  noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
+                    <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="NOMBRES" />
+                <p:inputText value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();">
+                    <p:keyFilter regEx="/[a-z_ ]/i"/>
+                </p:inputText>
+                <p:outputLabel value="APELLIDOS" />
+                <p:inputText value="#{alumnoC.alumno.APEPER}" onkeyup="this.value = this.value.toUpperCase();">
+                    <p:keyFilter regEx="/[a-z_ ]/i"/>
+                </p:inputText>
+                <p:outputLabel value="DNI"/>
+                <p:inputText value="#{alumnoC.alumno.DNIPER}" onkeyup="this.value = this.value.toUpperCase();">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:inputText>
+                <p:outputLabel value="FECHA DE NACIMIENTO"/>
+                <p:inputMask value="#{alumnoC.alumno.FECNACPER}" mask="99/99/9999"/>
+                <p:outputLabel value="CELULAR"/>
+                <p:inputText value="#{alumnoC.alumno.CELPER}" onkeyup="this.value = this.value.toUpperCase();">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:inputText>
+                <p:outputLabel value="DISTRITO"/>
+                <p:autoComplete  maxResults="16"  
+                                 emptyMessage="No se encontro ningún registro"
+                                 value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                 completeMethod="#{alumnoC.completeTextUbi}"
+                                 maxlength="15">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:autoComplete>
+                <p:outputLabel value="COLEGIO"/>
+                <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                 value="#{alumnoC.alumno.CODCOL}"        
+                                 completeMethod="#{alumnoC.completeTextCol}"
+                                 maxlength="15">
+                    <p:keyFilter regEx="/[\d]/"/>
+                </p:autoComplete>
+                <p:commandButton  value="Regitrar" actionListener="#{alumnoC.guardarAlumno()}" update="Form"/>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
