@@ -110,7 +110,7 @@ public class AlumnoImpl extends Dao implements AlumnoI {
                 alumno.setHORCROEXA(rs.getString("HORCROEXA"));
                 alumno.setNUMAUL(rs.getString("NUMAUL"));
                 alumno.setMODEXA(rs.getString("MODEXA"));
-                alumno.setTIPEXA(rs.getString("TIPO_EXAMEN_CODTIPEXA"));
+                alumno.setNOMTIPEXA(rs.getString("TIPO_EXAMEN_CODTIPEXA"));
                 listarAlumno.add(alumno);
             }
         } catch (SQLException e) {
@@ -126,7 +126,7 @@ public class AlumnoImpl extends Dao implements AlumnoI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql = "SELECT * FROM VW_LSTALUMNOS";
+            String sql = "SELECT  * FROM VW_LSTALUMNOS";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarAlumnoRegistrados = new ArrayList<>();
@@ -148,13 +148,49 @@ public class AlumnoImpl extends Dao implements AlumnoI {
         }
     }
 
+    // CONSULTAR DNI //
+    public List<AlumnoM> consultar(String dni) throws Exception {
+        List<AlumnoM> consulta;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "SELECT * FROM VW_CONSULTAFICHA WHERE DNIPER LIKE ?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, dni);
+            rs = ps.executeQuery();
+            consulta = new ArrayList();
+            AlumnoM alumno;
+            while (rs.next()) {
+                alumno = new AlumnoM();
+                alumno.setCODPER(rs.getString("CODPER"));
+                alumno.setNOMPER(rs.getString("NOMPER"));
+                alumno.setAPEPER(rs.getString("APEPER"));
+                alumno.setDNIPER(rs.getString("DNIPER"));
+                alumno.setNUMAUL(rs.getString("NUMAUL"));
+                alumno.setFECCROEXA(rs.getString("FECCROEXA"));
+                alumno.setHORCROEXA(rs.getString("HORCROEXA"));
+                alumno.setNOMTIPEXA(rs.getString("NOMTIPEXA"));
+                alumno.setMODEXA(rs.getString("MODEXA"));
+                consulta.add(alumno);
+            }
+            return consulta;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+    
+    
+    
+    
     // DNI ALUMNO
     public List<String> queryAutoCompleteDni(String a) throws SQLException, Exception {
         this.conectar();
         ResultSet rs;
         List<String> lista;
         try {
-            String sql = "SELECT DNIPER FROM VW_CONSULTA WHERE DNIPER LIKE ? ";
+                String sql = "SELECT DNIPER FROM VW_CONSULTAFICHA WHERE DNIPER LIKE ?";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             ps.setString(1, "%" + a + "%");
             rs = ps.executeQuery();

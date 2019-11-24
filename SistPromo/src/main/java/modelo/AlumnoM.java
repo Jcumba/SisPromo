@@ -18,7 +18,7 @@ public class AlumnoM {
     private String COLEGIO_CODCOL;
     private String CARRERA_CODCAR;
     private String UBIGEO_CODUBI;
-    private String AULA_CODAUL,FECCROEXA,HORCROEXA,MODEXA,TIPEXA,NUMAUL,DISTRITO;
+    private String AULA_CODAUL,FECCROEXA,HORCROEXA,MODEXA,NOMTIPEXA,NUMAUL,DISTRITO;
     
     private String ALUMNO;
     

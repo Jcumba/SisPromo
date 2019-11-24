@@ -10,7 +10,7 @@
     </h:head>
     <h:body class="blue accent-2">
         <h:form id="Form">
-            <p:growl id="msg" life="2000">
+            <p:growl id="msg" life="8000">
                 <p:autoUpdate/>
             </p:growl>
             <p:panelGrid columns="2">
@@ -53,7 +53,12 @@
                     <p:keyFilter regEx="/[\d]/"/>
                 </p:autoComplete>
                 <p:commandButton  value="Regitrar" actionListener="#{alumnoC.guardarAlumno()}" update="Form"/>
+                <button type="button">
+                    <a href="consultaFicha.xhtml">Solicitar Ficha de Examen</a> 
+                   
+                </button>
             </p:panelGrid>
+            
         </h:form>
     </h:body>
 </html>

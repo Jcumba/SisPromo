@@ -6,6 +6,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -14,6 +15,7 @@ import lombok.Data;
 import modelo.AlumnoM;
 import modelo.CarreraM;
 import org.primefaces.model.chart.PieChartModel;
+import servicio.Reporte;
 
 @Named(value = "alumnoC")
 @SessionScoped
@@ -34,7 +36,7 @@ public class AlumnoC implements Serializable {
     private String Notas = null;
 
     public void limpiar() {
-        alumno = new AlumnoM();
+        alumno = null;
     }
 
     @PostConstruct
@@ -68,8 +70,21 @@ public class AlumnoC implements Serializable {
             throw e;
         }
     }
+    
+    public void eliminarAlumno() throws Exception{
+       AlumnoImpl dao;
+        try {
+            dao = new AlumnoImpl();
+            dao.eliminarAlumno(selectedAlumno);
+            listarAlunoRegistrados();
+              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ELIMINADO CORRECTAMENTE", null));
+        } catch (Exception e) {
+              FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR", null));
+              throw e;
+        }
+    }
 
-    private void listarAlumno() throws Exception {
+    public void listarAlumno() throws Exception {
         AlumnoImpl dao;
         try {
             dao = new AlumnoImpl();
@@ -79,7 +94,7 @@ public class AlumnoC implements Serializable {
         }
     }
 
-    private void listarAlunoRegistrados() throws Exception {
+    public void listarAlunoRegistrados() throws Exception {
         AlumnoImpl dao1;
         try {
             dao1 = new AlumnoImpl();
@@ -89,16 +104,33 @@ public class AlumnoC implements Serializable {
         }
     }
 
-//    public void consultar() throws Exception {
-//        AlumnoImpl dao;
-//        try {
-//            dao = new AlumnoImpl();
-//            lstConsulta = dao.consultar(dni);
-//            limpiar();
-//        } catch (Exception e) {
-//            throw e;
-//        }
-//    }
+    public void consultar() throws Exception {
+        AlumnoImpl dao;
+        try {
+            dao = new AlumnoImpl();
+            lstConsulta = dao.consultar(dni);
+            limpiar();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+    public void reporteFicha(String DNIPER) throws Exception {
+        Reporte report = new Reporte();
+        try {
+            if (DNIPER == null) {
+                DNIPER = "";
+            }
+            HashMap parameters = new HashMap();
+            parameters.put("DNIPER", DNIPER);
+            report.exportarPDFGlobal(parameters, "ConsultaFicha.jasper", "Ficha.pdf");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "GENERADO", null));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR", null));
+            throw e;
+        }
+    }
+
     public List<String> completeTextUbi(String query) throws SQLException, Exception {
         AlumnoImpl dao = new AlumnoImpl();
         return dao.queryAutoCompleteUbi(query);
@@ -114,4 +146,5 @@ public class AlumnoC implements Serializable {
         return dao.queryAutoCompleteDni(query);
     }
 
+    
 }

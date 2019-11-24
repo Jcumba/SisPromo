@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="Consulta">
+            <p:growl id="msg" life="8000">
+                <p:autoUpdate/>
+            </p:growl>
+            <p:panelGrid columns="2">
+                <p:autoComplete maxResults="5"
+                                value="#{alumnoC.dni}"
+                                completeMethod="#{alumnoC.competeTextDni}"
+                                maxlength="15"
+                                placeholder="Buscar por DNI">
+                </p:autoComplete>               
+            </p:panelGrid>
+            <p:commandButton value="CONSULTAR" actionListener="#{alumnoC.consultar()}" update="tblConsulta"/>
+            <p:dataTable id="tblConsulta" 
+                         value="#{alumnoC.lstConsulta}"
+                         var="consulta">
+                <p:column headerText="Datos">
+                    <p:outputLabel style="color: orangered; font-weight: bold;"  value="DNI: #{consulta.DNIPER}"/>
+                    <br/>
+                    <br/>
+                    <p:outputLabel value="Nombre: #{consulta.NOMPER}"/>
+                    <br/>
+                    <br/>
+                    <p:outputLabel value="Apellido: #{consulta.APEPER}"/>
+                    <br/>
+                    <br/>
+                    <p:outputLabel value="#Aula: #{consulta.NUMAUL}"/>
+                    <br/>
+                    <br/>
+                    <p:outputLabel value="Fecha: #{consulta.FECCROEXA}"/>
+                    <br/>
+                    <br/>
+                    <p:outputLabel value="Hora #{consulta.HORCROEXA}"/>
+                    <br/>
+                    <br/>
+                    <p:outputLabel  value="Tipo de Examen: #{consulta.NOMTIPEXA}"/>
+                    <br/>
+                    <br/>
+                    <p:outputLabel value="Modalidad de Examen: #{consulta.MODEXA}"/>
+                    <br/>
+                    <br/>
+                    <p:column style="font-weight: bold;text-align:center;" headerText="REPORTE">
+                        <p:commandButton value="DESCARGAR"  ajax="false" style="background-color:#FFD700;color: #000;font-weight:bold;" 
+                                         actionListener="#{alumnoC.reporteFicha(consulta.DNIPER)}" icon="fa fa-fw fa-download"/>
+                    </p:column>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
