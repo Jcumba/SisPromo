@@ -50,23 +50,23 @@
                                          rows="5"
                                          paginator="true"
                                          rowsPerPageTemplate="5,10,15">
-                                <p:column headerText="MODALIDAD">
-                                    <p:outputLabel value="#{aula.MODEXA}"/>
+                                <p:column headerText="MODALIDAD" style="font-weight: 600">
+                                    <p:outputLabel value="#{aula.MODEXA}" style="font-weight: normal"/>
                                 </p:column>
-                                <p:column headerText="TIPO DE EXAMEN">
-                                    <p:outputLabel value="#{aula.TIPEXA}"/>
+                                <p:column headerText="TIPO DE EXAMEN" style="font-weight: 600">
+                                    <p:outputLabel value="#{aula.TIPEXA}" style="font-weight: normal"/>
                                 </p:column>
-                                <p:column headerText="N° AULA">
-                                    <p:outputLabel value="#{aula.NUMAUL}"/>
+                                <p:column headerText="N° AULA" style="font-weight: 600">
+                                    <p:outputLabel value="#{aula.NUMAUL}" style="font-weight: normal"/>
                                 </p:column>
-                                <p:column headerText="AFORO">
-                                    <p:outputLabel value="#{aula.AFORAUL}"/>
+                                <p:column headerText="AFORO" style="font-weight: 600">
+                                    <p:outputLabel value="#{aula.AFORAUL}" style="font-weight: normal"/>
                                 </p:column>
-                                <p:column headerText="FECHA">
-                                    <p:outputLabel style="color: black; font-weight: bold;" value="#{aula.EXAMEN_CODEXA}"/>
+                                <p:column headerText="FECHA" style="font-weight: 600">
+                                    <p:outputLabel  value="#{aula.EXAMEN_CODEXA}" style="font-weight: normal"/>
                                 </p:column>
-                                <p:column headerText="HORA">
-                                    <p:outputLabel value="#{aula.HORCROEXA}"/>
+                                <p:column headerText="HORA" style="font-weight: 600">
+                                    <p:outputLabel value="#{aula.HORCROEXA}" style="font-weight: normal"/>
                                 </p:column>
 
                             </p:dataTable>
@@ -84,7 +84,7 @@
                             </p:confirmDialog>
                         </h:form>
 
-                        <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModAula" resizable="false"  modal="true" width="500" height="500">
+                        <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModAula" resizable="false"  modal="true">
 
                             <h:form id="FormDialog2">
                                 <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
@@ -114,7 +114,7 @@
                                     </p:selectOneMenu>
                                     <p:outputLabel value="HORA"/>
                                     <p:inputText value="#{aulaC.selectedAula.HORCROEXA}" disabled="true" />  
-                                    <p:commandButton class="btn btn-primary m-w-120" icon="fa fa-edit" value="Modificar" actionListener="#{aulaC.modificarAula()}" update=":FormtblAula:tblAula"  onclick="PF('dlgModAutor').hide();"/>
+                                    <p:commandButton class="btn btn-primary m-w-120" icon="fa fa-edit" value="Modificar" actionListener="#{aulaC.modificarAula()}" update=":FormtblAula:tblAula"  onclick="PF('dlgModAula').hide();"/>
                                     <p:commandButton class="btn btn-primary m-w-120" icon="fa fa-close" value="Cancelar"  onclick="PF('dlgModAula').hide();"/>
                                 </p:panelGrid>
                             </h:form>

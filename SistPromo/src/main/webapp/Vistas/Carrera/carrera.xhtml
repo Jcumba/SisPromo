@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <div class="card">
+                        <center>
+                            <h1> <b style="margin-top:600px">Registro de Carrera</b></h1>
+                            <h:form id="FormCarrera">
+                                <p:growl id="msg"  showDetail="true" life="1500">
+                                    <p:autoUpdate/>
+                                </p:growl>
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="Nombre de Carrera"/>
+                                    <p:inputText onkeyup="this.value = this.value.capitalize()" value="#{carreraC.carrera.NOMCAR}"/>
+
+                                </p:panelGrid>
+                                <br/>
+                                <p:commandButton class="btn btn-primary m-w-120" value="AGREGAR" actionListener="#{carreraC.agregarCarrera()}" update="FormCarrera :FormtblCarrera:tblCarrera"/>
+                                <br/>
+                                <br/>
+                            </h:form>
+                            <h:form id="FormtblCarrera">
+                                <p:dataTable id="tblCarrera" var="carrera" value="#{carreraC.lstCarrera}"
+                                             rowKey="#{carrera.CODCAR}"
+                                             selection="#{carreraC.selectedCarrera}"
+                                             selectionMode="single"
+                                             rows="5"
+                                             paginator="true"
+                                             rowsPerPageTemplate="5,10,15">
+                                    <p:column  style="font-weight: 600"  headerText="CARRERA">
+                                        <p:outputLabel value="#{carrera.NOMCAR}" style="font-weight: normal"/>
+                                    </p:column>
+                                </p:dataTable>
+                                <p:contextMenu>
+                                    <p:menuitem value="Modificar" actionListener="#{carreraC.modificarCarrera()}" onclick="PF('dlgModCarrera').show();" update="FormDialog2"/>
+                                    <p:menuitem value="Eliminar" actionListener="#{carreraC.eliminarCarrera()}" update="tblCarrera">
+                                        <p:confirm header="Confirmación" message="¿Estas seguro de Eliminar?" icon="ui-icon-alert"/>
+                                    </p:menuitem>
+                                </p:contextMenu>
+                            </h:form>
+                            <h:form>
+                                <p:confirmDialog global="true">
+                                    <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                    <p:commandButton value="No"  styleClass="ui-confirmdialog-no" icon="fa fa-close"/>
+                                </p:confirmDialog>
+                            </h:form>
+
+                            <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModCarrera" resizable="false" modal="true">
+                                <h:form id="FormDialog2">
+                                    <p:panelGrid columns="2">
+                                        <p:outputLabel value="Carrera"/>
+                                        <p:inputText value="#{carreraC.selectedCarrera.NOMCAR}"/>
+                                    </p:panelGrid>
+                                    <br/>
+                                    <p:commandButton value="Modificar" actionListener="#{carreraC.modificarCarrera()}"  onclick="PF('dlgModCarrera').hide();" update=":FormtblCarrera:tblCarrera"/>
+                                    <p:commandButton value="Cancelar" icon="fa fa-close" onclick="PF('dlgModAula').hide();"/>
+                                    <br/>
+                                </h:form>
+                            </p:dialog>
+
+
+
+
+                        </center>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

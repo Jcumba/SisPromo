@@ -1,6 +1,5 @@
 package dao;
 
-
 import interfaces.CarreraI;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,13 +11,45 @@ import modelo.CarreraM;
 public class CarreraImpl extends Dao implements CarreraI {
 
     @Override
-    public void guardarCarrera(CarreraM carrera) throws Exception {
+    public void agregarCarrera(CarreraM carrera) throws Exception {
         try {
             this.conectar();
             String sql = "Insert into CARRERA (NOMCAR,ESTCAR) VALUES (?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, carrera.getNOMCAR());
-            ps.setString(2, "I");
+            ps.setString(2, "A");
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+
+    @Override
+    public void modificarCarrera(CarreraM carrera) throws Exception {
+        try {
+            this.conectar();
+            String sql = "UPDATE CARRERA SET NOMCAR=? WHERE CODCAR=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, carrera.getNOMCAR());
+            ps.setString(2, carrera.getCODCAR());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+
+    @Override
+    public void eliminarrCarrera(CarreraM carrera) throws Exception {
+        try {
+            this.conectar();
+            String sql = "UPDATE CARRERA SET ESTCAR=? WHERE CODCAR=?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, "I");
+            ps.setString(2, carrera.getCODCAR());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -50,32 +81,6 @@ public class CarreraImpl extends Dao implements CarreraI {
             this.cerrar();
         }
 
-    }
-
-    @Override
-    public List<CarreraM> listOrdenMerito() throws Exception {
-        List<CarreraM> listarMerito;
-        ResultSet rs;
-        try {
-            this.conectar();
-            String sql = "select * from VW_ESTADO_APROBATORIO";
-            PreparedStatement ps = this.getCn().prepareStatement(sql);
-            rs = ps.executeQuery();
-            listarMerito = new ArrayList<>();
-            while (rs.next()) {
-                CarreraM merito = new CarreraM();
-                merito.setNOMBRESAP(rs.getString("NOMBRESAP"));
-                merito.setAPELLIDOAP(rs.getString("APELLIDOAP"));
-                merito.setPUNTJAP(rs.getString("PUNTJAP"));
-                merito.setAPROBADO(rs.getString("APROBADOS"));
-                listarMerito.add(merito);
-            }
-            return listarMerito;
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            this.cerrar();
-        }
     }
 
 }
