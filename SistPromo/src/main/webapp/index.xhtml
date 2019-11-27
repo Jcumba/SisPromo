@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Sistema Legajos</title>
+<!--        <f:event type="preRenderView" listener="#usuarioController.securityLogin()}"/>-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link href="resources/css/theme.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/theme.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/fa/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/ocultar.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/componentss.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/js/jquery.js" type="text/javascript"></script>
+        <script src="resources/js/core.js" type="text/javascript"></script>
+        <script src="resources/js/components.js" type="text/javascript"></script>
+        <script src="resources/js/jquery-plugins.js" type="text/javascript"></script>
+        <link href="resources/css/charts.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/js/charts.js" type="text/javascript"></script>
+        <link href="resources/css/schedule.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/js/moment.js" type="text/javascript"></script>
+        <script src="resources/js/schedule.js" type="text/javascript"></script>
+        <link href="resources/css/nanoscroller.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/ripple.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/layout-moody.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/layout-moody-min.css" rel="stylesheet" type="text/css"/>
+
+
+
+        <script type="text/javascript">if (window.PrimeFaces) {
+                PrimeFaces.settings.locale = 'en_US';
+                PrimeFaces.settings.projectStage = 'Development';
+            }
+        </script>
+        <title>Dashboard</title>
+        <script src="resources/js/nanoscroller.js" type="text/javascript"></script>
+        <script src="resources/js/layout.js" type="text/javascript"></script>
+        <script src="resources/js/ripple.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            function skinBar() {
+                this.cfg.shadow = false;
+                this.cfg.title = '';
+                this.cfg.seriesColors = ['#00bcd4', '#cddc39'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#ffffff',
+                    gridLineColor: '#EEEEEE',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    borderWidth: 0.1,
+                    borderColor: 'dce2e7',
+                    rendererOptions: {
+                        textColor: '#212121'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    lineWidth: 1,
+                    renderer: $.jqplot.BarRenderer,
+                    markerOptions: {
+                        shadow: false,
+                        size: 7,
+                        style: 'circle'
+                    }
+                }
+            }
+            //]]>
+        </script>
+        <style type="text/css">
+            .main-content {
+                padding: 0;
+            }
+        </style>
+
+    </h:head>
+
+    <h:body class="login-body">
+
+        <div class="login-panel ui-fluid">
+            <div class="login-panel-header">
+                <img id="j_idt9" src="resources/images/LEGALSISPROMOCION.png" alt="" style="width: 300px" />
+            </div>
+            <div class="login-panel-content">
+                <h:form id="login-form" >
+                    <p:growl id="growlC"  showDetail="true" sticky="true" />
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <h1>Ingresar - Sistema de Promoción</h1>
+                        </div>
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:inputText id="dni" value="#{usuarioController.user}" required="true" requiredMessage="Se requiere dni!"/>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>Usuario</label></span>
+                        </div>
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:password id="contra" value="#{usuarioController.pass}" required="true" requiredMessage="Se requiere contraseña!"/>
+                                <script id="j_idt16_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("Password", "widget_j_idt16", {id: "j_idt16"});
+                                    });</script>
+                                <label>Contraseña</label></span>
+                        </div>
+                        <!--                        <div class="ui-g-6 ">
+                                                    <div id="rememberme" class="ui-selectbooleancheckbox ui-chkbox ui-widget">
+                                                        <div class="ui-helper-hidden-accessible"><input id="rememberme_input" name="rememberme_input" type="checkbox" autocomplete="off" aria-hidden="true" aria-checked="false" /></div><div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-icon ui-icon-blank ui-c"></span></div></div><script id="rememberme_s" type="text/javascript">$(function () {
+                                                                PrimeFaces.cw("SelectBooleanCheckbox", "widget_rememberme", {id: "rememberme"});
+                                                            });</script>
+                                                        <label id="j_idt19" class="ui-outputlabel ui-widget" for="rememberme_input">Remember Me?</label>
+                                                </div>
+                                                <div class="ui-g-6 password-reset"><a href="#">Reset Password</a>
+                                                </div>-->
+                        <div class="ui-g-12">
+                            <p:commandButton id="BtnIniciarSesion" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"  value="INICIAR SESIÓN" actionListener="#{usuarioController.startSession()}"  />
+
+                            <script id="j_idt24_s" type="text/javascript">$(function () {
+                                    PrimeFaces.cw("Button", "widget_j_idt24", {id: "j_idt24"});
+                                });</script>
+                        </div>
+                        <div class="ui-g-12">
+                            Sistema Promocion <a href="#" style="color: #3949AB">Version 1.0</a> 2019.
+                            <br/>
+                            <br/>
+                             <a href="Vistas/alumnos/Regdemoalumno.xhtml" style="color: #3949AB"> Concurso  de Programadores</a>.
+                        </div>
+                       
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+
+
+</html>

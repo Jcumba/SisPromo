@@ -7,70 +7,78 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form id="FormCronograma">
-            <p:growl id="msg" life="2000">
-                <p:autoUpdate/>
-            </p:growl>
-            <p:panelGrid columns="2">
-                <p:outputLabel value="FECHA"/>
-                <p:inputMask value="#{cronogramaC.cronograma.FECCROEXA}" mask="99/99/9999"/>
-                <p:outputLabel value="HORA"/>
-                <p:inputMask value="#{cronogramaC.cronograma.HORCROEXA}" mask="99:99a*"/>
-                <p:commandButton value="AGREGAR" actionListener="#{cronogramaC.guardarCronograma()}" update="FormCronograma"/>
-            </p:panelGrid>
-        </h:form>
-        <h:form id="Form">
-            <p:dataTable id="tblCronograma" 
-                         var="cronograma"
-                         value="#{cronogramaC.lstCronograma}"
-                         rowKey="#{cronograma.CODEXA}"
-                         selectionMode="single"
-                         selection="#{cronogramaC.selectedCronograma}"
-                         rows="10" paginator="true"
-                         rowsPerPageTemplate="5,10,15" reflow="true">
-                <p:column headerText="MODALIDAD">
-                    <p:outputLabel value="#{cronograma.MODEXA}"/>
-                </p:column>
-                <p:column headerText="FECHA">
-                    <p:outputLabel value="#{cronograma.FECCROEXA}"/>
-                </p:column>
-                <p:column headerText="HORA">
-                    <p:outputLabel value="#{cronograma.HORCROEXA}"/>
-                </p:column>
-            </p:dataTable>
-            <p:contextMenu>
-                <p:menuitem value="Modificar" onclick="PF('dlgModCronograma').show();" update="FormActualizar"/>
-                <p:menuitem value="Eliminar" actionListener="#{cronogramaC.eliminarCronograma()}" update="tblCronograma :FormCronograma">
-                    <p:confirm header="Confirmacion" message="¿Estás seguro de Eliminar?" />
-                </p:menuitem>
-            </p:contextMenu>
-        </h:form>
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <div class="card">
+
+                        <h:form id="FormCronograma">
+                            <p:growl id="msg" life="2000">
+                                <p:autoUpdate/>
+                            </p:growl>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="FECHA"/>
+                                <p:inputMask value="#{cronogramaC.cronograma.FECCROEXA}" mask="99/99/9999"/>
+                                <p:outputLabel value="HORA"/>
+                                <p:inputMask value="#{cronogramaC.cronograma.HORCROEXA}" mask="99:99a*"/>
+                                <p:commandButton value="AGREGAR" actionListener="#{cronogramaC.guardarCronograma()}" update="FormCronograma"/>
+                            </p:panelGrid>
+                        </h:form>
+                        <h:form id="Form">
+                            <p:dataTable id="tblCronograma" 
+                                         var="cronograma"
+                                         value="#{cronogramaC.lstCronograma}"
+                                         rowKey="#{cronograma.CODEXA}"
+                                         selectionMode="single"
+                                         selection="#{cronogramaC.selectedCronograma}"
+                                         rows="10" paginator="true"
+                                         rowsPerPageTemplate="5,10,15" reflow="true">
+                                <p:column headerText="MODALIDAD">
+                                    <p:outputLabel value="#{cronograma.MODEXA}"/>
+                                </p:column>
+                                <p:column headerText="FECHA">
+                                    <p:outputLabel value="#{cronograma.FECCROEXA}"/>
+                                </p:column>
+                                <p:column headerText="HORA">
+                                    <p:outputLabel value="#{cronograma.HORCROEXA}"/>
+                                </p:column>
+                            </p:dataTable>
+                            <p:contextMenu>
+                                <p:menuitem value="Modificar" onclick="PF('dlgModCronograma').show();" update="FormActualizar"/>
+                                <p:menuitem value="Eliminar" actionListener="#{cronogramaC.eliminarCronograma()}" update="tblCronograma :FormCronograma">
+                                    <p:confirm header="Confirmacion" message="¿Estás seguro de Eliminar?" />
+                                </p:menuitem>
+                            </p:contextMenu>
+                        </h:form>
 
 
-        <h:form>
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-check"/>
-            </p:confirmDialog>
-        </h:form>
+                        <h:form>
+                            <p:confirmDialog global="true">
+                                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-check"/>
+                            </p:confirmDialog>
+                        </h:form>
 
 
-        <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModCronograma" resizable="false" modal="true"> 
-            <h:form id="FormActualizar">
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="MODALIDAD"/>
-                    <p:inputText value="#{cronogramaC.selectedCronograma.MODEXA}"/>
-                    <p:outputLabel value="FECHA"/>
-                    <p:inputText value="#{cronogramaC.selectedCronograma.FECCROEXA}"/>
-                    <p:outputLabel value="HORA"/>
-                    <p:inputText value="#{cronogramaC.selectedCronograma.HORCROEXA}"/>
-                    <p:commandButton value="Modificar" actionListener="#{cronogramaC.modificarCronograma()}" onclick="PF('dlgModCronograma').hide()"
-                                     update="Form:tblCronograma"/>
-                    <p:commandButton id="btn_Cancelar_Cronograma" value="Cancelar" onclick="PF('dlgModCronograma').hide()"/>
-                </p:panelGrid>
-            </h:form>
-        </p:dialog>
-
+                        <p:dialog id="dialogo" header="Actualizar Datos" widgetVar="dlgModCronograma" resizable="false" modal="true"> 
+                            <h:form id="FormActualizar">
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="MODALIDAD"/>
+                                    <p:inputText value="#{cronogramaC.selectedCronograma.MODEXA}"/>
+                                    <p:outputLabel value="FECHA"/>
+                                    <p:inputText value="#{cronogramaC.selectedCronograma.FECCROEXA}"/>
+                                    <p:outputLabel value="HORA"/>
+                                    <p:inputText value="#{cronogramaC.selectedCronograma.HORCROEXA}"/>
+                                    <p:commandButton value="Modificar" actionListener="#{cronogramaC.modificarCronograma()}" onclick="PF('dlgModCronograma').hide()"
+                                                     update="Form:tblCronograma"/>
+                                    <p:commandButton id="btn_Cancelar_Cronograma" value="Cancelar" onclick="PF('dlgModCronograma').hide()"/>
+                                </p:panelGrid>
+                            </h:form>
+                        </p:dialog>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 
