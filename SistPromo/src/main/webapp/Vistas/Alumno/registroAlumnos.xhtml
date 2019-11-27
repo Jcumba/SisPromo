@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Sistema Legajos</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link href="../../../../resources/css/theme.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/theme.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/theme.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/fa/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/ocultar.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/componentss.css" rel="stylesheet" type="text/css"/>
+        <script src="../../resources/js/jquery.js" type="text/javascript"></script>
+        <script src="../../resources/js/core.js" type="text/javascript"></script>
+        <script src="../../resources/js/components.js" type="text/javascript"></script>
+        <script src="../../resources/js/jquery-plugins.js" type="text/javascript"></script>
+        <link href="../../resources/css/charts.css" rel="stylesheet" type="text/css"/>
+        <script src="../../resources/js/charts.js" type="text/javascript"></script>
+        <link href="../../resources/css/schedule.css" rel="stylesheet" type="text/css"/>
+        <script src="../../resources/js/moment.js" type="text/javascript"></script>
+        <script src="../../resources/js/schedule.js" type="text/javascript"></script>
+        <link href="../../resources/css/nanoscroller.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/ripple.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/layout-moody.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/layout-moody-min.css" rel="stylesheet" type="text/css"/>
+
+
+
+        <script type="text/javascript">if (window.PrimeFaces) {
+                PrimeFaces.settings.locale = 'en_US';
+                PrimeFaces.settings.projectStage = 'Development';
+            }
+        </script>
+        <title>Dashboard</title>
+        <script src="../../resources/js/nanoscroller.js" type="text/javascript"></script>
+        <script src="../../resources/js/layout.js" type="text/javascript"></script>
+        <script src="../../resources/js/ripple.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            function skinBar() {
+                this.cfg.shadow = false;
+                this.cfg.title = '';
+                this.cfg.seriesColors = ['#00bcd4', '#cddc39'];
+                this.cfg.grid = {
+                    background: '#ffffff',
+                    borderColor: '#ffffff',
+                    gridLineColor: '#EEEEEE',
+                    shadow: false
+                };
+                this.cfg.axesDefaults = {
+                    borderWidth: 0.1,
+                    borderColor: 'dce2e7',
+                    rendererOptions: {
+                        textColor: '#212121'
+                    }
+                };
+                this.cfg.seriesDefaults = {
+                    shadow: false,
+                    lineWidth: 1,
+                    renderer: $.jqplot.BarRenderer,
+                    markerOptions: {
+                        shadow: false,
+                        size: 7,
+                        style: 'circle'
+                    }
+                }
+            }
+            //]]>
+        </script>
+        <style type="text/css">
+            .main-content {
+                padding: 0;
+            }
+        </style>
+
+    </h:head>
+
+    <h:body class="login-body">
+
+        <div class="login-panel ui-fluid" style="height: 825px">
+            <div class="login-panel-header">
+                <img id="j_idt9" src="../../resources/images/LEGALSISPROMOCION.png" alt="" style="width: 300px" />
+            </div>
+            <div class="login-panel-content" >
+                <h:form id="form"  >
+                    <p:growl id="growlC"  showDetail="true" sticky="true" />
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <h1> Registro - Concurso de Programadores</h1>
+                        </div>
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:selectOneMenu styleClass="selectpicker" value="#{alumnoC.alumno.CARRERA_CODCAR}" required="true" >
+                                    <f:selectItem  noSelectionOption="true"  itemValue="#{null}" />
+                                    <f:selectItems  value="#{carreraC.lstCarrera}" var="carrera"  itemLabel="#{carrera.NOMCAR}" itemValue="#{carrera.CODCAR}"/>
+                                </p:selectOneMenu>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>Carrera</label></span>
+                        </div>
+
+
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:inputText value="#{alumnoC.alumno.NOMPER}" onkeyup="this.value = this.value.toUpperCase();" required="true" >
+                                    <p:keyFilter regEx="/[a-z_ ]/i"/>
+                                </p:inputText>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>Nombres</label></span>
+                        </div>
+
+
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:inputText value="#{alumnoC.alumno.APEPER}" onkeyup="this.value = this.value.toUpperCase();" required="true" >
+                                    <p:keyFilter regEx="/[a-z_ ]/i"/>
+                                </p:inputText>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>Apellidos</label></span>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:inputText value="#{alumnoC.alumno.DNIPER}" maxlength="8" onkeyup="this.value = this.value.toUpperCase();" required="true" >
+                                    <p:keyFilter regEx="/[\d]/"/>
+                                </p:inputText>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>DNI</label></span>
+                        </div>
+
+
+
+
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:inputMask value="#{alumnoC.alumno.FECNACPER}" mask="99/99/9999" required="true" />
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>Fecha Nacimiento</label></span>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:inputText value="#{alumnoC.alumno.CELPER}" maxlength="9" onkeyup="this.value = this.value.toUpperCase();" required="true" >
+                                    <p:keyFilter regEx="/[\d]/"/>
+                                </p:inputText>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>N° Celular</label></span>
+                        </div>
+
+
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:autoComplete  maxResults="16"  
+                                                 emptyMessage="No se encontro ningún registro"
+                                                 value="#{alumnoC.alumno.UBIGEO_CODUBI}"
+                                                 completeMethod="#{alumnoC.completeTextUbi}"
+                                                 maxlength="15">
+                                    <p:keyFilter regEx="/[\d]/"/>
+                                </p:autoComplete>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>Distrito</label></span>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <span class="md-inputfield">
+                                <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                                 value="#{alumnoC.alumno.CODCOL}"        
+                                                 completeMethod="#{alumnoC.completeTextCol}"
+                                                 maxlength="15">
+                                    <p:keyFilter regEx="/[\d]/"/>
+                                </p:autoComplete>
+                                <script id="j_idt12_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("InputText", "widget_j_idt12", {id: "j_idt12", maxlength: -2147483648});
+                                    });</script>
+                                <label>Colegio </label></span>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <p:commandButton id="BtnIniciarSesion" class="waves-effect waves-light btn-small blue darken-1 s12 m7"  value="Registrar" actionListener="#{alumnoC.guardarAlumno()}" update="form" />
+
+                            <script id="j_idt24_s" type="text/javascript">$(function () {
+                                    PrimeFaces.cw("Button", "widget_j_idt24", {id: "j_idt24"});
+                                });</script>
+                        </div>
+                        <div class="ui-g-12">
+                            Sistema Promocion <a href="#" style="color: #3949AB">Version 1.0</a> 2019.
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+
+
+</html>
+
