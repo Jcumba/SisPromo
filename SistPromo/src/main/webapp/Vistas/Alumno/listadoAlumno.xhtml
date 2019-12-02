@@ -9,43 +9,51 @@
         <title>Alumnos Registrados</title>
     </h:head>
     <h:body>
-        <h:form id="FormTblAlum">
-            <p:growl id="msg" life="1500">
-                <p:autoUpdate/>
-            </p:growl>
-            <p:dataTable var="alumno" value="#{alumnoC.lstAlumnosRegistrado}" rows="10"
-                         class="table table-striped"
-                         rowKey="#{alumno.CODPER}"
-                         selection="#{alumnoC.selectedAlumno}"
-                         selectionMode="single"
-                         paginator="true"
-                         rowsPerPageTemplate="5,10,15">
-                <p:column headerText="DNI">
-                    <h:outputText value="#{alumno.DNIPER}" />
-                </p:column>
-                <p:column headerText="ALUMNO">
-                    <h:outputText value="#{alumno.ALUMNO}" />
-                </p:column>
-                <p:column headerText="COLEGIO">
-                    <h:outputText value="#{alumno.NOMCOL}" />
-                </p:column>
-                <p:column headerText="DISTRITO">
-                    <h:outputText value="#{alumno.DISTRITO}" />
-                </p:column>
-            </p:dataTable>
-            <p:contextMenu>
-                <p:menuitem value="Eliminar" actionListener="#{alumnoC.eliminarAlumno()}" update="FormTblAlum">
-                    <p:confirm header="Confirmación" message="¿Estas Seguro de Eliminar?"/>
-                </p:menuitem>
-            </p:contextMenu>
-        </h:form>
-        <h:form>
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="fa fa-close"/>
-            </p:confirmDialog>
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <div class="card">
+                        <h:form id="FormTblAlum">
+                            <p:growl id="msg" life="1500">
+                                <p:autoUpdate/>
+                            </p:growl>
+                            <p:dataTable var="alumno" value="#{alumnoC.lstAlumnosRegistrado}" rows="10"
+                                         class="table table-striped"
+                                         rowKey="#{alumno.CODPER}"
+                                         selection="#{alumnoC.selectedAlumno}"
+                                         selectionMode="single"
+                                         paginator="true"
+                                         rowsPerPageTemplate="5,10,15">
+                                <p:column headerText="DNI">
+                                    <h:outputText value="#{alumno.DNIPER}" />
+                                </p:column>
+                                <p:column headerText="ALUMNO">
+                                    <h:outputText value="#{alumno.ALUMNO}" />
+                                </p:column>
+                                <p:column headerText="COLEGIO">
+                                    <h:outputText value="#{alumno.NOMCOL}" />
+                                </p:column>
+                                <p:column headerText="DISTRITO">
+                                    <h:outputText value="#{alumno.DISTRITO}" />
+                                </p:column>
+                            </p:dataTable>
+                            <p:contextMenu>
+                                <p:menuitem value="Eliminar" actionListener="#{alumnoC.eliminarAlumno()}" update="FormTblAlum">
+                                    <p:confirm header="Confirmación" message="¿Estas Seguro de Eliminar?"/>
+                                </p:menuitem>
+                            </p:contextMenu>
+                        </h:form>
+                        <h:form>
+                            <p:confirmDialog global="true">
+                                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="fa fa-close"/>
+                            </p:confirmDialog>
 
-        </h:form>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

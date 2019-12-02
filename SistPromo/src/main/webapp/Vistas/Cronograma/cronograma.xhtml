@@ -11,19 +11,32 @@
             <ui:define name="content">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                     <div class="card">
+                        <center>
+                            <h1> <b style="margin-top:600px">Registro de Cronograma</b></h1>
 
-                        <h:form id="FormCronograma">
-                            <p:growl id="msg" life="2000">
-                                <p:autoUpdate/>
-                            </p:growl>
-                            <p:panelGrid columns="2">
-                                <p:outputLabel value="FECHA"/>
-                                <p:inputMask value="#{cronogramaC.cronograma.FECCROEXA}" mask="99/99/9999"/>
-                                <p:outputLabel value="HORA"/>
-                                <p:inputMask value="#{cronogramaC.cronograma.HORCROEXA}" mask="99:99a*"/>
+                            <h:form id="FormCronograma">
+                                <p:growl id="msg" life="2000">
+                                    <p:autoUpdate/>
+                                </p:growl>
+                                <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+                                    <p:outputLabel value="FECHA" style="font-weight: 600"/>
+                                    <p:inputMask value="#{cronogramaC.cronograma.FECCROEXA}" mask="99/99/9999"/>
+                                    <p:outputLabel value="HORA" style="font-weight: 600"/>
+                                    <p:inputMask value="#{cronogramaC.cronograma.HORCROEXA}" mask="99:99a*"/>
+
+                                </p:panelGrid>
+                                <br/>
+                                <br/>
+                                <center>
+                                    
+                                
+                                
                                 <p:commandButton value="AGREGAR" actionListener="#{cronogramaC.guardarCronograma()}" update="FormCronograma"/>
-                            </p:panelGrid>
-                        </h:form>
+                                
+                                </center>
+                                <br/>
+                            </h:form>
+                        </center>
                         <h:form id="Form">
                             <p:dataTable id="tblCronograma" 
                                          var="cronograma"
@@ -33,14 +46,14 @@
                                          selection="#{cronogramaC.selectedCronograma}"
                                          rows="10" paginator="true"
                                          rowsPerPageTemplate="5,10,15" reflow="true">
-                                <p:column headerText="MODALIDAD">
-                                    <p:outputLabel value="#{cronograma.MODEXA}"/>
+                                <p:column headerText="MODALIDAD" style="font-weight: 600">
+                                    <p:outputLabel value="#{cronograma.MODEXA}" style="font-weight: normal"/>
                                 </p:column>
-                                <p:column headerText="FECHA">
-                                    <p:outputLabel value="#{cronograma.FECCROEXA}"/>
+                                <p:column headerText="FECHA" style="font-weight: 600"> 
+                                    <p:outputLabel value="#{cronograma.FECCROEXA}" style="font-weight: normal"/>
                                 </p:column>
-                                <p:column headerText="HORA">
-                                    <p:outputLabel value="#{cronograma.HORCROEXA}"/>
+                                <p:column headerText="HORA" style="font-weight: 600">
+                                    <p:outputLabel value="#{cronograma.HORCROEXA}" style="font-weight: normal"/>
                                 </p:column>
                             </p:dataTable>
                             <p:contextMenu>

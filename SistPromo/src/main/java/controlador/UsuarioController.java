@@ -1,7 +1,6 @@
 
 package controlador;
 
-import com.sun.xml.internal.ws.client.RequestContext;
 import dao.ImplUsuarioD;
 import java.io.IOException;
 import javax.inject.Named;

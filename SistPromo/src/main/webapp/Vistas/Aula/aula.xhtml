@@ -11,38 +11,45 @@
             <ui:define name="content">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                     <div class="card">
+                        <center>
+                            <h1> <b style="margin-top:600%">Registro de Aula</b></h1>
+                            <h:form id="FormAula">
+                                <p:growl id="msg" showDetail="true" life="2000">
+                                    <p:autoUpdate/>
+                                </p:growl>
 
-                        <h:form id="FormAula">
-                            <p:growl id="msg" showDetail="true" life="2000">
-                                <p:autoUpdate/>
-                            </p:growl>
+                                <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+                                    <p:outputLabel value="N° Aula:" style="font-weight: 600"/>
+                                    <p:selectOneMenu value="#{aulaC.aula.NUMAUL}">  
+                                        <f:selectItem itemLabel="Seleccione Aula" itemValue="#{null}" itemDisabled="true"/>
+                                        <f:selectItem itemLabel="A1" itemValue="A1" /> 
+                                        <f:selectItem itemLabel="A2" itemValue="A2" />
+                                        <f:selectItem itemLabel="A3" itemValue="A3" /> 
+                                        <f:selectItem itemLabel="A4" itemValue="A4" />
+                                        <f:selectItem itemLabel="A5" itemValue="A5" /> 
+                                        <f:selectItem itemLabel="A6" itemValue="A6" />
+                                        <f:selectItem itemLabel="A7" itemValue="A7" /> 
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Aforo de Aula:" style="font-weight: 600"/>
+                                    <p:inputText  value="#{aulaC.aula.AFORAUL}" maxlength="2"  required="true" requiredMessage="INGRESE EL FORO DE AULA">
+                                        <p:keyFilter regEx="/[\d]/"/>
+                                    </p:inputText>
+                                    <p:outputLabel value="Fecha de Examen:" style="font-weight: 600"/>
+                                    <p:selectOneMenu value="#{aulaC.aula.EXAMEN_CODEXA}">
+                                        <f:selectItem itemLabel="Seleccione Fecha" itemDisabled="true"/>
+                                        <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.FECCROEXA}"/>
+                                    </p:selectOneMenu>
 
-                            <p:panelGrid columns="2" >
-                                <p:outputLabel value="N° Aula:"/>
-                                <p:selectOneMenu value="#{aulaC.aula.NUMAUL}">  
-                                    <f:selectItem itemLabel="Seleccione Aula" itemValue="#{null}" itemDisabled="true"/>
-                                    <f:selectItem itemLabel="A1" itemValue="A1" /> 
-                                    <f:selectItem itemLabel="A2" itemValue="A2" />
-                                    <f:selectItem itemLabel="A3" itemValue="A3" /> 
-                                    <f:selectItem itemLabel="A4" itemValue="A4" />
-                                    <f:selectItem itemLabel="A5" itemValue="A5" /> 
-                                    <f:selectItem itemLabel="A6" itemValue="A6" />
-                                    <f:selectItem itemLabel="A7" itemValue="A7" /> 
-                                </p:selectOneMenu>
-                                <p:outputLabel value="Aforo de Aula:"/>
-                                <p:inputText   value="#{aulaC.aula.AFORAUL}" maxlength="2" required="true" requiredMessage="INGRESE EL FORO DE AULA">
-                                    <p:keyFilter regEx="/[\d]/"/>
-                                </p:inputText>
-                                <p:outputLabel value="Fecha de Examen:"/>
-                                <p:selectOneMenu value="#{aulaC.aula.EXAMEN_CODEXA}">
-                                    <f:selectItem itemLabel="Seleccione Fecha" itemDisabled="true"/>
-                                    <f:selectItems  value="#{cronogramaC.lstCronograma}"  var="cronograma"  itemValue="#{cronograma.CODEXA}" itemLabel="#{cronograma.FECCROEXA}"/>
-                                </p:selectOneMenu>
-                                <p:commandButton  class="btn btn-primary m-w-120" value="AGREGAR" actionListener="#{aulaC.guardar()}"  update="FormAula :FormtblAula:tblAula"/>
-                            </p:panelGrid> 
-
-                        </h:form>
-
+                                </p:panelGrid> 
+                                <br/>
+                              
+                                <center>
+                                    <p:commandButton  class="btn btn-primary m-w-120" value="AGREGAR" actionListener="#{aulaC.guardar()}"  update="FormAula :FormtblAula:tblAula"/>
+                                </center>
+                        
+                                <br/>
+                            </h:form>          
+                        </center>
                         <h:form id="FormtblAula">
                             <p:dataTable id="tblAula" var="aula" value="#{aulaC.lstAula}"
                                          rowKey="#{aula.CODAUL}"
