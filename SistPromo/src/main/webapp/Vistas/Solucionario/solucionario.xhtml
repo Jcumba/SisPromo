@@ -13,8 +13,9 @@
             <ui:define name="content">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                     <div class="card">
+                          <h1> <b style="margin-top:600px;margin-left: 400px">Registro de Examen(Solucionario)</b></h1>
                         <h:form >             
-                            <p:commandButton class="btn btn-primary m-w-120"  value="Nuevo Tipo de Examen" type="button" style="float: right;width: 200px" onclick="PF('dlgregTIp').show();" />
+                            <p:commandButton class="btn btn-primary m-w-120"  value="Tipo de Examen" type="button" style="float: right;width: 200px" onclick="PF('dlgregTIp').show();" />
                         </h:form>
                         <br/>
                         <br/>
@@ -94,7 +95,7 @@
                                         <f:selectItem itemLabel="D" itemValue="D"/>
                                         <f:selectItem itemLabel="E" itemValue="E"/>
                                     </p:selectOneRadio>
-                                     <p:outputLabel value="Pregunta N° 7:" style="font-weight: 600"/>
+                                    <p:outputLabel value="Pregunta N° 7:" style="font-weight: 600"/>
                                     <p:selectOneRadio value="#{solucionarioC.solucion.SOL7}" style="font-weight: normal">
                                         <f:selectItem itemLabel="A" itemValue="A"/>
                                         <f:selectItem itemLabel="B" itemValue="B"/>
@@ -366,9 +367,9 @@
                                         <f:selectItem itemLabel="D" itemValue="D"/>
                                         <f:selectItem itemLabel="E" itemValue="E"/>
                                     </p:selectOneRadio>      
-                                                                                                       
-                                    <p:commandButton style="float: right;width: 150px" value="REGISTRAR" actionListener="#{solucionarioC.agregarSolucionario()}" update="FormRegistrarSol FormListSol"/> 
-                                     
+
+                                    <p:commandButton style="float: right;width: 150px" value="REGISTRAR" actionListener="#{solucionarioC.agregarSolucionario()}" update="FormRegistrarSol :FormListSol:Soluciones"/> 
+
                                     <p:commandButton style="float: right;width: 130px" value="CANCELAR" oncomplete="PF('dlgregSol').hide()" />
                                 </p:panelGrid>
                             </h:form>
@@ -405,10 +406,8 @@
                                 </p:column>
                             </p:dataTable>
                             <p:contextMenu for="Soluciones">
-
-                                <p:menuitem class="modal-content" icon="fa fa-edit" value="REASIGNAR" oncomplete="PF('dlgModSoluciones').show()">
-                                    <p:confirm header="Confirmacion" message="Deseas modificar?" icon="ui-icon-alert" />
-                                </p:menuitem>
+                               <p:menuitem  value="Modificar" onclick="PF('dlgModSoluciones').show();" update="FormListSol"/>
+                              
                             </p:contextMenu>
 
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -418,14 +417,12 @@
                         </h:form>
                         <p:dialog id="dlg1" header="ACTUALIZAR RESPUESTAS DE EXAMEN" widgetVar="dlgModSoluciones" height="550" width="430" resizable="false" modal="true">
                             <h:form id="formDialog">
-                                <img src="../resources/img/demo.jpg" style="margin-left: 100px;margin-bottom: 10px" alt=""/>
+                                <img src="../../resources/images/31226729.png" style="margin-left: 150px;margin-bottom: 10px;width: 80px" alt=""/>
                                 <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
                                     <p:outputLabel value="Modalidad:" />
                                     <p:inputText  value="#{solucionarioC.selectedSolucionario.MODALIDAD}" disabled="true" />
                                     <p:outputLabel value="Nombre de Examne:" />
-                                    <p:inputText  value="#{solucionarioC.selectedSolucionario.NOMEXAMEN}" disabled="true" />
-                                    <p:outputLabel value="Numero de Preguntas:" />
-                                    <p:inputText  value="#{solucionarioC.selectedSolucionario.NUMPREGUNT}" disabled="true" />
+                                    <p:inputText  value="#{solucionarioC.selectedSolucionario.NOMTIPEXA}" disabled="true" />
                                     <p:outputLabel value="Solucion N° 1:" />
                                     <p:inputText  value="#{solucionarioC.selectedSolucionario.SOL1}"  />
                                     <p:outputLabel value="Solucion N° 2:" />
@@ -506,17 +503,14 @@
                                     <p:inputText  value="#{solucionarioC.selectedSolucionario.SOL39}"  />
                                     <p:outputLabel value="Solucion N° 40:" />
                                     <p:inputText  value="#{solucionarioC.selectedSolucionario.SOL40}"  />
-                                    <p:outputLabel value="ESTADO DE EXAMEN:" style="font-weight: 600" />
-                                    <p:inputText  value="#{solucionarioC.selectedSolucionario.ESTAD}"  />
-                                
-                                             
-                             
+                                   
+                                    <p:commandButton   value="MODIFICAR" actionListener="#{solucionarioC.modificarSolucionario()}" update="FormListSol:Soluciones" onclick="PF('dlgModSoluciones').hide();" />
                                     <p:commandButton value="CANCELAR" oncomplete="PF('dlgModSoluciones').hide()" />
-                                    
+
                                 </p:panelGrid>
                                 <h:form>
-                                   
-                                   
+
+
                                 </h:form>
                             </h:form>
                         </p:dialog> 

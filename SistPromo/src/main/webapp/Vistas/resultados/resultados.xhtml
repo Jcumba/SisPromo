@@ -1,0 +1,130 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Template/Template.xhtml">
+            <ui:define name="content">
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <div class="card">
+
+                    
+                                <h1>DataTable</h1>
+                                <div id="form:j_idt54" class="ui-datatable ui-widget ui-datatable-reflow">
+                                    <label id="form:j_idt54_reflowDD_label" for="form:j_idt54_reflowDD" class="ui-reflow-label">Sort</label>
+                                    <select id="form:j_idt54_reflowDD" name="form:j_idt54_reflowDD" class="ui-reflow-dropdown ui-state-default" autocomplete="off">
+                                        <option value="0_0">Id Ascending</option>
+                                        <option value="0_1">Id Descending</option>
+                                        <option value="1_0">Year Ascending</option>
+                                        <option value="1_1">Year Descending</option>
+                                        <option value="2_0">Brand Ascending</option>
+                                        <option value="2_1">Brand Descending</option>
+                                        <option value="3_0">Color Ascending</option>
+                                        <option value="3_1">Color Descending</option>
+                                    </select>
+                                    <div class="ui-datatable-header ui-widget-header ui-corner-top">
+                                        Single with Row Click
+                                    </div>
+                                    <div id="form:j_idt54_paginator_top" class="ui-paginator ui-paginator-top ui-widget-header" role="navigation" aria-label="Pagination">
+                                        <a href="#" class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled" aria-label="First Page" tabindex="-1">
+                                            <span class="ui-icon ui-icon-seek-first">F</span>
+                                        </a>
+                                        <a href="#" class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled" aria-label="Previous Page" tabindex="-1">
+                                            <span class="ui-icon ui-icon-seek-prev">P</span>
+                                        </a>
+                                        <span class="ui-paginator-pages">
+                                            <a class="ui-paginator-page ui-state-default ui-state-active ui-corner-all" tabindex="0" href="#">1</a>
+                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">2</a>
+                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">3</a>
+                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">4</a>
+                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">5</a>
+                                        </span>
+                                        <a href="#" class="ui-paginator-next ui-state-default ui-corner-all" aria-label="Next Page" tabindex="0">
+                                            <span class="ui-icon ui-icon-seek-next">N</span>
+                                        </a>
+                                        <a href="#" class="ui-paginator-last ui-state-default ui-corner-all" aria-label="Last Page" tabindex="0">
+                                            <span class="ui-icon ui-icon-seek-end">E</span>
+                                        </a>
+                                    </div>
+                                    <div class="ui-datatable-tablewrapper">
+                                        <table role="grid">
+                                            <thead id="form:j_idt54_head">
+                                                <tr role="row">
+                                                    <th id="form:j_idt54:j_idt56" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Id" scope="col">
+                                                        <span class="ui-column-title">Id</span>
+                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s">
+                                                            
+                                                        </span>
+                                                    </th>
+                                                    <th id="form:j_idt54:j_idt58" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Year" scope="col">
+                                                        <span class="ui-column-title">Year</span>
+                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+                                                    </th>
+                                                    <th id="form:j_idt54:j_idt60" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Brand" scope="col">
+                                                        <span class="ui-column-title">Brand</span>
+                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+                                                    </th>
+                                                    <th id="form:j_idt54:j_idt62" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Color" scope="col">
+                                                        <span class="ui-column-title">Color</span>
+                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="form:j_idt54_data" class="ui-datatable-data ui-widget-content" tabindex="0">
+                                                <tr data-ri="0" data-rk="fc584def" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">fc584def</td>
+                                                    <td role="gridcell">1972</td>
+                                                    <td role="gridcell">Mercedes</td>
+                                                    <td role="gridcell">Blue</td>
+                                                </tr>
+                                                <tr data-ri="1" data-rk="6e18df70" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">6e18df70</td>
+                                                    <td role="gridcell">1960</td>
+                                                    <td role="gridcell">Mercedes</td>
+                                                    <td role="gridcell">Brown</td>
+                                                </tr>
+                                                <tr data-ri="2" data-rk="e739e358" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">e739e358</td>
+                                                    <td role="gridcell">1995</td>
+                                                    <td role="gridcell">Fiat</td>
+                                                    <td role="gridcell">Yellow</td>
+                                                </tr>
+                                                <tr data-ri="3" data-rk="5795a44e" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">5795a44e</td>
+                                                    <td role="gridcell">2007</td>
+                                                    <td role="gridcell">Jaguar</td>
+                                                    <td role="gridcell">Green</td>
+                                                </tr>
+                                                <tr data-ri="4" data-rk="32542d60" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">32542d60</td>
+                                                    <td role="gridcell">2009</td>
+                                                    <td role="gridcell">Ford</td>
+                                                    <td role="gridcell">Maroon</td>
+                                                </tr>
+                                                <tr data-ri="5" data-rk="1773f637" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">1773f637</td>
+                                                    <td role="gridcell">1984</td>
+                                                    <td role="gridcell">Audi</td>
+                                                    <td role="gridcell">Maroon</td>
+                                                </tr>
+                                                <tr data-ri="6" data-rk="5f8216a1" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">5f8216a1</td>
+                                                    <td role="gridcell">1962</td>
+                                                    <td role="gridcell">Volkswagen</td>
+                                                    <td role="gridcell">Silver</td>
+                                                </tr><tr data-ri="7" data-rk="b417b67d" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false"><td role="gridcell">b417b67d</td><td role="gridcell">2006</td><td role="gridcell">Volkswagen</td><td role="gridcell">Orange</td></tr><tr data-ri="8" data-rk="744e9d20" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false"><td role="gridcell">744e9d20</td><td role="gridcell">1964</td><td role="gridcell">Volkswagen</td><td role="gridcell">Green</td></tr><tr data-ri="9" data-rk="961c247a" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false"><td role="gridcell">961c247a</td><td role="gridcell">1997</td><td role="gridcell">Honda</td><td role="gridcell">Orange</td></tr></tbody></table></div><div id="form:j_idt54_paginator_bottom" class="ui-paginator ui-paginator-bottom ui-widget-header ui-corner-bottom" role="navigation" aria-label="Pagination"><a href="#" class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled" aria-label="First Page" tabindex="-1"><span class="ui-icon ui-icon-seek-first">F</span></a><a href="#" class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled" aria-label="Previous Page" tabindex="-1"><span class="ui-icon ui-icon-seek-prev">P</span></a><span class="ui-paginator-pages"><a class="ui-paginator-page ui-state-default ui-state-active ui-corner-all" tabindex="0" href="#">1</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">2</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">3</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">4</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">5</a></span><a href="#" class="ui-paginator-next ui-state-default ui-corner-all" aria-label="Next Page" tabindex="0"><span class="ui-icon ui-icon-seek-next">N</span></a><a href="#" class="ui-paginator-last ui-state-default ui-corner-all" aria-label="Last Page" tabindex="0"><span class="ui-icon ui-icon-seek-end">E</span></a></div><input type="hidden" id="form:j_idt54_selection" name="form:j_idt54_selection" autocomplete="off" value="" /></div><script id="form:j_idt54_s" type="text/javascript">$(function(){PrimeFaces.cw("DataTable", "widget_form_j_idt54", {id:"form:j_idt54", paginator:{id:['form:j_idt54_paginator_top', 'form:j_idt54_paginator_bottom'], rows:10, rowCount:50, page:0, currentPageTemplate:'({currentPage} of {totalPages})'}, selectionMode:"single", reflow:true, groupColumnIndexes:[], disableContextMenuIfEmpty:false}); });</script>
+                      
+
+
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

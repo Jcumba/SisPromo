@@ -72,5 +72,19 @@ public class SolucionarioC implements Serializable {
             throw e;
         }
     }
+    
+     public void modificarSolucionario() throws Exception {
+        SolucionarioImpl dao;
+        try {
+            dao = new SolucionarioImpl();
+            dao.modificarSolucionario(selectedSolucionario);
+            listarSolucionario();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MODIFICADO CORRECTAMENTE", null));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERRO AL MODIFICAR", null));
+            throw e;
+        }
+
+    }
 
 }
