@@ -115,6 +115,7 @@ public class AlumnoC implements Serializable {
         }
     }
     
+    
     public void reporteFicha(String DNIPER) throws Exception {
         Reporte report = new Reporte();
         try {
@@ -127,6 +128,17 @@ public class AlumnoC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "GENERADO", null));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR", null));
+            throw e;
+        }
+    }
+    
+     public void consultarNotas() throws Exception {
+        AlumnoImpl dao;
+        try {
+            dao = new AlumnoImpl();
+            lstConsultaNotas = dao.consultarNotas(Notas);
+            limpiar();
+        } catch (Exception e) {
             throw e;
         }
     }
@@ -146,5 +158,9 @@ public class AlumnoC implements Serializable {
         return dao.queryAutoCompleteDni(query);
     }
 
+    public List<String> competeTextNotas(String query) throws SQLException, Exception {
+        AlumnoImpl dao = new AlumnoImpl();
+        return dao.queryAutoCompleteNotas(query);
+    }
     
 }

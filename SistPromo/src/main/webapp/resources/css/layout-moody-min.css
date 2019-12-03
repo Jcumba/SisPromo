@@ -655,11 +655,12 @@
     .dashboard .global-sales table tbody tr td:nth-child(7) button:first-child {
         margin-bottom: 4px; } }
 .login-body {
-    background-image: url("../../resources/images/portada.jpg");
+    background-image: url("../../resources/images/login/aaaadssa.jpg");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; }
+    background-size: cover; 
+}
 .login-body .login-panel {
     width: 550px;
     height: 500px;

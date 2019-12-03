@@ -17,12 +17,12 @@ public class SolucionarioImpl extends Dao implements SolucionarioI {
             String sql = "INSERT INTO SOLUCIONARIO(SOL1,SOL2,SOL3,SOL4,SOL5,SOL6,"
                     + "SOL7,SOL8,SOL9,SOL10,SOL11,SOL12,SOL13,SOL14,SOL15,SOL16,SOL17,SOL18,SOL19,"
                     + "SOL20,SOL21,SOL22,SOL23,SOL24,SOL25,SOL26,SOL27,SOL28,SOL29,SOL30,SOL31,SOL32,"
-                    + "SOL33,SOL34,SOL35,SOL36,SOL37,SOL38,SOL39,SOL40,TIPO_EXAMEN_CODTIPEXA,MODEXA,ESTSOL)"
+                    + "SOL33,SOL34,SOL35,SOL36,SOL37,SOL38,SOL39,SOL40,TIPO_EXAMEN_CODTIPEXA,MODEXA,ESTSOL,NUMPRE)"
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,"
                     + "?,?,?,?,?,?,?,?,?,?,"
                     + "?,?,?,?,?,?,?,?,?,?,"
                     + "?,?,?,?,?,?,?,?,?,?,"
-                    + "?,?,?)";
+                    + "?,?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, solucion.getSOL1());
             ps.setString(2, solucion.getSOL2());
@@ -65,9 +65,9 @@ public class SolucionarioImpl extends Dao implements SolucionarioI {
             ps.setString(39, solucion.getSOL39());
             ps.setString(40, solucion.getSOL40());
             ps.setString(41, solucion.getTIPO_EXAMEN_CODTIPEXA());
-//            ps.setString(42, solucion.getNUMPREGUNT());
             ps.setString(42, solucion.getMODALIDAD());
             ps.setString(43, "A");//ESTADO DE EXAMEN
+            ps.setString(44, solucion.getNUMPREGUNT());
 //            ps.setString(44, solucion.getNOMEXAMEN());
             ps.executeUpdate();
         } catch (SQLException e) {

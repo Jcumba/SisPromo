@@ -11,9 +11,27 @@
             <ui:define name="content">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                     <div class="card">
+                        <h:form   id="Consultar">
+                            <h:panelGrid columns="2">
+                                <p:autoComplete maxResults="5"
 
-                    
-                                <h1>DataTable</h1>
+                                                style="width: 300px;margin-top: 14px"
+                                                emptyMessage="No se encontro ningun registro"                
+                                                forceSelection="true"
+                                                placeholder="Ingrese su DNI"
+                                                maxlength="8"
+                                                value="#{alumnoC.notas}"
+                                                completeMethod="#{alumnoC.competeTextNotas}">
+                                </p:autoComplete>
+                                <p:commandButton class="btn btn-primary pull-right mio blue darken-2"   style="margin-bottom: 3px;margin-left: 50px" value="CONSULTAR" actionListener="#{alumnoC.consultarNotas()}" update="tblConsultas Consultar"/>
+                            </h:panelGrid>
+                            <p:dataGrid value="#{alumnoC.lstConsultaNotas}"
+                                        id="tblConsultas"
+                                        style="width: 500px"
+
+                                        var="consulta"
+                                        emptyMessage="Sin Resultados">
+                                
                                 <div id="form:j_idt54" class="ui-datatable ui-widget ui-datatable-reflow">
                                     <label id="form:j_idt54_reflowDD_label" for="form:j_idt54_reflowDD" class="ui-reflow-label">Sort</label>
                                     <select id="form:j_idt54_reflowDD" name="form:j_idt54_reflowDD" class="ui-reflow-dropdown ui-state-default" autocomplete="off">
@@ -27,97 +45,139 @@
                                         <option value="3_1">Color Descending</option>
                                     </select>
                                     <div class="ui-datatable-header ui-widget-header ui-corner-top">
-                                        Single with Row Click
+                                        <p:outputLabel style="color: #ffffff; font-weight: bold;" value="DNI:  #{consulta.DNIPER} - #{consulta.NOMPER}  #{consulta.APEPER}"/>
                                     </div>
-                                    <div id="form:j_idt54_paginator_top" class="ui-paginator ui-paginator-top ui-widget-header" role="navigation" aria-label="Pagination">
-                                        <a href="#" class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled" aria-label="First Page" tabindex="-1">
-                                            <span class="ui-icon ui-icon-seek-first">F</span>
-                                        </a>
-                                        <a href="#" class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled" aria-label="Previous Page" tabindex="-1">
-                                            <span class="ui-icon ui-icon-seek-prev">P</span>
-                                        </a>
-                                        <span class="ui-paginator-pages">
-                                            <a class="ui-paginator-page ui-state-default ui-state-active ui-corner-all" tabindex="0" href="#">1</a>
-                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">2</a>
-                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">3</a>
-                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">4</a>
-                                            <a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">5</a>
-                                        </span>
-                                        <a href="#" class="ui-paginator-next ui-state-default ui-corner-all" aria-label="Next Page" tabindex="0">
-                                            <span class="ui-icon ui-icon-seek-next">N</span>
-                                        </a>
-                                        <a href="#" class="ui-paginator-last ui-state-default ui-corner-all" aria-label="Last Page" tabindex="0">
-                                            <span class="ui-icon ui-icon-seek-end">E</span>
-                                        </a>
-                                    </div>
+                                    
                                     <div class="ui-datatable-tablewrapper">
                                         <table role="grid">
                                             <thead id="form:j_idt54_head">
                                                 <tr role="row">
                                                     <th id="form:j_idt54:j_idt56" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Id" scope="col">
-                                                        <span class="ui-column-title">Id</span>
-                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s">
-                                                            
+                                                        <span class="ui-column-title">N° Pregunta</span>
+                                                        <span class="">
+                                                            <i class="material-icons">
+                                                                sort
+                                                            </i>
                                                         </span>
                                                     </th>
                                                     <th id="form:j_idt54:j_idt58" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Year" scope="col">
-                                                        <span class="ui-column-title">Year</span>
-                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+                                                        <span class="ui-column-title">Respuesta</span>
+                                                        <span class="">
+                                                            <i class="material-icons">
+                                                                assignment
+                                                            </i>
+                                                        </span>
                                                     </th>
                                                     <th id="form:j_idt54:j_idt60" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Brand" scope="col">
-                                                        <span class="ui-column-title">Brand</span>
-                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+                                                        <span class="ui-column-title">Solucion</span>
+                                                        <span class="">
+                                                            <i class="material-icons">
+                                                                check
+                                                            </i>
+                                                        </span>
                                                     </th>
                                                     <th id="form:j_idt54:j_idt62" class="ui-state-default ui-sortable-column" role="columnheader" aria-label="Color" scope="col">
-                                                        <span class="ui-column-title">Color</span>
-                                                        <span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>
+                                                        <span class="ui-column-title">Puntaje</span>
+                                                        <span class="">
+                                                            <i class="material-icons">
+                                                                exposure
+                                                            </i>
+                                                        </span>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody id="form:j_idt54_data" class="ui-datatable-data ui-widget-content" tabindex="0">
                                                 <tr data-ri="0" data-rk="fc584def" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
-                                                    <td role="gridcell">fc584def</td>
-                                                    <td role="gridcell">1972</td>
-                                                    <td role="gridcell">Mercedes</td>
-                                                    <td role="gridcell">Blue</td>
+                                                    <td role="gridcell">1</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES1}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL1}"/> </td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ1}"/></td>
                                                 </tr>
                                                 <tr data-ri="1" data-rk="6e18df70" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
-                                                    <td role="gridcell">6e18df70</td>
-                                                    <td role="gridcell">1960</td>
-                                                    <td role="gridcell">Mercedes</td>
-                                                    <td role="gridcell">Brown</td>
+                                                    <td role="gridcell">2</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES2}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL2}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ2}"/></td>
                                                 </tr>
                                                 <tr data-ri="2" data-rk="e739e358" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
-                                                    <td role="gridcell">e739e358</td>
-                                                    <td role="gridcell">1995</td>
-                                                    <td role="gridcell">Fiat</td>
-                                                    <td role="gridcell">Yellow</td>
+                                                    <td role="gridcell">3</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES3}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL3}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ3}"/></td>
                                                 </tr>
                                                 <tr data-ri="3" data-rk="5795a44e" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
-                                                    <td role="gridcell">5795a44e</td>
-                                                    <td role="gridcell">2007</td>
-                                                    <td role="gridcell">Jaguar</td>
-                                                    <td role="gridcell">Green</td>
+                                                    <td role="gridcell">4</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES4}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL4}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ4}"/></td>
                                                 </tr>
                                                 <tr data-ri="4" data-rk="32542d60" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
-                                                    <td role="gridcell">32542d60</td>
-                                                    <td role="gridcell">2009</td>
-                                                    <td role="gridcell">Ford</td>
-                                                    <td role="gridcell">Maroon</td>
+                                                    <td role="gridcell">5</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES5}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL5}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ5}"/></td>
                                                 </tr>
                                                 <tr data-ri="5" data-rk="1773f637" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
-                                                    <td role="gridcell">1773f637</td>
-                                                    <td role="gridcell">1984</td>
-                                                    <td role="gridcell">Audi</td>
-                                                    <td role="gridcell">Maroon</td>
+                                                    <td role="gridcell">6</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES6}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL6}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ6}"/></td>
                                                 </tr>
                                                 <tr data-ri="6" data-rk="5f8216a1" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
-                                                    <td role="gridcell">5f8216a1</td>
-                                                    <td role="gridcell">1962</td>
-                                                    <td role="gridcell">Volkswagen</td>
-                                                    <td role="gridcell">Silver</td>
-                                                </tr><tr data-ri="7" data-rk="b417b67d" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false"><td role="gridcell">b417b67d</td><td role="gridcell">2006</td><td role="gridcell">Volkswagen</td><td role="gridcell">Orange</td></tr><tr data-ri="8" data-rk="744e9d20" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false"><td role="gridcell">744e9d20</td><td role="gridcell">1964</td><td role="gridcell">Volkswagen</td><td role="gridcell">Green</td></tr><tr data-ri="9" data-rk="961c247a" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false"><td role="gridcell">961c247a</td><td role="gridcell">1997</td><td role="gridcell">Honda</td><td role="gridcell">Orange</td></tr></tbody></table></div><div id="form:j_idt54_paginator_bottom" class="ui-paginator ui-paginator-bottom ui-widget-header ui-corner-bottom" role="navigation" aria-label="Pagination"><a href="#" class="ui-paginator-first ui-state-default ui-corner-all ui-state-disabled" aria-label="First Page" tabindex="-1"><span class="ui-icon ui-icon-seek-first">F</span></a><a href="#" class="ui-paginator-prev ui-state-default ui-corner-all ui-state-disabled" aria-label="Previous Page" tabindex="-1"><span class="ui-icon ui-icon-seek-prev">P</span></a><span class="ui-paginator-pages"><a class="ui-paginator-page ui-state-default ui-state-active ui-corner-all" tabindex="0" href="#">1</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">2</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">3</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">4</a><a class="ui-paginator-page ui-state-default ui-corner-all" tabindex="0" href="#">5</a></span><a href="#" class="ui-paginator-next ui-state-default ui-corner-all" aria-label="Next Page" tabindex="0"><span class="ui-icon ui-icon-seek-next">N</span></a><a href="#" class="ui-paginator-last ui-state-default ui-corner-all" aria-label="Last Page" tabindex="0"><span class="ui-icon ui-icon-seek-end">E</span></a></div><input type="hidden" id="form:j_idt54_selection" name="form:j_idt54_selection" autocomplete="off" value="" /></div><script id="form:j_idt54_s" type="text/javascript">$(function(){PrimeFaces.cw("DataTable", "widget_form_j_idt54", {id:"form:j_idt54", paginator:{id:['form:j_idt54_paginator_top', 'form:j_idt54_paginator_bottom'], rows:10, rowCount:50, page:0, currentPageTemplate:'({currentPage} of {totalPages})'}, selectionMode:"single", reflow:true, groupColumnIndexes:[], disableContextMenuIfEmpty:false}); });</script>
-                      
+                                                    <td role="gridcell">7</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES7}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL7}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ7}"/></td>
+                                                </tr>
+                                                <tr data-ri="7" data-rk="b417b67d" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">8</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES8}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL8}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ8}"/></td>
+                                                </tr>
+                                                <tr data-ri="8" data-rk="744e9d20" class="ui-widget-content ui-datatable-even ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">9</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES9}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL9}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ9}"/></td>
+                                                </tr>
+                                                <tr data-ri="9" data-rk="961c247a" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">10</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES10}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL10}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ10}"/></td>
+                                                </tr>
+                                                <tr data-ri="9" data-rk="961c247a" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">11</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES11}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL11}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ11}"/></td>
+                                                </tr>
+                                                <tr data-ri="9" data-rk="961c247a" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">12</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES12}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL12}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ12}"/></td>
+                                                </tr>
+                                                <tr data-ri="9" data-rk="961c247a" class="ui-widget-content ui-datatable-odd ui-datatable-selectable" role="row" aria-selected="false">
+                                                    <td role="gridcell">13</td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.RES13}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.SOL13}"/></td>
+                                                    <td role="gridcell"><p:outputLabel  style="color: black; font-weight: bold;" value=" #{consulta.PUNTAJ13}"/></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <input type="hidden" id="form:j_idt54_selection" name="form:j_idt54_selection" autocomplete="off" value="" /></div>
+                                <script id="form:j_idt54_s" type="text/javascript">$(function () {
+                                        PrimeFaces.cw("DataTable", "widget_form_j_idt54", {id: "form:j_idt54", paginator: {id: ['form:j_idt54_paginator_top', 'form:j_idt54_paginator_bottom'], rows: 10, rowCount: 50, page: 0, currentPageTemplate: '({currentPage} of {totalPages})'}, selectionMode: "single", reflow: true, groupColumnIndexes: [], disableContextMenuIfEmpty: false});
+                                    });
+                                </script>
+
+                            </p:dataGrid>
+                        </h:form>
+
 
 
 

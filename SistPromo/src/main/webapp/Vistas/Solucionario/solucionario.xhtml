@@ -13,7 +13,7 @@
             <ui:define name="content">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                     <div class="card">
-                          <h1> <b style="margin-top:600px;margin-left: 400px">Registro de Examen(Solucionario)</b></h1>
+                        <h1> <b style="margin-top:600px;margin-left: 400px">Registro de Examen(Solucionario)</b></h1>
                         <h:form >             
                             <p:commandButton class="btn btn-primary m-w-120"  value="Tipo de Examen" type="button" style="float: right;width: 200px" onclick="PF('dlgregTIp').show();" />
                         </h:form>
@@ -35,7 +35,7 @@
                                 <p:growl id="msg" showDetail="true" life="1000">
                                     <p:autoUpdate/>
                                 </p:growl>
-                                <p:panelGrid columns="2">
+                                <p:panelGrid  columns="2" >
                                     <p:outputLabel value="Tipo de Examen:" style="font-weight: 600"/>
                                     <p:selectOneMenu value="#{solucionarioC.solucion.TIPO_EXAMEN_CODTIPEXA}" style="font-weight: normal">
                                         <f:selectItem noSelectionOption="true" itemLabel="Seleccione"  itemValue="#{null}"/>
@@ -47,331 +47,607 @@
                                         <f:selectItem itemLabel="ORDINARIO" itemValue="ORDINARIO" />
                                         <f:selectItem itemLabel="EXTRAORDINARIO" itemValue="EXTRAORDINARIO" />
                                     </p:selectOneMenu>
-                                    <p:outputLabel value="Pregunta N° 1:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL1}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 2:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL2}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 3:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL3}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 4:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL4}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 5:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL5}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 6:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL6}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 7:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL7}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 8:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL8}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 9:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL9}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 10:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL10}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 11:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL11}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 12:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL12}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 13:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL13}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 14:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL14}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 15:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL15}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 16:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL16}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 17:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL17}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 18:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL18}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 19:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL19}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 20:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL20}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 21:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL21}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 22:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL22}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 23:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL23}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 24:"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL24}">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 25:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL25}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 26:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL26}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 27:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL27}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 28:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL28}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 29:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL29}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 30:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL30}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 31:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL31}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 32:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL32}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 33:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL33}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 34:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL34}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 35:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL35}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio> 
-                                    <p:outputLabel value="Pregunta N° 36:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL36}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 37:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL37}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 38:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL38}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 39:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL39}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A"/>
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>
-                                    <p:outputLabel value="Pregunta N° 40:" style="font-weight: 600"/>
-                                    <p:selectOneRadio value="#{solucionarioC.solucion.SOL40}" style="font-weight: normal">
-                                        <f:selectItem itemLabel="A" itemValue="A" />
-                                        <f:selectItem itemLabel="B" itemValue="B"/>
-                                        <f:selectItem itemLabel="C" itemValue="C"/>
-                                        <f:selectItem itemLabel="D" itemValue="D"/>
-                                        <f:selectItem itemLabel="E" itemValue="E"/>
-                                    </p:selectOneRadio>      
+                                </p:panelGrid>
+                                <p:panelGrid  columns="2" styleClass="ui-panelgrid-blank">
+                                    <p:outputLabel value="N° de Preguntas:" style="font-weight: 600"/>
+                                    <p:selectOneButton value="#{solucionarioC.solucion.NUMPREGUNT}">
+                                        <f:selectItem itemLabel="40" itemValue="E"/>
+                                        <f:selectItem itemLabel="20" itemValue="R"/>
+                                        <f:selectItem itemLabel="10" itemValue="D"/>
+                                        <p:ajax event="change" update="tipoCapacitacionE"/>
+                                        <p:ajax event="change" update="tipoCapacitacionR"/>
+                                        <p:ajax event="change" update="tipoCapacitacionD"/>
+                                    </p:selectOneButton>
+                                </p:panelGrid>
 
+                                <h:panelGroup id="tipoCapacitacionE" >
+                                    <h:panelGroup rendered="#{solucionarioC.solucion.NUMPREGUNT == 'E' ? true:false}">
+                                        <p:panelGrid columns="2" >
+                                            <p:outputLabel value="Pregunta N° 1:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL1}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 2:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL2}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 3:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL3}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 4:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL4}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 5:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL5}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 6:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL6}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 7:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL7}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 8:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL8}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 9:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL9}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 10:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL10}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 11:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL11}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 12:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL12}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 13:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL13}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 14:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL14}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 15:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL15}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 16:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL16}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 17:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL17}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 18:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL18}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 19:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL19}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 20:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL20}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 21:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL21}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 22:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL22}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 23:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL23}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 24:"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL24}">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 25:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL25}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 26:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL26}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 27:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL27}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 28:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL28}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 29:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL29}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 30:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL30}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 31:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL31}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 32:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL32}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 33:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL33}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 34:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL34}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 35:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL35}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio> 
+                                            <p:outputLabel value="Pregunta N° 36:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL36}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 37:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL37}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 38:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL38}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 39:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL39}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 40:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL40}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A" />
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>  
+                                        </p:panelGrid>
+                                    </h:panelGroup>
+                                </h:panelGroup>
+                                <h:panelGroup id="tipoCapacitacionR" >
+                                    <h:panelGroup rendered="#{solucionarioC.solucion.NUMPREGUNT == 'R' ? true:false}">
+                                        <p:panelGrid columns="2" >
+                                            <p:outputLabel value="Pregunta N° 1:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL1}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 2:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL2}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 3:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL3}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 4:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL4}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 5:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL5}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 6:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL6}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 7:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL7}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 8:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL8}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 9:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL9}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 10:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL10}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 11:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL11}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 12:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL12}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 13:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL13}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 14:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL14}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 15:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL15}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 16:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL16}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 17:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL17}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 18:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL18}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 19:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL19}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 20:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL20}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                        </p:panelGrid>
+                                    </h:panelGroup>
+                                </h:panelGroup>
+                                <h:panelGroup id="tipoCapacitacionD" >
+                                    <h:panelGroup rendered="#{solucionarioC.solucion.NUMPREGUNT == 'D' ? true:false}">
+                                        <p:panelGrid columns="2" >
+                                            <p:outputLabel value="Pregunta N° 1:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL1}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 2:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL2}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 3:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL3}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 4:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL4}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 5:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL5}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 6:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL6}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 7:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL7}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 8:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL8}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 9:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL9}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                            <p:outputLabel value="Pregunta N° 10:" style="font-weight: 600"/>
+                                            <p:selectOneRadio value="#{solucionarioC.solucion.SOL10}" style="font-weight: normal">
+                                                <f:selectItem itemLabel="A" itemValue="A"/>
+                                                <f:selectItem itemLabel="B" itemValue="B"/>
+                                                <f:selectItem itemLabel="C" itemValue="C"/>
+                                                <f:selectItem itemLabel="D" itemValue="D"/>
+                                                <f:selectItem itemLabel="E" itemValue="E"/>
+                                            </p:selectOneRadio>
+                                        </p:panelGrid>
+                                    </h:panelGroup>
+                                </h:panelGroup>
+
+
+                                <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
                                     <p:commandButton style="float: right;width: 150px" value="REGISTRAR" actionListener="#{solucionarioC.agregarSolucionario()}" update="FormRegistrarSol :FormListSol:Soluciones"/> 
 
                                     <p:commandButton style="float: right;width: 130px" value="CANCELAR" oncomplete="PF('dlgregSol').hide()" />
+
                                 </p:panelGrid>
+
+
                             </h:form>
                         </p:dialog>   
 
@@ -406,8 +682,8 @@
                                 </p:column>
                             </p:dataTable>
                             <p:contextMenu for="Soluciones">
-                               <p:menuitem  value="Modificar" onclick="PF('dlgModSoluciones').show();" update="FormListSol"/>
-                              
+                                <p:menuitem  value="Modificar" onclick="PF('dlgModSoluciones').show();" update="FormListSol"/>
+
                             </p:contextMenu>
 
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -503,9 +779,12 @@
                                     <p:inputText  value="#{solucionarioC.selectedSolucionario.SOL39}"  />
                                     <p:outputLabel value="Solucion N° 40:" />
                                     <p:inputText  value="#{solucionarioC.selectedSolucionario.SOL40}"  />
-                                   
+
+
                                     <p:commandButton   value="MODIFICAR" actionListener="#{solucionarioC.modificarSolucionario()}" update="FormListSol:Soluciones" onclick="PF('dlgModSoluciones').hide();" />
                                     <p:commandButton value="CANCELAR" oncomplete="PF('dlgModSoluciones').hide()" />
+
+
 
                                 </p:panelGrid>
                                 <h:form>
