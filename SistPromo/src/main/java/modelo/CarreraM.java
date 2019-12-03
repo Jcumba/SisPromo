@@ -9,11 +9,11 @@ public class CarreraM {
     private String NOMCAR;
 
     /*lista de meritos*/
-    private String APELLIDOAP;
-    private String PUNTJAP;
-    private String NOMBRESAP;
-    private String APROBADO;
-
- 
+    private String NOMTIPEXA;
+    private String MODEXA;
+    private String NOMPER;
+    private String ALUMNO;
+    private String CANTIDAD;
+    private String PUNTAJE;
 
 }

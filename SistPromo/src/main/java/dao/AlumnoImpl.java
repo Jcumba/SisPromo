@@ -180,17 +180,14 @@ public class AlumnoImpl extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
-    
-    
-    
-    
+
     // DNI ALUMNO
     public List<String> queryAutoCompleteDni(String a) throws SQLException, Exception {
         this.conectar();
         ResultSet rs;
         List<String> lista;
         try {
-                String sql = "SELECT DNIPER FROM VW_CONSULTAFICHA WHERE DNIPER LIKE ?";
+            String sql = "SELECT DNIPER FROM VW_CONSULTAFICHA WHERE DNIPER LIKE ?";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             ps.setString(1, "%" + a + "%");
             rs = ps.executeQuery();
@@ -310,7 +307,7 @@ public class AlumnoImpl extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
-    
+
     public List<String> queryAutoCompleteNotas(String a) throws SQLException, Exception {
         this.conectar();
         ResultSet rs;
@@ -331,8 +328,7 @@ public class AlumnoImpl extends Dao implements AlumnoI {
             this.cerrar();
         }
     }
-    
-    
+
     public List<AlumnoM> consultarNotas(String dni) throws Exception {
         List<AlumnoM> consultar;
         ResultSet rs;
@@ -346,6 +342,8 @@ public class AlumnoImpl extends Dao implements AlumnoI {
             AlumnoM alumno;
             while (rs.next()) {
                 alumno = new AlumnoM();
+                alumno.setNOMTIPEXA(rs.getString("NOMTIPEXA"));
+                alumno.setMODEXA(rs.getString("MODEXA"));
                 alumno.setDNIPER(rs.getString("DNIPER"));
                 alumno.setNOMPER(rs.getString("NOMPER"));
                 alumno.setAPEPER(rs.getString("APEPER"));

@@ -9,8 +9,10 @@
     <h:body>
         <ui:composition template="../Template/Template.xhtml">
             <ui:define name="content">
-                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <div class="ui-g-12 ui-md-12 ui-lg-6">
                     <div class="card">
+                        <h2>Resultado individual</h2>
+
                         <h:form   id="Consultar">
                             <h:panelGrid columns="2">
                                 <p:autoComplete maxResults="5"
@@ -31,7 +33,14 @@
 
                                         var="consulta"
                                         emptyMessage="Sin Resultados">
-                                
+                                <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+                                    <p:outputLabel style="color: #0A1118;" value="Tipo Examen: #{consulta.NOMTIPEXA}"/><br/>
+                                    <p:outputLabel style="color: #0A1118;" value="Modalidad: #{consulta.MODEXA}"/>
+
+                                </p:panelGrid>
+
+
+
                                 <div id="form:j_idt54" class="ui-datatable ui-widget ui-datatable-reflow">
                                     <label id="form:j_idt54_reflowDD_label" for="form:j_idt54_reflowDD" class="ui-reflow-label">Sort</label>
                                     <select id="form:j_idt54_reflowDD" name="form:j_idt54_reflowDD" class="ui-reflow-dropdown ui-state-default" autocomplete="off">
@@ -47,7 +56,7 @@
                                     <div class="ui-datatable-header ui-widget-header ui-corner-top">
                                         <p:outputLabel style="color: #ffffff; font-weight: bold;" value="DNI:  #{consulta.DNIPER} - #{consulta.NOMPER}  #{consulta.APEPER}"/>
                                     </div>
-                                    
+
                                     <div class="ui-datatable-tablewrapper">
                                         <table role="grid">
                                             <thead id="form:j_idt54_head">
@@ -168,7 +177,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    
+
                                     <input type="hidden" id="form:j_idt54_selection" name="form:j_idt54_selection" autocomplete="off" value="" /></div>
                                 <script id="form:j_idt54_s" type="text/javascript">$(function () {
                                         PrimeFaces.cw("DataTable", "widget_form_j_idt54", {id: "form:j_idt54", paginator: {id: ['form:j_idt54_paginator_top', 'form:j_idt54_paginator_bottom'], rows: 10, rowCount: 50, page: 0, currentPageTemplate: '({currentPage} of {totalPages})'}, selectionMode: "single", reflow: true, groupColumnIndexes: [], disableContextMenuIfEmpty: false});
@@ -181,6 +190,25 @@
 
 
 
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                    <div class="card">
+                         <h2>Orden de Merito</h2>
+                        <h:form id="formEstadoAprob">
+                            <p:dataTable var="meritos" id="tablaresultados" value="#{carreraC.lstMerito}">
+
+                                <p:column headerText="Nombres y Apellidos" style="width: 200px">
+                                    <h:outputText value="#{meritos.NOMPER} #{meritos.ALUMNO} " />
+                                </p:column>
+
+                                <p:column headerText="Puntaje" >
+                                    <h:outputText value="#{meritos.PUNTAJE}" />
+                                </p:column>
+
+                            </p:dataTable>
+
+                        </h:form>
                     </div>
                 </div>
             </ui:define>

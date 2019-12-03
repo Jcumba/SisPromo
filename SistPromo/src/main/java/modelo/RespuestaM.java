@@ -15,6 +15,8 @@ private String CODRES;
 private String SOLUCIONARI_CODSOL;
 private String PERSONA_CODPER;
 
+private String NOMTIPEXA;
+private String MODEXA;
 private String NOMPER;
 private String APEPER;
 private String DNIPER;
@@ -419,6 +421,24 @@ private String PUNTAJE13;
     public void setPUNTAJE13(String PUNTAJE13) {
         this.PUNTAJE13 = PUNTAJE13;
     }
+
+    public String getNOMTIPEXA() {
+        return NOMTIPEXA;
+    }
+
+    public void setNOMTIPEXA(String NOMTIPEXA) {
+        this.NOMTIPEXA = NOMTIPEXA;
+    }
+
+    public String getMODEXA() {
+        return MODEXA;
+    }
+
+    public void setMODEXA(String MODEXA) {
+        this.MODEXA = MODEXA;
+    }
+    
+    
     
     
 }

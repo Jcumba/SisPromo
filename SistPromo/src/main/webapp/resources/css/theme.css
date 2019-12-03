@@ -1943,7 +1943,7 @@ body .ui-datatable tbody tr.ui-state-error {
   body .ui-datatable tbody tr.ui-state-error .ui-inputfield.ui-state-error {
     border-color: #ffffff; }
 body .ui-datatable tbody tr.ui-state-highlight td {
-  border-right-color: #9CCC65; }
+  border-right-color: #FFB300; }
   body .ui-datatable tbody tr.ui-state-highlight td:last-child {
     border-right-color: #d8d8d8; }
   body .ui-datatable tbody tr.ui-state-highlight td.ui-selection-column .ui-radiobutton-box {

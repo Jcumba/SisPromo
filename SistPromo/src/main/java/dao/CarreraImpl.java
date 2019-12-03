@@ -83,4 +83,32 @@ public class CarreraImpl extends Dao implements CarreraI {
 
     }
 
+    @Override
+    public List<CarreraM> listOrdenMerito() throws Exception {
+        List<CarreraM> listarMerito;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "select * from VW_PUNTJ_APROBATORIO";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listarMerito = new ArrayList<>();
+            while (rs.next()) {
+                CarreraM merito = new CarreraM();
+                merito.setNOMTIPEXA(rs.getString("NOMTIPEXA"));
+                merito.setMODEXA(rs.getString("MODEXA"));
+                merito.setNOMPER(rs.getString("NOMPER"));
+                merito.setALUMNO(rs.getString("ALUMNO"));
+                merito.setCANTIDAD(rs.getString("CANTIDAD"));
+                merito.setPUNTAJE(rs.getString("PUNTAJE"));
+                listarMerito.add(merito);
+            }
+            return listarMerito;
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+    }
+
 }

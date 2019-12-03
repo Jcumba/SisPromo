@@ -25,6 +25,7 @@ public class CarreraC implements Serializable {
     public void iniciar() {
         try {
             listarCarrera();
+            listarMerito();
         } catch (Exception e) {
         }
     }
@@ -79,6 +80,16 @@ public class CarreraC implements Serializable {
         try {
             dao = new CarreraImpl();
             lstCarrera = dao.listarCarrera();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    private void listarMerito() throws Exception {
+        CarreraImpl dao;
+        try {
+            dao = new CarreraImpl();
+            lstMerito = dao.listOrdenMerito();
         } catch (Exception e) {
             throw e;
         }

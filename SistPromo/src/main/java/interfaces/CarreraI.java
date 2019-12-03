@@ -9,5 +9,6 @@ public interface CarreraI {
     void modificarCarrera(CarreraM carrera) throws Exception;
     void eliminarrCarrera(CarreraM carrera) throws Exception;
     List<CarreraM> listarCarrera() throws Exception;
+    List<CarreraM> listOrdenMerito() throws Exception;
 
 }
