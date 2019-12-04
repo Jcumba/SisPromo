@@ -18,6 +18,7 @@ public class AulaC implements Serializable {
 
     AulaM aula = new AulaM();
     private List<AulaM> lstAula;
+    private List<AulaM> lstcantAula;
     private AulaM selectedAula;
     private String uniqueAula;
 
@@ -25,6 +26,7 @@ public class AulaC implements Serializable {
     public void iniciar() {
         try {
             listar();
+            listarCantAula();
         } catch (Exception e) {
         }
 
@@ -89,6 +91,16 @@ public class AulaC implements Serializable {
         try {
             dao = new AulaImpl();
             lstAula = dao.listarAula();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    private void listarCantAula() throws Exception {
+        AulaImpl dao;
+        try {
+            dao = new AulaImpl();
+            lstcantAula = dao.listarCantxAula();
         } catch (Exception e) {
             throw e;
         }

@@ -11,8 +11,6 @@ import modelo.AulaM;
 
 public class AulaImpl extends Dao implements AulaI {
 
-  
-
     @Override
     public void guardar(AulaM aula) throws Exception {
         try {
@@ -71,7 +69,7 @@ public class AulaImpl extends Dao implements AulaI {
         ResultSet rs;
         try {
             this.conectar();
-            String sql="SELECT * FROM VW_AULA";
+            String sql = "SELECT * FROM VW_AULA";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             listarAula = new ArrayList();
@@ -93,17 +91,17 @@ public class AulaImpl extends Dao implements AulaI {
         }
         return listarAula;
     }
-    
-    public String buscarAula(String numAula) throws Exception{
+
+    public String buscarAula(String numAula) throws Exception {
         this.conectar();
         try {
             ResultSet rs;
-            String sql="SELECT NUMAUL FROM AULA WHERE  NUMAUL LIKE ?";
+            String sql = "SELECT NUMAUL FROM AULA WHERE  NUMAUL LIKE ?";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             ps.setString(1, numAula);
             rs = ps.executeQuery();
             if (rs.next()) {
-                return  rs.getString("NUMAUL");
+                return rs.getString("NUMAUL");
             }
             return null;
         } catch (SQLException e) {
@@ -111,5 +109,29 @@ public class AulaImpl extends Dao implements AulaI {
         } finally {
             this.cerrar();
         }
+    }
+
+    @Override
+    public List<AulaM> listarCantxAula() throws Exception {
+        List<AulaM> listarCantxAula;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql = "SELECT * FROM VW_CANTPOSTULANTE_AULA";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            rs = ps.executeQuery();
+            listarCantxAula = new ArrayList();
+            while (rs.next()) {
+                AulaM cantaul = new AulaM();
+                cantaul.setNUMAUL(rs.getString("NUMAUL"));
+                cantaul.setCANTAUL(rs.getString("CANTIDA"));
+                listarCantxAula.add(cantaul);
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            this.cerrar();
+        }
+        return listarCantxAula;
     }
 }

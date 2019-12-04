@@ -13,43 +13,111 @@
             <ui:define name="content">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                     <div class="card">
-                        <h:form id="FormTblAlum">
-                            <p:growl id="msg" life="1500">
-                                <p:autoUpdate/>
-                            </p:growl>
-                            <p:dataTable var="alumno" value="#{alumnoC.lstAlumnosRegistrado}" rows="10"
-                                         class="table table-striped"
-                                         rowKey="#{alumno.CODPER}"
-                                         selection="#{alumnoC.selectedAlumno}"
-                                         selectionMode="single"
-                                         paginator="true"
-                                         rowsPerPageTemplate="5,10,15">
-                                <p:column headerText="DNI">
-                                    <h:outputText value="#{alumno.DNIPER}" />
-                                </p:column>
-                                <p:column headerText="ALUMNO">
-                                    <h:outputText value="#{alumno.ALUMNO}" />
-                                </p:column>
-                                <p:column headerText="COLEGIO">
-                                    <h:outputText value="#{alumno.NOMCOL}" />
-                                </p:column>
-                                <p:column headerText="DISTRITO">
-                                    <h:outputText value="#{alumno.DISTRITO}" />
-                                </p:column>
-                            </p:dataTable>
-                            <p:contextMenu>
-                                <p:menuitem value="Eliminar" actionListener="#{alumnoC.eliminarAlumno()}" update="FormTblAlum">
-                                    <p:confirm header="Confirmación" message="¿Estas Seguro de Eliminar?"/>
-                                </p:menuitem>
-                            </p:contextMenu>
-                        </h:form>
-                        <h:form>
-                            <p:confirmDialog global="true">
-                                <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                                <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="fa fa-close"/>
-                            </p:confirmDialog>
 
-                        </h:form>
+
+                        <p:tabView>
+                            <p:tab title="Listado de Alumnos">
+                                <h:form id="FormTblAlum">
+                                    <p:growl id="msg" life="1500">
+                                        <p:autoUpdate/>
+                                    </p:growl>
+                                    <p:dataTable var="alumno" value="#{alumnoC.lstAlumnosRegistrado}" rows="10"
+                                                 class="table table-striped"
+                                                 rowKey="#{alumno.CODPER}"
+                                                 selection="#{alumnoC.selectedAlumno}"
+                                                 selectionMode="single"
+                                                 paginator="true"
+                                                 rowsPerPageTemplate="5,10,15">
+                                        <p:column headerText="DNI">
+                                            <h:outputText value="#{alumno.DNIPER}" />
+                                        </p:column>
+                                        <p:column headerText="ALUMNO">
+                                            <h:outputText value="#{alumno.ALUMNO}" />
+                                        </p:column>
+                                        <p:column headerText="COLEGIO">
+                                            <h:outputText value="#{alumno.NOMCOL}" />
+                                        </p:column>
+                                        <p:column headerText="DISTRITO">
+                                            <h:outputText value="#{alumno.DISTRITO}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                    <p:contextMenu>
+                                        <p:menuitem value="Eliminar" actionListener="#{alumnoC.eliminarAlumno()}" update="FormTblAlum">
+                                            <p:confirm header="Confirmación" message="¿Estas Seguro de Eliminar?"/>
+                                        </p:menuitem>
+                                    </p:contextMenu>
+                                </h:form>
+                                <h:form>
+                                    <p:confirmDialog global="true">
+                                        <p:commandButton value="Si" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                        <p:commandButton value="No" styleClass="ui-confirmdialog-no" icon="fa fa-close"/>
+                                    </p:confirmDialog>
+
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="Listado de cantidad de alumnos por aula">
+                                <h:form id="formCantAul">
+                                    <p:dataTable var="cantaul" id="sadas" value="#{aulaC.lstcantAula}">
+                                        <p:column headerText="Aula">
+                                            <h:outputText value="#{cantaul.NUMAUL}" />
+                                        </p:column>
+
+                                        <p:column headerText="Cantidad de Alumnos">
+                                            <h:outputText value="#{cantaul.CANTAUL}" />
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="Busqueda de ficha de ingreso por Alumno">
+                                <h:form id="Consulta">
+                                    <p:growl id="msg" life="8000">
+                                        <p:autoUpdate/>
+                                    </p:growl>
+                                    <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+                                        <p:autoComplete maxResults="5"
+                                                        value="#{alumnoC.dni}"
+                                                        completeMethod="#{alumnoC.competeTextDni}"
+                                                        maxlength="15"
+                                                        placeholder="Buscar por DNI">
+                                        </p:autoComplete>  
+                                        <p:commandButton value="CONSULTAR" actionListener="#{alumnoC.consultar()}" update="tblConsulta"/>
+
+                                    </p:panelGrid>
+                                    <p:dataTable id="tblConsulta" 
+                                                 value="#{alumnoC.lstConsulta}"
+                                                 var="consulta">
+                                        <p:column  headerText="Datos">
+                                            <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+                                                
+                                            
+                                            <p:outputLabel style="color: orangered; font-weight: bold;"  value="DNI: #{consulta.DNIPER}"/>
+                                           
+                                            <p:outputLabel style="color: #283593; font-weight: bold" value="Nombres: #{consulta.NOMPER}"/>
+                                            
+                                            <p:outputLabel style="color: #283593; font-weight: bold" value="Apellidos: #{consulta.APEPER}"/>
+                                          
+                                            <p:outputLabel style="color: #283593; font-weight: bold" value="N° Aula: #{consulta.NUMAUL}"/>
+                                           
+                                            <p:outputLabel style="color: #283593; font-weight: bold" value="Fecha Examen: #{consulta.FECCROEXA}"/>
+                                          
+                                            <p:outputLabel style="color: #283593; font-weight: bold" value="Hora Examen: #{consulta.HORCROEXA}"/>
+                                           
+                                            <p:outputLabel style="color: #283593; font-weight: bold" value="Tipo de Examen: #{consulta.NOMTIPEXA}"/>
+                                            
+                                            <p:outputLabel style="color: #283593; font-weight: bold" value="Modalidad de Examen: #{consulta.MODEXA}"/>
+                                            
+                                            <p:column style="font-weight: bold;text-align:center;" headerText="REPORTE">
+                                                <p:commandButton value="DESCARGAR"  ajax="false" style="background-color:#FFD700;color: #000;font-weight:bold;" 
+                                                                 actionListener="#{alumnoC.reporteFicha(consulta.DNIPER)}" icon="fa fa-fw fa-download"/>
+                                            </p:column>
+                                            </p:panelGrid>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </h:form>
+                            </p:tab>
+                        </p:tabView>
                     </div>
                 </div>
             </ui:define>

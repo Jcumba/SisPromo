@@ -9,6 +9,9 @@ public class AulaM {
     private String AFORAUL;
     private String ESTAUL;
     private String EXAMEN_CODEXA, HORCROEXA, MODEXA,TIPEXA;
+    
+    
+    private String CANTAUL;
 
     Date FECINC;
     java.util.Date fechaTemporal;
@@ -96,5 +99,15 @@ public class AulaM {
         this.MODEXA = MODEXA;
     }
 
+    public String getCANTAUL() {
+        return CANTAUL;
+    }
+
+    public void setCANTAUL(String CANTAUL) {
+        this.CANTAUL = CANTAUL;
+    }
+
+    
+    
  
 }
