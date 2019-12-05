@@ -124,7 +124,7 @@ public class AlumnoC implements Serializable {
             }
             HashMap parameters = new HashMap();
             parameters.put("DNIPER", DNIPER);
-            report.exportarPDFGlobal(parameters, "ConsultaFicha02.jasper", "Ficha.pdf");
+            report.exportarPDFGlobal(parameters, "ConsultaFicha03.jasper", "Ficha.pdf");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "GENERADO", null));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ERROR", null));
