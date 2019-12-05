@@ -170,11 +170,11 @@
 
                         <div class="ui-g-12">
                             <span class="md-inputfield">
-                                <p:autoComplete  maxResults="16"  
+                                <p:autoComplete  maxResults="5"  
                                                  emptyMessage="No se encontro ningún registro"
                                                  value="#{alumnoC.alumno.UBIGEO_CODUBI}"
                                                  completeMethod="#{alumnoC.completeTextUbi}"
-                                                 maxlength="15">
+                                                 maxlength="15"  dropdown="true">
                                     <p:keyFilter regEx="/[\d]/"/>
                                 </p:autoComplete>
                                 <script id="j_idt12_s" type="text/javascript">$(function () {
@@ -185,10 +185,10 @@
 
                         <div class="ui-g-12">
                             <span class="md-inputfield">
-                                <p:autoComplete  maxResults="10" emptyMessage="No se encontro ningún registro"
+                                <p:autoComplete  maxResults="5" emptyMessage="No se encontro ningún registro"
                                                  value="#{alumnoC.alumno.CODCOL}"        
                                                  completeMethod="#{alumnoC.completeTextCol}"
-                                                 maxlength="15">
+                                                 maxlength="15" dropdown="true">
                                     <p:keyFilter regEx="/[\d]/"/>
                                 </p:autoComplete>
                                 <script id="j_idt12_s" type="text/javascript">$(function () {

@@ -48,6 +48,8 @@ public class UbigeImpl  extends Dao implements  UbigeoI {
             throw e;
         }
     }
+    
+    
     }
     
 

@@ -228,7 +228,7 @@ public class AlumnoImpl extends Dao implements AlumnoI {
         ResultSet rs;
         List<String> lista;
         try {
-            String sql = "SELECT NOMCOL FROM COLEGIO WHERE NOMCOL LIKE ?";
+            String sql = "SELECT UPPER(NOMCOL) AS NOMCOL FROM COLEGIO WHERE UPPER(NOMCOL) LIKE UPPER(?) AND ROWNUM <= 10";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             ps.setString(1, "%" + a + "%");
             rs = ps.executeQuery();
@@ -248,7 +248,7 @@ public class AlumnoImpl extends Dao implements AlumnoI {
         this.conectar();
         ResultSet rs;
         try {
-            String sql = "SELECT CODCOL FROM COLEGIO WHERE NOMCOL LIKE ?";
+            String sql = "SELECT CODCOL FROM COLEGIO WHERE UPPER(NOMCOL) = ? AND rownum <= 10";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             ps.setString(1, Colegio);
             rs = ps.executeQuery();
