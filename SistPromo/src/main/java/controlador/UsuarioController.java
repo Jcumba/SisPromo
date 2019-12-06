@@ -64,7 +64,7 @@ public class UsuarioController implements Serializable {
 
     public void finishSession() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear(); //Cierra la Session
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/SistPromo/index.xhtml"); // Mandamos al Login
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/SistPromo/"); // Mandamos al Login
     }
 
     public void securityLogin() throws IOException {
