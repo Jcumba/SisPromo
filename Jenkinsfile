@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('deploy') {
+      steps {
+        sh 'cp /root/.jenkins/workspace/SisPromo_master/target/SistPromo.war /opt/wildfly/standalone/deployments'
+      }
+    }
+
   }
 }
